@@ -1,9 +1,5 @@
 import React from 'react';
 
 export const App = () => {
-    return (
-        <div>
-            Hello World!
-        </div>
-    );
-}
+    return <div className='App'>Hello World!</div>;
+};
