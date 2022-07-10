@@ -1,5 +1,5 @@
 import { ThemeProvider } from '@emotion/react';
-import { Box, Button, CssBaseline, Grid } from '@mui/material';
+import { Button, CssBaseline, Grid } from '@mui/material';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { darkTheme } from './assets/theme';
@@ -18,7 +18,8 @@ const Landing = () => {
                 container
                 alignItems='center'
                 sx={{
-                    minHeight: '100vh',
+                    marginTop: '20vh',
+                    minHeight: '80vh',
                     maxWidth: '100%',
                 }}
             >
