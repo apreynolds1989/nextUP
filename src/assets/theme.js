@@ -5,11 +5,14 @@ export const darkTheme = createTheme({
         background: {
             default: '#252565',
         },
-        primary: {
+        white: {
             main: '#ffffff',
         },
-        secondary: {
+        red: {
             main: '#c92323',
+        },
+        blue: {
+            main: '#252565',
         },
     },
     components: {

@@ -1,9 +1,11 @@
 import { ThemeProvider } from '@emotion/react';
-import { Button, CssBaseline, Grid } from '@mui/material';
+import { Button, CssBaseline, Grid, useMediaQuery } from '@mui/material';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { darkTheme } from './assets/theme';
 import './index.css';
+import { HeaderAppBar } from './components/HeaderAppBar';
 import { SplashBackground } from './components/SplashBackground';
 import { ReactComponent as SkatersPuck } from './assets/img/skatersPuck.svg';
 import { ReactComponent as GoaliesPuck } from './assets/img/goaliesPuck.svg';
@@ -11,9 +13,12 @@ import { ReactComponent as SchedulePuck } from './assets/img/schedulePuck.svg';
 // import { App } from './App';
 
 const Landing = () => {
+    const isMobileSize = useMediaQuery('(max-width:600px)');
+
     return (
         <ThemeProvider theme={darkTheme}>
             <CssBaseline />
+            <HeaderAppBar isMobileSize={isMobileSize} />
             <Grid
                 container
                 alignItems='center'
@@ -54,44 +59,15 @@ const Landing = () => {
                     </Button>
                 </Grid>
             </Grid>
-            {/* <SplashBackground />
-            <Box>
-                <Button
-                    sx={{
-                        bgcolor: 'primary.main',
-                        color: 'secondary.main',
-                    }}
-                >
-                    Skaters
-                </Button>
-            </Box>
-            <Box>
-                <Button
-                    sx={{
-                        bgcolor: 'secondary.main',
-                        color: 'primary.main',
-                    }}
-                >
-                    Goalies
-                </Button>
-            </Box>
-            <Box>
-                <Button
-                    sx={{
-                        bgcolor: 'primary.main',
-                        color: 'secondary.main',
-                    }}
-                >
-                    Schedule
-                </Button>
-            </Box> */}
         </ThemeProvider>
     );
 };
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-    <React.StrictMode>
-        <Landing />
-    </React.StrictMode>,
+    <BrowserRouter>
+        <Routes>
+            <Route path='/' element={<Landing />} />
+        </Routes>
+    </BrowserRouter>,
 );
