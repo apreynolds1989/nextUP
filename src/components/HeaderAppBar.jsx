@@ -1,6 +1,13 @@
 import React from 'react';
 import { NavLink, Link } from 'react-router-dom';
-import { AppBar, Container, Toolbar, Box, Button } from '@mui/material';
+import {
+    AppBar,
+    Container,
+    Toolbar,
+    Box,
+    Button,
+    useTheme,
+} from '@mui/material';
 
 const pages = [
     {
@@ -26,8 +33,10 @@ const pages = [
 ];
 
 export const HeaderAppBar = ({ isMobileSize }) => {
+    const theme = useTheme();
+
     return (
-        <AppBar position='fixed' style={{ backgroundColor: 'primary' }}>
+        <AppBar position='fixed' style={{ backgroundColor: theme.white }}>
             <Container maxWidth='xl'>
                 <Toolbar disableGutters>
                     {!isMobileSize && <Link to='/'>GAME TRACKER</Link>}
@@ -43,6 +52,7 @@ export const HeaderAppBar = ({ isMobileSize }) => {
                     >
                         {pages.map((page) => (
                             <Button
+                                color='blue'
                                 key={page.title}
                                 sx={{
                                     fontSize: {
@@ -59,8 +69,8 @@ export const HeaderAppBar = ({ isMobileSize }) => {
                                             fontWeight: 'bold',
                                             textDecoration: 'none',
                                             color: isActive
-                                                ? 'red.main'
-                                                : 'blue.main',
+                                                ? theme.red
+                                                : theme.blue,
                                         };
                                     }}
                                     to={`/${page.route}`}
