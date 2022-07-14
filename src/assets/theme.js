@@ -1,7 +1,7 @@
 import { createTheme } from '@mui/material';
 
 export const palette = {
-    gtWhite: '#ffffff',
+    gtWhite: '#ddddde',
     gtRed: '#c92323',
     gtBlue: '#252565',
 };

@@ -5,6 +5,7 @@ import { Landing } from './components/Landing';
 import './index.css';
 import { CssBaseline, useMediaQuery } from '@mui/material';
 import { HeaderAppBar } from './components/HeaderAppBar';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 export const App = () => {
     const isMobileSize = useMediaQuery('(max-width:600px)');
@@ -12,8 +13,12 @@ export const App = () => {
     return (
         <ThemeProvider theme={darkTheme}>
             <CssBaseline />
-            <HeaderAppBar isMobileSize={isMobileSize} />
-            <Landing />
+            <BrowserRouter>
+                <HeaderAppBar isMobileSize={isMobileSize} />
+                <Routes>
+                    <Route path='/' element={<Landing />}></Route>
+                </Routes>
+            </BrowserRouter>
         </ThemeProvider>
     );
 };
