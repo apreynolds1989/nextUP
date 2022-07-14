@@ -1,13 +1,7 @@
 import React from 'react';
 import { NavLink, Link } from 'react-router-dom';
-import {
-    AppBar,
-    Container,
-    Toolbar,
-    Box,
-    Button,
-    useTheme,
-} from '@mui/material';
+import { AppBar, Container, Toolbar, Box, Button } from '@mui/material';
+import { palette } from '../assets/theme';
 
 const pages = [
     {
@@ -27,16 +21,14 @@ const pages = [
         route: 'Schedule',
     },
     {
-        title: 'Contact',
-        route: 'Contact',
+        title: 'About',
+        route: 'About',
     },
 ];
 
 export const HeaderAppBar = ({ isMobileSize }) => {
-    const theme = useTheme();
-
     return (
-        <AppBar position='fixed' style={{ backgroundColor: theme.white }}>
+        <AppBar position='fixed' style={{ backgroundColor: palette.gtWhite }}>
             <Container maxWidth='xl'>
                 <Toolbar disableGutters>
                     {!isMobileSize && <Link to='/'>GAME TRACKER</Link>}
@@ -52,13 +44,15 @@ export const HeaderAppBar = ({ isMobileSize }) => {
                     >
                         {pages.map((page) => (
                             <Button
-                                color='blue'
+                                variant='contained'
                                 key={page.title}
                                 sx={{
                                     fontSize: {
                                         xs: '14px',
                                         sm: '18px',
                                     },
+                                    marginX: 1,
+                                    minWidth: '125px',
                                 }}
                             >
                                 <NavLink
@@ -69,8 +63,8 @@ export const HeaderAppBar = ({ isMobileSize }) => {
                                             fontWeight: 'bold',
                                             textDecoration: 'none',
                                             color: isActive
-                                                ? theme.red
-                                                : theme.blue,
+                                                ? palette.gtRed
+                                                : palette.gtWhite,
                                         };
                                     }}
                                     to={`/${page.route}`}

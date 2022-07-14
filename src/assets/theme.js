@@ -1,18 +1,24 @@
 import { createTheme } from '@mui/material';
 
+export const palette = {
+    gtWhite: '#ffffff',
+    gtRed: '#c92323',
+    gtBlue: '#252565',
+};
+
 export const darkTheme = createTheme({
     palette: {
         background: {
             default: '#252565',
         },
-        white: {
-            main: '#ffffff',
+        primary: {
+            main: '#252565',
         },
-        red: {
+        secondary: {
             main: '#c92323',
         },
-        blue: {
-            main: '#252565',
+        white: {
+            main: '#ffffff',
         },
     },
     components: {
