@@ -1,5 +1,9 @@
 import React from 'react';
 import { Button, Grid, Typography } from '@mui/material';
+import { NextUpLogo } from '../components/NextUpLogo';
+import { NextUpLogo2 } from '../components/NextUpLogo2';
+import { NextUpLogo3 } from '../components/NextUpLogo3';
+import { NextUpLogo4 } from '../components/NextUpLogo4';
 import { SplashBackground } from '../components/SplashBackground';
 import { SkatersPuck } from '../components/SkatersPuck';
 import { GoaliesPuck } from '../components/GoaliesPuck';
@@ -17,14 +21,14 @@ export const Landing = () => {
                 maxWidth: '100%',
             }}
         >
-            <Grid item xs={12}>
+            <Grid item xs={12} align='center'>
                 <Typography
                     variant='h1'
                     sx={{
                         color: palette.gtWhite,
                     }}
                 >
-                    NextUP
+                    <NextUpLogo4 />
                 </Typography>
             </Grid>
             <Grid item xs={12}>
