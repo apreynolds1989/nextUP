@@ -1,9 +1,11 @@
 import React from 'react';
-import { Button, Grid } from '@mui/material';
-import { SplashBackground } from './SplashBackground';
-import { ReactComponent as SkatersPuck } from '../assets/img/skatersPuck.svg';
-import { ReactComponent as GoaliesPuck } from '../assets/img/goaliesPuck.svg';
-import { ReactComponent as SchedulePuck } from '../assets/img/schedulePuck.svg';
+import { Button, Grid, Typography } from '@mui/material';
+import { SplashBackground } from '../components/SplashBackground';
+import { SkatersPuck } from '../components/SkatersPuck';
+import { GoaliesPuck } from '../components/GoaliesPuck';
+import { SchedulePuck } from '../components/SchedulePuck';
+import { Link } from 'react-router-dom';
+import { palette } from '../assets/theme';
 
 export const Landing = () => {
     return (
@@ -11,11 +13,20 @@ export const Landing = () => {
             container
             alignItems='center'
             sx={{
-                marginTop: '20vh',
-                minHeight: '80vh',
+                minHeight: '100vh',
                 maxWidth: '100%',
             }}
         >
+            <Grid item xs={12}>
+                <Typography
+                    variant='h1'
+                    sx={{
+                        color: palette.gtWhite,
+                    }}
+                >
+                    NextUP
+                </Typography>
+            </Grid>
             <Grid item xs={12}>
                 <SplashBackground />
             </Grid>
@@ -25,7 +36,9 @@ export const Landing = () => {
                         bgcolor: 'transparent',
                     }}
                 >
-                    <SkatersPuck />
+                    <Link to='skaters'>
+                        <SkatersPuck />
+                    </Link>
                 </Button>
             </Grid>
             <Grid item xs={4} align='center'>

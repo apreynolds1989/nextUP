@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink, Link, Outlet } from 'react-router-dom';
+import { NavLink, Link, Outlet, useLocation } from 'react-router-dom';
 import { AppBar, Container, Toolbar, Box, Button } from '@mui/material';
 import { palette } from '../assets/theme';
 
@@ -27,6 +27,10 @@ const pages = [
 ];
 
 export const HeaderAppBar = ({ isMobileSize }) => {
+    const location = useLocation();
+
+    if (location.pathname === '/') return null;
+
     return (
         <>
             <AppBar
@@ -35,7 +39,7 @@ export const HeaderAppBar = ({ isMobileSize }) => {
             >
                 <Container maxWidth='xl'>
                     <Toolbar disableGutters>
-                        {!isMobileSize && <Link to='/'>GAME TRACKER</Link>}
+                        {!isMobileSize && <Link to='/'>NextUp</Link>}
                         <Box
                             sx={{
                                 flexGrow: 1,
