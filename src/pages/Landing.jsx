@@ -1,15 +1,12 @@
 import React from 'react';
 import { Button, Grid, Container } from '@mui/material';
 import { NextUpLogo } from '../components/NextUpLogo';
-import { NextUpLogo2 } from '../components/NextUpLogo2';
-import { NextUpLogo3 } from '../components/NextUpLogo3';
-import { NextUpLogo4 } from '../components/NextUpLogo4';
 import { SplashBackground } from '../components/SplashBackground';
 import { SkatersPuck } from '../components/SkatersPuck';
 import { GoaliesPuck } from '../components/GoaliesPuck';
 import { SchedulePuck } from '../components/SchedulePuck';
 import { Link } from 'react-router-dom';
-import { palette } from '../assets/theme';
+// import { palette } from '../assets/theme';
 
 export const Landing = () => {
     return (
@@ -29,7 +26,7 @@ export const Landing = () => {
                         maxHeight: '30vh',
                     }}
                 >
-                    <NextUpLogo4 />
+                    <NextUpLogo width={300} height={200} />
                 </Container>
             </Grid>
             <Grid item xs={12}>
