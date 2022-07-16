@@ -1,12 +1,12 @@
 import React from 'react';
-import { Button, Grid, Container } from '@mui/material';
+import { Button, Grid, Container, Typography } from '@mui/material';
 import { NextUpLogo } from '../components/NextUpLogo';
 import { SplashBackground } from '../components/SplashBackground';
 import { SkatersPuck } from '../components/SkatersPuck';
 import { GoaliesPuck } from '../components/GoaliesPuck';
 import { SchedulePuck } from '../components/SchedulePuck';
 import { Link } from 'react-router-dom';
-// import { palette } from '../assets/theme';
+import { palette } from '../assets/theme';
 
 export const Landing = () => {
     return (
@@ -28,6 +28,15 @@ export const Landing = () => {
                 >
                     <NextUpLogo width={300} height={200} />
                 </Container>
+                <Typography
+                    variant='h5'
+                    sx={{
+                        color: palette.gtWhite,
+                        fontWeight: 'bold',
+                    }}
+                >
+                    Take your shot.
+                </Typography>
             </Grid>
             <Grid item xs={12}>
                 <SplashBackground />
