@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Grid, Typography } from '@mui/material';
+import { Button, Grid, Container } from '@mui/material';
 import { NextUpLogo } from '../components/NextUpLogo';
 import { NextUpLogo2 } from '../components/NextUpLogo2';
 import { NextUpLogo3 } from '../components/NextUpLogo3';
@@ -22,14 +22,15 @@ export const Landing = () => {
             }}
         >
             <Grid item xs={12} align='center'>
-                <Typography
-                    variant='h1'
+                <Container
                     sx={{
-                        color: palette.gtWhite,
+                        display: 'flex',
+                        justifyContent: 'center',
+                        maxHeight: '30vh',
                     }}
                 >
                     <NextUpLogo4 />
-                </Typography>
+                </Container>
             </Grid>
             <Grid item xs={12}>
                 <SplashBackground />

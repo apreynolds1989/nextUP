@@ -7,7 +7,7 @@ export const SplashBackground = () => {
         <Container
             sx={{
                 display: 'flex',
-                maxHeight: '40vh',
+                maxHeight: '45vh',
             }}
         >
             <HockeyNet />

@@ -2,8 +2,8 @@ import React from 'react';
 
 export const NextUpLogo4 = (props) => (
     <svg
-        width={500}
-        height={300}
+        width={300}
+        height={200}
         overflow='visible'
         xmlns='http://www.w3.org/2000/svg'
         viewBox='0 0 955 626.25'
