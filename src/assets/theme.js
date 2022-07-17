@@ -1,5 +1,6 @@
 import { createTheme } from '@mui/material';
 import '@fontsource/lato';
+import whiteSkaterBackground from '../assets/img/whiteSkater.png';
 
 export const palette = {
     gtWhite: '#ddddde',
@@ -27,6 +28,10 @@ export const darkTheme = createTheme({
         allVariants: {
             color: palette.gtWhite,
         },
+        h1: {
+            textDecoration: 'underline',
+            fontStyle: 'italic',
+        },
     },
     components: {
         MuiCssBaseline: {
@@ -51,7 +56,17 @@ export const skatersSx = {
         minWidth: '90%',
         maxWidth: '500px',
         minHeight: '85vh',
-        backgroundColor: palette.gtBlue,
-        opacity: '15%',
+        backgroundColor: `${palette.gtBlue}30`,
+        backgroundImage: `url(${whiteSkaterBackground})`,
+        backgroundRepeat: 'no-repeat',
+        backgroundPosition: 'top',
+        // backgroundSize: 'cover',
+        // height: {
+        //     xs: '200px',
+        //     sm: '250px',
+        //     md: '325px',
+        //     lg: '400px',
+        //     xl: '450px',
+        // },
     },
 };

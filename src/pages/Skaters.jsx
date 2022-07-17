@@ -7,7 +7,15 @@ export const Skaters = () => {
     return (
         <Card sx={skatersSx.outerCard}>
             <CardContent>
-                <Typography variant='h1'>SKATERS</Typography>
+                <Typography
+                    variant='h1'
+                    sx={{
+                        paddingX: 10,
+                        paddingTop: 5,
+                    }}
+                >
+                    SKATERS
+                </Typography>
             </CardContent>
         </Card>
     );
