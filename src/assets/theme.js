@@ -1,4 +1,5 @@
 import { createTheme } from '@mui/material';
+import '@fontsource/lato';
 
 export const palette = {
     gtWhite: '#ddddde',
@@ -19,6 +20,12 @@ export const darkTheme = createTheme({
         },
         white: {
             main: '#ffffff',
+        },
+    },
+    typography: {
+        fontFamily: ['lato', 'sans-serif'].join(','),
+        allVariants: {
+            color: palette.gtWhite,
         },
     },
     components: {

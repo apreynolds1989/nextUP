@@ -31,7 +31,6 @@ export const Landing = () => {
                 <Typography
                     variant='h5'
                     sx={{
-                        color: palette.gtWhite,
                         fontWeight: 'bold',
                     }}
                 >
