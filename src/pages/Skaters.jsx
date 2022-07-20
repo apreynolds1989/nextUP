@@ -2,6 +2,7 @@ import React from 'react';
 import { Card, CardContent, Typography } from '@mui/material';
 import { palette } from '../assets/theme';
 import { skatersSx } from '../assets/theme';
+import { Container } from '@mui/system';
 
 export const Skaters = () => {
     return (
@@ -16,6 +17,24 @@ export const Skaters = () => {
                 >
                     SKATERS
                 </Typography>
+                <Container
+                    disableGutters
+                    sx={{
+                        marginX: 0,
+                        display: 'flex',
+                        flexDirection: 'row',
+                    }}
+                >
+                    <Container
+                        sx={{
+                            minWidth: '1000px',
+                            border: '2px solid red',
+                        }}
+                    >
+                        Table to come
+                    </Container>
+                    <Container sx={skatersSx.popContainer}></Container>
+                </Container>
             </CardContent>
         </Card>
     );

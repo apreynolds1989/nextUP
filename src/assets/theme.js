@@ -57,16 +57,20 @@ export const skatersSx = {
         maxWidth: '500px',
         minHeight: '85vh',
         backgroundColor: `${palette.gtBlue}30`,
+    },
+    popContainer: {
         backgroundImage: `url(${whiteSkaterBackground})`,
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'top',
         // backgroundSize: 'cover',
-        // height: {
-        //     xs: '200px',
-        //     sm: '250px',
-        //     md: '325px',
-        //     lg: '400px',
-        //     xl: '450px',
-        // },
+        height: {
+            xs: '200px',
+            sm: '250px',
+            md: '325px',
+            lg: '400px',
+            xl: '450px',
+        },
+        border: '2px solid green',
+        minWidth: '400px',
     },
 };
