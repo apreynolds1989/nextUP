@@ -1,6 +1,7 @@
 import { createTheme } from '@mui/material';
 import '@fontsource/lato';
 import whiteSkaterBackground from '../assets/img/whiteSkater.png';
+import whiteGoalieMaskBackground from '../assets/img/whiteGoalieMask.png';
 
 export const palette = {
     gtWhite: '#ddddde',
@@ -48,7 +49,7 @@ export const darkTheme = createTheme({
     },
 });
 
-export const skatersSx = {
+export const playersSx = {
     outerCard: {
         borderRadius: 5,
         margin: 'auto',
@@ -58,7 +59,7 @@ export const skatersSx = {
         minHeight: '85vh',
         backgroundColor: `${palette.gtBlue}30`,
     },
-    popContainer: {
+    skatersPopContainer: {
         backgroundImage: `url(${whiteSkaterBackground})`,
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'top',
@@ -72,5 +73,32 @@ export const skatersSx = {
         },
         border: '2px solid green',
         minWidth: '400px',
+    },
+    goaliesPopContainer: {
+        backgroundImage: `url(${whiteGoalieMaskBackground})`,
+        backgroundRepeat: 'no-repeat',
+        backgroundPosition: 'top',
+        backgroundSize: 'cover',
+        height: {
+            xs: '200px',
+            sm: '250px',
+            md: '325px',
+            lg: '400px',
+            xl: '450px',
+        },
+        border: '2px solid green',
+        minWidth: '400px',
+    },
+};
+
+export const scheduleSx = {
+    outerCard: {
+        borderRadius: 5,
+        margin: 'auto',
+        marginY: 15,
+        minWidth: '90%',
+        maxWidth: '500px',
+        minHeight: '85vh',
+        backgroundColor: `${palette.gtBlue}30`,
     },
 };

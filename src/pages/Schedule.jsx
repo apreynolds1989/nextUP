@@ -1,11 +1,11 @@
 import React from 'react';
 import { Card, CardContent, Typography } from '@mui/material';
-import { playersSx } from '../assets/theme';
+import { scheduleSx } from '../assets/theme';
 import { Container } from '@mui/system';
 
-export const Skaters = () => {
+export const Schedule = () => {
     return (
-        <Card sx={playersSx.outerCard}>
+        <Card sx={scheduleSx.outerCard}>
             <CardContent>
                 <Typography
                     variant='h1'
@@ -14,7 +14,7 @@ export const Skaters = () => {
                         paddingTop: 5,
                     }}
                 >
-                    SKATERS
+                    SCHEDULE
                 </Typography>
                 <Container
                     disableGutters
@@ -30,15 +30,10 @@ export const Skaters = () => {
                             border: '2px solid red',
                         }}
                     >
-                        Table to come
+                        Schedule to come
                     </Container>
-                    <Container sx={playersSx.skatersPopContainer}></Container>
                 </Container>
             </CardContent>
         </Card>
     );
 };
-
-// PLAYER IMAGES:
-
-// http://nhl.bamcontent.com/images/headshots/current/168x168/{player_id}.jpg

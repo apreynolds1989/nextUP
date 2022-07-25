@@ -3,7 +3,7 @@ import { Card, CardContent, Typography } from '@mui/material';
 import { playersSx } from '../assets/theme';
 import { Container } from '@mui/system';
 
-export const Skaters = () => {
+export const Goalies = () => {
     return (
         <Card sx={playersSx.outerCard}>
             <CardContent>
@@ -14,7 +14,7 @@ export const Skaters = () => {
                         paddingTop: 5,
                     }}
                 >
-                    SKATERS
+                    GOALIES
                 </Typography>
                 <Container
                     disableGutters
@@ -32,13 +32,9 @@ export const Skaters = () => {
                     >
                         Table to come
                     </Container>
-                    <Container sx={playersSx.skatersPopContainer}></Container>
+                    <Container sx={playersSx.goaliesPopContainer}></Container>
                 </Container>
             </CardContent>
         </Card>
     );
 };
-
-// PLAYER IMAGES:
-
-// http://nhl.bamcontent.com/images/headshots/current/168x168/{player_id}.jpg

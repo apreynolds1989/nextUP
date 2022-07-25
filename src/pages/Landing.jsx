@@ -6,7 +6,6 @@ import { SkatersPuck } from '../components/SkatersPuck';
 import { GoaliesPuck } from '../components/GoaliesPuck';
 import { SchedulePuck } from '../components/SchedulePuck';
 import { Link } from 'react-router-dom';
-import { palette } from '../assets/theme';
 
 export const Landing = () => {
     return (
@@ -57,7 +56,9 @@ export const Landing = () => {
                         bgcolor: 'transparent',
                     }}
                 >
-                    <GoaliesPuck />
+                    <Link to='goalies'>
+                        <GoaliesPuck />
+                    </Link>
                 </Button>
             </Grid>
             <Grid item xs={4} align='center'>
@@ -66,7 +67,9 @@ export const Landing = () => {
                         bgcolor: 'transparent',
                     }}
                 >
-                    <SchedulePuck />
+                    <Link to='schedule'>
+                        <SchedulePuck />
+                    </Link>
                 </Button>
             </Grid>
         </Grid>

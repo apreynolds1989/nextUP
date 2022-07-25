@@ -8,6 +8,8 @@ import { HeaderAppBar } from './components/HeaderAppBar';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { Skaters } from './pages/Skaters';
 import { Footer } from './components/Footer';
+import { Goalies } from './pages/Goalies';
+import { Schedule } from './pages/Schedule';
 
 export const App = () => {
     const isMobileSize = useMediaQuery('(max-width:600px)');
@@ -20,6 +22,8 @@ export const App = () => {
                 <Routes>
                     <Route path='/' element={<Landing />} />
                     <Route path='skaters' element={<Skaters />} />
+                    <Route path='goalies' element={<Goalies />} />
+                    <Route path='schedule' element={<Schedule />} />
                 </Routes>
                 <Footer />
             </BrowserRouter>
