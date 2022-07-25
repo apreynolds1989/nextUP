@@ -52,7 +52,7 @@ export const skatersSx = {
     outerCard: {
         borderRadius: 5,
         margin: 'auto',
-        marginTop: 15,
+        marginY: 15,
         minWidth: '90%',
         maxWidth: '500px',
         minHeight: '85vh',

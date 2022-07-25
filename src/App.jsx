@@ -7,6 +7,7 @@ import { CssBaseline, useMediaQuery } from '@mui/material';
 import { HeaderAppBar } from './components/HeaderAppBar';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { Skaters } from './pages/Skaters';
+import { Footer } from './components/Footer';
 
 export const App = () => {
     const isMobileSize = useMediaQuery('(max-width:600px)');
@@ -20,6 +21,7 @@ export const App = () => {
                     <Route path='/' element={<Landing />} />
                     <Route path='skaters' element={<Skaters />} />
                 </Routes>
+                <Footer />
             </BrowserRouter>
         </ThemeProvider>
     );
