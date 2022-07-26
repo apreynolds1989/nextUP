@@ -3,6 +3,7 @@ import { Link, Outlet, useLocation } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import { NextUpLogo } from './NextUpLogo';
+import { palette } from '../assets/theme';
 
 const pages = [
     {
@@ -37,8 +38,8 @@ export const Footer = () => {
             <Box
                 mx={0}
                 sx={{
-                    backgroundColor: 'white',
-                    color: 'black',
+                    backgroundColor: 'black',
+                    color: palette.gtWhite,
                 }}
             >
                 <Box
@@ -70,7 +71,7 @@ export const Footer = () => {
                             </Link>
                             <Box
                                 borderTop={1}
-                                borderColor='black'
+                                borderColor={palette.gtWhite}
                                 sx={{ paddingX: 5 }}
                             >
                                 <small>Take your shot.</small>
@@ -80,7 +81,7 @@ export const Footer = () => {
                             display='flex'
                             justifyContent='center'
                             alignItems='center'
-                            borderColor='white'
+                            borderColor={palette.gtWhite}
                             sx={{
                                 borderBottom: {
                                     xs: 1,
@@ -109,13 +110,13 @@ export const Footer = () => {
                                             display: 'block',
                                             fontSize: '14px',
                                             borderRight: borderSize,
-                                            borderColor: 'black',
+                                            borderColor: palette.gtWhite,
                                             borderRadius: 0,
                                         }}
                                     >
                                         <Link
                                             to={`/${page.route}`}
-                                            style={{ color: 'black' }}
+                                            style={{ color: palette.gtWhite }}
                                         >
                                             {page.title}
                                         </Link>

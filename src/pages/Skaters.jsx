@@ -1,41 +1,32 @@
 import React from 'react';
-import { Card, CardContent, Typography } from '@mui/material';
-import { playersSx, pagesOuterCard } from '../assets/theme';
+import { playersSx, tableContainer } from '../assets/theme';
 import { Container } from '@mui/system';
+import { Banner } from '../components/Banner';
 
 export const Skaters = () => {
     return (
-        <Card sx={pagesOuterCard}>
-            <CardContent>
-                <Typography
-                    variant='h1'
-                    sx={{
-                        paddingX: 10,
-                        paddingTop: 5,
-                    }}
-                >
-                    SKATERS
-                </Typography>
+        <>
+            <Banner title='SKATERS' />
+            <Container
+                disableGutters
+                sx={{
+                    marginX: 0,
+                    display: 'flex',
+                    flexDirection: 'row',
+                    ...tableContainer,
+                }}
+            >
                 <Container
-                    disableGutters
                     sx={{
-                        marginX: 0,
-                        display: 'flex',
-                        flexDirection: 'row',
+                        minWidth: '1000px',
+                        border: '2px solid red',
                     }}
                 >
-                    <Container
-                        sx={{
-                            minWidth: '1000px',
-                            border: '2px solid red',
-                        }}
-                    >
-                        Table to come
-                    </Container>
-                    <Container sx={playersSx.skatersPopContainer}></Container>
+                    Table to come
                 </Container>
-            </CardContent>
-        </Card>
+                <Container sx={playersSx.skatersPopContainer}></Container>
+            </Container>
+        </>
     );
 };
 

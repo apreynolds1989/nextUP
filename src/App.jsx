@@ -1,6 +1,6 @@
 import React from 'react';
 import { ThemeProvider } from '@emotion/react';
-import { darkTheme } from './assets/theme';
+import { gtTheme } from './assets/theme';
 import { Landing } from './pages/Landing';
 import './index.css';
 import { CssBaseline, useMediaQuery } from '@mui/material';
@@ -16,7 +16,7 @@ export const App = () => {
     const isMobileSize = useMediaQuery('(max-width:600px)');
 
     return (
-        <ThemeProvider theme={darkTheme}>
+        <ThemeProvider theme={gtTheme}>
             <CssBaseline />
             <BrowserRouter>
                 <HeaderAppBar isMobileSize={isMobileSize} />

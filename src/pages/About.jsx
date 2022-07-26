@@ -1,12 +1,12 @@
 import React from 'react';
 import { Box, Card, CardContent, Typography } from '@mui/material';
-import { pagesOuterCard } from '../assets/theme';
+import { tableContainer } from '../assets/theme';
 import { palette } from '../assets/theme';
 import podium from '../assets/img/podium.jpg';
 
 export const About = () => {
     return (
-        <Card sx={pagesOuterCard}>
+        <Card sx={tableContainer}>
             <CardContent>
                 <Box
                     sx={{
@@ -93,7 +93,7 @@ export const About = () => {
                                     marginBottom: 1,
                                 }}
                             >
-                                I like to win. I have found that winning
+                                I love to win. I have found that winning
                                 requires putting in the work and for Fantasy
                                 Hockey work means streaming players. Let me do
                                 most of that work for you. NextUP tracks which

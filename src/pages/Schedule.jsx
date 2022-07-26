@@ -1,39 +1,30 @@
 import React from 'react';
-import { Card, CardContent, Typography } from '@mui/material';
-import { pagesOuterCard } from '../assets/theme';
+import { tableContainer } from '../assets/theme';
 import { Container } from '@mui/system';
+import { Banner } from '../components/Banner';
 
 export const Schedule = () => {
     return (
-        <Card sx={pagesOuterCard}>
-            <CardContent>
-                <Typography
-                    variant='h1'
-                    sx={{
-                        paddingX: 10,
-                        paddingTop: 5,
-                    }}
-                >
-                    SCHEDULE
-                </Typography>
+        <>
+            <Banner title='SCHEDULE' />
+            <Container
+                disableGutters
+                sx={{
+                    marginX: 0,
+                    display: 'flex',
+                    flexDirection: 'row',
+                    ...tableContainer,
+                }}
+            >
                 <Container
-                    disableGutters
                     sx={{
-                        marginX: 0,
-                        display: 'flex',
-                        flexDirection: 'row',
+                        minWidth: '1000px',
+                        border: '2px solid red',
                     }}
                 >
-                    <Container
-                        sx={{
-                            minWidth: '1000px',
-                            border: '2px solid red',
-                        }}
-                    >
-                        Schedule to come
-                    </Container>
+                    Schedule to come
                 </Container>
-            </CardContent>
-        </Card>
+            </Container>
+        </>
     );
 };

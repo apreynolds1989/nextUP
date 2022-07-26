@@ -9,11 +9,8 @@ export const palette = {
     gtBlue: '#252565',
 };
 
-export const darkTheme = createTheme({
+export const gtTheme = createTheme({
     palette: {
-        background: {
-            default: '#252565',
-        },
         primary: {
             main: '#252565',
         },
@@ -39,6 +36,15 @@ export const darkTheme = createTheme({
         h4: {
             textDecoration: 'underline',
             fontStyle: 'italic',
+        },
+    },
+});
+
+export const landingTheme = createTheme({
+    typography: {
+        fontFamily: ['lato', 'sans-serif'].join(','),
+        allVariants: {
+            color: palette.gtWhite,
         },
     },
     components: {
@@ -89,12 +95,18 @@ export const playersSx = {
     },
 };
 
-export const pagesOuterCard = {
+export const tableContainer = {
     borderRadius: 5,
-    margin: 'auto',
-    marginY: 15,
-    minWidth: '90%',
-    maxWidth: '500px',
+    margin: 0,
+    minWidth: '100vw',
     minHeight: '85vh',
-    backgroundColor: `${palette.gtBlue}30`,
+    backgroundColor: `${palette.gtBlue}15`,
+};
+
+export const bannerSX = {
+    minWidth: '100vw',
+    marginTop: 15,
+    marginBottom: 5,
+    marginX: 0,
+    paddingBottom: 5,
 };
