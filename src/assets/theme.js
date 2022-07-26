@@ -105,8 +105,8 @@ export const tableContainer = {
 
 export const bannerSX = {
     minWidth: '100vw',
-    marginTop: 15,
-    marginBottom: 5,
+    marginTop: 18,
+    marginBottom: 8,
     marginX: 0,
     paddingBottom: 5,
 };
