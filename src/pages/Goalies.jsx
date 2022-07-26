@@ -1,11 +1,11 @@
 import React from 'react';
 import { Card, CardContent, Typography } from '@mui/material';
-import { playersSx } from '../assets/theme';
+import { playersSx, pagesOuterCard } from '../assets/theme';
 import { Container } from '@mui/system';
 
 export const Goalies = () => {
     return (
-        <Card sx={playersSx.outerCard}>
+        <Card sx={pagesOuterCard}>
             <CardContent>
                 <Typography
                     variant='h1'

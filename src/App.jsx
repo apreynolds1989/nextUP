@@ -10,6 +10,7 @@ import { Skaters } from './pages/Skaters';
 import { Footer } from './components/Footer';
 import { Goalies } from './pages/Goalies';
 import { Schedule } from './pages/Schedule';
+import { About } from './pages/About';
 
 export const App = () => {
     const isMobileSize = useMediaQuery('(max-width:600px)');
@@ -24,6 +25,7 @@ export const App = () => {
                     <Route path='skaters' element={<Skaters />} />
                     <Route path='goalies' element={<Goalies />} />
                     <Route path='schedule' element={<Schedule />} />
+                    <Route path='about' element={<About />} />
                 </Routes>
                 <Footer />
             </BrowserRouter>

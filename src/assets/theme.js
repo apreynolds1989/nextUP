@@ -33,6 +33,13 @@ export const darkTheme = createTheme({
             textDecoration: 'underline',
             fontStyle: 'italic',
         },
+        h3: {
+            fontStyle: 'italic',
+        },
+        h4: {
+            textDecoration: 'underline',
+            fontStyle: 'italic',
+        },
     },
     components: {
         MuiCssBaseline: {
@@ -50,15 +57,6 @@ export const darkTheme = createTheme({
 });
 
 export const playersSx = {
-    outerCard: {
-        borderRadius: 5,
-        margin: 'auto',
-        marginY: 15,
-        minWidth: '90%',
-        maxWidth: '500px',
-        minHeight: '85vh',
-        backgroundColor: `${palette.gtBlue}30`,
-    },
     skatersPopContainer: {
         backgroundImage: `url(${whiteSkaterBackground})`,
         backgroundRepeat: 'no-repeat',
@@ -91,14 +89,12 @@ export const playersSx = {
     },
 };
 
-export const scheduleSx = {
-    outerCard: {
-        borderRadius: 5,
-        margin: 'auto',
-        marginY: 15,
-        minWidth: '90%',
-        maxWidth: '500px',
-        minHeight: '85vh',
-        backgroundColor: `${palette.gtBlue}30`,
-    },
+export const pagesOuterCard = {
+    borderRadius: 5,
+    margin: 'auto',
+    marginY: 15,
+    minWidth: '90%',
+    maxWidth: '500px',
+    minHeight: '85vh',
+    backgroundColor: `${palette.gtBlue}30`,
 };

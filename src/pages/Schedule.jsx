@@ -1,11 +1,11 @@
 import React from 'react';
 import { Card, CardContent, Typography } from '@mui/material';
-import { scheduleSx } from '../assets/theme';
+import { pagesOuterCard } from '../assets/theme';
 import { Container } from '@mui/system';
 
 export const Schedule = () => {
     return (
-        <Card sx={scheduleSx.outerCard}>
+        <Card sx={pagesOuterCard}>
             <CardContent>
                 <Typography
                     variant='h1'
