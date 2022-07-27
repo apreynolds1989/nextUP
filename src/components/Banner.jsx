@@ -4,6 +4,7 @@ import React from 'react';
 import { bannerSX } from '../assets/theme';
 import { palette } from '../assets/theme';
 import { DesignerSVG } from './DesignerSVG';
+import { ShootingPuck } from './ShootingPuck';
 
 export const Banner = ({ title }) => {
     return (
@@ -14,16 +15,23 @@ export const Banner = ({ title }) => {
                     flexDirection: 'row',
                 }}
             >
-                <Typography
-                    variant='h1'
+                <Box
                     sx={{
-                        paddingX: 10,
-                        paddingTop: 5,
-                        color: palette.gtBlue,
+                        flexDirection: 'column',
                     }}
                 >
-                    {title}
-                </Typography>
+                    <Typography
+                        variant='h1'
+                        sx={{
+                            paddingX: 10,
+                            paddingTop: 5,
+                            color: palette.gtBlue,
+                        }}
+                    >
+                        {title}
+                    </Typography>
+                    <ShootingPuck width={50} height={50} />
+                </Box>
                 <Box
                     sx={{
                         position: 'absolute',
