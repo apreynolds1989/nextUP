@@ -30,7 +30,27 @@ export const Banner = ({ title }) => {
                     >
                         {title}
                     </Typography>
-                    <ShootingPuck width={50} height={50} />
+                    <Box
+                        sx={{
+                            paddingLeft: 10,
+                            display: 'flex',
+                            flexDirection: 'row',
+                        }}
+                    >
+                        <ShootingPuck width={50} height={50} />
+                        <Typography
+                            variant='body1'
+                            sx={{
+                                fontWeight: 'bold',
+                                paddingLeft: 1,
+                                color: palette.gtBlue,
+                                alignSelf: 'center',
+                            }}
+                        >
+                            Some text here briefly describing what this table is
+                            for? Or maybe just a catchy line
+                        </Typography>
+                    </Box>
                 </Box>
                 <Box
                     sx={{

@@ -2,6 +2,7 @@ import { createTheme } from '@mui/material';
 import '@fontsource/lato';
 import whiteSkaterBackground from '../assets/img/whiteSkater.png';
 import whiteGoalieMaskBackground from '../assets/img/whiteGoalieMask.png';
+import skaterBackground from '../assets/img/skaterBackground.png';
 
 export const palette = {
     gtWhite: '#ddddde',
@@ -27,7 +28,7 @@ export const gtTheme = createTheme({
             color: palette.gtWhite,
         },
         h1: {
-            textDecoration: 'underline',
+            letterSpacing: '-2px',
             fontStyle: 'italic',
         },
         h3: {
@@ -104,6 +105,10 @@ export const tableContainer = {
 };
 
 export const bannerSX = {
+    backgroundImage: `url(${skaterBackground})`,
+    backgroundRepeat: 'no-repeat',
+    backgroundPosition: '-110px -35px',
+    backgroundSize: '480px',
     minWidth: '100vw',
     marginTop: 18,
     marginBottom: 8,
