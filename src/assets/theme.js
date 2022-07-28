@@ -105,13 +105,16 @@ export const tableContainer = {
 };
 
 export const bannerSX = {
-    backgroundImage: `url(${skaterBackground})`,
-    backgroundRepeat: 'no-repeat',
-    backgroundPosition: '-110px -35px',
-    backgroundSize: '480px',
     minWidth: '100vw',
     marginTop: 18,
     marginBottom: 8,
     marginX: 0,
     paddingBottom: 5,
+};
+
+export const bannerSkaterBackground = {
+    backgroundImage: `url(${skaterBackground})`,
+    backgroundRepeat: 'no-repeat',
+    backgroundPosition: '-110px -35px',
+    backgroundSize: '480px',
 };

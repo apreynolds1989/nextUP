@@ -1,12 +1,16 @@
 import React from 'react';
-import { playersSx, tableContainer } from '../assets/theme';
+import {
+    playersSx,
+    tableContainer,
+    bannerSkaterBackground,
+} from '../assets/theme';
 import { Container } from '@mui/system';
 import { Banner } from '../components/Banner';
 
 export const Skaters = () => {
     return (
         <>
-            <Banner title='SKATERS' />
+            <Banner background={bannerSkaterBackground} title='SKATERS' />
             <Container
                 disableGutters
                 sx={{

@@ -6,9 +6,9 @@ import { palette } from '../assets/theme';
 import { DesignerSVG } from './DesignerSVG';
 import { ShootingPuck } from './ShootingPuck';
 
-export const Banner = ({ title }) => {
+export const Banner = ({ background, title }) => {
     return (
-        <Container sx={bannerSX}>
+        <Container sx={{ ...background, ...bannerSX }}>
             <Box
                 sx={{
                     display: 'flex',
