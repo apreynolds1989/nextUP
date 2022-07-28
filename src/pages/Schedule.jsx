@@ -1,12 +1,12 @@
 import React from 'react';
-import { tableContainer } from '../assets/theme';
+import { bannerScheduleBackground, tableContainer } from '../assets/theme';
 import { Container } from '@mui/system';
 import { Banner } from '../components/Banner';
 
 export const Schedule = () => {
     return (
         <>
-            <Banner title='SCHEDULE' />
+            <Banner background={bannerScheduleBackground} title='SCHEDULE' />
             <Container
                 disableGutters
                 sx={{

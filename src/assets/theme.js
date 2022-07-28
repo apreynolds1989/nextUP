@@ -3,6 +3,8 @@ import '@fontsource/lato';
 import whiteSkaterBackground from '../assets/img/whiteSkater.png';
 import whiteGoalieMaskBackground from '../assets/img/whiteGoalieMask.png';
 import skaterBackground from '../assets/img/skaterBackground.png';
+import goalieBackground from '../assets/img/goalieBackground.png';
+import scheduleBackground from '../assets/img/calendar.png';
 
 export const palette = {
     gtWhite: '#ddddde',
@@ -116,5 +118,19 @@ export const bannerSkaterBackground = {
     backgroundImage: `url(${skaterBackground})`,
     backgroundRepeat: 'no-repeat',
     backgroundPosition: '-110px -35px',
+    backgroundSize: '480px',
+};
+
+export const bannerGoalieBackground = {
+    backgroundImage: `url(${goalieBackground})`,
+    backgroundRepeat: 'no-repeat',
+    backgroundPosition: '-80px -35px',
+    backgroundSize: '480px',
+};
+
+export const bannerScheduleBackground = {
+    backgroundImage: `url(${scheduleBackground})`,
+    backgroundRepeat: 'no-repeat',
+    backgroundPosition: '-80px -35px',
     backgroundSize: '480px',
 };
