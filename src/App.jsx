@@ -2,7 +2,6 @@ import React from 'react';
 import { ThemeProvider } from '@emotion/react';
 import { gtTheme } from './assets/theme';
 import { Landing } from './pages/Landing';
-import { NewLanding } from './pages/NewLanding';
 import './index.css';
 import { CssBaseline, useMediaQuery } from '@mui/material';
 import { HeaderAppBar } from './components/HeaderAppBar';
