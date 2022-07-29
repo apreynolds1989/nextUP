@@ -1,6 +1,7 @@
 import { Box, List, Typography, ListItem, ListItemText } from '@mui/material';
 import React from 'react';
 import { games } from '../assets/data/games';
+import { palette } from '../assets/theme';
 
 export const GameDayBox = ({ day }) => {
     const gamesArr = games[day];
@@ -10,7 +11,7 @@ export const GameDayBox = ({ day }) => {
             sx={{
                 display: 'flex',
                 flexDirection: 'column',
-                borderBottom: '2px solid black',
+                borderBottom: `2px solid ${palette.gtBlue}`,
             }}
         >
             <Box>
@@ -20,6 +21,7 @@ export const GameDayBox = ({ day }) => {
                         textAlign: 'center',
                         textDecoration: 'underline',
                         textUnderlineOffset: '5px',
+                        paddingTop: 2,
                     }}
                 >
                     {day}

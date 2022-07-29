@@ -1,5 +1,6 @@
 import React from 'react';
 import { bannerScheduleBackground, tableContainer } from '../assets/theme';
+import { Box } from '@mui/material';
 import { Container } from '@mui/system';
 import { Banner } from '../components/Banner';
 import { WeeklyGamesList } from '../components/WeeklyGamesList';
@@ -17,14 +18,16 @@ export const Schedule = () => {
                     ...tableContainer,
                 }}
             >
-                <Container
+                <Box
                     sx={{
-                        minWidth: '1000px',
-                        border: '2px solid red',
+                        margin: 'auto',
+                        minWidth: '750px',
+                        marginY: 5,
+                        paddingBottom: 2,
                     }}
                 >
                     <WeeklyGamesList />
-                </Container>
+                </Box>
             </Container>
         </>
     );
