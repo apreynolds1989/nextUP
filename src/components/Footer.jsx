@@ -31,7 +31,7 @@ const pages = [
 export const Footer = () => {
     const location = useLocation();
 
-    if (location.pathname === '/') return null;
+    if (location.pathname === '/game-tracker-v2/') return null;
 
     return (
         <>
