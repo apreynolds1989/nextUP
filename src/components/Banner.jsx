@@ -2,7 +2,6 @@ import { Box, Typography } from '@mui/material';
 import { Container } from '@mui/system';
 import React from 'react';
 import { bannerSX } from '../assets/theme';
-import { palette } from '../assets/theme';
 import { DesignerSVG } from './DesignerSVG';
 import { ShootingPuck } from './ShootingPuck';
 
@@ -25,7 +24,6 @@ export const Banner = ({ background, title }) => {
                         sx={{
                             paddingX: 10,
                             paddingTop: 5,
-                            color: palette.gtBlue,
                         }}
                     >
                         {title}
@@ -43,7 +41,6 @@ export const Banner = ({ background, title }) => {
                             sx={{
                                 fontWeight: 'bold',
                                 paddingLeft: 1,
-                                color: palette.gtBlue,
                                 alignSelf: 'center',
                             }}
                         >

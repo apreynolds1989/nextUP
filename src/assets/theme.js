@@ -27,7 +27,7 @@ export const gtTheme = createTheme({
     typography: {
         fontFamily: ['lato', 'sans-serif'].join(','),
         allVariants: {
-            color: palette.gtWhite,
+            color: palette.gtBlue,
         },
         h1: {
             letterSpacing: '-2px',

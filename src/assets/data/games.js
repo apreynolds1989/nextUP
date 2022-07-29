@@ -1,0 +1,33 @@
+export const games = {
+    Monday: ['Home vs Away', 'Home vs Away'],
+    Tuesday: [
+        'Home vs Away',
+        'Home vs Away',
+        'Home vs Away',
+        'Home vs Away',
+        'Home vs Away',
+    ],
+    Wednesday: ['Home vs Away', 'Home vs Away', 'Home vs Away'],
+    Thursday: [
+        'Home vs Away',
+        'Home vs Away',
+        'Home vs Away',
+        'Home vs Away',
+        'Home vs Away',
+        'Home vs Away',
+        'Home vs Away',
+    ],
+    Friday: ['Home vs Away', 'Home vs Away', 'Home vs Away'],
+    Saturday: [
+        'Home vs Away',
+        'Home vs Away',
+        'Home vs Away',
+        'Home vs Away',
+        'Home vs Away',
+        'Home vs Away',
+        'Home vs Away',
+        'Home vs Away',
+        'Home vs Away',
+    ],
+    Sunday: ['Home vs Away'],
+};

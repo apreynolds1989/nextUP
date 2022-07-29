@@ -2,6 +2,7 @@ import React from 'react';
 import { bannerScheduleBackground, tableContainer } from '../assets/theme';
 import { Container } from '@mui/system';
 import { Banner } from '../components/Banner';
+import { WeeklyGamesList } from '../components/WeeklyGamesList';
 
 export const Schedule = () => {
     return (
@@ -22,9 +23,12 @@ export const Schedule = () => {
                         border: '2px solid red',
                     }}
                 >
-                    Schedule to come
+                    <WeeklyGamesList />
                 </Container>
             </Container>
         </>
     );
 };
+
+// Team Logos
+// https://www-league.nhlstatic.com/images/logos/teams-current-primary-light/TEAMID.svg
