@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/static/css/main.1633783a.css",
+    "main.js": "/static/js/main.48408b2c.js",
+    "static/media/podium.jpg": "/static/media/podium.4268ee60f4366537f9c5.jpg",
+    "static/media/calendar.png": "/static/media/calendar.776f9cfcfc130bb48182.png",
+    "static/media/whiteGoalieMask.png": "/static/media/whiteGoalieMask.12d566c29d86f8ab2978.png",
+    "static/media/lato-all-400-normal.woff": "/static/media/lato-all-400-normal.3dc1eff492ab1f598560.woff",
+    "static/media/lato-all-700-normal.woff": "/static/media/lato-all-700-normal.1e7707c9ec98d9b97e7f.woff",
+    "static/media/whiteSkater.png": "/static/media/whiteSkater.0067541aa887e96327fc.png",
+    "static/media/skaterBackground.png": "/static/media/skaterBackground.0111145f5f09011c688b.png",
+    "static/media/lato-latin-400-normal.woff2": "/static/media/lato-latin-400-normal.be36596da218e1eec01c.woff2",
+    "static/media/lato-latin-700-normal.woff2": "/static/media/lato-latin-700-normal.8f28e0e1fdb195149f1c.woff2",
+    "static/media/goalieBackground.png": "/static/media/goalieBackground.0e9fc725c6d8f02b7e07.png",
+    "static/media/hockeyNet.svg": "/static/media/hockeyNet.82f9073fe60a9d269bb03e63698e8bc3.svg",
+    "static/media/lato-latin-ext-400-normal.woff2": "/static/media/lato-latin-ext-400-normal.361f3dbb9db6a5980326.woff2",
+    "static/media/lato-latin-ext-700-normal.woff2": "/static/media/lato-latin-ext-700-normal.9c8812eaec45956201e1.woff2",
+    "index.html": "/index.html",
+    "main.1633783a.css.map": "/static/css/main.1633783a.css.map",
+    "main.48408b2c.js.map": "/static/js/main.48408b2c.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.1633783a.css",
+    "static/js/main.48408b2c.js"
+  ]
+}
