@@ -7,7 +7,7 @@ import { NextUpLogo } from './NextUpLogo';
 const pages = [
     {
         title: 'Home',
-        route: '',
+        route: 'game-tracker-v2/',
     },
     {
         title: 'Skaters',
@@ -41,7 +41,7 @@ export const HeaderAppBar = ({ isMobileSize }) => {
                 <Container maxWidth='xl'>
                     <Toolbar disableGutters>
                         {!isMobileSize && (
-                            <Link to='/'>
+                            <Link to='/game-tracker-v2/'>
                                 <NextUpLogo width={150} height={100} />
                             </Link>
                         )}

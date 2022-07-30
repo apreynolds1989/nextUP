@@ -8,7 +8,7 @@ import { palette } from '../assets/theme';
 const pages = [
     {
         title: 'Home',
-        route: '',
+        route: 'game-tracker-v2/',
     },
     {
         title: 'Skaters',
@@ -66,7 +66,7 @@ export const Footer = () => {
                             justifyContent='center'
                             alignItems='center'
                         >
-                            <Link to='/'>
+                            <Link to='/game-tracker-v2/'>
                                 <NextUpLogo width={150} height={100} />
                             </Link>
                             <Box
