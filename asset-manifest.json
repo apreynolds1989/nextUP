@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/game-tracker-v2/static/css/main.e148d61f.css",
-    "main.js": "/game-tracker-v2/static/js/main.f5e96b0a.js",
+    "main.js": "/game-tracker-v2/static/js/main.6dcf8119.js",
     "static/media/podium.jpg": "/game-tracker-v2/static/media/podium.4268ee60f4366537f9c5.jpg",
     "static/media/calendar.png": "/game-tracker-v2/static/media/calendar.776f9cfcfc130bb48182.png",
     "static/media/whiteGoalieMask.png": "/game-tracker-v2/static/media/whiteGoalieMask.12d566c29d86f8ab2978.png",
@@ -17,10 +17,10 @@
     "static/media/lato-latin-ext-700-normal.woff2": "/game-tracker-v2/static/media/lato-latin-ext-700-normal.9c8812eaec45956201e1.woff2",
     "index.html": "/game-tracker-v2/index.html",
     "main.e148d61f.css.map": "/game-tracker-v2/static/css/main.e148d61f.css.map",
-    "main.f5e96b0a.js.map": "/game-tracker-v2/static/js/main.f5e96b0a.js.map"
+    "main.6dcf8119.js.map": "/game-tracker-v2/static/js/main.6dcf8119.js.map"
   },
   "entrypoints": [
     "static/css/main.e148d61f.css",
-    "static/js/main.f5e96b0a.js"
+    "static/js/main.6dcf8119.js"
   ]
 }
