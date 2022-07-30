@@ -7,7 +7,7 @@ import { NextUpLogo } from './NextUpLogo';
 const pages = [
     {
         title: 'Home',
-        route: 'game-tracker-v2/',
+        route: 'nextUP/',
     },
     {
         title: 'Skaters',
@@ -30,7 +30,7 @@ const pages = [
 export const HeaderAppBar = ({ isMobileSize }) => {
     const location = useLocation();
 
-    if (location.pathname === '/game-tracker-v2/') return null;
+    if (location.pathname === '/nextUP/') return null;
 
     return (
         <>

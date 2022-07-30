@@ -21,7 +21,7 @@ export const App = () => {
             <BrowserRouter>
                 <HeaderAppBar isMobileSize={isMobileSize} />
                 <Routes>
-                    <Route path='/game-tracker-v2/' element={<Landing />}>
+                    <Route path='/nextUP/' element={<Landing />}>
                         <Routes>
                             <Route path='skaters' element={<Skaters />} />
                             <Route path='goalies' element={<Goalies />} />
