@@ -131,7 +131,7 @@ export const Footer = () => {
                         alignItems='center'
                         mb={5}
                     >
-                        <small>Copyright &copy; 2022 - Next UP</small>
+                        <small>Copyright &copy; 2022 - nextUP</small>
                     </Box>
                 </Box>
             </Box>

@@ -41,7 +41,7 @@ export const HeaderAppBar = ({ isMobileSize }) => {
                 <Container maxWidth='xl'>
                     <Toolbar disableGutters>
                         {!isMobileSize && (
-                            <Link to='/game-tracker-v2/'>
+                            <Link to='/nextUP/'>
                                 <NextUpLogo width={150} height={100} />
                             </Link>
                         )}
