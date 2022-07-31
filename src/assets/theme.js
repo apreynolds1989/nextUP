@@ -33,6 +33,9 @@ export const gtTheme = createTheme({
             letterSpacing: '-2px',
             fontStyle: 'italic',
         },
+        h2: {
+            fontStyle: 'italic',
+        },
         h3: {
             fontStyle: 'italic',
         },

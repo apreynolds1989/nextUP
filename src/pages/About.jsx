@@ -12,20 +12,9 @@ export const About = () => {
                     sx={{
                         maxWidth: '1200px',
                         margin: 'auto',
+                        marginTop: 20,
                     }}
                 >
-                    <Box
-                        sx={{
-                            display: 'flex',
-                            paddingLeft: 5,
-                            marginY: 5,
-                        }}
-                    >
-                        <Typography variant='h3'>
-                            <span style={{ color: palette.gtRed }}>About</span>{' '}
-                            Us
-                        </Typography>
-                    </Box>
                     <Box
                         sx={{
                             display: 'flex',
@@ -35,9 +24,16 @@ export const About = () => {
                     >
                         <Box
                             sx={{
+                                flexDirection: 'column',
                                 paddingX: 5,
                             }}
                         >
+                            <Typography variant='h2' sx={{ paddingLeft: 3 }}>
+                                <span style={{ color: palette.gtRed }}>
+                                    About
+                                </span>{' '}
+                                Us
+                            </Typography>
                             <img
                                 src={podium}
                                 alt='Podium with first second and third'
