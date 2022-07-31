@@ -1,70 +1,39 @@
-# Getting Started with Create React App
+# nextUP (game-tracker-v2)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+---
 
-## Available Scripts
+_Please note that this program is still under development and may not work as expected_<br>
+[nextUP](https://apreynolds1989.github.io/nextUP/)
 
-In the project directory, you can run:
+### What is it?
 
-### `npm start`
+---
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+nextUP, formly known as game-tracker, is a program used to track how many games every active player in the NHL will play in the given week (running from Monday to Sunday), as well as their Off-Day Games (Monday, Wednesday, Friday, Sunday). The website also tracks a wide variety of stats so that it is all available in one place when you are trying to decide which players you want to add to your fantasy team for the current week. I have made extensive use of the undocumented NHL API thanks in large part to [Drew Hynes](https://gitlab.com/dword4/nhlapi) for his attempt at documenting the API.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+This updated version of game-tracker has been rebuilt using React.
 
-### `npm test`
+### Why Make it?
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
 
-### `npm run build`
+I play a lot of fantasy hockey and my gameplan every week is to review the NHL schedule, see which teams are playing the most games that week and which teams are playing the most games on Off Days, and then I add the players from those teams that I think will be the most effective for me that week. My strategy in fantasy hockey is simply to have more players playing games every week than my opponent. This strategy has led to four first place finishes, four second place finishes and multiple third place finishes in recent years (and that doesn't include being in first place in one pool and second place in another when the 2020 fantasy season was cancelled due to COVID!). Now that I have pumped my tires a little bit, back to the program. I have always thought it would be great to have a program that would do the work for me, so I decided to build it myself!
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### What's Next?
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+---
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Currently the program loads very slowly as it makes over 800 seperate calls to the NHL API. As far as I can tell, there is no way to get a full list of active players from a single call. I would like to implement a database that collects the information in one place and calls the API repeatedly to keep it up to date and then call all of that into the program in a single call.
 
-### `npm run eject`
+I would also like to implement a part of the Yahoo Fantasy Sports API to provide the % Owned in fantasy leagues number. Right now every single player in the league is listed even though a large portion of them won't be available in any fantasy league.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+I am also planning to implement the schedule for the given week into the program
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Built With
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+---
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+-   [Drew Hynes - Documenting NHL API](https://gitlab.com/dword4/nhlapi)<br>
+-   [create-react-app](https://create-react-app.dev/)
+-   [MUI](https://mui.com/)
+-   [react router](https://v5.reactrouter.com/web/guides/quick-start)
