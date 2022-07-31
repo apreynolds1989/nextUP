@@ -137,3 +137,22 @@ export const bannerScheduleBackground = {
     backgroundPosition: '-80px -35px',
     backgroundSize: '480px',
 };
+
+export const scheduleTableHeaderSx = {
+    backgroundColor: palette.gtWhite,
+    borderRight: '1px solid black',
+    borderBottom: '1px solid black',
+    textAlign: 'center',
+    minWidth: '125px',
+    color: palette.gtRed,
+    fontWeight: 'bold',
+    fontSize: 16,
+};
+
+export const scheduleTableCellsSx = {
+    borderRight: '1px solid black',
+    // borderBottom: '1px solid black',
+    textAlign: 'center',
+    minWidth: '125px',
+    color: palette.gtBlue,
+};

@@ -6,6 +6,14 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import { teamsGames } from '../assets/data/games';
+import {
+    palette,
+    scheduleTableCellsSx,
+    scheduleTableHeaderSx,
+} from '../assets/theme';
+
+const teams = Object.keys(teamsGames).sort();
 
 export const TeamWeeklyGamesList = () => {
     return (
@@ -13,17 +21,56 @@ export const TeamWeeklyGamesList = () => {
             <Table sx={{ minWidth: 650 }} aria-label='simple table'>
                 <TableHead>
                     <TableRow>
-                        <TableCell>Team</TableCell>
-                        <TableCell align='right'>Monday</TableCell>
-                        <TableCell align='right'>Tuesday</TableCell>
-                        <TableCell align='right'>Wednesday</TableCell>
-                        <TableCell align='right'>Thursday</TableCell>
-                        <TableCell align='right'>Friday</TableCell>
-                        <TableCell align='right'>Saturday</TableCell>
-                        <TableCell align='right'>Sunday</TableCell>
+                        <TableCell sx={scheduleTableHeaderSx}>Team</TableCell>
+                        <TableCell sx={scheduleTableHeaderSx}>Monday</TableCell>
+                        <TableCell sx={scheduleTableHeaderSx}>
+                            Tuesday
+                        </TableCell>
+                        <TableCell sx={scheduleTableHeaderSx}>
+                            Wednesday
+                        </TableCell>
+                        <TableCell sx={scheduleTableHeaderSx}>
+                            Thursday
+                        </TableCell>
+                        <TableCell sx={scheduleTableHeaderSx}>Friday</TableCell>
+                        <TableCell sx={scheduleTableHeaderSx}>
+                            Saturday
+                        </TableCell>
+                        <TableCell
+                            sx={{
+                                ...scheduleTableHeaderSx,
+                                borderRight: '0px',
+                            }}
+                        >
+                            Sunday
+                        </TableCell>
                     </TableRow>
                 </TableHead>
-                <TableBody></TableBody>
+                <TableBody>
+                    {teams.map((team) => (
+                        <TableRow key={teamsGames[team].city}>
+                            <TableCell
+                                component='th'
+                                scope='row'
+                                sx={{
+                                    ...scheduleTableHeaderSx,
+                                    color: palette.gtBlue,
+                                }}
+                            >
+                                {teamsGames[team].city}
+                            </TableCell>
+                            {teamsGames[team].games.map((game) => (
+                                <TableCell
+                                    component='td'
+                                    scope='row'
+                                    sx={scheduleTableCellsSx}
+                                >
+                                    {game}
+                                </TableCell>
+                            ))}
+                        </TableRow>
+                    ))}
+                </TableBody>
             </Table>
         </TableContainer>
     );

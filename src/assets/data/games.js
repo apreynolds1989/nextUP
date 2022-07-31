@@ -1,4 +1,4 @@
-export const games = {
+export const weeklyGames = {
     Monday: ['Home vs Away', 'Home vs Away'],
     Tuesday: [
         'Home vs Away',
@@ -30,4 +30,27 @@ export const games = {
         'Home vs Away',
     ],
     Sunday: ['Home vs Away'],
+};
+
+export const teamsGames = {
+    anaheim: {
+        city: 'Anaheim',
+        name: 'Ducks',
+        games: ['Home', '', 'Away', '', '', 'Home', ''],
+    },
+    arizona: {
+        city: 'Arizona',
+        name: 'Coyotes',
+        games: ['Away', 'Away', '', '', '', '', 'Away'],
+    },
+    boston: {
+        city: 'Boston',
+        name: 'Bruins',
+        games: ['Home', '', '', 'Home', 'Away', '', 'Away'],
+    },
+    buffalo: {
+        city: 'Buffalo',
+        name: 'Sabres',
+        games: ['', 'Away', 'Home', '', 'Away', '', 'Away'],
+    },
 };

@@ -1,10 +1,10 @@
 import { Box, List, Typography, ListItem, ListItemText } from '@mui/material';
 import React from 'react';
-import { games } from '../assets/data/games';
+import { weeklyGames } from '../assets/data/games';
 import { palette } from '../assets/theme';
 
 export const GameDayBox = ({ day }) => {
-    const gamesArr = games[day];
+    const gamesArr = weeklyGames[day];
 
     return (
         <Box
