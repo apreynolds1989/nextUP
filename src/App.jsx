@@ -21,14 +21,11 @@ export const App = () => {
             <BrowserRouter>
                 <HeaderAppBar isMobileSize={isMobileSize} />
                 <Routes>
-                    <Route path='/nextUP/' element={<Landing />}>
-                        <Routes>
-                            <Route path='skaters' element={<Skaters />} />
-                            <Route path='goalies' element={<Goalies />} />
-                            <Route path='schedule' element={<Schedule />} />
-                            <Route path='about' element={<About />} />
-                        </Routes>
-                    </Route>
+                    <Route path='/nextUP/' element={<Landing />} />
+                    <Route path='nextUP/skaters' element={<Skaters />} />
+                    <Route path='nextUP/goalies' element={<Goalies />} />
+                    <Route path='nextUP/schedule' element={<Schedule />} />
+                    <Route path='nextUP/about' element={<About />} />
                 </Routes>
                 <Footer />
             </BrowserRouter>

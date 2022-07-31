@@ -11,19 +11,19 @@ const pages = [
     },
     {
         title: 'Skaters',
-        route: 'Skaters',
+        route: 'nextUP/skaters',
     },
     {
         title: 'Goalies',
-        route: 'Goalies',
+        route: 'nextUP/goalies',
     },
     {
         title: 'Schedule',
-        route: 'Schedule',
+        route: 'nextUP/schedule',
     },
     {
         title: 'About',
-        route: 'About',
+        route: 'nextUP/about',
     },
 ];
 

@@ -12,19 +12,19 @@ const pages = [
     },
     {
         title: 'Skaters',
-        route: 'Skaters',
+        route: 'nextUP/skaters',
     },
     {
         title: 'Goalies',
-        route: 'Goalies',
+        route: 'nextUP/goalies',
     },
     {
         title: 'Schedule',
-        route: 'Schedule',
+        route: 'nextUP/schedule',
     },
     {
         title: 'About',
-        route: 'About',
+        route: 'nextUP/about',
     },
 ];
 
@@ -66,7 +66,7 @@ export const Footer = () => {
                             justifyContent='center'
                             alignItems='center'
                         >
-                            <Link to='/game-tracker-v2/'>
+                            <Link to='/nextUP/'>
                                 <NextUpLogo width={150} height={100} />
                             </Link>
                             <Box
