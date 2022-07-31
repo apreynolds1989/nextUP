@@ -3,8 +3,7 @@ import { bannerScheduleBackground, tableContainer } from '../assets/theme';
 import { Box } from '@mui/material';
 import { Container } from '@mui/system';
 import { Banner } from '../components/Banner';
-import { WeeklyGamesList } from '../components/WeeklyGamesList';
-import { TeamWeeklyGamesList } from '../components/TeamWeeklyGamesList';
+import { ScheduleToggler } from '../components/ScheduleToggler';
 
 export const Schedule = () => {
     return (
@@ -27,8 +26,7 @@ export const Schedule = () => {
                         paddingBottom: 2,
                     }}
                 >
-                    <WeeklyGamesList />
-                    <TeamWeeklyGamesList />
+                    <ScheduleToggler />
                 </Box>
             </Container>
         </>
