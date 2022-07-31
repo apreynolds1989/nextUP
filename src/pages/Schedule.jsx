@@ -4,6 +4,7 @@ import { Box } from '@mui/material';
 import { Container } from '@mui/system';
 import { Banner } from '../components/Banner';
 import { WeeklyGamesList } from '../components/WeeklyGamesList';
+import { TeamWeeklyGamesList } from '../components/TeamWeeklyGamesList';
 
 export const Schedule = () => {
     return (
@@ -27,6 +28,7 @@ export const Schedule = () => {
                     }}
                 >
                     <WeeklyGamesList />
+                    <TeamWeeklyGamesList />
                 </Box>
             </Container>
         </>
