@@ -7,6 +7,13 @@ import {
 import { Container } from '@mui/system';
 import { Banner } from '../components/Banner';
 import { Typography } from '@mui/material';
+import { DoubleSortTable } from '../components/customComponents/DoubleSortTable';
+
+const columns = [
+    { columnName: 'First Column' },
+    { columnName: 'Second Column' },
+    { columnName: 'Third Column' },
+];
 
 export const Skaters = () => {
     return (
@@ -27,7 +34,7 @@ export const Skaters = () => {
                         border: '2px solid red',
                     }}
                 >
-                    Table to come
+                    <DoubleSortTable columnConfig={columns} />
                 </Container>
                 <Container sx={playersSx.skatersPopContainer}>
                     <Typography variant='h6'>Placeholder</Typography>
