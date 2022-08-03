@@ -16,9 +16,9 @@ const headerColumns = [
 ];
 
 const rowData = [
-    [{ data: 'Row 1' }, { data: 'Row 2' }, { data: 'Row 3' }],
-    [{ data: 'Row 1' }, { data: 'Row 2' }, { data: 'Row 3' }],
-    [{ data: 'Row 1' }, { data: 'Row 2' }, { data: 'Row 3' }],
+    [{ data: 'Row 1 Col 1' }, { data: 'Row 1 Col 2' }, { data: 'Row 1 Col 3' }],
+    [{ data: 'Row 2 Col 1' }, { data: 'Row 2 Col 2' }, { data: 'Row 2 Col 3' }],
+    [{ data: 'Row 3 Col 1' }, { data: 'Row 3 Col 2' }, { data: 'Row 3 Col 3' }],
 ];
 
 export const Skaters = () => {

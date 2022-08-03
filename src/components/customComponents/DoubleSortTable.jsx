@@ -12,8 +12,8 @@ export const DoubleSortTable = ({
     return (
         <Box
             sx={{
-                display: 'flex',
-                flexDirection: 'column',
+                display: 'table',
+                // flexDirection: 'column',
                 borderTop: `1px solid ${borderColor}`,
                 borderLeft: `1px solid ${borderColor}`,
             }}
@@ -34,7 +34,7 @@ const DoubleSortTableHeader = ({ columnConfig, borderColor }) => {
     return (
         <Box
             sx={{
-                display: 'flex',
+                display: 'table-row',
             }}
         >
             {columnConfig.map((column, index) => (
@@ -67,7 +67,7 @@ const ColumnHeaderText = ({
     return (
         <Box
             sx={{
-                display: 'flex',
+                display: 'table-cell',
                 borderRight: `1px solid ${borderColor}`,
                 borderBottom: `1px solid ${borderColor}`,
             }}
@@ -105,39 +105,30 @@ const ColumnHeaderText = ({
 };
 
 const DoubleSortTableRows = ({ rowConfig, borderColor }) => {
-    return (
+    return rowConfig.map((rows, index) => (
         <Box
             sx={{
-                display: 'flex',
-                flexDirection: 'column',
+                display: 'table-row',
+                flexDirection: 'row',
             }}
+            key={`row${index}`}
         >
-            {rowConfig.map((rows, index) => (
-                <Box
-                    sx={{
-                        display: 'flex',
-                        flexDirection: 'row',
-                    }}
-                    key={`row${index}`}
-                >
-                    {rows.map((row, index) => (
-                        <RowData
-                            {...row}
-                            borderColor={borderColor}
-                            key={`column${index}`}
-                        />
-                    ))}
-                </Box>
+            {rows.map((row, index) => (
+                <RowData
+                    {...row}
+                    borderColor={borderColor}
+                    key={`column${index}`}
+                />
             ))}
         </Box>
-    );
+    ));
 };
 
 const RowData = ({ data, borderColor }) => {
     return (
         <Box
             sx={{
-                display: 'flex',
+                display: 'table-cell',
                 borderRight: `1px solid ${borderColor}`,
                 borderBottom: `1px solid ${borderColor}`,
             }}
