@@ -3,26 +3,47 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleDown, faAngleUp } from '@fortawesome/free-solid-svg-icons';
 import { Box, Button, Typography } from '@mui/material';
 
-export const DoubleSortTable = ({ data, columnConfig }) => {
-    return <DoubleSortTableHeader columnConfig={columnConfig} />;
+export const DoubleSortTable = ({
+    data,
+    columnConfig,
+    borderColor = 'black',
+}) => {
+    return (
+        <Box
+            sx={{
+                borderTop: `1px solid ${borderColor}`,
+                borderLeft: `1px solid ${borderColor}`,
+            }}
+        >
+            <DoubleSortTableHeader
+                borderColor={borderColor}
+                columnConfig={columnConfig}
+            />
+        </Box>
+    );
 };
 
-const DoubleSortTableHeader = (columnConfig) => {
-    console.log(columnConfig.columnConfig);
+const DoubleSortTableHeader = ({ columnConfig, borderColor }) => {
+    console.log(columnConfig);
+    console.log(borderColor);
     return (
         <Box
             sx={{
                 display: 'flex',
             }}
         >
-            {columnConfig.columnConfig.map((column) => (
-                <ColumnHeaderText {...column} />
+            {columnConfig.map((column) => (
+                <ColumnHeaderText {...column} borderColor={borderColor} />
             ))}
         </Box>
     );
 };
 
-const ColumnHeaderText = ({ columnName, initialSort = 'none' }) => {
+const ColumnHeaderText = ({
+    columnName,
+    initialSort = 'none',
+    borderColor,
+}) => {
     const [sortStatus, setSortStatus] = useState(initialSort);
     const toggleSort = () => {
         if (sortStatus === 'none') {
@@ -38,7 +59,8 @@ const ColumnHeaderText = ({ columnName, initialSort = 'none' }) => {
         <Box
             sx={{
                 display: 'flex',
-                border: '1px solid black',
+                borderRight: `1px solid ${borderColor}`,
+                borderBottom: `1px solid ${borderColor}`,
             }}
         >
             <Button onClick={toggleSort}>
