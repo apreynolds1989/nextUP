@@ -1,5 +1,6 @@
 import React from 'react';
 import {
+    palette,
     playersSx,
     tableContainer,
     bannerSkaterBackground,
@@ -43,6 +44,9 @@ export const Skaters = () => {
                     <DoubleSortTable
                         columnConfig={headerColumns}
                         rowConfig={rowData}
+                        headerTextColor={palette.gtRed}
+                        headerArrowColor={palette.gtRed}
+                        dataTextColor={palette.gtBlue}
                     />
                 </Container>
                 <Container sx={playersSx.skatersPopContainer}>

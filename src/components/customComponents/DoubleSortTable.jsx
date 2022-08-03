@@ -8,6 +8,9 @@ export const DoubleSortTable = ({
     columnConfig,
     rowConfig,
     borderColor = 'black',
+    headerTextColor = 'black',
+    headerArrowColor = 'black',
+    dataTextColor = 'black',
 }) => {
     return (
         <Box
@@ -21,16 +24,24 @@ export const DoubleSortTable = ({
             <DoubleSortTableHeader
                 borderColor={borderColor}
                 columnConfig={columnConfig}
+                headerTextColor={headerTextColor}
+                headerArrowColor={headerArrowColor}
             />
             <DoubleSortTableRows
                 borderColor={borderColor}
                 rowConfig={rowConfig}
+                dataTextColor={dataTextColor}
             />
         </Box>
     );
 };
 
-const DoubleSortTableHeader = ({ columnConfig, borderColor }) => {
+const DoubleSortTableHeader = ({
+    columnConfig,
+    borderColor,
+    headerTextColor,
+    headerArrowColor,
+}) => {
     return (
         <Box
             sx={{
@@ -41,6 +52,8 @@ const DoubleSortTableHeader = ({ columnConfig, borderColor }) => {
                 <ColumnHeaderText
                     {...column}
                     borderColor={borderColor}
+                    headerTextColor={headerTextColor}
+                    headerArrowColor={headerArrowColor}
                     key={`column${index}`}
                 />
             ))}
@@ -52,6 +65,8 @@ const ColumnHeaderText = ({
     columnName,
     initialSort = 'none',
     borderColor,
+    headerTextColor,
+    headerArrowColor,
 }) => {
     const [sortStatus, setSortStatus] = useState(initialSort);
     const toggleSort = () => {
@@ -73,7 +88,13 @@ const ColumnHeaderText = ({
             }}
         >
             <Button onClick={toggleSort}>
-                <Typography sx={{ paddingRight: '10px' }}>
+                <Typography
+                    sx={{
+                        paddingRight: '10px',
+                        textAlign: 'center',
+                        color: headerTextColor,
+                    }}
+                >
                     {columnName}
                 </Typography>
                 <Box
@@ -83,14 +104,28 @@ const ColumnHeaderText = ({
                     }}
                 >
                     {sortStatus === 'asc' ? (
-                        <FontAwesomeIcon icon={faAngleUp} color='#000000' />
+                        <FontAwesomeIcon
+                            icon={faAngleUp}
+                            color={headerArrowColor}
+                        />
                     ) : (
-                        <FontAwesomeIcon icon={faAngleUp} color='#00000025' />
+                        <FontAwesomeIcon
+                            icon={faAngleUp}
+                            color={headerArrowColor}
+                            style={{ opacity: 0.25 }}
+                        />
                     )}
                     {sortStatus === 'desc' ? (
-                        <FontAwesomeIcon icon={faAngleDown} color='#000000' />
+                        <FontAwesomeIcon
+                            icon={faAngleDown}
+                            color={headerArrowColor}
+                        />
                     ) : (
-                        <FontAwesomeIcon icon={faAngleDown} color='#00000025' />
+                        <FontAwesomeIcon
+                            icon={faAngleDown}
+                            color={headerArrowColor}
+                            style={{ opacity: 0.25 }}
+                        />
                     )}
                     {/* {sortStatus === 'asc' && (
                         <FontAwesomeIcon icon={faAngleUp} color='#00000015' />
@@ -104,7 +139,7 @@ const ColumnHeaderText = ({
     );
 };
 
-const DoubleSortTableRows = ({ rowConfig, borderColor }) => {
+const DoubleSortTableRows = ({ rowConfig, borderColor, dataTextColor }) => {
     return rowConfig.map((rows, index) => (
         <Box
             sx={{
@@ -117,6 +152,7 @@ const DoubleSortTableRows = ({ rowConfig, borderColor }) => {
                 <RowData
                     {...row}
                     borderColor={borderColor}
+                    dataTextColor={dataTextColor}
                     key={`column${index}`}
                 />
             ))}
@@ -124,7 +160,7 @@ const DoubleSortTableRows = ({ rowConfig, borderColor }) => {
     ));
 };
 
-const RowData = ({ data, borderColor }) => {
+const RowData = ({ data, borderColor, dataTextColor }) => {
     return (
         <Box
             sx={{
@@ -133,7 +169,9 @@ const RowData = ({ data, borderColor }) => {
                 borderBottom: `1px solid ${borderColor}`,
             }}
         >
-            <Typography>{data}</Typography>
+            <Typography sx={{ textAlign: 'center', color: dataTextColor }}>
+                {data}
+            </Typography>
         </Box>
     );
 };
