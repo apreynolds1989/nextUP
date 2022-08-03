@@ -68,7 +68,6 @@ const DoubleSortTableHeader = ({
 const ColumnHeaderText = ({
     columnName,
     initialSort = 'none',
-    columnNumber,
     colNum,
     colsToHide,
     borderColor,
@@ -90,7 +89,6 @@ const ColumnHeaderText = ({
 
     return (
         <Box
-            className={`column${columnNumber}`}
             sx={{
                 display: colDisplay,
                 borderRight: `1px solid ${borderColor}`,
@@ -177,19 +175,11 @@ const DoubleSortTableRows = ({
     ));
 };
 
-const RowData = ({
-    data,
-    columnNumber,
-    colsToHide,
-    colNum,
-    borderColor,
-    dataTextColor,
-}) => {
+const RowData = ({ data, colsToHide, colNum, borderColor, dataTextColor }) => {
     const colDisplay = colsToHide.includes(colNum) ? 'none' : 'table-cell';
 
     return (
         <Box
-            className={`column${columnNumber}`}
             sx={{
                 display: colDisplay,
                 borderRight: `1px solid ${borderColor}`,
