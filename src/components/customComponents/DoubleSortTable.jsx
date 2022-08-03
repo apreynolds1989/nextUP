@@ -38,16 +38,36 @@ const ColumnHeaderText = ({ columnName, initialSort = 'none' }) => {
         <Box
             sx={{
                 display: 'flex',
+                border: '1px solid black',
             }}
         >
             <Button onClick={toggleSort}>
-                <Typography sx={{ paddingRight: '5px' }}>
+                <Typography sx={{ paddingRight: '10px' }}>
                     {columnName}
                 </Typography>
-                {sortStatus === 'asc' && <FontAwesomeIcon icon={faAngleUp} />}
-                {sortStatus === 'desc' && (
-                    <FontAwesomeIcon icon={faAngleDown} />
-                )}
+                <Box
+                    sx={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                    }}
+                >
+                    {sortStatus === 'asc' ? (
+                        <FontAwesomeIcon icon={faAngleUp} color='#000000' />
+                    ) : (
+                        <FontAwesomeIcon icon={faAngleUp} color='#00000025' />
+                    )}
+                    {sortStatus === 'desc' ? (
+                        <FontAwesomeIcon icon={faAngleDown} color='#000000' />
+                    ) : (
+                        <FontAwesomeIcon icon={faAngleDown} color='#00000025' />
+                    )}
+                    {/* {sortStatus === 'asc' && (
+                        <FontAwesomeIcon icon={faAngleUp} color='#00000015' />
+                    )}
+                    {sortStatus === 'desc' && (
+                        <FontAwesomeIcon icon={faAngleDown} />
+                    )} */}
+                </Box>
             </Button>
         </Box>
     );
