@@ -4,7 +4,6 @@ import { faAngleDown, faAngleUp } from '@fortawesome/free-solid-svg-icons';
 import { Box, Button, Typography } from '@mui/material';
 
 export const DoubleSortTable = ({
-    data,
     columnConfig,
     rowConfig,
     borderColor = 'black',
@@ -16,7 +15,6 @@ export const DoubleSortTable = ({
         <Box
             sx={{
                 display: 'table',
-                // flexDirection: 'column',
                 borderTop: `1px solid ${borderColor}`,
                 borderLeft: `1px solid ${borderColor}`,
             }}
@@ -64,6 +62,7 @@ const DoubleSortTableHeader = ({
 const ColumnHeaderText = ({
     columnName,
     initialSort = 'none',
+    columnDisplay = 'table-cell',
     borderColor,
     headerTextColor,
     headerArrowColor,
@@ -82,7 +81,7 @@ const ColumnHeaderText = ({
     return (
         <Box
             sx={{
-                display: 'table-cell',
+                display: columnDisplay,
                 borderRight: `1px solid ${borderColor}`,
                 borderBottom: `1px solid ${borderColor}`,
             }}

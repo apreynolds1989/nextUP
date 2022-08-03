@@ -11,9 +11,9 @@ import { Typography } from '@mui/material';
 import { DoubleSortTable } from '../components/customComponents/DoubleSortTable';
 
 const headerColumns = [
-    { columnName: 'First Column' },
-    { columnName: 'Second Column' },
-    { columnName: 'Third Column' },
+    { columnName: 'First Column', initialSort: 'none', columnDisplay: 'none' },
+    { columnName: 'Second Column', initialSort: 'asc' },
+    { columnName: 'Third Column', initialSort: 'desc' },
 ];
 
 const rowData = [
