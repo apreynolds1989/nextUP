@@ -37,8 +37,12 @@ const DoubleSortTableHeader = ({ columnConfig, borderColor }) => {
                 display: 'flex',
             }}
         >
-            {columnConfig.map((column) => (
-                <ColumnHeaderText {...column} borderColor={borderColor} />
+            {columnConfig.map((column, index) => (
+                <ColumnHeaderText
+                    {...column}
+                    borderColor={borderColor}
+                    key={`column${index}`}
+                />
             ))}
         </Box>
     );
@@ -108,15 +112,20 @@ const DoubleSortTableRows = ({ rowConfig, borderColor }) => {
                 flexDirection: 'column',
             }}
         >
-            {rowConfig.map((rows) => (
+            {rowConfig.map((rows, index) => (
                 <Box
                     sx={{
                         display: 'flex',
                         flexDirection: 'row',
                     }}
+                    key={`row${index}`}
                 >
-                    {rows.map((row) => (
-                        <RowData {...row} borderColor={borderColor} />
+                    {rows.map((row, index) => (
+                        <RowData
+                            {...row}
+                            borderColor={borderColor}
+                            key={`column${index}`}
+                        />
                     ))}
                 </Box>
             ))}
