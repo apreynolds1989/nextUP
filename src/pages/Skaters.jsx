@@ -9,10 +9,16 @@ import { Banner } from '../components/Banner';
 import { Typography } from '@mui/material';
 import { DoubleSortTable } from '../components/customComponents/DoubleSortTable';
 
-const columns = [
+const headerColumns = [
     { columnName: 'First Column' },
     { columnName: 'Second Column' },
     { columnName: 'Third Column' },
+];
+
+const rowData = [
+    [{ data: 'Row 1' }, { data: 'Row 2' }, { data: 'Row 3' }],
+    [{ data: 'Row 1' }, { data: 'Row 2' }, { data: 'Row 3' }],
+    [{ data: 'Row 1' }, { data: 'Row 2' }, { data: 'Row 3' }],
 ];
 
 export const Skaters = () => {
@@ -34,7 +40,10 @@ export const Skaters = () => {
                         border: '2px solid red',
                     }}
                 >
-                    <DoubleSortTable columnConfig={columns} />
+                    <DoubleSortTable
+                        columnConfig={headerColumns}
+                        rowConfig={rowData}
+                    />
                 </Container>
                 <Container sx={playersSx.skatersPopContainer}>
                     <Typography variant='h6'>Placeholder</Typography>

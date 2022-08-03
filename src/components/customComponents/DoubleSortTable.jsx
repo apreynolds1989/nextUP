@@ -6,11 +6,14 @@ import { Box, Button, Typography } from '@mui/material';
 export const DoubleSortTable = ({
     data,
     columnConfig,
+    rowConfig,
     borderColor = 'black',
 }) => {
     return (
         <Box
             sx={{
+                display: 'flex',
+                flexDirection: 'column',
                 borderTop: `1px solid ${borderColor}`,
                 borderLeft: `1px solid ${borderColor}`,
             }}
@@ -19,13 +22,15 @@ export const DoubleSortTable = ({
                 borderColor={borderColor}
                 columnConfig={columnConfig}
             />
+            <DoubleSortTableRows
+                borderColor={borderColor}
+                rowConfig={rowConfig}
+            />
         </Box>
     );
 };
 
 const DoubleSortTableHeader = ({ columnConfig, borderColor }) => {
-    console.log(columnConfig);
-    console.log(borderColor);
     return (
         <Box
             sx={{
@@ -91,6 +96,44 @@ const ColumnHeaderText = ({
                     )} */}
                 </Box>
             </Button>
+        </Box>
+    );
+};
+
+const DoubleSortTableRows = ({ rowConfig, borderColor }) => {
+    return (
+        <Box
+            sx={{
+                display: 'flex',
+                flexDirection: 'column',
+            }}
+        >
+            {rowConfig.map((rows) => (
+                <Box
+                    sx={{
+                        display: 'flex',
+                        flexDirection: 'row',
+                    }}
+                >
+                    {rows.map((row) => (
+                        <RowData {...row} borderColor={borderColor} />
+                    ))}
+                </Box>
+            ))}
+        </Box>
+    );
+};
+
+const RowData = ({ data, borderColor }) => {
+    return (
+        <Box
+            sx={{
+                display: 'flex',
+                borderRight: `1px solid ${borderColor}`,
+                borderBottom: `1px solid ${borderColor}`,
+            }}
+        >
+            <Typography>{data}</Typography>
         </Box>
     );
 };
