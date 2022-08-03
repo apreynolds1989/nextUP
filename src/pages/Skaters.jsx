@@ -11,15 +11,27 @@ import { Typography } from '@mui/material';
 import { DoubleSortTable } from '../components/customComponents/DoubleSortTable';
 
 const headerColumns = [
-    { columnName: 'First Column', initialSort: 'none', columnDisplay: 'none' },
-    { columnName: 'Second Column', initialSort: 'asc' },
-    { columnName: 'Third Column', initialSort: 'desc' },
+    { columnName: 'First Column', initialSort: 'none', columnNumber: 1 },
+    { columnName: 'Second Column', initialSort: 'asc', columnNumber: 2 },
+    { columnName: 'Third Column', initialSort: 'desc', columnNumber: 3 },
 ];
 
 const rowData = [
-    [{ data: 'Row 1 Col 1' }, { data: 'Row 1 Col 2' }, { data: 'Row 1 Col 3' }],
-    [{ data: 'Row 2 Col 1' }, { data: 'Row 2 Col 2' }, { data: 'Row 2 Col 3' }],
-    [{ data: 'Row 3 Col 1' }, { data: 'Row 3 Col 2' }, { data: 'Row 3 Col 3' }],
+    [
+        { data: 'Row 1 Col 1', columnNumber: 1 },
+        { data: 'Row 1 Col 2', columnNumber: 2 },
+        { data: 'Row 1 Col 3', columnNumber: 3 },
+    ],
+    [
+        { data: 'Row 2 Col 1', columnNumber: 1 },
+        { data: 'Row 2 Col 2', columnNumber: 2 },
+        { data: 'Row 2 Col 3', columnNumber: 3 },
+    ],
+    [
+        { data: 'Row 3 Col 1', columnNumber: 1 },
+        { data: 'Row 3 Col 2', columnNumber: 2 },
+        { data: 'Row 3 Col 3', columnNumber: 3 },
+    ],
 ];
 
 export const Skaters = () => {
@@ -47,6 +59,7 @@ export const Skaters = () => {
                         headerTextColor={palette.gtRed}
                         headerArrowColor={palette.gtRed}
                         dataTextColor={palette.gtBlue}
+                        colsToHide={[1]}
                     />
                 </Container>
                 <Container sx={playersSx.skatersPopContainer}>

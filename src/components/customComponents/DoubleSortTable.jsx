@@ -10,6 +10,7 @@ export const DoubleSortTable = ({
     headerTextColor = 'black',
     headerArrowColor = 'black',
     dataTextColor = 'black',
+    colsToHide = [],
 }) => {
     return (
         <Box
@@ -22,12 +23,14 @@ export const DoubleSortTable = ({
             <DoubleSortTableHeader
                 borderColor={borderColor}
                 columnConfig={columnConfig}
+                colsToHide={colsToHide}
                 headerTextColor={headerTextColor}
                 headerArrowColor={headerArrowColor}
             />
             <DoubleSortTableRows
                 borderColor={borderColor}
                 rowConfig={rowConfig}
+                colsToHide={colsToHide}
                 dataTextColor={dataTextColor}
             />
         </Box>
@@ -36,6 +39,7 @@ export const DoubleSortTable = ({
 
 const DoubleSortTableHeader = ({
     columnConfig,
+    colsToHide,
     borderColor,
     headerTextColor,
     headerArrowColor,
@@ -49,9 +53,11 @@ const DoubleSortTableHeader = ({
             {columnConfig.map((column, index) => (
                 <ColumnHeaderText
                     {...column}
+                    colsToHide={colsToHide}
                     borderColor={borderColor}
                     headerTextColor={headerTextColor}
                     headerArrowColor={headerArrowColor}
+                    colNum={index}
                     key={`column${index}`}
                 />
             ))}
@@ -62,7 +68,9 @@ const DoubleSortTableHeader = ({
 const ColumnHeaderText = ({
     columnName,
     initialSort = 'none',
-    columnDisplay = 'table-cell',
+    columnNumber,
+    colNum,
+    colsToHide,
     borderColor,
     headerTextColor,
     headerArrowColor,
@@ -78,10 +86,13 @@ const ColumnHeaderText = ({
         }
     };
 
+    const colDisplay = colsToHide.includes(colNum) ? 'none' : 'table-cell';
+
     return (
         <Box
+            className={`column${columnNumber}`}
             sx={{
-                display: columnDisplay,
+                display: colDisplay,
                 borderRight: `1px solid ${borderColor}`,
                 borderBottom: `1px solid ${borderColor}`,
             }}
@@ -138,7 +149,12 @@ const ColumnHeaderText = ({
     );
 };
 
-const DoubleSortTableRows = ({ rowConfig, borderColor, dataTextColor }) => {
+const DoubleSortTableRows = ({
+    rowConfig,
+    colsToHide,
+    borderColor,
+    dataTextColor,
+}) => {
     return rowConfig.map((rows, index) => (
         <Box
             sx={{
@@ -150,8 +166,10 @@ const DoubleSortTableRows = ({ rowConfig, borderColor, dataTextColor }) => {
             {rows.map((row, index) => (
                 <RowData
                     {...row}
+                    colsToHide={colsToHide}
                     borderColor={borderColor}
                     dataTextColor={dataTextColor}
+                    colNum={index}
                     key={`column${index}`}
                 />
             ))}
@@ -159,11 +177,21 @@ const DoubleSortTableRows = ({ rowConfig, borderColor, dataTextColor }) => {
     ));
 };
 
-const RowData = ({ data, borderColor, dataTextColor }) => {
+const RowData = ({
+    data,
+    columnNumber,
+    colsToHide,
+    colNum,
+    borderColor,
+    dataTextColor,
+}) => {
+    const colDisplay = colsToHide.includes(colNum) ? 'none' : 'table-cell';
+
     return (
         <Box
+            className={`column${columnNumber}`}
             sx={{
-                display: 'table-cell',
+                display: colDisplay,
                 borderRight: `1px solid ${borderColor}`,
                 borderBottom: `1px solid ${borderColor}`,
             }}
