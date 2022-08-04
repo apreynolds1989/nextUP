@@ -12,6 +12,7 @@ export const DoubleSortTable = ({
     headerInnerBorder = `2px solid ${borderColor}`,
     rowEndBorder = `2px solid ${borderColor}`,
     rowBottomBorder = `2px solid ${borderColor}`,
+    headerBgColor = 'white',
     headerTextColor = 'black',
     headerArrowColor = 'black',
     dataTextColor = 'black',
@@ -31,6 +32,7 @@ export const DoubleSortTable = ({
                 headerInnerBorder={headerInnerBorder}
                 columnConfig={columnConfig}
                 colsToHide={colsToHide}
+                headerBgColor={headerBgColor}
                 headerTextColor={headerTextColor}
                 headerArrowColor={headerArrowColor}
             />
@@ -49,6 +51,7 @@ const DoubleSortTableHeader = ({
     columnConfig,
     colsToHide,
     headerInnerBorder,
+    headerBgColor,
     headerTextColor,
     headerArrowColor,
 }) => {
@@ -56,6 +59,7 @@ const DoubleSortTableHeader = ({
         <Box
             sx={{
                 display: 'table-row',
+                backgroundColor: headerBgColor,
             }}
         >
             {columnConfig.map((column, index) => (
