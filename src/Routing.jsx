@@ -14,7 +14,10 @@ export const Routing = ({ isMobileSize }) => {
             <HeaderAppBar isMobileSize={isMobileSize} />
             <Routes>
                 <Route path='/nextUP/' element={<Landing />} />
-                <Route path='nextUP/skaters' element={<Skaters />} />
+                <Route
+                    path='nextUP/skaters'
+                    element={<Skaters isMobileSize={isMobileSize} />}
+                />
                 <Route path='nextUP/goalies' element={<Goalies />} />
                 <Route path='nextUP/schedule' element={<Schedule />} />
                 <Route path='nextUP/about' element={<About />} />

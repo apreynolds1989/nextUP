@@ -22,7 +22,7 @@ const rowData = [
     [{ data: 'Row 3 Col 1' }, { data: 'Row 3 Col 2' }, { data: 'Row 3 Col 3' }],
 ];
 
-export const Skaters = () => {
+export const Skaters = ({ isMobileSize }) => {
     return (
         <>
             <Banner background={bannerSkaterBackground} title='SKATERS' />
@@ -47,7 +47,7 @@ export const Skaters = () => {
                         headerTextColor={palette.gtRed}
                         headerArrowColor={palette.gtRed}
                         dataTextColor={palette.gtBlue}
-                        colsToHide={[1]}
+                        colsToHide={isMobileSize ? [1] : []}
                     />
                 </Container>
                 <Container sx={playersSx.skatersPopContainer}>
