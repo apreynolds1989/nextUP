@@ -20,6 +20,7 @@ const rowData = [
     [{ data: 'Row 1 Col 1' }, { data: 'Row 1 Col 2' }, { data: 'Row 1 Col 3' }],
     [{ data: 'Row 2 Col 1' }, { data: 'Row 2 Col 2' }, { data: 'Row 2 Col 3' }],
     [{ data: 'Row 3 Col 1' }, { data: 'Row 3 Col 2' }, { data: 'Row 3 Col 3' }],
+    [{ data: 'Row 4 Col 1' }, { data: 'Row 4 Col 2' }, { data: 'Row 4 Col 3' }],
 ];
 
 export const Skaters = ({ isMobileSize }) => {
@@ -48,6 +49,7 @@ export const Skaters = ({ isMobileSize }) => {
                         headerArrowColor={palette.gtRed}
                         dataTextColor={palette.gtBlue}
                         colsToHide={isMobileSize ? [1] : []}
+                        outerRadius={3}
                     />
                 </Container>
                 <Container sx={playersSx.skatersPopContainer}>

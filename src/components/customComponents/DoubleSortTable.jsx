@@ -8,6 +8,7 @@ export const DoubleSortTable = ({
     columnConfig,
     rowConfig,
     outerBorder = `2px solid ${borderColor}`,
+    outerRadius = 0,
     headerInnerBorder = `2px solid ${borderColor}`,
     rowEndBorder = `2px solid ${borderColor}`,
     rowBottomBorder = `2px solid ${borderColor}`,
@@ -21,6 +22,7 @@ export const DoubleSortTable = ({
             sx={{
                 display: 'table',
                 border: outerBorder,
+                borderRadius: outerRadius,
                 // borderTop: `1px solid ${borderColor}`,
                 // borderLeft: `1px solid ${borderColor}`,
             }}
@@ -106,10 +108,10 @@ const ColumnHeaderText = ({
                 borderBottom: headerInnerBorder,
             }}
         >
-            <Button onClick={toggleSort}>
+            <Button onClick={toggleSort} sx={{ padding: 2 }}>
                 <Typography
                     sx={{
-                        paddingRight: '10px',
+                        paddingRight: 2,
                         textAlign: 'center',
                         color: headerTextColor,
                     }}
@@ -165,23 +167,25 @@ const DoubleSortTableRows = ({
     rowBottomBorder,
     dataTextColor,
 }) => {
-    return rowConfig.map((rows, index) => (
+    return rowConfig.map((rows, rowIndex) => (
         <Box
             sx={{
                 display: 'table-row',
                 flexDirection: 'row',
             }}
-            key={`row${index}`}
+            key={`row${rowIndex}`}
         >
             {rows.map((row, index) => (
                 <RowData
                     {...row}
+                    rows={rows}
                     rowConfig={rowConfig}
                     colsToHide={colsToHide}
                     rowEndBorder={rowEndBorder}
                     rowBottomBorder={rowBottomBorder}
                     dataTextColor={dataTextColor}
                     colNum={index}
+                    rowNum={rowIndex}
                     key={`column${index}`}
                 />
             ))}
@@ -193,20 +197,25 @@ const RowData = ({
     data,
     colsToHide,
     colNum,
+    rowNum,
+    rows,
     rowConfig,
     rowEndBorder,
     rowBottomBorder,
     dataTextColor,
 }) => {
     const colDisplay = colsToHide.includes(colNum) ? 'none' : 'table-cell';
-    const endBorder = colNum === rowConfig.length - 1 ? '0px' : rowEndBorder;
+    const endBorder = colNum === rows.length - 1 ? '0px' : rowEndBorder;
+    const bottomBorder =
+        rowNum + 1 === rowConfig.length ? '0px' : rowBottomBorder;
 
     return (
         <Box
             sx={{
                 display: colDisplay,
                 borderRight: endBorder,
-                borderBottom: rowBottomBorder,
+                borderBottom: bottomBorder,
+                padding: 0.5,
             }}
         >
             <Typography sx={{ textAlign: 'center', color: dataTextColor }}>
