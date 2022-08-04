@@ -45,6 +45,7 @@ export const Skaters = ({ isMobileSize }) => {
                     <DoubleSortTable
                         columnConfig={headerColumns}
                         rowConfig={rowData}
+                        headerBgColor='#00000025'
                         headerTextColor={palette.gtRed}
                         headerArrowColor={palette.gtRed}
                         dataTextColor={palette.gtBlue}

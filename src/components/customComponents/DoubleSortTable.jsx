@@ -15,6 +15,7 @@ export const DoubleSortTable = ({
     headerBgColor = 'white',
     headerTextColor = 'black',
     headerArrowColor = 'black',
+    bodyBgColor = 'white',
     dataTextColor = 'black',
     colsToHide = [],
 }) => {
@@ -40,6 +41,7 @@ export const DoubleSortTable = ({
                 rowBottomBorder={rowBottomBorder}
                 rowConfig={rowConfig}
                 colsToHide={colsToHide}
+                bodyBgColor={bodyBgColor}
                 dataTextColor={dataTextColor}
             />
         </Box>
@@ -168,6 +170,7 @@ const DoubleSortTableRows = ({
     colsToHide,
     rowEndBorder,
     rowBottomBorder,
+    bodyBgColor,
     dataTextColor,
 }) => {
     return rowConfig.map((rows, rowIndex) => (
@@ -186,6 +189,7 @@ const DoubleSortTableRows = ({
                     colsToHide={colsToHide}
                     rowEndBorder={rowEndBorder}
                     rowBottomBorder={rowBottomBorder}
+                    bodyBgColor={bodyBgColor}
                     dataTextColor={dataTextColor}
                     colNum={index}
                     rowNum={rowIndex}
@@ -205,6 +209,7 @@ const RowData = ({
     rowConfig,
     rowEndBorder,
     rowBottomBorder,
+    bodyBgColor,
     dataTextColor,
 }) => {
     const colDisplay = colsToHide.includes(colNum) ? 'none' : 'table-cell';
@@ -216,6 +221,7 @@ const RowData = ({
         <Box
             sx={{
                 display: colDisplay,
+                backgroundColor: bodyBgColor,
                 borderRight: endBorder,
                 borderBottom: bottomBorder,
                 padding: 0.5,
