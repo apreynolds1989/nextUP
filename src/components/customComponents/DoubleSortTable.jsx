@@ -24,8 +24,7 @@ export const DoubleSortTable = ({
                 display: 'table',
                 border: outerBorder,
                 borderRadius: outerRadius,
-                // borderTop: `1px solid ${borderColor}`,
-                // borderLeft: `1px solid ${borderColor}`,
+                overflow: 'hidden',
             }}
         >
             <DoubleSortTableHeader
