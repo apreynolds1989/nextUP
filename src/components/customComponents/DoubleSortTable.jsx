@@ -14,9 +14,12 @@ export const DoubleSortTable = ({
     rowBottomBorder = `2px solid ${borderColor}`,
     headerBgColor = 'white',
     headerTextColor = 'black',
+    headerTextAlign = 'center',
     headerArrowColor = 'black',
-    bodyBgColor = 'white',
+    dataBgColor = 'white',
     dataTextColor = 'black',
+    dataTextAlign = 'center',
+
     colsToHide = [],
 }) => {
     return (
@@ -34,6 +37,7 @@ export const DoubleSortTable = ({
                 colsToHide={colsToHide}
                 headerBgColor={headerBgColor}
                 headerTextColor={headerTextColor}
+                headerTextAlign={headerTextAlign}
                 headerArrowColor={headerArrowColor}
             />
             <DoubleSortTableRows
@@ -41,8 +45,9 @@ export const DoubleSortTable = ({
                 rowBottomBorder={rowBottomBorder}
                 rowConfig={rowConfig}
                 colsToHide={colsToHide}
-                bodyBgColor={bodyBgColor}
+                dataBgColor={dataBgColor}
                 dataTextColor={dataTextColor}
+                dataTextAlign={dataTextAlign}
             />
         </Box>
     );
@@ -54,6 +59,7 @@ const DoubleSortTableHeader = ({
     headerInnerBorder,
     headerBgColor,
     headerTextColor,
+    headerTextAlign,
     headerArrowColor,
 }) => {
     return (
@@ -70,6 +76,7 @@ const DoubleSortTableHeader = ({
                     colsToHide={colsToHide}
                     headerInnerBorder={headerInnerBorder}
                     headerTextColor={headerTextColor}
+                    headerTextAlign={headerTextAlign}
                     headerArrowColor={headerArrowColor}
                     colNum={index}
                     key={`column${index}`}
@@ -87,6 +94,7 @@ const ColumnHeaderText = ({
     colsToHide,
     headerInnerBorder,
     headerTextColor,
+    headerTextAlign,
     headerArrowColor,
 }) => {
     const [sortStatus, setSortStatus] = useState(initialSort);
@@ -117,7 +125,7 @@ const ColumnHeaderText = ({
                 <Typography
                     sx={{
                         paddingRight: 2,
-                        textAlign: 'center',
+                        textAlign: headerTextAlign,
                         color: headerTextColor,
                     }}
                 >
@@ -170,8 +178,9 @@ const DoubleSortTableRows = ({
     colsToHide,
     rowEndBorder,
     rowBottomBorder,
-    bodyBgColor,
+    dataBgColor,
     dataTextColor,
+    dataTextAlign,
 }) => {
     return rowConfig.map((rows, rowIndex) => (
         <Box
@@ -189,8 +198,9 @@ const DoubleSortTableRows = ({
                     colsToHide={colsToHide}
                     rowEndBorder={rowEndBorder}
                     rowBottomBorder={rowBottomBorder}
-                    bodyBgColor={bodyBgColor}
+                    dataBgColor={dataBgColor}
                     dataTextColor={dataTextColor}
+                    dataTextAlign={dataTextAlign}
                     colNum={index}
                     rowNum={rowIndex}
                     key={`column${index}`}
@@ -209,8 +219,9 @@ const RowData = ({
     rowConfig,
     rowEndBorder,
     rowBottomBorder,
-    bodyBgColor,
+    dataBgColor,
     dataTextColor,
+    dataTextAlign,
 }) => {
     const colDisplay = colsToHide.includes(colNum) ? 'none' : 'table-cell';
     const endBorder = colNum === rows.length - 1 ? '0px' : rowEndBorder;
@@ -221,13 +232,13 @@ const RowData = ({
         <Box
             sx={{
                 display: colDisplay,
-                backgroundColor: bodyBgColor,
+                backgroundColor: dataBgColor,
                 borderRight: endBorder,
                 borderBottom: bottomBorder,
                 padding: 0.5,
             }}
         >
-            <Typography sx={{ textAlign: 'center', color: dataTextColor }}>
+            <Typography sx={{ textAlign: dataTextAlign, color: dataTextColor }}>
                 {data}
             </Typography>
         </Box>
