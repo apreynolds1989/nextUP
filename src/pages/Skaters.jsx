@@ -17,10 +17,10 @@ const headerColumns = [
 ];
 
 const rowData = [
-    [{ data: 'Row 1 Col 1' }, { data: 'Row 1 Col 2' }, { data: 'Row 1 Col 3' }],
-    [{ data: 'Row 2 Col 1' }, { data: 'Row 2 Col 2' }, { data: 'Row 2 Col 3' }],
-    [{ data: 'Row 3 Col 1' }, { data: 'Row 3 Col 2' }, { data: 'Row 3 Col 3' }],
-    [{ data: 'Row 4 Col 1' }, { data: 'Row 4 Col 2' }, { data: 'Row 4 Col 3' }],
+    ['c', 'Row 1 Col 2', 'Row 1 Col 3'],
+    ['b', 'Row 2 Col 2', 'Row 2 Col 3'],
+    ['e', 'Row 3 Col 2', 'Row 3 Col 3'],
+    ['a', 'Row 4 Col 2', 'Row 4 Col 3'],
 ];
 
 export const Skaters = ({ isMobileSize }) => {
