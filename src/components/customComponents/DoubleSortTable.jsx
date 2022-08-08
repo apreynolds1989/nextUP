@@ -221,47 +221,50 @@ const ColumnHeaderText = ({
 };
 
 const DoubleSortTableRows = ({ rowOrder, colsToHide, ...renderedProps }) => {
-    return rowOrder.map((rows, rowIndex) => (
-        <Box
-            sx={{
-                display: 'table-row',
-                flexDirection: 'row',
-            }}
-            key={`row${rowIndex}`}
-        >
-            {rows.map((row, index) => (
-                <RowData
-                    row={row}
-                    rows={rows}
-                    rowOrder={rowOrder}
-                    colsToHide={colsToHide}
-                    colNum={index}
-                    rowNum={rowIndex}
-                    key={`column${index}`}
-                    renderedProps={renderedProps}
-                />
-            ))}
-        </Box>
-    ));
+    return rowOrder.map((row, rowIndex) => {
+        const rowKeys = Object.keys(row);
+        return (
+            <Box
+                sx={{
+                    display: 'table-row',
+                    flexDirection: 'row',
+                }}
+                key={`row${rowIndex}`}
+            >
+                {rowKeys.map((key, index) => (
+                    <RowData
+                        rowData={row[key]}
+                        rowLength={rowKeys.length}
+                        numberOfRows={rowOrder.length}
+                        colsToHide={colsToHide}
+                        colNum={index}
+                        rowNum={rowIndex}
+                        key={`column${index}`}
+                        renderedProps={renderedProps}
+                    />
+                ))}
+            </Box>
+        );
+    });
 };
 
 const RowData = ({
-    row,
+    rowData,
+    rowLength,
     colsToHide,
     colNum,
     rowNum,
-    rows,
-    rowOrder,
+    numberOfRows,
     renderedProps,
 }) => {
     const colDisplay = colsToHide.includes(colNum) ? 'none' : 'table-cell';
     const endBorder =
-        colNum === rows.length - 1
+        colNum === rowLength - 1
             ? '0px'
             : renderedProps.renderedProps.rowEndBorder ||
               renderedProps.renderedProps.tableBorder;
     const bottomBorder =
-        rowNum + 1 === rowOrder.length
+        rowNum + 1 === numberOfRows
             ? '0px'
             : renderedProps.renderedProps.rowBottomBorder ||
               renderedProps.renderedProps.tableBorder;
@@ -281,7 +284,7 @@ const RowData = ({
                     color: renderedProps.renderedProps.dataTextColor,
                 }}
             >
-                {row}
+                {rowData}
             </Typography>
         </Box>
     );

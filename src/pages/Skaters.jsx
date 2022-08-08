@@ -11,16 +11,47 @@ import { Typography } from '@mui/material';
 import { DoubleSortTable } from '../components/customComponents/DoubleSortTable';
 
 const headerColumns = [
-    { columnName: 'First Column', initialSort: 'none' },
-    { columnName: 'Second Column', initialSort: 'asc' },
-    { columnName: 'Third Column', initialSort: 'desc' },
+    { columnName: 'Name', initialSort: 'none', field: 'name' },
+    { columnName: 'Goals', initialSort: 'none', field: 'goals' },
+    { columnName: 'Assists', initialSort: 'none', field: 'assists' },
+    { columnName: 'Points', initialSort: 'desc', field: 'points' },
+    { columnName: 'Weekly Games', initialSort: 'none', field: 'weeklyGames' },
+    { columnName: 'Off-Day Games', initialSort: 'none', field: 'offDayGames' },
 ];
 
 const rowData = [
-    ['c', 'Row 1 Col 2', 'Row 1 Col 3'],
-    ['b', 'Row 2 Col 2', 'Row 2 Col 3'],
-    ['e', 'Row 3 Col 2', 'Row 3 Col 3'],
-    ['a', 'Row 4 Col 2', 'Row 4 Col 3'],
+    {
+        name: 'Auston Matthews',
+        goals: 60,
+        assists: 46,
+        points: 106,
+        weeklyGames: 3,
+        offDayGames: 2,
+    },
+    {
+        name: 'Leon Draisaitl',
+        goals: 55,
+        assists: 55,
+        points: 110,
+        weeklyGames: 2,
+        offDayGames: 2,
+    },
+    {
+        name: 'Connor McDavid',
+        goals: 44,
+        assists: 79,
+        points: 123,
+        weeklyGames: 2,
+        offDayGames: 2,
+    },
+    {
+        name: 'Johnny Gaudreau',
+        goals: 40,
+        assists: 75,
+        points: 115,
+        weeklyGames: 4,
+        offDayGames: 1,
+    },
 ];
 
 export const Skaters = ({ isMobileSize }) => {
