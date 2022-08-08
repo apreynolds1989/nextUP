@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleDown, faAngleUp } from '@fortawesome/free-solid-svg-icons';
 import { Box, Button, Typography } from '@mui/material';
 
-const sortAsc = (rowsArr, colNum) => {
+const sortAsc = (rowsArr, colField) => {
     let switching, a, b, shouldSwitch;
     switching = true;
     console.log('Sorted in ascending order');
@@ -23,7 +23,7 @@ const sortAsc = (rowsArr, colNum) => {
             a = rowsArr[i];
             b = rowsArr[i + 1];
             // Check to see if the elements should swap (string comparison)
-            if (a[colNum].toLowerCase() > b[colNum].toLowerCase()) {
+            if (a[colField].toLowerCase() > b[colField].toLowerCase()) {
                 // is so, state switch to be made
                 shouldSwitch = true;
             }
@@ -61,6 +61,8 @@ export const DoubleSortTable = ({
 
     const renderedProps = { ...defaultProps, ...stylingProps };
     const [rowOrder, setRowOrder] = useState(rowConfig);
+    const [clickedColumn, setClickedColumn] = useState();
+    console.log(clickedColumn);
 
     return (
         <Box
@@ -73,6 +75,7 @@ export const DoubleSortTable = ({
         >
             <DoubleSortTableHeader
                 columnConfig={columnConfig}
+                setClickedColumn={setClickedColumn}
                 rowConfig={rowConfig}
                 setRowOrder={setRowOrder}
                 colsToHide={colsToHide}
@@ -89,6 +92,7 @@ export const DoubleSortTable = ({
 
 const DoubleSortTableHeader = ({
     columnConfig,
+    setClickedColumn,
     rowConfig,
     setRowOrder,
     colsToHide,
@@ -105,6 +109,7 @@ const DoubleSortTableHeader = ({
                 <ColumnHeaderText
                     {...column}
                     columnConfig={columnConfig}
+                    setClickedColumn={setClickedColumn}
                     rowConfig={rowConfig}
                     setRowOrder={setRowOrder}
                     colsToHide={colsToHide}
@@ -120,18 +125,21 @@ const DoubleSortTableHeader = ({
 const ColumnHeaderText = ({
     columnName,
     initialSort = 'none',
+    field,
     colNum,
     columnConfig,
+    setClickedColumn,
     rowConfig,
     setRowOrder,
     colsToHide,
     ...renderedProps
 }) => {
     const [sortStatus, setSortStatus] = useState(initialSort);
-    const toggleSort = async () => {
+    const toggleSort = async (e) => {
+        await setClickedColumn(e.currentTarget.dataset.field);
         if (sortStatus === 'none') {
             setSortStatus('asc');
-            await sortAsc(rowConfig, colNum);
+            await sortAsc(rowConfig, field);
             setRowOrder(rowConfig);
             console.log(rowConfig);
         } else if (sortStatus === 'asc') {
@@ -159,7 +167,12 @@ const ColumnHeaderText = ({
                     renderedProps.renderedProps.renderedProps.tableBorder,
             }}
         >
-            <Button onClick={toggleSort} sx={{ padding: 2 }}>
+            <Button
+                className='headerBtn'
+                data-field={field}
+                onClick={toggleSort}
+                sx={{ padding: 2 }}
+            >
                 <Typography
                     sx={{
                         paddingRight: 2,

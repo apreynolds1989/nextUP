@@ -14,7 +14,7 @@ const headerColumns = [
     { columnName: 'Name', initialSort: 'none', field: 'name' },
     { columnName: 'Goals', initialSort: 'none', field: 'goals' },
     { columnName: 'Assists', initialSort: 'none', field: 'assists' },
-    { columnName: 'Points', initialSort: 'desc', field: 'points' },
+    { columnName: 'Points', initialSort: 'none', field: 'points' },
     { columnName: 'Weekly Games', initialSort: 'none', field: 'weeklyGames' },
     { columnName: 'Off-Day Games', initialSort: 'none', field: 'offDayGames' },
 ];
