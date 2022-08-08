@@ -45,12 +45,18 @@ export const Skaters = ({ isMobileSize }) => {
                     <DoubleSortTable
                         columnConfig={headerColumns}
                         rowConfig={rowData}
-                        headerBgColor='#00000025'
-                        headerTextColor={palette.gtRed}
-                        headerArrowColor={palette.gtRed}
-                        dataTextColor={palette.gtBlue}
                         colsToHide={isMobileSize ? [1] : []}
-                        outerRadius={3}
+                        stylingProps={{
+                            tableBorder: `2px solid ${palette.gtBlue}`,
+                            outerRadius: 3,
+                            rowEndBorder: `2px solid #00000035`,
+                            rowBottomBorder: `2px solid #00000035`,
+                            headerBgColor: 'transparent',
+                            headerTextColor: palette.gtRed,
+                            headerArrowColor: palette.gtBlue,
+                            dataBgColor: 'white',
+                            dataTextColor: palette.gtBlue,
+                        }}
                     />
                 </Container>
                 <Container sx={playersSx.skatersPopContainer}>

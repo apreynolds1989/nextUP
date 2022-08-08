@@ -39,53 +39,49 @@ const sortAsc = (rowsArr, colNum) => {
 };
 
 export const DoubleSortTable = ({
-    borderColor = 'black',
     columnConfig,
     rowConfig,
-    outerBorder = `2px solid ${borderColor}`,
-    outerRadius = 0,
-    headerInnerBorder = `2px solid ${borderColor}`,
-    rowEndBorder = `2px solid ${borderColor}`,
-    rowBottomBorder = `2px solid ${borderColor}`,
-    headerBgColor = 'white',
-    headerTextColor = 'black',
-    headerTextAlign = 'center',
-    headerArrowColor = 'black',
-    dataBgColor = 'white',
-    dataTextColor = 'black',
-    dataTextAlign = 'center',
     colsToHide = [],
+    stylingProps,
 }) => {
+    const defaultProps = {
+        tableBorder: `2px solid black`,
+        outerRadius: 0,
+        headerInnerBorder: `2px solid black`,
+        rowEndBorder: `2px solid black`,
+        rowBottomBorder: `2px solid black`,
+        headerBgColor: 'white',
+        headerTextColor: 'black',
+        headerTextAlign: 'center',
+        headerArrowColor: 'black',
+        dataBgColor: 'white',
+        dataTextColor: 'black',
+        dataTextAlign: 'center',
+    };
+
+    const renderedProps = { ...defaultProps, ...stylingProps };
     const [rowOrder, setRowOrder] = useState(rowConfig);
 
     return (
         <Box
             sx={{
                 display: 'table',
-                border: outerBorder,
-                borderRadius: outerRadius,
+                border: renderedProps.tableBorder,
+                borderRadius: renderedProps.outerRadius,
                 overflow: 'hidden',
             }}
         >
             <DoubleSortTableHeader
-                headerInnerBorder={headerInnerBorder}
                 columnConfig={columnConfig}
                 rowConfig={rowConfig}
                 setRowOrder={setRowOrder}
                 colsToHide={colsToHide}
-                headerBgColor={headerBgColor}
-                headerTextColor={headerTextColor}
-                headerTextAlign={headerTextAlign}
-                headerArrowColor={headerArrowColor}
+                renderedProps={renderedProps}
             />
             <DoubleSortTableRows
-                rowEndBorder={rowEndBorder}
-                rowBottomBorder={rowBottomBorder}
                 rowOrder={rowOrder}
                 colsToHide={colsToHide}
-                dataBgColor={dataBgColor}
-                dataTextColor={dataTextColor}
-                dataTextAlign={dataTextAlign}
+                renderedProps={renderedProps}
             />
         </Box>
     );
@@ -96,17 +92,13 @@ const DoubleSortTableHeader = ({
     rowConfig,
     setRowOrder,
     colsToHide,
-    headerInnerBorder,
-    headerBgColor,
-    headerTextColor,
-    headerTextAlign,
-    headerArrowColor,
+    ...renderedProps
 }) => {
     return (
         <Box
             sx={{
                 display: 'table-row',
-                backgroundColor: headerBgColor,
+                backgroundColor: renderedProps.renderedProps.headerBgColor,
             }}
         >
             {columnConfig.map((column, index) => (
@@ -116,12 +108,9 @@ const DoubleSortTableHeader = ({
                     rowConfig={rowConfig}
                     setRowOrder={setRowOrder}
                     colsToHide={colsToHide}
-                    headerInnerBorder={headerInnerBorder}
-                    headerTextColor={headerTextColor}
-                    headerTextAlign={headerTextAlign}
-                    headerArrowColor={headerArrowColor}
                     colNum={index}
                     key={`column${index}`}
+                    renderedProps={renderedProps}
                 />
             ))}
         </Box>
@@ -136,10 +125,7 @@ const ColumnHeaderText = ({
     rowConfig,
     setRowOrder,
     colsToHide,
-    headerInnerBorder,
-    headerTextColor,
-    headerTextAlign,
-    headerArrowColor,
+    ...renderedProps
 }) => {
     const [sortStatus, setSortStatus] = useState(initialSort);
     const toggleSort = async () => {
@@ -158,22 +144,30 @@ const ColumnHeaderText = ({
     const colDisplay = colsToHide.includes(colNum) ? 'none' : 'table-cell';
 
     const endBorder =
-        colNum === columnConfig.length - 1 ? '0px' : headerInnerBorder;
-
+        colNum === columnConfig.length - 1
+            ? '0px'
+            : renderedProps.renderedProps.renderedProps.headerInnerBorder ||
+              renderedProps.renderedProps.renderedProps.tableBorder;
     return (
         <Box
             sx={{
                 display: colDisplay,
                 borderRight: endBorder,
-                borderBottom: headerInnerBorder,
+                borderBottom:
+                    renderedProps.renderedProps.renderedProps
+                        .headerInnerBorder ||
+                    renderedProps.renderedProps.renderedProps.tableBorder,
             }}
         >
             <Button onClick={toggleSort} sx={{ padding: 2 }}>
                 <Typography
                     sx={{
                         paddingRight: 2,
-                        textAlign: headerTextAlign,
-                        color: headerTextColor,
+                        textAlign:
+                            renderedProps.renderedProps.renderedProps
+                                .headerTextAlign,
+                        color: renderedProps.renderedProps.renderedProps
+                            .headerTextColor,
                     }}
                 >
                     {columnName}
@@ -187,48 +181,46 @@ const ColumnHeaderText = ({
                     {sortStatus === 'asc' ? (
                         <FontAwesomeIcon
                             icon={faAngleUp}
-                            color={headerArrowColor}
+                            color={
+                                renderedProps.renderedProps.renderedProps
+                                    .headerArrowColor
+                            }
                         />
                     ) : (
                         <FontAwesomeIcon
                             icon={faAngleUp}
-                            color={headerArrowColor}
+                            color={
+                                renderedProps.renderedProps.renderedProps
+                                    .headerArrowColor
+                            }
                             style={{ opacity: 0.25 }}
                         />
                     )}
                     {sortStatus === 'desc' ? (
                         <FontAwesomeIcon
                             icon={faAngleDown}
-                            color={headerArrowColor}
+                            color={
+                                renderedProps.renderedProps.renderedProps
+                                    .headerArrowColor
+                            }
                         />
                     ) : (
                         <FontAwesomeIcon
                             icon={faAngleDown}
-                            color={headerArrowColor}
+                            color={
+                                renderedProps.renderedProps.renderedProps
+                                    .headerArrowColor
+                            }
                             style={{ opacity: 0.25 }}
                         />
                     )}
-                    {/* {sortStatus === 'asc' && (
-                        <FontAwesomeIcon icon={faAngleUp} color='#00000015' />
-                    )}
-                    {sortStatus === 'desc' && (
-                        <FontAwesomeIcon icon={faAngleDown} />
-                    )} */}
                 </Box>
             </Button>
         </Box>
     );
 };
 
-const DoubleSortTableRows = ({
-    rowOrder,
-    colsToHide,
-    rowEndBorder,
-    rowBottomBorder,
-    dataBgColor,
-    dataTextColor,
-    dataTextAlign,
-}) => {
+const DoubleSortTableRows = ({ rowOrder, colsToHide, ...renderedProps }) => {
     return rowOrder.map((rows, rowIndex) => (
         <Box
             sx={{
@@ -243,14 +235,10 @@ const DoubleSortTableRows = ({
                     rows={rows}
                     rowOrder={rowOrder}
                     colsToHide={colsToHide}
-                    rowEndBorder={rowEndBorder}
-                    rowBottomBorder={rowBottomBorder}
-                    dataBgColor={dataBgColor}
-                    dataTextColor={dataTextColor}
-                    dataTextAlign={dataTextAlign}
                     colNum={index}
                     rowNum={rowIndex}
                     key={`column${index}`}
+                    renderedProps={renderedProps}
                 />
             ))}
         </Box>
@@ -264,28 +252,35 @@ const RowData = ({
     rowNum,
     rows,
     rowOrder,
-    rowEndBorder,
-    rowBottomBorder,
-    dataBgColor,
-    dataTextColor,
-    dataTextAlign,
+    renderedProps,
 }) => {
     const colDisplay = colsToHide.includes(colNum) ? 'none' : 'table-cell';
-    const endBorder = colNum === rows.length - 1 ? '0px' : rowEndBorder;
+    const endBorder =
+        colNum === rows.length - 1
+            ? '0px'
+            : renderedProps.renderedProps.rowEndBorder ||
+              renderedProps.renderedProps.tableBorder;
     const bottomBorder =
-        rowNum + 1 === rowOrder.length ? '0px' : rowBottomBorder;
-
+        rowNum + 1 === rowOrder.length
+            ? '0px'
+            : renderedProps.renderedProps.rowBottomBorder ||
+              renderedProps.renderedProps.tableBorder;
     return (
         <Box
             sx={{
                 display: colDisplay,
-                backgroundColor: dataBgColor,
+                backgroundColor: renderedProps.renderedProps.dataBgColor,
                 borderRight: endBorder,
                 borderBottom: bottomBorder,
                 padding: 0.5,
             }}
         >
-            <Typography sx={{ textAlign: dataTextAlign, color: dataTextColor }}>
+            <Typography
+                sx={{
+                    textAlign: renderedProps.renderedProps.dataTextAlign,
+                    color: renderedProps.renderedProps.dataTextColor,
+                }}
+            >
                 {row}
             </Typography>
         </Box>
