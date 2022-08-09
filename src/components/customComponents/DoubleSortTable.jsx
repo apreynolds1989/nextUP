@@ -42,6 +42,7 @@ export const DoubleSortTable = ({
             <DoubleSortTableHeader
                 columnConfig={columnConfig}
                 rowConfig={rowConfig}
+                clickedColumn={clickedColumn}
                 setClickedColumn={setClickedColumn}
                 rowOrder={rowOrder}
                 setRowOrder={setRowOrder}
@@ -60,6 +61,7 @@ export const DoubleSortTable = ({
 const DoubleSortTableHeader = ({
     columnConfig,
     rowConfig,
+    clickedColumn,
     setClickedColumn,
     rowOrder,
     setRowOrder,
@@ -78,6 +80,7 @@ const DoubleSortTableHeader = ({
                     {...column}
                     columnConfig={columnConfig}
                     rowConfig={rowConfig}
+                    clickedColumn={clickedColumn}
                     setClickedColumn={setClickedColumn}
                     rowOrder={rowOrder}
                     setRowOrder={setRowOrder}
@@ -98,27 +101,36 @@ const ColumnHeaderText = ({
     colNum,
     columnConfig,
     rowConfig,
+    clickedColumn,
     setClickedColumn,
     rowOrder,
     setRowOrder,
     colsToHide,
     ...renderedProps
 }) => {
-    useEffect(() => {
-        const headerBtns = document.querySelectorAll('.headerBtn');
-        headerBtns.forEach((headerBtn) => {
-            headerBtn.addEventListener('click', () => {
-                let target = headerBtn;
-                headerBtns.forEach((btn) => {
-                    if (btn !== target) setSortStatus('none');
-                });
-            });
-        });
-    }, []);
+    const [sortStatus, setSortStatus] = useState('');
+    // console.log(
+    //     `clickedColumn is ${clickedColumn} and field is ${field} and sortStatus is ${sortStatus}`,
+    // );
+    if (clickedColumn !== field && sortStatus !== 'none') {
+        setSortStatus('none');
+    }
 
-    const [sortStatus, setSortStatus] = useState(initialSort);
+    // useEffect(() => {
+    //     const headerBtns = document.querySelectorAll('.headerBtn');
+    //     headerBtns.forEach((headerBtn) => {
+    //         headerBtn.addEventListener('click', () => {
+    //             let target = headerBtn;
+    //             headerBtns.forEach((btn) => {
+    //                 if (btn !== target) setSortStatus('none');
+    //             });
+    //         });
+    //     });
+    // }, []);
+
     const toggleSort = (e) => {
         setClickedColumn(e.currentTarget.dataset.field);
+        console.log(sortStatus);
         if (sortStatus === 'none') {
             setSortStatus('asc');
             setRowOrder(sortCol(rowOrder, field, true));
