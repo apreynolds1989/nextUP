@@ -2,57 +2,7 @@ import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleDown, faAngleUp } from '@fortawesome/free-solid-svg-icons';
 import { Box, Button, Typography } from '@mui/material';
-
-const sortAsc = (cellA, cellB, colField) =>
-    cellA[colField].toLowerCase() > cellB[colField].toLowerCase()
-        ? true
-        : false;
-
-const sortDesc = (cellA, cellB, colField) =>
-    cellA[colField].toLowerCase() < cellB[colField].toLowerCase()
-        ? true
-        : false;
-
-const sortCol = (rowsArr, colField, isAsc) => {
-    let switching, cellA, cellB, shouldSwitch;
-    let copiedArr = [...rowsArr];
-    switching = true;
-    // rowsArr.map((row) => {
-    //     console.log(row);
-    // });
-
-    // Loop will continue until no switching is done
-    while (switching) {
-        // start by stating no switching will be done
-        switching = false;
-        // Loop through each table body row
-        for (let i = 0; i < copiedArr.length - 1; i++) {
-            // Start by stating no switch to be made
-            shouldSwitch = false;
-            // Compare the next two elements in the loop
-            cellA = copiedArr[i];
-            cellB = copiedArr[i + 1];
-            // Check to see if the elements should swap (string comparison)
-            shouldSwitch = isAsc
-                ? sortAsc(cellA, cellB, colField)
-                : sortDesc(cellA, cellB, colField);
-            // if (cellA[colField].toLowerCase() > cellB[colField].toLowerCase()) {
-            //     // is so, state switch to be made
-            //     shouldSwitch = true;
-            // }
-            // if switch is to be made, swap the two elements in the array
-            if (shouldSwitch) {
-                [copiedArr[i], copiedArr[i + 1]] = [
-                    copiedArr[i + 1],
-                    copiedArr[i],
-                ];
-                // then state that a switch has been made and need to loop again
-                switching = true;
-            }
-        }
-    }
-    return copiedArr;
-};
+import { sortCol } from '../../utilities/helperFunctions';
 
 export const DoubleSortTable = ({
     columnConfig,
@@ -77,9 +27,8 @@ export const DoubleSortTable = ({
 
     const renderedProps = { ...defaultProps, ...stylingProps };
     const [rowOrder, setRowOrder] = useState(rowConfig);
-    console.log(`the third row starts with: ${rowOrder[2].name}`);
-    const [clickedColumn, setClickedColumn] = useState();
-    console.log(clickedColumn);
+    const [clickedColumn, setClickedColumn] = useState('');
+    console.log(`Sorting by: ${clickedColumn}`);
 
     return (
         <Box
