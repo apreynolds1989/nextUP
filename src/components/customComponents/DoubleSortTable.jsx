@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleDown, faAngleUp } from '@fortawesome/free-solid-svg-icons';
 import { Box, Button, Typography } from '@mui/material';
@@ -104,6 +104,18 @@ const ColumnHeaderText = ({
     colsToHide,
     ...renderedProps
 }) => {
+    useEffect(() => {
+        const headerBtns = document.querySelectorAll('.headerBtn');
+        headerBtns.forEach((headerBtn) => {
+            headerBtn.addEventListener('click', () => {
+                let target = headerBtn;
+                headerBtns.forEach((btn) => {
+                    if (btn !== target) setSortStatus('none');
+                });
+            });
+        });
+    }, []);
+
     const [sortStatus, setSortStatus] = useState(initialSort);
     const toggleSort = (e) => {
         setClickedColumn(e.currentTarget.dataset.field);
@@ -126,6 +138,8 @@ const ColumnHeaderText = ({
             ? '0px'
             : renderedProps.renderedProps.renderedProps.headerInnerBorder ||
               renderedProps.renderedProps.renderedProps.tableBorder;
+
+    // console.log(sortStatus);
     return (
         <Box
             sx={{
