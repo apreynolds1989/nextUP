@@ -3,11 +3,20 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleDown, faAngleUp } from '@fortawesome/free-solid-svg-icons';
 import { Box, Button, Typography } from '@mui/material';
 
-const sortAsc = (rowsArr, colField) => {
-    let switching, a, b, shouldSwitch;
+const sortAsc = (cellA, cellB, colField) =>
+    cellA[colField].toLowerCase() > cellB[colField].toLowerCase()
+        ? true
+        : false;
+
+const sortDesc = (cellA, cellB, colField) =>
+    cellA[colField].toLowerCase() < cellB[colField].toLowerCase()
+        ? true
+        : false;
+
+const sortCol = (rowsArr, colField, isAsc) => {
+    let switching, cellA, cellB, shouldSwitch;
     let copiedArr = [...rowsArr];
     switching = true;
-    console.log('Sorted in ascending order');
     // rowsArr.map((row) => {
     //     console.log(row);
     // });
@@ -21,15 +30,16 @@ const sortAsc = (rowsArr, colField) => {
             // Start by stating no switch to be made
             shouldSwitch = false;
             // Compare the next two elements in the loop
-            a = copiedArr[i];
-            b = copiedArr[i + 1];
-            console.log(`a = ${a}`);
-            console.log(`b = ${b}`);
+            cellA = copiedArr[i];
+            cellB = copiedArr[i + 1];
             // Check to see if the elements should swap (string comparison)
-            if (a[colField].toLowerCase() > b[colField].toLowerCase()) {
-                // is so, state switch to be made
-                shouldSwitch = true;
-            }
+            shouldSwitch = isAsc
+                ? sortAsc(cellA, cellB, colField)
+                : sortDesc(cellA, cellB, colField);
+            // if (cellA[colField].toLowerCase() > cellB[colField].toLowerCase()) {
+            //     // is so, state switch to be made
+            //     shouldSwitch = true;
+            // }
             // if switch is to be made, swap the two elements in the array
             if (shouldSwitch) {
                 [copiedArr[i], copiedArr[i + 1]] = [
@@ -82,6 +92,7 @@ export const DoubleSortTable = ({
         >
             <DoubleSortTableHeader
                 columnConfig={columnConfig}
+                rowConfig={rowConfig}
                 setClickedColumn={setClickedColumn}
                 rowOrder={rowOrder}
                 setRowOrder={setRowOrder}
@@ -99,6 +110,7 @@ export const DoubleSortTable = ({
 
 const DoubleSortTableHeader = ({
     columnConfig,
+    rowConfig,
     setClickedColumn,
     rowOrder,
     setRowOrder,
@@ -116,6 +128,7 @@ const DoubleSortTableHeader = ({
                 <ColumnHeaderText
                     {...column}
                     columnConfig={columnConfig}
+                    rowConfig={rowConfig}
                     setClickedColumn={setClickedColumn}
                     rowOrder={rowOrder}
                     setRowOrder={setRowOrder}
@@ -135,6 +148,7 @@ const ColumnHeaderText = ({
     field,
     colNum,
     columnConfig,
+    rowConfig,
     setClickedColumn,
     rowOrder,
     setRowOrder,
@@ -142,17 +156,17 @@ const ColumnHeaderText = ({
     ...renderedProps
 }) => {
     const [sortStatus, setSortStatus] = useState(initialSort);
-    const toggleSort = async (e) => {
-        await setClickedColumn(e.currentTarget.dataset.field);
+    const toggleSort = (e) => {
+        setClickedColumn(e.currentTarget.dataset.field);
         if (sortStatus === 'none') {
             setSortStatus('asc');
-            await setRowOrder(sortAsc(rowOrder, field));
-            // setRowOrder(rowOrder);
-            // console.log(rowOrder);
+            setRowOrder(sortCol(rowOrder, field, true));
         } else if (sortStatus === 'asc') {
             setSortStatus('desc');
+            setRowOrder(sortCol(rowOrder, field, false));
         } else {
             setSortStatus('none');
+            setRowOrder(rowConfig);
         }
     };
 
