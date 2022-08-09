@@ -5,6 +5,7 @@ import { Box, Button, Typography } from '@mui/material';
 
 const sortAsc = (rowsArr, colField) => {
     let switching, a, b, shouldSwitch;
+    let copiedArr = [...rowsArr];
     switching = true;
     console.log('Sorted in ascending order');
     // rowsArr.map((row) => {
@@ -16,12 +17,14 @@ const sortAsc = (rowsArr, colField) => {
         // start by stating no switching will be done
         switching = false;
         // Loop through each table body row
-        for (let i = 0; i < rowsArr.length - 1; i++) {
+        for (let i = 0; i < copiedArr.length - 1; i++) {
             // Start by stating no switch to be made
             shouldSwitch = false;
             // Compare the next two elements in the loop
-            a = rowsArr[i];
-            b = rowsArr[i + 1];
+            a = copiedArr[i];
+            b = copiedArr[i + 1];
+            console.log(`a = ${a}`);
+            console.log(`b = ${b}`);
             // Check to see if the elements should swap (string comparison)
             if (a[colField].toLowerCase() > b[colField].toLowerCase()) {
                 // is so, state switch to be made
@@ -29,13 +32,16 @@ const sortAsc = (rowsArr, colField) => {
             }
             // if switch is to be made, swap the two elements in the array
             if (shouldSwitch) {
-                [rowsArr[i], rowsArr[i + 1]] = [rowsArr[i + 1], rowsArr[i]];
+                [copiedArr[i], copiedArr[i + 1]] = [
+                    copiedArr[i + 1],
+                    copiedArr[i],
+                ];
                 // then state that a switch has been made and need to loop again
                 switching = true;
             }
         }
     }
-    return rowsArr;
+    return copiedArr;
 };
 
 export const DoubleSortTable = ({
@@ -61,6 +67,7 @@ export const DoubleSortTable = ({
 
     const renderedProps = { ...defaultProps, ...stylingProps };
     const [rowOrder, setRowOrder] = useState(rowConfig);
+    console.log(`the third row starts with: ${rowOrder[2].name}`);
     const [clickedColumn, setClickedColumn] = useState();
     console.log(clickedColumn);
 
@@ -76,7 +83,7 @@ export const DoubleSortTable = ({
             <DoubleSortTableHeader
                 columnConfig={columnConfig}
                 setClickedColumn={setClickedColumn}
-                rowConfig={rowConfig}
+                rowOrder={rowOrder}
                 setRowOrder={setRowOrder}
                 colsToHide={colsToHide}
                 renderedProps={renderedProps}
@@ -93,7 +100,7 @@ export const DoubleSortTable = ({
 const DoubleSortTableHeader = ({
     columnConfig,
     setClickedColumn,
-    rowConfig,
+    rowOrder,
     setRowOrder,
     colsToHide,
     ...renderedProps
@@ -110,7 +117,7 @@ const DoubleSortTableHeader = ({
                     {...column}
                     columnConfig={columnConfig}
                     setClickedColumn={setClickedColumn}
-                    rowConfig={rowConfig}
+                    rowOrder={rowOrder}
                     setRowOrder={setRowOrder}
                     colsToHide={colsToHide}
                     colNum={index}
@@ -129,7 +136,7 @@ const ColumnHeaderText = ({
     colNum,
     columnConfig,
     setClickedColumn,
-    rowConfig,
+    rowOrder,
     setRowOrder,
     colsToHide,
     ...renderedProps
@@ -139,9 +146,9 @@ const ColumnHeaderText = ({
         await setClickedColumn(e.currentTarget.dataset.field);
         if (sortStatus === 'none') {
             setSortStatus('asc');
-            await sortAsc(rowConfig, field);
-            setRowOrder(rowConfig);
-            console.log(rowConfig);
+            await setRowOrder(sortAsc(rowOrder, field));
+            // setRowOrder(rowOrder);
+            // console.log(rowOrder);
         } else if (sortStatus === 'asc') {
             setSortStatus('desc');
         } else {
