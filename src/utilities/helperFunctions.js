@@ -1,12 +1,22 @@
-const checkSortAsc = (cellA, cellB, colField) =>
-    cellA[colField].toLowerCase() > cellB[colField].toLowerCase() ?
-    true :
-    false;
+const checkSortAsc = (cellA, cellB, colField) => {
+    if (typeof cellA[colField] === 'string') {
+        return cellA[colField].toLowerCase() > cellB[colField].toLowerCase() ?
+            true :
+            false;
+    } else {
+        return cellA[colField] < cellB[colField] ? true : false;
+    }
+};
 
-const checkSortDesc = (cellA, cellB, colField) =>
-    cellA[colField].toLowerCase() < cellB[colField].toLowerCase() ?
-    true :
-    false;
+const checkSortDesc = (cellA, cellB, colField) => {
+    if (typeof cellA[colField] === 'string') {
+        return cellA[colField].toLowerCase() < cellB[colField].toLowerCase() ?
+            true :
+            false;
+    } else {
+        return cellA[colField] > cellB[colField] ? true : false;
+    }
+};
 
 const swapArrElements = (arr, i) =>
     ([arr[i], arr[i + 1]] = [arr[i + 1], arr[i]]);
