@@ -28,7 +28,8 @@ export const DoubleSortTable = ({
     const renderedProps = { ...defaultProps, ...stylingProps };
     const [rowOrder, setRowOrder] = useState(rowConfig);
     const [clickedColumn, setClickedColumn] = useState('');
-    console.log(`Sorting by: ${clickedColumn}`);
+
+    // console.log(`Sorting by: ${clickedColumn}`);
 
     return (
         <Box
@@ -68,6 +69,30 @@ const DoubleSortTableHeader = ({
     colsToHide,
     ...renderedProps
 }) => {
+    const [primarySort, setPrimarySort] = useState('');
+    const [secondarySort, setSecondarySort] = useState('');
+    useEffect(() => {
+        console.log(
+            `Primary = ${primarySort} and Secondary = ${secondarySort}`,
+        );
+    });
+
+    const setPrimaryOrSecondary = (field, sortStatus) => {
+        if (primarySort === '') {
+            setPrimarySort(field);
+        } else if (primarySort !== field && secondarySort !== field) {
+            setSecondarySort(field);
+        } else if (primarySort === field && sortStatus === 'desc') {
+            setPrimarySort('');
+            if (secondarySort !== '') {
+                setPrimarySort(secondarySort);
+                setSecondarySort('');
+            }
+        } else if (secondarySort === field && sortStatus === 'desc') {
+            setSecondarySort('');
+        }
+    };
+
     return (
         <Box
             sx={{
@@ -82,6 +107,7 @@ const DoubleSortTableHeader = ({
                     rowConfig={rowConfig}
                     clickedColumn={clickedColumn}
                     setClickedColumn={setClickedColumn}
+                    setPrimaryOrSecondary={setPrimaryOrSecondary}
                     rowOrder={rowOrder}
                     setRowOrder={setRowOrder}
                     colsToHide={colsToHide}
@@ -103,15 +129,14 @@ const ColumnHeaderText = ({
     rowConfig,
     clickedColumn,
     setClickedColumn,
+    setPrimaryOrSecondary,
     rowOrder,
     setRowOrder,
     colsToHide,
     ...renderedProps
 }) => {
     const [sortStatus, setSortStatus] = useState('');
-    // console.log(
-    //     `clickedColumn is ${clickedColumn} and field is ${field} and sortStatus is ${sortStatus}`,
-    // );
+
     if (clickedColumn !== field && sortStatus !== 'none') {
         setSortStatus('none');
     }
@@ -130,16 +155,18 @@ const ColumnHeaderText = ({
 
     const toggleSort = (e) => {
         setClickedColumn(e.currentTarget.dataset.field);
-        console.log(sortStatus);
         if (sortStatus === 'none') {
             setSortStatus('asc');
             setRowOrder(sortCol(rowOrder, field, true));
+            setPrimaryOrSecondary(field, sortStatus);
         } else if (sortStatus === 'asc') {
             setSortStatus('desc');
             setRowOrder(sortCol(rowOrder, field, false));
+            setPrimaryOrSecondary(field, sortStatus);
         } else {
             setSortStatus('none');
             setRowOrder(rowConfig);
+            setPrimaryOrSecondary(field, sortStatus);
         }
     };
 
@@ -151,7 +178,6 @@ const ColumnHeaderText = ({
             : renderedProps.renderedProps.renderedProps.headerInnerBorder ||
               renderedProps.renderedProps.renderedProps.tableBorder;
 
-    // console.log(sortStatus);
     return (
         <Box
             sx={{
@@ -242,7 +268,7 @@ const DoubleSortTableRows = ({ rowOrder, colsToHide, ...renderedProps }) => {
             >
                 {rowKeys.map((key, index) => (
                     <RowData
-                        rowData={row[key]}
+                        cellData={row[key]}
                         rowLength={rowKeys.length}
                         numberOfRows={rowOrder.length}
                         colsToHide={colsToHide}
@@ -258,7 +284,7 @@ const DoubleSortTableRows = ({ rowOrder, colsToHide, ...renderedProps }) => {
 };
 
 const RowData = ({
-    rowData,
+    cellData,
     rowLength,
     colsToHide,
     colNum,
@@ -293,7 +319,7 @@ const RowData = ({
                     color: renderedProps.renderedProps.dataTextColor,
                 }}
             >
-                {rowData}
+                {cellData}
             </Typography>
         </Box>
     );
