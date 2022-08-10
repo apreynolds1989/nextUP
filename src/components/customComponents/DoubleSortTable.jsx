@@ -70,11 +70,13 @@ const DoubleSortTableHeader = ({
     ...renderedProps
 }) => {
     const [primarySort, setPrimarySort] = useState('');
+    const [primaryArr, setPrimaryArr] = useState([]);
     const [secondarySort, setSecondarySort] = useState('');
     useEffect(() => {
         console.log(
             `Primary = ${primarySort} and Secondary = ${secondarySort}`,
         );
+        console.log(`primaryArr = ${primaryArr}`);
     });
 
     const setPrimaryOrSecondary = (field, sortStatus) => {
@@ -84,6 +86,7 @@ const DoubleSortTableHeader = ({
             setSecondarySort(field);
         } else if (primarySort === field && sortStatus === 'desc') {
             setPrimarySort('');
+            setPrimaryArr([]);
             if (secondarySort !== '') {
                 setPrimarySort(secondarySort);
                 setSecondarySort('');
@@ -108,6 +111,9 @@ const DoubleSortTableHeader = ({
                     clickedColumn={clickedColumn}
                     setClickedColumn={setClickedColumn}
                     setPrimaryOrSecondary={setPrimaryOrSecondary}
+                    primarySort={primarySort}
+                    primaryArr={primaryArr}
+                    setPrimaryArr={setPrimaryArr}
                     rowOrder={rowOrder}
                     setRowOrder={setRowOrder}
                     colsToHide={colsToHide}
@@ -130,6 +136,9 @@ const ColumnHeaderText = ({
     clickedColumn,
     setClickedColumn,
     setPrimaryOrSecondary,
+    primarySort,
+    primaryArr,
+    setPrimaryArr,
     rowOrder,
     setRowOrder,
     colsToHide,
@@ -157,11 +166,29 @@ const ColumnHeaderText = ({
         setClickedColumn(e.currentTarget.dataset.field);
         if (sortStatus === 'none') {
             setSortStatus('asc');
-            setRowOrder(sortCol(rowOrder, field, true));
+            setRowOrder(
+                sortCol(
+                    rowOrder,
+                    field,
+                    primarySort,
+                    primaryArr,
+                    setPrimaryArr,
+                    true,
+                ),
+            );
             setPrimaryOrSecondary(field, sortStatus);
         } else if (sortStatus === 'asc') {
             setSortStatus('desc');
-            setRowOrder(sortCol(rowOrder, field, false));
+            setRowOrder(
+                sortCol(
+                    rowOrder,
+                    field,
+                    primarySort,
+                    primaryArr,
+                    setPrimaryArr,
+                    false,
+                ),
+            );
             setPrimaryOrSecondary(field, sortStatus);
         } else {
             setSortStatus('none');

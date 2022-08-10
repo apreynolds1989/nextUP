@@ -1,3 +1,44 @@
+export const sortCol = (
+    rowsArr,
+    colField,
+    primarySort,
+    primaryArr,
+    setPrimaryArr,
+    isAsc,
+) => {
+    let switchHappened, cellA, cellB, shouldSwitch;
+    let copiedArr = [...rowsArr];
+    if (primarySort === '' || primarySort === colField) {
+        let primaryArrValues = [];
+        switchHappened = true;
+        while (switchHappened) {
+            // start by stating no switchHappened
+            switchHappened = false;
+            // Loop through each table body row
+            for (let i = 0; i < copiedArr.length - 1; i++) {
+                shouldSwitch = false;
+                // Compare the next two elements in the loop
+                cellA = copiedArr[i];
+                cellB = copiedArr[i + 1];
+                shouldSwitch = isAsc ?
+                    checkSortAsc(cellA, cellB, colField) :
+                    checkSortDesc(cellA, cellB, colField);
+                if (shouldSwitch) {
+                    swapArrElements(copiedArr, i);
+                    switchHappened = true;
+                }
+            }
+        }
+        copiedArr.map((row) =>
+            primaryArrValues.includes(row[colField]) ?
+            null :
+            primaryArrValues.push(row[colField]),
+        );
+        setPrimaryArr(primaryArrValues);
+    } else {}
+    return copiedArr;
+};
+
 const checkSortAsc = (cellA, cellB, colField) => {
     if (typeof cellA[colField] === 'string') {
         return cellA[colField].toLowerCase() > cellB[colField].toLowerCase() ?
@@ -21,27 +62,6 @@ const checkSortDesc = (cellA, cellB, colField) => {
 const swapArrElements = (arr, i) =>
     ([arr[i], arr[i + 1]] = [arr[i + 1], arr[i]]);
 
-export const sortCol = (rowsArr, colField, isAsc) => {
-    let switchHappened, cellA, cellB, shouldSwitch;
-    let copiedArr = [...rowsArr];
-    switchHappened = true;
-    while (switchHappened) {
-        // start by stating no switchHappened
-        switchHappened = false;
-        // Loop through each table body row
-        for (let i = 0; i < copiedArr.length - 1; i++) {
-            shouldSwitch = false;
-            // Compare the next two elements in the loop
-            cellA = copiedArr[i];
-            cellB = copiedArr[i + 1];
-            shouldSwitch = isAsc ?
-                checkSortAsc(cellA, cellB, colField) :
-                checkSortDesc(cellA, cellB, colField);
-            if (shouldSwitch) {
-                swapArrElements(copiedArr, i);
-                switchHappened = true;
-            }
-        }
-    }
-    return copiedArr;
+const createPrimaryArr = (arr) => {
+    arr.map((item) => {});
 };
