@@ -1,15 +1,7 @@
-export const sortCol = (
-    rowsArr,
-    colField,
-    primarySort,
-    primaryArr,
-    setPrimaryArr,
-    isAsc,
-) => {
+export const sortCol = (rowsArr, colField, primarySort, isAsc) => {
     let switchHappened, cellA, cellB, shouldSwitch;
     let copiedArr = [...rowsArr];
     if (primarySort === '' || primarySort === colField) {
-        let primaryArrValues = [];
         switchHappened = true;
         while (switchHappened) {
             // start by stating no switchHappened
@@ -29,13 +21,29 @@ export const sortCol = (
                 }
             }
         }
-        copiedArr.map((row) =>
-            primaryArrValues.includes(row[colField]) ?
-            null :
-            primaryArrValues.push(row[colField]),
-        );
-        setPrimaryArr(primaryArrValues);
-    } else {}
+    } else {
+        switchHappened = true;
+        while (switchHappened) {
+            // start by stating no switchHappened
+            switchHappened = false;
+            // Loop through each table body row
+            for (let i = 0; i < copiedArr.length - 1; i++) {
+                // Compare the next two elements in the loop
+                cellA = copiedArr[i];
+                cellB = copiedArr[i + 1];
+                if (cellA[primarySort] === cellB[primarySort]) {
+                    shouldSwitch = false;
+                    shouldSwitch = isAsc ?
+                        checkSortAsc(cellA, cellB, colField) :
+                        checkSortDesc(cellA, cellB, colField);
+                    if (shouldSwitch) {
+                        swapArrElements(copiedArr, i);
+                        switchHappened = true;
+                    }
+                } else continue;
+            }
+        }
+    }
     return copiedArr;
 };
 
@@ -61,7 +69,3 @@ const checkSortDesc = (cellA, cellB, colField) => {
 
 const swapArrElements = (arr, i) =>
     ([arr[i], arr[i + 1]] = [arr[i + 1], arr[i]]);
-
-const createPrimaryArr = (arr) => {
-    arr.map((item) => {});
-};
