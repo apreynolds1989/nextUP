@@ -139,7 +139,13 @@ const ColumnHeaderText = ({
 }) => {
     const [sortStatus, setSortStatus] = useState('');
 
-    if (clickedColumn !== field && sortStatus !== 'none') {
+    // fix: clicking on primary column removes secondary arrow
+    // possibly set two different states for primarySortStatus and secondarySortStatus
+    if (
+        clickedColumn !== field &&
+        sortStatus !== 'none' &&
+        primarySort !== field
+    ) {
         setSortStatus('none');
     }
 
