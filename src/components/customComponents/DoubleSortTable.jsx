@@ -4,7 +4,8 @@ import { faAngleDown, faAngleUp } from '@fortawesome/free-solid-svg-icons';
 import { Box, Button, Typography } from '@mui/material';
 import { sortCol, sortPrimary } from '../../utilities/helperFunctions';
 
-// Issue: after sorting secondary, changing sort on primary resets secondarySort to 'none'. Should remain on current sortStatus
+// Issue: if primarySort sortStatus becomes 'none' and secondarySort becomes primarySort
+// table does not sort by new primarySort
 
 export const DoubleSortTable = ({
     columnConfig,
@@ -72,11 +73,13 @@ const DoubleSortTableHeader = ({
     ...renderedProps
 }) => {
     const [primarySort, setPrimarySort] = useState('');
+    const [primarySortIsAsc, setPrimarySortIsAsc] = useState();
     const [secondarySort, setSecondarySort] = useState('');
     useEffect(() => {
         console.log(
             `Primary = ${primarySort} and Secondary = ${secondarySort}`,
         );
+        console.log(`primary sort is ascending: ${primarySortIsAsc}`);
     });
 
     const setPrimaryOrSecondary = (field, sortStatus) => {
@@ -112,6 +115,8 @@ const DoubleSortTableHeader = ({
                     setPrimaryOrSecondary={setPrimaryOrSecondary}
                     primarySort={primarySort}
                     secondarySort={secondarySort}
+                    primarySortIsAsc={primarySortIsAsc}
+                    setPrimarySortIsAsc={setPrimarySortIsAsc}
                     rowOrder={rowOrder}
                     setRowOrder={setRowOrder}
                     colsToHide={colsToHide}
@@ -136,13 +141,21 @@ const ColumnHeaderText = ({
     setPrimaryOrSecondary,
     primarySort,
     secondarySort,
+    primarySortIsAsc,
+    setPrimarySortIsAsc,
     rowOrder,
     setRowOrder,
     colsToHide,
     ...renderedProps
 }) => {
     const [sortStatus, setSortStatus] = useState('');
+
     useEffect(() => {
+        if (primarySort === field) {
+            sortStatus === 'asc'
+                ? setPrimarySortIsAsc(true)
+                : setPrimarySortIsAsc(false);
+        }
         console.log(`${field}'s sort Status is ${sortStatus}`);
     });
 
@@ -184,7 +197,7 @@ const ColumnHeaderText = ({
         } else {
             setSortStatus('none');
             field !== primarySort
-                ? sortPrimary(rowOrder, primarySort, true)
+                ? sortPrimary(rowOrder, primarySort, primarySortIsAsc)
                 : setRowOrder(rowConfig);
             setPrimaryOrSecondary(field, sortStatus);
         }
