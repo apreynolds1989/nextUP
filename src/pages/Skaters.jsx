@@ -52,6 +52,30 @@ const rowData = [
         weeklyGames: 4,
         offDayGames: 1,
     },
+    {
+        name: 'Mitch Marner',
+        goals: 40,
+        assists: 75,
+        points: 115,
+        weeklyGames: 3,
+        offDayGames: 2,
+    },
+    {
+        name: 'Sidney Crosby',
+        goals: 40,
+        assists: 55,
+        points: 95,
+        weeklyGames: 3,
+        offDayGames: 1,
+    },
+    {
+        name: 'Alex Ovechkin',
+        goals: 55,
+        assists: 60,
+        points: 115,
+        weeklyGames: 4,
+        offDayGames: 2,
+    },
 ];
 
 export const Skaters = ({ isMobileSize }) => {

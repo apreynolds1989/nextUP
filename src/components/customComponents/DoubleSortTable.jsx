@@ -2,9 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleDown, faAngleUp } from '@fortawesome/free-solid-svg-icons';
 import { Box, Button, Typography } from '@mui/material';
-import { sortCol } from '../../utilities/helperFunctions';
-
-// Found issue: when secondarySort returns to 'none' it resorts the table to starting values
+import { sortCol, sortPrimary } from '../../utilities/helperFunctions';
 
 export const DoubleSortTable = ({
     columnConfig,
@@ -175,7 +173,9 @@ const ColumnHeaderText = ({
             setPrimaryOrSecondary(field, sortStatus);
         } else {
             setSortStatus('none');
-            setRowOrder(rowConfig);
+            field !== primarySort
+                ? sortPrimary(rowOrder, primarySort, true)
+                : setRowOrder(rowConfig);
             setPrimaryOrSecondary(field, sortStatus);
         }
     };
