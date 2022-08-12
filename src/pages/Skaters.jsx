@@ -111,6 +111,8 @@ export const Skaters = ({ isMobileSize }) => {
                             headerArrowColor: palette.gtBlue,
                             dataBgColor: 'white',
                             dataTextColor: palette.gtBlue,
+                            // How to do this?
+                            //dataTextAlign: `cellKey === 'name' ? 'left' : 'center'`,
                         }}
                     />
                 </Container>

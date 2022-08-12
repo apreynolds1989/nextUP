@@ -74,15 +74,20 @@ const DoubleSortTableHeader = ({
 }) => {
     const [primarySort, setPrimarySort] = useState('');
     const [primarySortIsAsc, setPrimarySortIsAsc] = useState();
+    const [secondarySortIsAsc, setSecondarySortIsAsc] = useState();
     const [secondarySort, setSecondarySort] = useState('');
     useEffect(() => {
+        if (primarySort === '') setPrimarySortIsAsc(undefined);
+        if (secondarySort === '') setSecondarySortIsAsc(undefined);
         console.log(
             `Primary = ${primarySort} and Secondary = ${secondarySort}`,
         );
         console.log(`primary sort is ascending: ${primarySortIsAsc}`);
-    });
+        console.log(`secondary sort is ascending: ${secondarySortIsAsc}`);
+    }, [secondarySort, primarySort, primarySortIsAsc, secondarySortIsAsc]);
+    // the second parameter was suggested by VSCode, what does it do?
 
-    const setPrimaryOrSecondary = (field, sortStatus) => {
+    const setPrimaryOrSetSecondary = (field, sortStatus) => {
         if (primarySort === '') {
             setPrimarySort(field);
         } else if (primarySort !== field && secondarySort !== field) {
@@ -112,11 +117,13 @@ const DoubleSortTableHeader = ({
                     rowConfig={rowConfig}
                     clickedColumn={clickedColumn}
                     setClickedColumn={setClickedColumn}
-                    setPrimaryOrSecondary={setPrimaryOrSecondary}
+                    setPrimaryOrSetSecondary={setPrimaryOrSetSecondary}
                     primarySort={primarySort}
                     secondarySort={secondarySort}
                     primarySortIsAsc={primarySortIsAsc}
                     setPrimarySortIsAsc={setPrimarySortIsAsc}
+                    secondarySortIsAsc={secondarySortIsAsc}
+                    setSecondarySortIsAsc={setSecondarySortIsAsc}
                     rowOrder={rowOrder}
                     setRowOrder={setRowOrder}
                     colsToHide={colsToHide}
@@ -138,11 +145,13 @@ const ColumnHeaderText = ({
     rowConfig,
     clickedColumn,
     setClickedColumn,
-    setPrimaryOrSecondary,
+    setPrimaryOrSetSecondary,
     primarySort,
     secondarySort,
     primarySortIsAsc,
     setPrimarySortIsAsc,
+    secondarySortIsAsc,
+    setSecondarySortIsAsc,
     rowOrder,
     setRowOrder,
     colsToHide,
@@ -156,7 +165,12 @@ const ColumnHeaderText = ({
                 ? setPrimarySortIsAsc(true)
                 : setPrimarySortIsAsc(false);
         }
-        console.log(`${field}'s sort Status is ${sortStatus}`);
+        if (secondarySort === field) {
+            sortStatus === 'asc'
+                ? setSecondarySortIsAsc(true)
+                : setSecondarySortIsAsc(false);
+        }
+        // console.log(`${field}'s sort Status is ${sortStatus}`);
     });
 
     // fix: clicking on primary column removes secondary arrow
@@ -168,6 +182,7 @@ const ColumnHeaderText = ({
     ) {
         if (primarySort === clickedColumn && secondarySort === field) {
             // Is there a better way to do this? I feel like there is
+            // This ensures secondarySort sortStatus does not get set to none
             console.log(sortStatus);
         } else setSortStatus('none');
     }
@@ -189,17 +204,26 @@ const ColumnHeaderText = ({
         if (sortStatus === 'none') {
             setSortStatus('asc');
             setRowOrder(sortCol(rowOrder, field, primarySort, true));
-            setPrimaryOrSecondary(field, sortStatus);
+            setPrimaryOrSetSecondary(field, sortStatus);
         } else if (sortStatus === 'asc') {
             setSortStatus('desc');
             setRowOrder(sortCol(rowOrder, field, primarySort, false));
-            setPrimaryOrSecondary(field, sortStatus);
+            setPrimaryOrSetSecondary(field, sortStatus);
         } else {
             setSortStatus('none');
-            field !== primarySort
-                ? sortPrimary(rowOrder, primarySort, primarySortIsAsc)
-                : setRowOrder(rowConfig);
-            setPrimaryOrSecondary(field, sortStatus);
+            if (field !== primarySort)
+                setRowOrder(
+                    sortPrimary(rowOrder, primarySort, primarySortIsAsc),
+                );
+            else if (field === primarySort && secondarySort !== '')
+                setRowOrder(
+                    sortPrimary(rowOrder, secondarySort, secondarySortIsAsc),
+                );
+            else setRowOrder(rowConfig);
+            // field !== primarySort
+            //     ? sortPrimary(rowOrder, primarySort, primarySortIsAsc)
+            //     : setRowOrder(rowConfig);
+            setPrimaryOrSetSecondary(field, sortStatus);
         }
     };
 
@@ -299,15 +323,16 @@ const DoubleSortTableRows = ({ rowOrder, colsToHide, ...renderedProps }) => {
                 }}
                 key={`row${rowIndex}`}
             >
-                {rowKeys.map((key, index) => (
+                {rowKeys.map((cellKey, index) => (
                     <RowData
-                        cellData={row[key]}
+                        cellData={row[cellKey]}
                         rowLength={rowKeys.length}
                         numberOfRows={rowOrder.length}
                         colsToHide={colsToHide}
                         colNum={index}
                         rowNum={rowIndex}
                         key={`column${index}`}
+                        cellKey={cellKey}
                         renderedProps={renderedProps}
                     />
                 ))}
@@ -322,6 +347,7 @@ const RowData = ({
     colsToHide,
     colNum,
     rowNum,
+    cellKey,
     numberOfRows,
     renderedProps,
 }) => {
@@ -348,6 +374,7 @@ const RowData = ({
         >
             <Typography
                 sx={{
+                    // textAlign: cellKey === 'name' ? 'left' : 'center',
                     textAlign: renderedProps.renderedProps.dataTextAlign,
                     color: renderedProps.renderedProps.dataTextColor,
                 }}
