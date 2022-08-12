@@ -4,6 +4,8 @@ import { faAngleDown, faAngleUp } from '@fortawesome/free-solid-svg-icons';
 import { Box, Button, Typography } from '@mui/material';
 import { sortCol } from '../../utilities/helperFunctions';
 
+// Found issue: when secondarySort returns to 'none' it resorts the table to starting values
+
 export const DoubleSortTable = ({
     columnConfig,
     rowConfig,

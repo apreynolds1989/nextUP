@@ -1,17 +1,93 @@
 export const sortCol = (rowsArr, colField, primarySort, isAsc) => {
+    // let switchHappened, cellA, cellB, shouldSwitch;
+    // let copiedArr = [...rowsArr];
+    if (primarySort === '' || primarySort === colField) {
+        return sortPrimary(rowsArr, colField, isAsc);
+        // switchHappened = true;
+        // while (switchHappened) {
+        //     // start by stating no switchHappened
+        //     switchHappened = false;
+        //     // Loop through each table body row
+        //     for (let i = 0; i < copiedArr.length - 1; i++) {
+        //         shouldSwitch = false;
+        //         // Compare the next two elements in the loop
+        //         cellA = copiedArr[i];
+        //         cellB = copiedArr[i + 1];
+        //         shouldSwitch = isAsc ?
+        //             checkSortAsc(cellA, cellB, colField) :
+        //             checkSortDesc(cellA, cellB, colField);
+        //         if (shouldSwitch) {
+        //             swapArrElements(copiedArr, i);
+        //             switchHappened = true;
+        //         }
+        //     }
+        // }
+    } else {
+        return sortSecondary(rowsArr, colField, primarySort, isAsc);
+        // switchHappened = true;
+        // while (switchHappened) {
+        //     // start by stating no switchHappened
+        //     switchHappened = false;
+        //     // Loop through each table body row
+        //     for (let i = 0; i < copiedArr.length - 1; i++) {
+        //         // Compare the next two elements in the loop
+        //         cellA = copiedArr[i];
+        //         cellB = copiedArr[i + 1];
+        //         if (cellA[primarySort] === cellB[primarySort]) {
+        //             shouldSwitch = false;
+        //             shouldSwitch = isAsc ?
+        //                 checkSortAsc(cellA, cellB, colField) :
+        //                 checkSortDesc(cellA, cellB, colField);
+        //             if (shouldSwitch) {
+        //                 swapArrElements(copiedArr, i);
+        //                 switchHappened = true;
+        //             }
+        //         } else continue;
+        //     }
+        // }
+    }
+    // return copiedArr;
+};
+
+const sortPrimary = (rowsArr, colField, isAsc) => {
     let switchHappened, cellA, cellB, shouldSwitch;
     let copiedArr = [...rowsArr];
-    if (primarySort === '' || primarySort === colField) {
-        switchHappened = true;
-        while (switchHappened) {
-            // start by stating no switchHappened
-            switchHappened = false;
-            // Loop through each table body row
-            for (let i = 0; i < copiedArr.length - 1; i++) {
+    switchHappened = true;
+    while (switchHappened) {
+        // start by stating no switchHappened
+        switchHappened = false;
+        // Loop through each table body row
+        for (let i = 0; i < copiedArr.length - 1; i++) {
+            shouldSwitch = false;
+            // Compare the next two elements in the loop
+            cellA = copiedArr[i];
+            cellB = copiedArr[i + 1];
+            shouldSwitch = isAsc ?
+                checkSortAsc(cellA, cellB, colField) :
+                checkSortDesc(cellA, cellB, colField);
+            if (shouldSwitch) {
+                swapArrElements(copiedArr, i);
+                switchHappened = true;
+            }
+        }
+    }
+    return copiedArr;
+};
+
+const sortSecondary = (rowsArr, colField, primarySort, isAsc) => {
+    let switchHappened, cellA, cellB, shouldSwitch;
+    let copiedArr = [...rowsArr];
+    switchHappened = true;
+    while (switchHappened) {
+        // start by stating no switchHappened
+        switchHappened = false;
+        // Loop through each table body row
+        for (let i = 0; i < copiedArr.length - 1; i++) {
+            // Compare the next two elements in the loop
+            cellA = copiedArr[i];
+            cellB = copiedArr[i + 1];
+            if (cellA[primarySort] === cellB[primarySort]) {
                 shouldSwitch = false;
-                // Compare the next two elements in the loop
-                cellA = copiedArr[i];
-                cellB = copiedArr[i + 1];
                 shouldSwitch = isAsc ?
                     checkSortAsc(cellA, cellB, colField) :
                     checkSortDesc(cellA, cellB, colField);
@@ -19,29 +95,7 @@ export const sortCol = (rowsArr, colField, primarySort, isAsc) => {
                     swapArrElements(copiedArr, i);
                     switchHappened = true;
                 }
-            }
-        }
-    } else {
-        switchHappened = true;
-        while (switchHappened) {
-            // start by stating no switchHappened
-            switchHappened = false;
-            // Loop through each table body row
-            for (let i = 0; i < copiedArr.length - 1; i++) {
-                // Compare the next two elements in the loop
-                cellA = copiedArr[i];
-                cellB = copiedArr[i + 1];
-                if (cellA[primarySort] === cellB[primarySort]) {
-                    shouldSwitch = false;
-                    shouldSwitch = isAsc ?
-                        checkSortAsc(cellA, cellB, colField) :
-                        checkSortDesc(cellA, cellB, colField);
-                    if (shouldSwitch) {
-                        swapArrElements(copiedArr, i);
-                        switchHappened = true;
-                    }
-                } else continue;
-            }
+            } else continue;
         }
     }
     return copiedArr;
