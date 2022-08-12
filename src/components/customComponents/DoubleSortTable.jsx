@@ -4,9 +4,6 @@ import { faAngleDown, faAngleUp } from '@fortawesome/free-solid-svg-icons';
 import { Box, Button, Typography } from '@mui/material';
 import { sortCol, sortPrimary } from '../../utilities/helperFunctions';
 
-// Issue: if primarySort sortStatus becomes 'none' and secondarySort becomes primarySort
-// table does not sort by new primarySort
-
 export const DoubleSortTable = ({
     columnConfig,
     rowConfig,
@@ -31,8 +28,6 @@ export const DoubleSortTable = ({
     const renderedProps = { ...defaultProps, ...stylingProps };
     const [rowOrder, setRowOrder] = useState(rowConfig);
     const [clickedColumn, setClickedColumn] = useState('');
-
-    // console.log(`Sorting by: ${clickedColumn}`);
 
     return (
         <Box
@@ -170,7 +165,6 @@ const ColumnHeaderText = ({
                 ? setSecondarySortIsAsc(true)
                 : setSecondarySortIsAsc(false);
         }
-        // console.log(`${field}'s sort Status is ${sortStatus}`);
     });
 
     // fix: clicking on primary column removes secondary arrow
@@ -186,18 +180,6 @@ const ColumnHeaderText = ({
             console.log(sortStatus);
         } else setSortStatus('none');
     }
-
-    // useEffect(() => {
-    //     const headerBtns = document.querySelectorAll('.headerBtn');
-    //     headerBtns.forEach((headerBtn) => {
-    //         headerBtn.addEventListener('click', () => {
-    //             let target = headerBtn;
-    //             headerBtns.forEach((btn) => {
-    //                 if (btn !== target) setSortStatus('none');
-    //             });
-    //         });
-    //     });
-    // }, []);
 
     const toggleSort = (e) => {
         setClickedColumn(e.currentTarget.dataset.field);
@@ -220,9 +202,6 @@ const ColumnHeaderText = ({
                     sortPrimary(rowOrder, secondarySort, secondarySortIsAsc),
                 );
             else setRowOrder(rowConfig);
-            // field !== primarySort
-            //     ? sortPrimary(rowOrder, primarySort, primarySortIsAsc)
-            //     : setRowOrder(rowConfig);
             setPrimaryOrSetSecondary(field, sortStatus);
         }
     };
