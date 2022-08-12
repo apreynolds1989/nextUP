@@ -4,6 +4,8 @@ import { faAngleDown, faAngleUp } from '@fortawesome/free-solid-svg-icons';
 import { Box, Button, Typography } from '@mui/material';
 import { sortCol, sortPrimary } from '../../utilities/helperFunctions';
 
+// Issue: after sorting secondary, changing sort on primary resets secondarySort to 'none'. Should remain on current sortStatus
+
 export const DoubleSortTable = ({
     columnConfig,
     rowConfig,
@@ -109,6 +111,7 @@ const DoubleSortTableHeader = ({
                     setClickedColumn={setClickedColumn}
                     setPrimaryOrSecondary={setPrimaryOrSecondary}
                     primarySort={primarySort}
+                    secondarySort={secondarySort}
                     rowOrder={rowOrder}
                     setRowOrder={setRowOrder}
                     colsToHide={colsToHide}
@@ -132,12 +135,16 @@ const ColumnHeaderText = ({
     setClickedColumn,
     setPrimaryOrSecondary,
     primarySort,
+    secondarySort,
     rowOrder,
     setRowOrder,
     colsToHide,
     ...renderedProps
 }) => {
     const [sortStatus, setSortStatus] = useState('');
+    useEffect(() => {
+        console.log(`${field}'s sort Status is ${sortStatus}`);
+    });
 
     // fix: clicking on primary column removes secondary arrow
     // possibly set two different states for primarySortStatus and secondarySortStatus
@@ -146,7 +153,10 @@ const ColumnHeaderText = ({
         sortStatus !== 'none' &&
         primarySort !== field
     ) {
-        setSortStatus('none');
+        if (primarySort === clickedColumn && secondarySort === field) {
+            // Is there a better way to do this? I feel like there is
+            console.log(sortStatus);
+        } else setSortStatus('none');
     }
 
     // useEffect(() => {
