@@ -1,6 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAngleDown, faAngleUp } from '@fortawesome/free-solid-svg-icons';
+import {
+    faAngleDown,
+    faAngleUp,
+    faAnglesUp,
+    faAnglesDown,
+} from '@fortawesome/free-solid-svg-icons';
 import { Box, Button, Typography } from '@mui/material';
 import { sortCol, sortPrimary } from '../../utilities/helperFunctions';
 
@@ -153,6 +158,8 @@ const ColumnHeaderText = ({
     ...renderedProps
 }) => {
     const [sortStatus, setSortStatus] = useState('');
+    const iconUp = field === primarySort ? faAnglesUp : faAngleUp;
+    const iconDown = field === primarySort ? faAnglesDown : faAngleDown;
 
     useEffect(() => {
         if (primarySort === field) {
@@ -251,7 +258,7 @@ const ColumnHeaderText = ({
                 >
                     {sortStatus === 'asc' ? (
                         <FontAwesomeIcon
-                            icon={faAngleUp}
+                            icon={iconUp}
                             color={
                                 renderedProps.renderedProps.renderedProps
                                     .headerArrowColor
@@ -259,7 +266,7 @@ const ColumnHeaderText = ({
                         />
                     ) : (
                         <FontAwesomeIcon
-                            icon={faAngleUp}
+                            icon={iconUp}
                             color={
                                 renderedProps.renderedProps.renderedProps
                                     .headerArrowColor
@@ -269,7 +276,7 @@ const ColumnHeaderText = ({
                     )}
                     {sortStatus === 'desc' ? (
                         <FontAwesomeIcon
-                            icon={faAngleDown}
+                            icon={iconDown}
                             color={
                                 renderedProps.renderedProps.renderedProps
                                     .headerArrowColor
@@ -277,7 +284,7 @@ const ColumnHeaderText = ({
                         />
                     ) : (
                         <FontAwesomeIcon
-                            icon={faAngleDown}
+                            icon={iconDown}
                             color={
                                 renderedProps.renderedProps.renderedProps
                                     .headerArrowColor
