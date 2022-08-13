@@ -15,7 +15,6 @@ export const sortPrimary = (rowsArr, colField, isAsc) => {
         switchHappened = false;
         // Loop through each table body row
         for (let i = 0; i < copiedArr.length - 1; i++) {
-            shouldSwitch = false;
             // Compare the next two elements in the loop
             cellA = copiedArr[i];
             cellB = copiedArr[i + 1];
@@ -43,8 +42,8 @@ const sortSecondary = (rowsArr, colField, primarySort, isAsc) => {
             // Compare the next two elements in the loop
             cellA = copiedArr[i];
             cellB = copiedArr[i + 1];
+            // now compare based on equal values in primarySort
             if (cellA[primarySort] === cellB[primarySort]) {
-                shouldSwitch = false;
                 shouldSwitch = isAsc ?
                     checkSortAsc(cellA, cellB, colField) :
                     checkSortDesc(cellA, cellB, colField);

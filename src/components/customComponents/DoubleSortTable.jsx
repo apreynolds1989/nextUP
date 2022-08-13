@@ -30,6 +30,7 @@ export const DoubleSortTable = ({
         dataTextAlign: 'center',
     };
 
+    // overide defaults with anything passed to stylingProps
     const renderedProps = { ...defaultProps, ...stylingProps };
     const [rowOrder, setRowOrder] = useState(rowConfig);
     const [clickedColumn, setClickedColumn] = useState('');
@@ -77,6 +78,8 @@ const DoubleSortTableHeader = ({
     const [secondarySortIsAsc, setSecondarySortIsAsc] = useState();
     const [secondarySort, setSecondarySort] = useState('');
     useEffect(() => {
+        // reset these states if either sort becomes empty
+        // keeps their state logic accurate
         if (primarySort === '') setPrimarySortIsAsc(undefined);
         if (secondarySort === '') setSecondarySortIsAsc(undefined);
         console.log(
@@ -94,6 +97,7 @@ const DoubleSortTableHeader = ({
             setSecondarySort(field);
         } else if (primarySort === field && sortStatus === 'desc') {
             setPrimarySort('');
+            // Moves secondarySort to primarySort and sorts the table accordingly
             if (secondarySort !== '') {
                 setPrimarySort(secondarySort);
                 setSecondarySort('');
@@ -158,9 +162,11 @@ const ColumnHeaderText = ({
     ...renderedProps
 }) => {
     const [sortStatus, setSortStatus] = useState('');
+    // variables to set which icon will show when sorting
     const iconUp = field === primarySort ? faAnglesUp : faAngleUp;
     const iconDown = field === primarySort ? faAnglesDown : faAngleDown;
 
+    // maintain these states to ensure table re-sorts properly as different columns are sorted on
     useEffect(() => {
         if (primarySort === field) {
             sortStatus === 'asc'
@@ -174,20 +180,20 @@ const ColumnHeaderText = ({
         }
     });
 
-    // fix: clicking on primary column removes secondary arrow
-    // possibly set two different states for primarySortStatus and secondarySortStatus
+    // Remove sort icon on columns as new columns are clicked
     if (
         clickedColumn !== field &&
         sortStatus !== 'none' &&
         primarySort !== field
     ) {
+        // Keep icon on secondarySort if primarySort field is clicked
         if (primarySort === clickedColumn && secondarySort === field) {
             // Is there a better way to do this? I feel like there is
-            // This ensures secondarySort sortStatus does not get set to none
             console.log(sortStatus);
         } else setSortStatus('none');
     }
 
+    // calls in functions from helperFunctions.js
     const toggleSort = (e) => {
         setClickedColumn(e.currentTarget.dataset.field);
         if (sortStatus === 'none') {
@@ -200,14 +206,17 @@ const ColumnHeaderText = ({
             setPrimaryOrSetSecondary(field, sortStatus);
         } else {
             setSortStatus('none');
+            // Reset table to sort by primarySort field, keeping sortStatus accurate
             if (field !== primarySort)
                 setRowOrder(
                     sortPrimary(rowOrder, primarySort, primarySortIsAsc),
                 );
+            // As secondarySort becomes primarySort, sort table accordingly, keeping sortStatus accurate
             else if (field === primarySort && secondarySort !== '')
                 setRowOrder(
                     sortPrimary(rowOrder, secondarySort, secondarySortIsAsc),
                 );
+            // otherwise, reset table to original state
             else setRowOrder(rowConfig);
             setPrimaryOrSetSecondary(field, sortStatus);
         }
