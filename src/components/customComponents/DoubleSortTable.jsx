@@ -48,8 +48,9 @@ export const DoubleSortTable = ({
             }}
         >
             <TableFilter
-                renderedProps={renderedProps}
+                filtersOpen={filtersOpen}
                 handleFiltersOpen={handleFiltersOpen}
+                renderedProps={renderedProps}
             />
             <Box
                 sx={{
@@ -406,7 +407,8 @@ const RowData = ({
     );
 };
 
-const TableFilter = ({ handleFiltersOpen, renderedProps }) => {
+// A filter button to open Filters row
+const TableFilter = ({ filtersOpen, handleFiltersOpen, renderedProps }) => {
     return (
         <Box
             sx={{
@@ -417,7 +419,40 @@ const TableFilter = ({ handleFiltersOpen, renderedProps }) => {
                 paddingBottom: 1,
             }}
         >
-            <Button onClick={handleFiltersOpen}>Filter</Button>
+            {!filtersOpen && (
+                <Button onClick={handleFiltersOpen}>Filters</Button>
+            )}
+            {filtersOpen && (
+                <>
+                    <Box
+                        sx={{
+                            borderRight:
+                                renderedProps.headerInnerBorder ||
+                                renderedProps.tableBorder,
+                        }}
+                    >
+                        {/* this button will call function to set filters on table */}
+                        <Button onClick={handleFiltersOpen}>Set Filters</Button>
+                    </Box>
+                    <Box
+                        sx={{
+                            borderRight:
+                                renderedProps.headerInnerBorder ||
+                                renderedProps.tableBorder,
+                        }}
+                    >
+                        {/* this button will call function to reset filters on table */}
+                        <Button onClick={handleFiltersOpen}>
+                            Reset Filters
+                        </Button>
+                    </Box>
+                    <Box>
+                        <Button onClick={handleFiltersOpen}>
+                            Close Filters
+                        </Button>
+                    </Box>
+                </>
+            )}
         </Box>
     );
 };
