@@ -34,6 +34,11 @@ export const DoubleSortTable = ({
     const renderedProps = { ...defaultProps, ...stylingProps };
     const [rowOrder, setRowOrder] = useState(rowConfig);
     const [clickedColumn, setClickedColumn] = useState('');
+    const [filtersOpen, setFiltersOpen] = useState(false);
+
+    const handleFiltersOpen = () => {
+        setFiltersOpen(!filtersOpen);
+    };
 
     return (
         <Box
@@ -42,7 +47,10 @@ export const DoubleSortTable = ({
                 flexDirection: 'column',
             }}
         >
-            <TableFilter renderedProps={renderedProps} />
+            <TableFilter
+                renderedProps={renderedProps}
+                handleFiltersOpen={handleFiltersOpen}
+            />
             <Box
                 sx={{
                     display: 'table',
@@ -51,6 +59,16 @@ export const DoubleSortTable = ({
                     overflow: 'hidden',
                 }}
             >
+                {filtersOpen && (
+                    <FilterColumnHeaders
+                        columnConfig={columnConfig}
+                        rowConfig={rowConfig}
+                        rowOrder={rowOrder}
+                        setRowOrder={setRowOrder}
+                        colsToHide={colsToHide}
+                        renderedProps={renderedProps}
+                    />
+                )}
                 <DoubleSortTableHeader
                     columnConfig={columnConfig}
                     rowConfig={rowConfig}
@@ -388,7 +406,7 @@ const RowData = ({
     );
 };
 
-const TableFilter = ({ renderedProps }) => {
+const TableFilter = ({ handleFiltersOpen, renderedProps }) => {
     return (
         <Box
             sx={{
@@ -399,7 +417,91 @@ const TableFilter = ({ renderedProps }) => {
                 paddingBottom: 1,
             }}
         >
-            <Button>Filter</Button>
+            <Button onClick={handleFiltersOpen}>Filter</Button>
+        </Box>
+    );
+};
+
+const FilterColumnHeaders = ({
+    columnConfig,
+    rowConfig,
+    rowOrder,
+    setRowOrder,
+    colsToHide,
+    ...renderedProps
+}) => {
+    return (
+        <Box
+            sx={{
+                display: 'table-row',
+                backgroundColor: renderedProps.renderedProps.headerBgColor,
+            }}
+        >
+            {columnConfig.map((column, index) => (
+                <FilterColumnHeaderText
+                    {...column}
+                    columnConfig={columnConfig}
+                    rowConfig={rowConfig}
+                    rowOrder={rowOrder}
+                    setRowOrder={setRowOrder}
+                    colsToHide={colsToHide}
+                    colNum={index}
+                    key={`column${index}`}
+                    renderedProps={renderedProps}
+                />
+            ))}
+        </Box>
+    );
+};
+
+const FilterColumnHeaderText = ({
+    columnName,
+    field,
+    colNum,
+    columnConfig,
+    rowConfig,
+    rowOrder,
+    setRowOrder,
+    colsToHide,
+    ...renderedProps
+}) => {
+    const colDisplay = colsToHide.includes(colNum) ? 'none' : 'table-cell';
+
+    const endBorder =
+        colNum === columnConfig.length - 1
+            ? '0px'
+            : renderedProps.renderedProps.renderedProps.headerInnerBorder ||
+              renderedProps.renderedProps.renderedProps.tableBorder;
+
+    return (
+        <Box
+            sx={{
+                display: colDisplay,
+                borderRight: endBorder,
+                borderBottom:
+                    renderedProps.renderedProps.renderedProps
+                        .headerInnerBorder ||
+                    renderedProps.renderedProps.renderedProps.tableBorder,
+            }}
+        >
+            <Button
+                className='filterHeaderBtn'
+                data-field={field}
+                sx={{ padding: 2 }}
+            >
+                <Typography
+                    sx={{
+                        paddingRight: 2,
+                        textAlign:
+                            renderedProps.renderedProps.renderedProps
+                                .headerTextAlign,
+                        color: renderedProps.renderedProps.renderedProps
+                            .headerTextColor,
+                    }}
+                >
+                    {columnName}
+                </Typography>
+            </Button>
         </Box>
     );
 };
