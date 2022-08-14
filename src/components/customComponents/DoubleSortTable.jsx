@@ -38,27 +38,35 @@ export const DoubleSortTable = ({
     return (
         <Box
             sx={{
-                display: 'table',
-                border: renderedProps.tableBorder,
-                borderRadius: renderedProps.outerRadius,
-                overflow: 'hidden',
+                display: 'flex',
+                flexDirection: 'column',
             }}
         >
-            <DoubleSortTableHeader
-                columnConfig={columnConfig}
-                rowConfig={rowConfig}
-                clickedColumn={clickedColumn}
-                setClickedColumn={setClickedColumn}
-                rowOrder={rowOrder}
-                setRowOrder={setRowOrder}
-                colsToHide={colsToHide}
-                renderedProps={renderedProps}
-            />
-            <DoubleSortTableRows
-                rowOrder={rowOrder}
-                colsToHide={colsToHide}
-                renderedProps={renderedProps}
-            />
+            <TableFilter renderedProps={renderedProps} />
+            <Box
+                sx={{
+                    display: 'table',
+                    border: renderedProps.tableBorder,
+                    borderRadius: renderedProps.outerRadius,
+                    overflow: 'hidden',
+                }}
+            >
+                <DoubleSortTableHeader
+                    columnConfig={columnConfig}
+                    rowConfig={rowConfig}
+                    clickedColumn={clickedColumn}
+                    setClickedColumn={setClickedColumn}
+                    rowOrder={rowOrder}
+                    setRowOrder={setRowOrder}
+                    colsToHide={colsToHide}
+                    renderedProps={renderedProps}
+                />
+                <DoubleSortTableRows
+                    rowOrder={rowOrder}
+                    colsToHide={colsToHide}
+                    renderedProps={renderedProps}
+                />
+            </Box>
         </Box>
     );
 };
@@ -376,6 +384,22 @@ const RowData = ({
             >
                 {cellData}
             </Typography>
+        </Box>
+    );
+};
+
+const TableFilter = ({ renderedProps }) => {
+    return (
+        <Box
+            sx={{
+                display: 'flex',
+                justifyContent: 'flex-end',
+                backgroundColor: renderedProps.headerBgColor,
+                paddingRight: 5,
+                paddingBottom: 1,
+            }}
+        >
+            <Button>Filter</Button>
         </Box>
     );
 };
