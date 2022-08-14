@@ -6,7 +6,15 @@ import {
     faAnglesUp,
     faAnglesDown,
 } from '@fortawesome/free-solid-svg-icons';
-import { Box, Button, Typography } from '@mui/material';
+import {
+    Box,
+    Button,
+    FormControl,
+    Input,
+    MenuItem,
+    Select,
+    Typography,
+} from '@mui/material';
 import { sortCol, sortPrimary } from '../../utilities/helperFunctions';
 
 export const DoubleSortTable = ({
@@ -473,7 +481,7 @@ const FilterColumnHeaders = ({
             }}
         >
             {columnConfig.map((column, index) => (
-                <FilterColumnHeaderText
+                <FilterColumnHeaderForms
                     {...column}
                     columnConfig={columnConfig}
                     rowConfig={rowConfig}
@@ -489,7 +497,7 @@ const FilterColumnHeaders = ({
     );
 };
 
-const FilterColumnHeaderText = ({
+const FilterColumnHeaderForms = ({
     columnName,
     field,
     colNum,
@@ -500,6 +508,14 @@ const FilterColumnHeaderText = ({
     colsToHide,
     ...renderedProps
 }) => {
+    const [filterOperator, setFilterOperator] = useState('equal');
+
+    const handleChange = (event) => {
+        setFilterOperator(event.target.value);
+    };
+
+    const ariaLabel = { 'aria-label': `${field} search box` };
+
     const colDisplay = colsToHide.includes(colNum) ? 'none' : 'table-cell';
 
     const endBorder =
@@ -512,31 +528,42 @@ const FilterColumnHeaderText = ({
         <Box
             sx={{
                 display: colDisplay,
+                padding: 1,
                 borderRight: endBorder,
-                borderBottom:
-                    renderedProps.renderedProps.renderedProps
-                        .headerInnerBorder ||
-                    renderedProps.renderedProps.renderedProps.tableBorder,
+                // borderBottom:
+                //     renderedProps.renderedProps.renderedProps
+                //         .headerInnerBorder ||
+                //     renderedProps.renderedProps.renderedProps.tableBorder,
             }}
         >
-            <Button
-                className='filterHeaderBtn'
-                data-field={field}
-                sx={{ padding: 2 }}
+            <Box
+                sx={{
+                    display: 'flex',
+                    flexDirection: 'row',
+                }}
             >
-                <Typography
-                    sx={{
-                        paddingRight: 2,
-                        textAlign:
-                            renderedProps.renderedProps.renderedProps
-                                .headerTextAlign,
-                        color: renderedProps.renderedProps.renderedProps
-                            .headerTextColor,
-                    }}
+                <FormControl
+                    size='small'
+                    sx={{ minWidth: '65px', paddingRight: 1 }}
                 >
-                    {columnName}
-                </Typography>
-            </Button>
+                    <Select
+                        value={filterOperator}
+                        autoWidth
+                        onChange={handleChange}
+                    >
+                        <MenuItem value={'equal'}>&#61;</MenuItem>
+                        <MenuItem value={'greaterThan'}>&#62;</MenuItem>
+                        <MenuItem value={'greatThanOrEqual'}>
+                            &#62;&#61;
+                        </MenuItem>
+                        <MenuItem value={'lessThan'}>&#60;</MenuItem>
+                        <MenuItem value={'lessThanOrEqual'}>
+                            &#60;&#61;
+                        </MenuItem>
+                    </Select>
+                </FormControl>
+                <Input placeholder='Filter by:' inputProps={ariaLabel} />
+            </Box>
         </Box>
     );
 };
