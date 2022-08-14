@@ -269,6 +269,7 @@ const ColumnHeaderText = ({
         <Box
             sx={{
                 display: colDisplay,
+                textAlign: 'center',
                 borderRight: endBorder,
                 borderBottom:
                     renderedProps.renderedProps.renderedProps
@@ -574,27 +575,6 @@ const FilterColumnHeaderForms = ({
                 {inputType === 'text' && (
                     <Input placeholder='Search...' inputProps={ariaLabel} />
                 )}
-                {/* <FormControl
-                    size='small'
-                    sx={{ minWidth: '65px', paddingRight: 1 }}
-                >
-                    <Select
-                        value={filterOperator}
-                        autoWidth
-                        onChange={handleChange}
-                    >
-                        <MenuItem value={'equal'}>&#61;</MenuItem>
-                        <MenuItem value={'greaterThan'}>&#62;</MenuItem>
-                        <MenuItem value={'greatThanOrEqual'}>
-                            &#62;&#61;
-                        </MenuItem>
-                        <MenuItem value={'lessThan'}>&#60;</MenuItem>
-                        <MenuItem value={'lessThanOrEqual'}>
-                            &#60;&#61;
-                        </MenuItem>
-                    </Select>
-                </FormControl>
-                <Input placeholder='Filter by:' inputProps={ariaLabel} /> */}
             </Box>
         </Box>
     );
