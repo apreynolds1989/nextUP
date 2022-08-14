@@ -11,12 +11,42 @@ import { Typography } from '@mui/material';
 import { DoubleSortTable } from '../components/customComponents/DoubleSortTable';
 
 const headerColumns = [
-    { columnName: 'Name', initialSort: 'none', field: 'name' },
-    { columnName: 'Goals', initialSort: 'none', field: 'goals' },
-    { columnName: 'Assists', initialSort: 'none', field: 'assists' },
-    { columnName: 'Points', initialSort: 'none', field: 'points' },
-    { columnName: 'Weekly Games', initialSort: 'none', field: 'weeklyGames' },
-    { columnName: 'Off-Day Games', initialSort: 'none', field: 'offDayGames' },
+    {
+        columnName: 'Name',
+        initialSort: 'none',
+        field: 'name',
+        inputType: 'text',
+    },
+    {
+        columnName: 'Goals',
+        initialSort: 'none',
+        field: 'goals',
+        inputType: 'number',
+    },
+    {
+        columnName: 'Assists',
+        initialSort: 'none',
+        field: 'assists',
+        inputType: 'number',
+    },
+    {
+        columnName: 'Points',
+        initialSort: 'none',
+        field: 'points',
+        inputType: 'number',
+    },
+    {
+        columnName: 'Weekly Games',
+        initialSort: 'none',
+        field: 'weeklyGames',
+        inputType: 'number',
+    },
+    {
+        columnName: 'Off-Day Games',
+        initialSort: 'none',
+        field: 'offDayGames',
+        inputType: 'number',
+    },
 ];
 
 const rowData = [

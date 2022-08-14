@@ -500,6 +500,7 @@ const FilterColumnHeaders = ({
 const FilterColumnHeaderForms = ({
     columnName,
     field,
+    inputType,
     colNum,
     columnConfig,
     rowConfig,
@@ -542,7 +543,38 @@ const FilterColumnHeaderForms = ({
                     flexDirection: 'row',
                 }}
             >
-                <FormControl
+                {inputType === 'number' && (
+                    <>
+                        <FormControl
+                            size='small'
+                            sx={{ minWidth: '65px', paddingRight: 1 }}
+                        >
+                            <Select
+                                value={filterOperator}
+                                autoWidth
+                                onChange={handleChange}
+                            >
+                                <MenuItem value={'equal'}>&#61;</MenuItem>
+                                <MenuItem value={'greaterThan'}>&#62;</MenuItem>
+                                <MenuItem value={'greatThanOrEqual'}>
+                                    &#62;&#61;
+                                </MenuItem>
+                                <MenuItem value={'lessThan'}>&#60;</MenuItem>
+                                <MenuItem value={'lessThanOrEqual'}>
+                                    &#60;&#61;
+                                </MenuItem>
+                            </Select>
+                        </FormControl>
+                        <Input
+                            placeholder='Filter by:'
+                            inputProps={ariaLabel}
+                        />
+                    </>
+                )}
+                {inputType === 'text' && (
+                    <Input placeholder='Search...' inputProps={ariaLabel} />
+                )}
+                {/* <FormControl
                     size='small'
                     sx={{ minWidth: '65px', paddingRight: 1 }}
                 >
@@ -562,7 +594,7 @@ const FilterColumnHeaderForms = ({
                         </MenuItem>
                     </Select>
                 </FormControl>
-                <Input placeholder='Filter by:' inputProps={ariaLabel} />
+                <Input placeholder='Filter by:' inputProps={ariaLabel} /> */}
             </Box>
         </Box>
     );
