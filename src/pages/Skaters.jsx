@@ -131,6 +131,15 @@ export const Skaters = ({ isMobileSize }) => {
                         columnConfig={headerColumns}
                         rowConfig={rowData}
                         colsToHide={isMobileSize ? [1] : []}
+                        tableBorder={`2px solid ${palette.gtBlue}`}
+                        outerRadius={3}
+                        rowEndBorder={`2px solid #00000035`}
+                        rowBottomBorder={`2px solid #00000035`}
+                        headerBgColor={'transparent'}
+                        headerTextColor={palette.gtRed}
+                        headerArrowColor={palette.gtBlue}
+                        dataBgColor={'white'}
+                        dataTextColor={palette.gtBlue}
                         stylingProps={{
                             tableBorder: `2px solid ${palette.gtBlue}`,
                             outerRadius: 3,
@@ -142,7 +151,7 @@ export const Skaters = ({ isMobileSize }) => {
                             dataBgColor: 'white',
                             dataTextColor: palette.gtBlue,
                             // How to do this?
-                            //dataTextAlign: `cellKey === 'name' ? 'left' : 'center'`,
+                            // dataTextAlign: cellKey === 'name' ? 'left' : 'center',
                         }}
                     />
                 </Container>

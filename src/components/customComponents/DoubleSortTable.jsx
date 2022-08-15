@@ -21,7 +21,7 @@ export const DoubleSortTable = ({
     columnConfig,
     rowConfig,
     colsToHide = [],
-    stylingProps,
+    ...stylingProps
 }) => {
     const defaultProps = {
         tableBorder: `2px solid black`,
