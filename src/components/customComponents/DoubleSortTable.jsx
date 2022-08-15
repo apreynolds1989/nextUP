@@ -293,11 +293,11 @@ const ColumnHeaderText = ({
         setClickedColumn(e.currentTarget.dataset.field);
         if (sortStatus === 'none') {
             setSortStatus('desc');
-            setRowOrder(sortCol(rowOrder, field, primarySort, true));
+            setRowOrder(sortCol(rowOrder, field, primarySort, false));
             setPrimaryOrSetSecondary(field, sortStatus);
         } else if (sortStatus === 'desc') {
             setSortStatus('asc');
-            setRowOrder(sortCol(rowOrder, field, primarySort, false));
+            setRowOrder(sortCol(rowOrder, field, primarySort, true));
             setPrimaryOrSetSecondary(field, sortStatus);
         } else {
             setSortStatus('none');
