@@ -42,10 +42,10 @@ export const DoubleSortTable = ({
     const renderedProps = { ...defaultProps, ...stylingProps };
     const [rowOrder, setRowOrder] = useState(rowConfig);
     const [clickedColumn, setClickedColumn] = useState('');
-    const [filtersOpen, setFiltersOpen] = useState(false);
+    const [isFiltersOpen, setIsFiltersOpen] = useState(false);
 
-    const handleFiltersOpen = () => {
-        setFiltersOpen(!filtersOpen);
+    const toggleIsFiltersOpen = () => {
+        setIsFiltersOpen(!isFiltersOpen);
     };
 
     return (
@@ -56,8 +56,8 @@ export const DoubleSortTable = ({
             }}
         >
             <TableFilter
-                filtersOpen={filtersOpen}
-                handleFiltersOpen={handleFiltersOpen}
+                filtersOpen={isFiltersOpen}
+                toggleIsFiltersOpen={toggleIsFiltersOpen}
                 renderedProps={renderedProps}
             />
             <Box
@@ -68,7 +68,7 @@ export const DoubleSortTable = ({
                     overflow: 'hidden',
                 }}
             >
-                {filtersOpen && (
+                {isFiltersOpen && (
                     <FilterColumnHeaders
                         columnConfig={columnConfig}
                         rowConfig={rowConfig}
@@ -417,7 +417,7 @@ const RowData = ({
 };
 
 // A filter button to open Filters row
-const TableFilter = ({ filtersOpen, handleFiltersOpen, renderedProps }) => {
+const TableFilter = ({ isFiltersOpen, toggleIsFiltersOpen, renderedProps }) => {
     return (
         <Box
             sx={{
@@ -428,10 +428,10 @@ const TableFilter = ({ filtersOpen, handleFiltersOpen, renderedProps }) => {
                 paddingBottom: 1,
             }}
         >
-            {!filtersOpen && (
-                <Button onClick={handleFiltersOpen}>Filters</Button>
+            {!isFiltersOpen && (
+                <Button onClick={toggleIsFiltersOpen}>Filters</Button>
             )}
-            {filtersOpen && (
+            {isFiltersOpen && (
                 <>
                     <Box
                         sx={{
@@ -441,7 +441,9 @@ const TableFilter = ({ filtersOpen, handleFiltersOpen, renderedProps }) => {
                         }}
                     >
                         {/* this button will call function to set filters on table */}
-                        <Button onClick={handleFiltersOpen}>Set Filters</Button>
+                        <Button onClick={toggleIsFiltersOpen}>
+                            Set Filters
+                        </Button>
                     </Box>
                     <Box
                         sx={{
@@ -451,12 +453,12 @@ const TableFilter = ({ filtersOpen, handleFiltersOpen, renderedProps }) => {
                         }}
                     >
                         {/* this button will call function to reset filters on table */}
-                        <Button onClick={handleFiltersOpen}>
+                        <Button onClick={toggleIsFiltersOpen}>
                             Reset Filters
                         </Button>
                     </Box>
                     <Box>
-                        <Button onClick={handleFiltersOpen}>
+                        <Button onClick={toggleIsFiltersOpen}>
                             Close Filters
                         </Button>
                     </Box>
