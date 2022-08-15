@@ -13,37 +13,32 @@ import { DoubleSortTable } from '../components/customComponents/DoubleSortTable'
 const headerColumns = [
     {
         columnName: 'Name',
-        initialSort: 'none',
         field: 'name',
         inputType: 'text',
+        dataTextAlign: 'left',
     },
     {
         columnName: 'Goals',
-        initialSort: 'none',
         field: 'goals',
         inputType: 'number',
     },
     {
         columnName: 'Assists',
-        initialSort: 'none',
         field: 'assists',
         inputType: 'number',
     },
     {
         columnName: 'Points',
-        initialSort: 'none',
         field: 'points',
         inputType: 'number',
     },
     {
         columnName: 'Weekly Games',
-        initialSort: 'none',
         field: 'weeklyGames',
         inputType: 'number',
     },
     {
         columnName: 'Off-Day Games',
-        initialSort: 'none',
         field: 'offDayGames',
         inputType: 'number',
     },
@@ -130,6 +125,14 @@ export const Skaters = ({ isMobileSize }) => {
                     <DoubleSortTable
                         columnConfig={headerColumns}
                         rowConfig={rowData}
+                        initialPrimaryField={{
+                            field: 'points',
+                            sortStatus: 'desc',
+                        }}
+                        // initialSecondaryField={{
+                        //     field: 'goals',
+                        //     sortStatus: 'desc',
+                        // }}
                         colsToHide={isMobileSize ? [1] : []}
                         tableBorder={`2px solid ${palette.gtBlue}`}
                         outerRadius={3}
@@ -140,19 +143,8 @@ export const Skaters = ({ isMobileSize }) => {
                         headerArrowColor={palette.gtBlue}
                         dataBgColor={'white'}
                         dataTextColor={palette.gtBlue}
-                        stylingProps={{
-                            tableBorder: `2px solid ${palette.gtBlue}`,
-                            outerRadius: 3,
-                            rowEndBorder: `2px solid #00000035`,
-                            rowBottomBorder: `2px solid #00000035`,
-                            headerBgColor: 'transparent',
-                            headerTextColor: palette.gtRed,
-                            headerArrowColor: palette.gtBlue,
-                            dataBgColor: 'white',
-                            dataTextColor: palette.gtBlue,
-                            // How to do this?
-                            // dataTextAlign: cellKey === 'name' ? 'left' : 'center',
-                        }}
+                        // How to do this?
+                        // dataTextAlign: cellKey === 'name' ? 'left' : 'center',
                     />
                 </Container>
                 <Container sx={playersSx.skatersPopContainer}>

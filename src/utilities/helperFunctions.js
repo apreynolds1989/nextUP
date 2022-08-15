@@ -19,8 +19,8 @@ export const sortPrimary = (rowsArr, colField, isAsc) => {
             cellA = copiedArr[i];
             cellB = copiedArr[i + 1];
             shouldSwitch = isAsc ?
-                checkSortAsc(cellA, cellB, colField) :
-                checkSortDesc(cellA, cellB, colField);
+                checkSortDesc(cellA, cellB, colField) :
+                checkSortAsc(cellA, cellB, colField);
             if (shouldSwitch) {
                 swapArrElements(copiedArr, i);
                 switchHappened = true;
@@ -30,7 +30,7 @@ export const sortPrimary = (rowsArr, colField, isAsc) => {
     return copiedArr;
 };
 
-const sortSecondary = (rowsArr, colField, primarySort, isAsc) => {
+export const sortSecondary = (rowsArr, colField, primarySort, isAsc) => {
     let switchHappened, cellA, cellB, shouldSwitch;
     let copiedArr = [...rowsArr];
     switchHappened = true;
@@ -45,8 +45,8 @@ const sortSecondary = (rowsArr, colField, primarySort, isAsc) => {
             // now compare based on equal values in primarySort
             if (cellA[primarySort] === cellB[primarySort]) {
                 shouldSwitch = isAsc ?
-                    checkSortAsc(cellA, cellB, colField) :
-                    checkSortDesc(cellA, cellB, colField);
+                    checkSortDesc(cellA, cellB, colField) :
+                    checkSortAsc(cellA, cellB, colField);
                 if (shouldSwitch) {
                     swapArrElements(copiedArr, i);
                     switchHappened = true;
