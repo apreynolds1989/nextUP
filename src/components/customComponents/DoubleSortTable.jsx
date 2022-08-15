@@ -106,7 +106,7 @@ const DoubleSortTableHeader = ({
     rowOrder,
     setRowOrder,
     colsToHide,
-    ...renderedProps
+    renderedProps,
 }) => {
     const [primarySort, setPrimarySort] = useState('');
     const [primarySortIsAsc, setPrimarySortIsAsc] = useState();
@@ -146,7 +146,7 @@ const DoubleSortTableHeader = ({
         <Box
             sx={{
                 display: 'table-row',
-                backgroundColor: renderedProps.renderedProps.headerBgColor,
+                backgroundColor: renderedProps.headerBgColor,
             }}
         >
             {columnConfig.map((column, index) => (
@@ -194,7 +194,7 @@ const ColumnHeaderText = ({
     rowOrder,
     setRowOrder,
     colsToHide,
-    ...renderedProps
+    renderedProps,
 }) => {
     const [sortStatus, setSortStatus] = useState('');
     // variables to set which icon will show when sorting
@@ -262,8 +262,7 @@ const ColumnHeaderText = ({
     const endBorder =
         colNum === columnConfig.length - 1
             ? '0px'
-            : renderedProps.renderedProps.renderedProps.headerInnerBorder ||
-              renderedProps.renderedProps.renderedProps.tableBorder;
+            : renderedProps.headerInnerBorder || renderedProps.tableBorder;
 
     return (
         <Box
@@ -272,9 +271,8 @@ const ColumnHeaderText = ({
                 textAlign: 'center',
                 borderRight: endBorder,
                 borderBottom:
-                    renderedProps.renderedProps.renderedProps
-                        .headerInnerBorder ||
-                    renderedProps.renderedProps.renderedProps.tableBorder,
+                    renderedProps.headerInnerBorder ||
+                    renderedProps.tableBorder,
             }}
         >
             <Button
@@ -286,11 +284,8 @@ const ColumnHeaderText = ({
                 <Typography
                     sx={{
                         paddingRight: 2,
-                        textAlign:
-                            renderedProps.renderedProps.renderedProps
-                                .headerTextAlign,
-                        color: renderedProps.renderedProps.renderedProps
-                            .headerTextColor,
+                        textAlign: renderedProps.headerTextAlign,
+                        color: renderedProps.headerTextColor,
                     }}
                 >
                     {columnName}
@@ -304,36 +299,24 @@ const ColumnHeaderText = ({
                     {sortStatus === 'asc' ? (
                         <FontAwesomeIcon
                             icon={iconUp}
-                            color={
-                                renderedProps.renderedProps.renderedProps
-                                    .headerArrowColor
-                            }
+                            color={renderedProps.headerArrowColor}
                         />
                     ) : (
                         <FontAwesomeIcon
                             icon={iconUp}
-                            color={
-                                renderedProps.renderedProps.renderedProps
-                                    .headerArrowColor
-                            }
+                            color={renderedProps.headerArrowColor}
                             style={{ opacity: 0.25 }}
                         />
                     )}
                     {sortStatus === 'desc' ? (
                         <FontAwesomeIcon
                             icon={iconDown}
-                            color={
-                                renderedProps.renderedProps.renderedProps
-                                    .headerArrowColor
-                            }
+                            color={renderedProps.headerArrowColor}
                         />
                     ) : (
                         <FontAwesomeIcon
                             icon={iconDown}
-                            color={
-                                renderedProps.renderedProps.renderedProps
-                                    .headerArrowColor
-                            }
+                            color={renderedProps.headerArrowColor}
                             style={{ opacity: 0.25 }}
                         />
                     )}
@@ -343,7 +326,7 @@ const ColumnHeaderText = ({
     );
 };
 
-const DoubleSortTableRows = ({ rowOrder, colsToHide, ...renderedProps }) => {
+const DoubleSortTableRows = ({ rowOrder, colsToHide, renderedProps }) => {
     return rowOrder.map((row, rowIndex) => {
         const rowKeys = Object.keys(row);
         return (
@@ -386,18 +369,16 @@ const RowData = ({
     const endBorder =
         colNum === rowLength - 1
             ? '0px'
-            : renderedProps.renderedProps.rowEndBorder ||
-              renderedProps.renderedProps.tableBorder;
+            : renderedProps.rowEndBorder || renderedProps.tableBorder;
     const bottomBorder =
         rowNum + 1 === numberOfRows
             ? '0px'
-            : renderedProps.renderedProps.rowBottomBorder ||
-              renderedProps.renderedProps.tableBorder;
+            : renderedProps.rowBottomBorder || renderedProps.tableBorder;
     return (
         <Box
             sx={{
                 display: colDisplay,
-                backgroundColor: renderedProps.renderedProps.dataBgColor,
+                backgroundColor: renderedProps.dataBgColor,
                 borderRight: endBorder,
                 borderBottom: bottomBorder,
                 padding: 0.5,
@@ -406,8 +387,8 @@ const RowData = ({
             <Typography
                 sx={{
                     // textAlign: cellKey === 'name' ? 'left' : 'center',
-                    textAlign: renderedProps.renderedProps.dataTextAlign,
-                    color: renderedProps.renderedProps.dataTextColor,
+                    textAlign: renderedProps.dataTextAlign,
+                    color: renderedProps.dataTextColor,
                 }}
             >
                 {cellData}
@@ -474,13 +455,13 @@ const FilterColumnHeaders = ({
     rowOrder,
     setRowOrder,
     colsToHide,
-    ...renderedProps
+    renderedProps,
 }) => {
     return (
         <Box
             sx={{
                 display: 'table-row',
-                backgroundColor: renderedProps.renderedProps.headerBgColor,
+                backgroundColor: renderedProps.headerBgColor,
             }}
         >
             {columnConfig.map((column, index) => (
@@ -510,7 +491,7 @@ const FilterColumnHeaderForms = ({
     rowOrder,
     setRowOrder,
     colsToHide,
-    ...renderedProps
+    renderedProps,
 }) => {
     const [filterOperator, setFilterOperator] = useState('equal');
 
@@ -525,8 +506,7 @@ const FilterColumnHeaderForms = ({
     const endBorder =
         colNum === columnConfig.length - 1
             ? '0px'
-            : renderedProps.renderedProps.renderedProps.headerInnerBorder ||
-              renderedProps.renderedProps.renderedProps.tableBorder;
+            : renderedProps.headerInnerBorder || renderedProps.tableBorder;
 
     return (
         <Box
@@ -535,9 +515,9 @@ const FilterColumnHeaderForms = ({
                 padding: 1,
                 borderRight: endBorder,
                 // borderBottom:
-                //     renderedProps.renderedProps.renderedProps
+                //     renderedProps
                 //         .headerInnerBorder ||
-                //     renderedProps.renderedProps.renderedProps.tableBorder,
+                //     renderedProps.tableBorder,
             }}
         >
             <Box
