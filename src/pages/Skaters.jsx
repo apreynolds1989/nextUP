@@ -129,6 +129,7 @@ export const Skaters = ({ isMobileSize }) => {
                             field: 'points',
                             sortStatus: 'desc',
                         }}
+                        // This is not working ?
                         // initialSecondaryField={{
                         //     field: 'goals',
                         //     sortStatus: 'desc',

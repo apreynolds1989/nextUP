@@ -141,17 +141,17 @@ const DoubleSortTableHeader = ({
             setRowOrder(sortPrimary(rowOrder, primarySort, primarySortIsAsc));
             setIsInitialPrimarySort(false);
         }
-        // if (isInitialSecondarySort) {
-        //     setRowOrder(
-        //         sortSecondary(
-        //             rowOrder,
-        //             secondarySort,
-        //             primarySort,
-        //             secondarySortIsAsc,
-        //         ),
-        //     );
-        //     setIsInitialSecondarySort(false);
-        // }
+        if (isInitialSecondarySort) {
+            setRowOrder(
+                sortSecondary(
+                    rowOrder,
+                    secondarySort,
+                    primarySort,
+                    secondarySortIsAsc,
+                ),
+            );
+            setIsInitialSecondarySort(false);
+        }
         console.log(
             `Primary = ${primarySort} and Secondary = ${secondarySort}`,
         );
