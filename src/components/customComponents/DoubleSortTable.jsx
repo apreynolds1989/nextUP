@@ -15,17 +15,12 @@ import {
     Select,
     Typography,
 } from '@mui/material';
-import {
-    sortCol,
-    sortPrimary,
-    sortSecondary,
-} from '../../utilities/helperFunctions';
+import { sortCol, sortPrimary } from '../../utilities/helperFunctions';
 
 export const DoubleSortTable = ({
     columnConfig,
     rowConfig,
     initialPrimaryField,
-    initialSecondaryField,
     colsToHide = [],
     ...stylingProps
 }) => {
@@ -88,7 +83,6 @@ export const DoubleSortTable = ({
                     columnConfig={columnConfig}
                     rowConfig={rowConfig}
                     initialPrimaryField={initialPrimaryField}
-                    initialSecondaryField={initialSecondaryField}
                     clickedColumn={clickedColumn}
                     setClickedColumn={setClickedColumn}
                     rowOrder={rowOrder}
@@ -110,7 +104,6 @@ const DoubleSortTableHeader = ({
     columnConfig,
     rowConfig,
     initialPrimaryField,
-    initialSecondaryField,
     clickedColumn,
     setClickedColumn,
     rowOrder,
@@ -123,14 +116,9 @@ const DoubleSortTableHeader = ({
     );
     const [primarySortIsAsc, setPrimarySortIsAsc] = useState();
     const [secondarySortIsAsc, setSecondarySortIsAsc] = useState();
-    const [secondarySort, setSecondarySort] = useState(
-        initialSecondaryField ? initialSecondaryField.field : '',
-    );
+    const [secondarySort, setSecondarySort] = useState('');
     const [isInitialPrimarySort, setIsInitialPrimarySort] = useState(
         initialPrimaryField ? true : false,
-    );
-    const [isInitialSecondarySort, setIsInitialSecondarySort] = useState(
-        initialSecondaryField ? true : false,
     );
     useEffect(() => {
         // reset these states if either sort becomes empty
@@ -140,17 +128,6 @@ const DoubleSortTableHeader = ({
         if (isInitialPrimarySort) {
             setRowOrder(sortPrimary(rowOrder, primarySort, primarySortIsAsc));
             setIsInitialPrimarySort(false);
-        }
-        if (isInitialSecondarySort) {
-            setRowOrder(
-                sortSecondary(
-                    rowOrder,
-                    secondarySort,
-                    primarySort,
-                    secondarySortIsAsc,
-                ),
-            );
-            setIsInitialSecondarySort(false);
         }
         console.log(
             `Primary = ${primarySort} and Secondary = ${secondarySort}`,
@@ -163,7 +140,6 @@ const DoubleSortTableHeader = ({
         primarySortIsAsc,
         secondarySortIsAsc,
         isInitialPrimarySort,
-        isInitialSecondarySort,
         rowOrder,
         setRowOrder,
     ]);
@@ -198,7 +174,6 @@ const DoubleSortTableHeader = ({
                     columnConfig={columnConfig}
                     rowConfig={rowConfig}
                     initialPrimaryField={initialPrimaryField}
-                    initialSecondaryField={initialSecondaryField}
                     clickedColumn={clickedColumn}
                     setClickedColumn={setClickedColumn}
                     setPrimaryOrSetSecondary={setPrimaryOrSetSecondary}
@@ -227,7 +202,6 @@ const ColumnHeaderText = ({
     columnConfig,
     rowConfig,
     initialPrimaryField,
-    initialSecondaryField,
     clickedColumn,
     setClickedColumn,
     setPrimaryOrSetSecondary,
@@ -243,9 +217,8 @@ const ColumnHeaderText = ({
     renderedProps,
 }) => {
     const [sortStatus, setSortStatus] = useState(
-        (primarySort === field && initialPrimaryField) ||
-            (secondarySort === field && initialSecondaryField)
-            ? initialPrimaryField.sortStatus || initialSecondaryField.sortStatus
+        primarySort === field && initialPrimaryField
+            ? initialPrimaryField.sortStatus
             : 'none',
     );
     // variables to set which icon will show when sorting
