@@ -6,16 +6,10 @@ import {
     faAnglesUp,
     faAnglesDown,
 } from '@fortawesome/free-solid-svg-icons';
-import {
-    Box,
-    Button,
-    FormControl,
-    Input,
-    MenuItem,
-    Select,
-    Typography,
-} from '@mui/material';
+import { Box, Button, Typography } from '@mui/material';
 import { sortCol, sortPrimary } from '../../utilities/helperFunctions';
+import { TableFilterButtons } from './TableFilterButtons';
+import { FilterColumnHeaders } from './FilterColumnHeaders';
 
 export const DoubleSortTable = ({
     columnConfig,
@@ -56,8 +50,8 @@ export const DoubleSortTable = ({
                 flexDirection: 'column',
             }}
         >
-            <TableFilter
-                filtersOpen={isFiltersOpen}
+            <TableFilterButtons
+                isFiltersOpen={isFiltersOpen}
                 toggleIsFiltersOpen={toggleIsFiltersOpen}
                 renderedProps={renderedProps}
             />
@@ -72,9 +66,6 @@ export const DoubleSortTable = ({
                 {isFiltersOpen && (
                     <FilterColumnHeaders
                         columnConfig={columnConfig}
-                        rowConfig={rowConfig}
-                        rowOrder={rowOrder}
-                        setRowOrder={setRowOrder}
                         colsToHide={colsToHide}
                         renderedProps={renderedProps}
                     />
@@ -426,171 +417,6 @@ const RowData = ({
             >
                 {cellData}
             </Typography>
-        </Box>
-    );
-};
-
-// A filter button to open Filters row
-const TableFilter = ({ isFiltersOpen, toggleIsFiltersOpen, renderedProps }) => {
-    return (
-        <Box
-            sx={{
-                display: 'flex',
-                justifyContent: 'flex-end',
-                backgroundColor: renderedProps.headerBgColor,
-                paddingRight: 5,
-                paddingBottom: 1,
-            }}
-        >
-            {!isFiltersOpen && (
-                <Button onClick={toggleIsFiltersOpen}>Filters</Button>
-            )}
-            {isFiltersOpen && (
-                <>
-                    <Box
-                        sx={{
-                            borderRight:
-                                renderedProps.headerInnerBorder ||
-                                renderedProps.tableBorder,
-                        }}
-                    >
-                        {/* this button will call function to set filters on table */}
-                        <Button onClick={toggleIsFiltersOpen}>
-                            Set Filters
-                        </Button>
-                    </Box>
-                    <Box
-                        sx={{
-                            borderRight:
-                                renderedProps.headerInnerBorder ||
-                                renderedProps.tableBorder,
-                        }}
-                    >
-                        {/* this button will call function to reset filters on table */}
-                        <Button onClick={toggleIsFiltersOpen}>
-                            Reset Filters
-                        </Button>
-                    </Box>
-                    <Box>
-                        <Button onClick={toggleIsFiltersOpen}>
-                            Close Filters
-                        </Button>
-                    </Box>
-                </>
-            )}
-        </Box>
-    );
-};
-
-const FilterColumnHeaders = ({
-    columnConfig,
-    rowConfig,
-    rowOrder,
-    setRowOrder,
-    colsToHide,
-    renderedProps,
-}) => {
-    return (
-        <Box
-            sx={{
-                display: 'table-row',
-                backgroundColor: renderedProps.headerBgColor,
-            }}
-        >
-            {columnConfig.map((column, index) => (
-                <FilterColumnHeaderForms
-                    {...column}
-                    columnConfig={columnConfig}
-                    rowConfig={rowConfig}
-                    rowOrder={rowOrder}
-                    setRowOrder={setRowOrder}
-                    colsToHide={colsToHide}
-                    colNum={index}
-                    key={`column${index}`}
-                    renderedProps={renderedProps}
-                />
-            ))}
-        </Box>
-    );
-};
-
-const FilterColumnHeaderForms = ({
-    columnName,
-    field,
-    inputType,
-    colNum,
-    columnConfig,
-    rowConfig,
-    rowOrder,
-    setRowOrder,
-    colsToHide,
-    renderedProps,
-}) => {
-    const [filterOperator, setFilterOperator] = useState('equal');
-
-    const handleChange = (event) => {
-        setFilterOperator(event.target.value);
-    };
-
-    const ariaLabel = { 'aria-label': `${field} search box` };
-
-    const colDisplay = colsToHide.includes(colNum) ? 'none' : 'table-cell';
-
-    const endBorder =
-        colNum === columnConfig.length - 1
-            ? '0px'
-            : renderedProps.headerInnerBorder || renderedProps.tableBorder;
-
-    return (
-        <Box
-            sx={{
-                display: colDisplay,
-                padding: 1,
-                borderRight: endBorder,
-                // borderBottom:
-                //     renderedProps
-                //         .headerInnerBorder ||
-                //     renderedProps.tableBorder,
-            }}
-        >
-            <Box
-                sx={{
-                    display: 'flex',
-                    flexDirection: 'row',
-                }}
-            >
-                {inputType === 'number' && (
-                    <>
-                        <FormControl
-                            size='small'
-                            sx={{ minWidth: '65px', paddingRight: 1 }}
-                        >
-                            <Select
-                                value={filterOperator}
-                                autoWidth
-                                onChange={handleChange}
-                            >
-                                <MenuItem value={'equal'}>&#61;</MenuItem>
-                                <MenuItem value={'greaterThan'}>&#62;</MenuItem>
-                                <MenuItem value={'greatThanOrEqual'}>
-                                    &#62;&#61;
-                                </MenuItem>
-                                <MenuItem value={'lessThan'}>&#60;</MenuItem>
-                                <MenuItem value={'lessThanOrEqual'}>
-                                    &#60;&#61;
-                                </MenuItem>
-                            </Select>
-                        </FormControl>
-                        <Input
-                            placeholder='Filter by:'
-                            inputProps={ariaLabel}
-                        />
-                    </>
-                )}
-                {inputType === 'text' && (
-                    <Input placeholder='Search...' inputProps={ariaLabel} />
-                )}
-            </Box>
         </Box>
     );
 };

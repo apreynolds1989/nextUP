@@ -119,7 +119,7 @@ export const Skaters = ({ isMobileSize }) => {
                 <Container
                     sx={{
                         minWidth: '1000px',
-                        border: '2px solid red',
+                        // border: '2px solid red',
                     }}
                 >
                     <DoubleSortTable

@@ -81,7 +81,7 @@ export const playersSx = {
             lg: '400px',
             xl: '450px',
         },
-        border: '2px solid green',
+        // border: '2px solid green',
         minWidth: '400px',
     },
     goaliesPopContainer: {
@@ -96,7 +96,7 @@ export const playersSx = {
             lg: '400px',
             xl: '450px',
         },
-        border: '2px solid green',
+        // border: '2px solid green',
         minWidth: '400px',
     },
 };
