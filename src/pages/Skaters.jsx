@@ -8,7 +8,7 @@ import {
 import { Container } from '@mui/system';
 import { Banner } from '../components/Banner';
 import { Typography } from '@mui/material';
-import { DoubleSortTable } from '../components/customComponents/DoubleSortTable';
+import { DoubleSortTable } from '../components/customTableComponents/DoubleSortTable';
 
 const headerColumns = [
     {
