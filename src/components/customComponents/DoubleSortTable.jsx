@@ -212,6 +212,17 @@ const ColumnHeaderText = ({
             ? initialPrimaryField.sortStatus
             : 'none',
     );
+
+    // Remove sort icon on columns as new columns are clicked
+    // Maintain sort icons on secondarySort and primarySort fields if one of those is clicked
+    if (
+        clickedColumn !== field &&
+        sortStatus !== 'none' &&
+        primarySort !== field &&
+        secondarySort !== field
+    )
+        setSortStatus('none');
+
     // variables to set which icon will show when sorting
     const iconUp = field === primarySort ? faAnglesUp : faAngleUp;
     const iconDown = field === primarySort ? faAnglesDown : faAngleDown;
@@ -238,19 +249,6 @@ const ColumnHeaderText = ({
         setPrimarySortIsAsc,
         setSecondarySortIsAsc,
     ]);
-
-    // Remove sort icon on columns as new columns are clicked
-    if (
-        clickedColumn !== field &&
-        sortStatus !== 'none' &&
-        primarySort !== field
-    ) {
-        // Keep icon on secondarySort if primarySort field is clicked
-        if (primarySort === clickedColumn && secondarySort === field) {
-            // Is there a better way to do this? I feel like there is
-            console.log(sortStatus);
-        } else setSortStatus('none');
-    }
 
     // calls in functions from helperFunctions.js
     const toggleSort = (e) => {
