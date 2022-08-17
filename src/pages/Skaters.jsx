@@ -1,13 +1,11 @@
 import React from 'react';
 import {
     palette,
-    playersSx,
     tableContainer,
     bannerSkaterBackground,
 } from '../assets/theme';
 import { Container } from '@mui/system';
 import { Banner } from '../components/Banner';
-import { Typography } from '@mui/material';
 import { DoubleSortTable } from '../components/customTableComponents/DoubleSortTable';
 
 const headerColumns = [
@@ -142,9 +140,6 @@ export const Skaters = ({ isMobileSize }) => {
                         // How to do this?
                         // dataTextAlign: cellKey === 'name' ? 'left' : 'center',
                     />
-                </Container>
-                <Container sx={playersSx.skatersPopContainer}>
-                    <Typography variant='h6'>Placeholder</Typography>
                 </Container>
             </Container>
         </>

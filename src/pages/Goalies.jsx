@@ -1,12 +1,7 @@
 import React from 'react';
-import {
-    bannerGoalieBackground,
-    playersSx,
-    tableContainer,
-} from '../assets/theme';
+import { bannerGoalieBackground, tableContainer } from '../assets/theme';
 import { Container } from '@mui/system';
 import { Banner } from '../components/Banner';
-import { Typography } from '@mui/material';
 
 export const Goalies = () => {
     return (
@@ -28,9 +23,6 @@ export const Goalies = () => {
                     }}
                 >
                     Table to come
-                </Container>
-                <Container sx={playersSx.goaliesPopContainer}>
-                    <Typography variant='h6'>Placeholder</Typography>
                 </Container>
             </Container>
         </>

@@ -1,7 +1,5 @@
 import { createTheme } from '@mui/material';
 import '@fontsource/lato';
-import whiteSkaterBackground from '../assets/img/whiteSkater.png';
-import whiteGoalieMaskBackground from '../assets/img/whiteGoalieMask.png';
 import skaterBackground from '../assets/img/skaterBackground.png';
 import goalieBackground from '../assets/img/goalieBackground.png';
 import scheduleBackground from '../assets/img/calendar.png';
@@ -67,39 +65,6 @@ export const landingTheme = createTheme({
         },
     },
 });
-
-export const playersSx = {
-    skatersPopContainer: {
-        backgroundImage: `url(${whiteSkaterBackground})`,
-        backgroundRepeat: 'no-repeat',
-        backgroundPosition: 'top',
-        // backgroundSize: 'cover',
-        height: {
-            xs: '200px',
-            sm: '250px',
-            md: '325px',
-            lg: '400px',
-            xl: '450px',
-        },
-        // border: '2px solid green',
-        minWidth: '400px',
-    },
-    goaliesPopContainer: {
-        backgroundImage: `url(${whiteGoalieMaskBackground})`,
-        backgroundRepeat: 'no-repeat',
-        backgroundPosition: 'top',
-        backgroundSize: 'cover',
-        height: {
-            xs: '200px',
-            sm: '250px',
-            md: '325px',
-            lg: '400px',
-            xl: '450px',
-        },
-        // border: '2px solid green',
-        minWidth: '400px',
-    },
-};
 
 export const tableContainer = {
     borderRadius: 5,
