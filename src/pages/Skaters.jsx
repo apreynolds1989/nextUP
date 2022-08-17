@@ -15,7 +15,6 @@ const headerColumns = [
         columnName: 'Name',
         field: 'name',
         inputType: 'text',
-        dataTextAlign: 'left',
     },
     {
         columnName: 'Goals',
@@ -132,13 +131,14 @@ export const Skaters = ({ isMobileSize }) => {
                         colsToHide={isMobileSize ? [1] : []}
                         tableBorder={`2px solid ${palette.gtBlue}`}
                         outerRadius={3}
-                        rowEndBorder={`2px solid #00000035`}
-                        rowBottomBorder={`2px solid #00000035`}
                         headerBgColor={'transparent'}
                         headerTextColor={palette.gtRed}
                         headerArrowColor={palette.gtBlue}
-                        dataBgColor={'white'}
+                        dataBgColorOne={'transparent'}
+                        dataBgColorTwo={'white'}
                         dataTextColor={palette.gtBlue}
+                        leftAlignedFields={['name']}
+                        dataTextAlign={'left'}
                         // How to do this?
                         // dataTextAlign: cellKey === 'name' ? 'left' : 'center',
                     />

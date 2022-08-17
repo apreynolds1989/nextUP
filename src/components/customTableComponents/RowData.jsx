@@ -9,9 +9,20 @@ export const RowData = ({
     rowNum,
     cellKey,
     numberOfRows,
+    leftAlignedFields,
+    rightAlignedFields,
     renderedProps,
 }) => {
     const colDisplay = colsToHide.includes(colNum) ? 'none' : 'table-cell';
+    let textAlignment = 'center';
+    if (leftAlignedFields && leftAlignedFields.includes(cellKey))
+        textAlignment = 'left';
+    if (rightAlignedFields && rightAlignedFields.includes(cellKey))
+        textAlignment = 'right';
+    const backgroundColor =
+        rowNum % 2
+            ? renderedProps.dataBgColorOne
+            : renderedProps.dataBgColorTwo;
     const endBorder =
         colNum === rowLength - 1
             ? '0px'
@@ -24,16 +35,17 @@ export const RowData = ({
         <Box
             sx={{
                 display: colDisplay,
-                backgroundColor: renderedProps.dataBgColor,
+                backgroundColor: backgroundColor,
                 borderRight: endBorder,
                 borderBottom: bottomBorder,
-                padding: 0.5,
+                paddingX: 1,
+                paddingY: 2,
             }}
         >
             <Typography
                 sx={{
-                    // textAlign: cellKey === 'name' ? 'left' : 'center',
-                    textAlign: renderedProps.dataTextAlign,
+                    textAlign: textAlignment,
+                    // textAlign: renderedProps.dataTextAlign,
                     color: renderedProps.dataTextColor,
                 }}
             >

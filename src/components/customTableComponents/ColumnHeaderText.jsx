@@ -115,9 +115,7 @@ export const ColumnHeaderText = ({
                 display: colDisplay,
                 textAlign: 'center',
                 borderRight: endBorder,
-                borderBottom:
-                    renderedProps.headerInnerBorder ||
-                    renderedProps.tableBorder,
+                borderBottom: renderedProps.headerBottomBorder,
             }}
         >
             <Button

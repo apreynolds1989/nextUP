@@ -10,19 +10,23 @@ export const DoubleSortTable = ({
     rowConfig,
     initialPrimaryField,
     colsToHide = [],
+    leftAlignedFields,
+    rightAlignedFields,
     ...stylingProps
 }) => {
     const defaultProps = {
         tableBorder: `2px solid black`,
         outerRadius: 0,
-        headerInnerBorder: `2px solid black`,
-        rowEndBorder: `2px solid black`,
-        rowBottomBorder: `2px solid black`,
-        headerBgColor: 'white',
+        headerInnerBorder: `0px`,
+        headerBottomBorder: '2px solid #c6c6c6',
+        rowEndBorder: `0px`,
+        rowBottomBorder: `0px`,
+        headerBgColor: '#ECF0F1',
         headerTextColor: 'black',
         headerTextAlign: 'center',
         headerArrowColor: 'black',
-        dataBgColor: 'white',
+        dataBgColorOne: 'white',
+        dataBgColorTwo: '#ECF0F1',
         dataTextColor: 'black',
         dataTextAlign: 'center',
     };
@@ -78,6 +82,8 @@ export const DoubleSortTable = ({
                 <DoubleSortTableRows
                     rowOrder={rowOrder}
                     colsToHide={colsToHide}
+                    leftAlignedFields={leftAlignedFields}
+                    rightAlignedFields={rightAlignedFields}
                     renderedProps={renderedProps}
                 />
             </Box>

@@ -5,6 +5,8 @@ import { RowData } from './RowData';
 export const DoubleSortTableRows = ({
     rowOrder,
     colsToHide,
+    leftAlignedFields,
+    rightAlignedFields,
     renderedProps,
 }) => {
     return rowOrder.map((row, rowIndex) => {
@@ -27,6 +29,8 @@ export const DoubleSortTableRows = ({
                         rowNum={rowIndex}
                         key={`column${index}`}
                         cellKey={cellKey}
+                        leftAlignedFields={leftAlignedFields}
+                        rightAlignedFields={rightAlignedFields}
                         renderedProps={renderedProps}
                     />
                 ))}
