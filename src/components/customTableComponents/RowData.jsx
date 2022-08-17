@@ -38,8 +38,8 @@ export const RowData = ({
                 backgroundColor: backgroundColor,
                 borderRight: endBorder,
                 borderBottom: bottomBorder,
-                paddingX: 1,
-                paddingY: 2,
+                paddingX: renderedProps.dataPaddingX,
+                paddingY: renderedProps.dataPaddingY,
             }}
         >
             <Typography

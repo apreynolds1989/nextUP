@@ -29,6 +29,8 @@ export const DoubleSortTable = ({
         dataBgColorTwo: '#ECF0F1',
         dataTextColor: 'black',
         dataTextAlign: 'center',
+        dataPaddingX: 2,
+        dataPaddingY: 2,
     };
 
     // overide defaults with anything passed to stylingProps
