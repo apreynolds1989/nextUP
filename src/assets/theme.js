@@ -76,24 +76,23 @@ export const tableContainer = {
 
 export const bannerSX = {
     minWidth: '100vw',
-    marginTop: 18,
-    marginBottom: 8,
+    marginTop: 16,
+    marginBottom: 0,
     marginX: 0,
-    paddingBottom: 5,
+    paddingBottom: 3,
 };
 
 export const bannerSkaterBackground = {
     backgroundImage: `url(${skaterBackground})`,
     backgroundRepeat: 'no-repeat',
-    backgroundPosition: '-110px -35px',
-    backgroundSize: '480px',
+    backgroundSize: '125px',
 };
 
 export const bannerGoalieBackground = {
     backgroundImage: `url(${goalieBackground})`,
     backgroundRepeat: 'no-repeat',
-    backgroundPosition: '-80px -35px',
-    backgroundSize: '480px',
+    backgroundPosition: '140px 0px',
+    backgroundSize: '125px',
 };
 
 export const bannerScheduleBackground = {

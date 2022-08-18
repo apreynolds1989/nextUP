@@ -1,109 +1,27 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
     palette,
     tableContainer,
     bannerSkaterBackground,
+    bannerGoalieBackground,
 } from '../assets/theme';
 import { Container } from '@mui/system';
 import { Banner } from '../components/Banner';
+import { BannerPlayersToggle } from '../components/BannerPlayersToggle';
 import { DoubleSortTable } from '../components/customTableComponents/DoubleSortTable';
-
-const headerColumns = [
-    {
-        columnName: 'Name',
-        field: 'name',
-        inputType: 'text',
-    },
-    {
-        columnName: 'Goals',
-        field: 'goals',
-        inputType: 'number',
-    },
-    {
-        columnName: 'Assists',
-        field: 'assists',
-        inputType: 'number',
-    },
-    {
-        columnName: 'Points',
-        field: 'points',
-        inputType: 'number',
-    },
-    {
-        columnName: 'Weekly Games',
-        field: 'weeklyGames',
-        inputType: 'number',
-    },
-    {
-        columnName: 'Off-Day Games',
-        field: 'offDayGames',
-        inputType: 'number',
-    },
-];
-
-const rowData = [
-    {
-        name: 'Auston Matthews',
-        goals: 60,
-        assists: 46,
-        points: 106,
-        weeklyGames: 3,
-        offDayGames: 2,
-    },
-    {
-        name: 'Leon Draisaitl',
-        goals: 55,
-        assists: 55,
-        points: 110,
-        weeklyGames: 2,
-        offDayGames: 2,
-    },
-    {
-        name: 'Connor McDavid',
-        goals: 44,
-        assists: 79,
-        points: 123,
-        weeklyGames: 2,
-        offDayGames: 2,
-    },
-    {
-        name: 'Johnny Gaudreau',
-        goals: 40,
-        assists: 75,
-        points: 115,
-        weeklyGames: 4,
-        offDayGames: 1,
-    },
-    {
-        name: 'Mitch Marner',
-        goals: 40,
-        assists: 75,
-        points: 115,
-        weeklyGames: 3,
-        offDayGames: 2,
-    },
-    {
-        name: 'Sidney Crosby',
-        goals: 40,
-        assists: 55,
-        points: 95,
-        weeklyGames: 3,
-        offDayGames: 1,
-    },
-    {
-        name: 'Alex Ovechkin',
-        goals: 55,
-        assists: 60,
-        points: 115,
-        weeklyGames: 4,
-        offDayGames: 2,
-    },
-];
+import { skaterHeaders, skaterData } from '../assets/data/staticStats';
 
 export const Skaters = ({ isMobileSize }) => {
+    const [displayedTable, setDisplayedTable] = useState();
+
     return (
         <>
-            <Banner background={bannerSkaterBackground} title='SKATERS' />
+            <BannerPlayersToggle
+                backgroundOne={bannerSkaterBackground}
+                titleOne='SKATERS'
+                backgroundTwo={bannerGoalieBackground}
+                titleTwo='GOALIES'
+            />
             <Container
                 disableGutters
                 sx={{
@@ -120,8 +38,8 @@ export const Skaters = ({ isMobileSize }) => {
                     }}
                 >
                     <DoubleSortTable
-                        columnConfig={headerColumns}
-                        rowConfig={rowData}
+                        columnConfig={skaterHeaders}
+                        rowConfig={skaterData}
                         initialPrimaryField={{
                             field: 'points',
                             sortStatus: 'desc',
