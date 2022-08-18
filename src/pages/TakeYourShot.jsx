@@ -15,7 +15,7 @@ import { SchedulePuck } from '../components/SchedulePuck';
 import { Link } from 'react-router-dom';
 import { landingTheme } from '../assets/theme';
 
-export const Landing = () => {
+export const TakeYourShot = () => {
     return (
         <ThemeProvider theme={landingTheme}>
             <CssBaseline />
@@ -55,7 +55,7 @@ export const Landing = () => {
                             bgcolor: 'transparent',
                         }}
                     >
-                        <Link to='skaters'>
+                        <Link to='/nextUP/'>
                             <SkatersPuck />
                         </Link>
                     </Button>
@@ -66,8 +66,8 @@ export const Landing = () => {
                             bgcolor: 'transparent',
                         }}
                     >
-                        <Link to='goalies'>
-                            <GoaliesPuck />
+                        <Link to='/nextUP/schedule'>
+                            <SchedulePuck />
                         </Link>
                     </Button>
                 </Grid>
@@ -77,8 +77,8 @@ export const Landing = () => {
                             bgcolor: 'transparent',
                         }}
                     >
-                        <Link to='schedule'>
-                            <SchedulePuck />
+                        <Link to='/nextUP/about'>
+                            <GoaliesPuck />
                         </Link>
                     </Button>
                 </Grid>

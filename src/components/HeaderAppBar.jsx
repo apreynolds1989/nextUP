@@ -6,16 +6,8 @@ import { NextUpLogo } from './NextUpLogo';
 
 const pages = [
     {
-        title: 'Home',
+        title: 'Players',
         route: 'nextUP/',
-    },
-    {
-        title: 'Skaters',
-        route: 'nextUP/skaters',
-    },
-    {
-        title: 'Goalies',
-        route: 'nextUP/goalies',
     },
     {
         title: 'Schedule',
@@ -30,7 +22,7 @@ const pages = [
 export const HeaderAppBar = ({ isMobileSize }) => {
     const location = useLocation();
 
-    if (location.pathname === '/nextUP/') return null;
+    if (location.pathname === '/nextUP/takeYourShot') return null;
 
     return (
         <>

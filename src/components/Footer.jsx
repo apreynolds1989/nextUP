@@ -7,16 +7,8 @@ import { palette } from '../assets/theme';
 
 const pages = [
     {
-        title: 'Home',
+        title: 'Players',
         route: 'nextUP/',
-    },
-    {
-        title: 'Skaters',
-        route: 'nextUP/skaters',
-    },
-    {
-        title: 'Goalies',
-        route: 'nextUP/goalies',
     },
     {
         title: 'Schedule',
@@ -31,7 +23,7 @@ const pages = [
 export const Footer = () => {
     const location = useLocation();
 
-    if (location.pathname === '/nextUP/') return null;
+    if (location.pathname === '/nextUP/takeYourShot') return null;
 
     return (
         <>
@@ -74,7 +66,15 @@ export const Footer = () => {
                                 borderColor={palette.gtWhite}
                                 sx={{ paddingX: 5 }}
                             >
-                                <small>Take your shot.</small>
+                                <Link
+                                    to='/nextUp/takeYourShot'
+                                    style={{
+                                        textDecoration: 'none',
+                                        color: 'white',
+                                    }}
+                                >
+                                    <small>Take your shot.</small>
+                                </Link>
                             </Box>
                         </Box>
                         <Box
