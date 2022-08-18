@@ -1,11 +1,14 @@
 {
   "files": {
     "main.css": "/nextUP/static/css/main.165d9731.css",
-    "main.js": "/nextUP/static/js/main.2b4beabf.js",
+    "main.js": "/nextUP/static/js/main.ab18241b.js",
     "static/media/podium.jpg": "/nextUP/static/media/podium.4268ee60f4366537f9c5.jpg",
     "static/media/calendar.png": "/nextUP/static/media/calendar.776f9cfcfc130bb48182.png",
+    "static/media/SchedulePuck.png": "/nextUP/static/media/SchedulePuck.00a718af9107a993bfb2.png",
+    "static/media/PlayersPuck.png": "/nextUP/static/media/PlayersPuck.b98b01c5686a0c20a90c.png",
     "static/media/lato-all-400-normal.woff": "/nextUP/static/media/lato-all-400-normal.3dc1eff492ab1f598560.woff",
     "static/media/lato-all-700-normal.woff": "/nextUP/static/media/lato-all-700-normal.1e7707c9ec98d9b97e7f.woff",
+    "static/media/AboutPuck.png": "/nextUP/static/media/AboutPuck.6b3b15e7496808ec8ab7.png",
     "static/media/skaterBackground.png": "/nextUP/static/media/skaterBackground.0111145f5f09011c688b.png",
     "static/media/lato-latin-400-normal.woff2": "/nextUP/static/media/lato-latin-400-normal.be36596da218e1eec01c.woff2",
     "static/media/lato-latin-700-normal.woff2": "/nextUP/static/media/lato-latin-700-normal.8f28e0e1fdb195149f1c.woff2",
@@ -15,10 +18,10 @@
     "static/media/lato-latin-ext-700-normal.woff2": "/nextUP/static/media/lato-latin-ext-700-normal.9c8812eaec45956201e1.woff2",
     "index.html": "/nextUP/index.html",
     "main.165d9731.css.map": "/nextUP/static/css/main.165d9731.css.map",
-    "main.2b4beabf.js.map": "/nextUP/static/js/main.2b4beabf.js.map"
+    "main.ab18241b.js.map": "/nextUP/static/js/main.ab18241b.js.map"
   },
   "entrypoints": [
     "static/css/main.165d9731.css",
-    "static/js/main.2b4beabf.js"
+    "static/js/main.ab18241b.js"
   ]
 }
