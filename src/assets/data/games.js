@@ -32,25 +32,86 @@ export const weeklyGames = {
     Sunday: ['Home vs Away'],
 };
 
-export const teamsGames = {
-    anaheim: {
-        city: 'Anaheim',
-        name: 'Ducks',
-        games: ['Home', '', 'Away', '', '', 'Home', ''],
+export const teamScheduleHeaders = [{
+        columnName: 'Team',
+        field: 'team',
+        inputType: 'text',
     },
-    arizona: {
-        city: 'Arizona',
-        name: 'Coyotes',
-        games: ['Away', 'Away', '', '', '', '', 'Away'],
+    {
+        columnName: 'Monday',
+        field: 'monday',
+        inputType: 'text',
     },
-    boston: {
-        city: 'Boston',
-        name: 'Bruins',
-        games: ['Home', '', '', 'Home', 'Away', '', 'Away'],
+    {
+        columnName: 'Tuesday',
+        field: 'tuesday',
+        inputType: 'text',
     },
-    buffalo: {
-        city: 'Buffalo',
-        name: 'Sabres',
-        games: ['', 'Away', 'Home', '', 'Away', '', 'Away'],
+    {
+        columnName: 'Wednesday',
+        field: 'wednesday',
+        inputType: 'text',
     },
-};
+    {
+        columnName: 'Thursday',
+        field: 'thursday',
+        inputType: 'text',
+    },
+    {
+        columnName: 'Friday',
+        field: 'friday',
+        inputType: 'text',
+    },
+    {
+        columnName: 'Saturday',
+        field: 'saturday',
+        inputType: 'text',
+    },
+    {
+        columnName: 'Sunday',
+        field: 'sunday',
+        inputType: 'text',
+    },
+];
+
+export const teamScheduleData = [{
+        team: 'Anaheim',
+        monday: 'Arizona',
+        tuesday: '',
+        wednesday: 'Toronto',
+        thursday: '',
+        friday: '',
+        saturday: '@Boston',
+        sunday: '',
+    },
+    {
+        team: 'Arizona',
+        monday: '@Anaheim',
+        tuesday: '@Los Angelas',
+        wednesday: '',
+        thursday: '',
+        friday: '',
+        saturday: '',
+        sunday: 'Pittsburgh',
+    },
+    {
+        team: 'Boston',
+        monday: 'Toronto',
+        tuesday: '@Toronto',
+        wednesday: '',
+        thursday: '@Montreal',
+        friday: '',
+        saturday: 'Anaheim',
+        sunday: '',
+    },
+    {
+        team: 'Buffalo',
+        monday: '',
+        tuesday: 'Ottawa',
+        wednesday: 'Detroit',
+        thursday: '',
+        friday: '',
+        saturday: '@Detroi',
+        sunday: '',
+    },
+];

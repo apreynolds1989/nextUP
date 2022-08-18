@@ -5,7 +5,7 @@ import { Container } from '@mui/system';
 import { Banner } from '../components/zzzRedundantBanner';
 import { ScheduleToggler } from '../components/ScheduleToggler';
 
-export const Schedule = () => {
+export const Schedule = ({ isMobileSize }) => {
     return (
         <>
             <Banner background={bannerScheduleBackground} title='SCHEDULE' />
@@ -26,7 +26,7 @@ export const Schedule = () => {
                         paddingBottom: 2,
                     }}
                 >
-                    <ScheduleToggler />
+                    <ScheduleToggler isMobileSize={isMobileSize} />
                 </Box>
             </Container>
         </>

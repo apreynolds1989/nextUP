@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { Box, ToggleButton, ToggleButtonGroup } from '@mui/material';
 import { WeeklyGamesList } from './WeeklyGamesList';
-import { TeamWeeklyGamesList } from './TeamWeeklyGamesList';
+import { DoubleSortTable } from './customTableComponents/DoubleSortTable';
+import { teamScheduleHeaders, teamScheduleData } from '../assets/data/games';
+import { palette } from '../assets/theme';
 
-export const ScheduleToggler = () => {
+export const ScheduleToggler = ({ isMobileSize }) => {
     const [alignment, setAlignment] = useState('weekly');
     const handleChange = (event, newAlignment) => {
         setAlignment(newAlignment);
@@ -34,7 +36,23 @@ export const ScheduleToggler = () => {
                 </ToggleButtonGroup>
             </Box>
             {alignment === 'weekly' && <WeeklyGamesList />}
-            {alignment === 'teams' && <TeamWeeklyGamesList />}
+            {alignment === 'teams' && (
+                <DoubleSortTable
+                    columnConfig={teamScheduleHeaders}
+                    rowConfig={teamScheduleData}
+                    colsToHide={isMobileSize ? [1] : []}
+                    tableBorder={`2px solid ${palette.gtBlue}`}
+                    outerRadius={3}
+                    headerBgColor={'transparent'}
+                    headerTextColor={palette.gtRed}
+                    headerArrowColor={palette.gtBlue}
+                    dataBgColorOne={'transparent'}
+                    dataBgColorTwo={'white'}
+                    dataTextColor={palette.gtBlue}
+                    leftAlignedFields={['team']}
+                    dataTextAlign={'left'}
+                />
+            )}
         </>
     );
 };
