@@ -6,17 +6,23 @@ import {
     bannerGoalieBackground,
 } from '../assets/theme';
 import { Container } from '@mui/system';
-import { Banner } from '../components/Banner';
 import { BannerPlayersToggle } from '../components/BannerPlayersToggle';
 import { DoubleSortTable } from '../components/customTableComponents/DoubleSortTable';
-import { skaterHeaders, skaterData } from '../assets/data/staticStats';
+import {
+    goalieHeaders,
+    goalieData,
+    skaterHeaders,
+    skaterData,
+} from '../assets/data/staticStats';
 
 export const Skaters = ({ isMobileSize }) => {
-    const [displayedTable, setDisplayedTable] = useState();
+    const [displayedTable, setDisplayedTable] = useState('SKATERS');
 
     return (
         <>
             <BannerPlayersToggle
+                displayedTable={displayedTable}
+                setDisplayedTable={setDisplayedTable}
                 backgroundOne={bannerSkaterBackground}
                 titleOne='SKATERS'
                 backgroundTwo={bannerGoalieBackground}
@@ -37,27 +43,48 @@ export const Skaters = ({ isMobileSize }) => {
                         // border: '2px solid red',
                     }}
                 >
-                    <DoubleSortTable
-                        columnConfig={skaterHeaders}
-                        rowConfig={skaterData}
-                        initialPrimaryField={{
-                            field: 'points',
-                            sortStatus: 'desc',
-                        }}
-                        colsToHide={isMobileSize ? [1] : []}
-                        tableBorder={`2px solid ${palette.gtBlue}`}
-                        outerRadius={3}
-                        headerBgColor={'transparent'}
-                        headerTextColor={palette.gtRed}
-                        headerArrowColor={palette.gtBlue}
-                        dataBgColorOne={'transparent'}
-                        dataBgColorTwo={'white'}
-                        dataTextColor={palette.gtBlue}
-                        leftAlignedFields={['name']}
-                        dataTextAlign={'left'}
-                        // How to do this?
-                        // dataTextAlign: cellKey === 'name' ? 'left' : 'center',
-                    />
+                    {displayedTable === 'SKATERS' && (
+                        <DoubleSortTable
+                            columnConfig={skaterHeaders}
+                            rowConfig={skaterData}
+                            initialPrimaryField={{
+                                field: 'points',
+                                sortStatus: 'desc',
+                            }}
+                            colsToHide={isMobileSize ? [1] : []}
+                            tableBorder={`2px solid ${palette.gtBlue}`}
+                            outerRadius={3}
+                            headerBgColor={'transparent'}
+                            headerTextColor={palette.gtRed}
+                            headerArrowColor={palette.gtBlue}
+                            dataBgColorOne={'transparent'}
+                            dataBgColorTwo={'white'}
+                            dataTextColor={palette.gtBlue}
+                            leftAlignedFields={['name']}
+                            dataTextAlign={'left'}
+                        />
+                    )}
+                    {displayedTable === 'GOALIES' && (
+                        <DoubleSortTable
+                            columnConfig={goalieHeaders}
+                            rowConfig={goalieData}
+                            initialPrimaryField={{
+                                field: 'wins',
+                                sortStatus: 'desc',
+                            }}
+                            colsToHide={isMobileSize ? [1] : []}
+                            tableBorder={`2px solid ${palette.gtBlue}`}
+                            outerRadius={3}
+                            headerBgColor={'transparent'}
+                            headerTextColor={palette.gtRed}
+                            headerArrowColor={palette.gtBlue}
+                            dataBgColorOne={'transparent'}
+                            dataBgColorTwo={'white'}
+                            dataTextColor={palette.gtBlue}
+                            leftAlignedFields={['name']}
+                            dataTextAlign={'left'}
+                        />
+                    )}
                 </Container>
             </Container>
         </>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { bannerGoalieBackground, tableContainer } from '../assets/theme';
 import { Container } from '@mui/system';
-import { Banner } from '../components/Banner';
+import { Banner } from '../components/zzzRedundantBanner';
 
 export const Goalies = () => {
     return (

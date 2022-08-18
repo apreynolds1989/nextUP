@@ -1,4 +1,4 @@
-import { Box, Button, Typography } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import { Container } from '@mui/system';
 import React from 'react';
 import { bannerSX } from '../assets/theme';
@@ -6,6 +6,8 @@ import { BannerToggleButton } from './BannerToggleButton';
 import { ShootingPuck } from './ShootingPuck';
 
 export const BannerPlayersToggle = ({
+    displayedTable,
+    setDisplayedTable,
     backgroundOne,
     titleOne,
     backgroundTwo,
@@ -26,14 +28,22 @@ export const BannerPlayersToggle = ({
                         justifyContent: 'center',
                     }}
                 >
-                    <BannerToggleButton
-                        background={backgroundOne}
-                        title={titleOne}
-                    />
-                    <BannerToggleButton
-                        background={backgroundTwo}
-                        title={titleTwo}
-                    />
+                    <Box sx={{ paddingRight: 1 }}>
+                        <BannerToggleButton
+                            displayedTable={displayedTable}
+                            setDisplayedTable={setDisplayedTable}
+                            background={backgroundOne}
+                            title={titleOne}
+                        />
+                    </Box>
+                    <Box>
+                        <BannerToggleButton
+                            displayedTable={displayedTable}
+                            setDisplayedTable={setDisplayedTable}
+                            background={backgroundTwo}
+                            title={titleTwo}
+                        />
+                    </Box>
                 </Box>
                 <Box
                     sx={{

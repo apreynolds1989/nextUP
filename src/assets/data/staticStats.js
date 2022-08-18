@@ -94,8 +94,8 @@ export const goalieHeaders = [{
         inputType: 'text',
     },
     {
-        columnName: 'GamesStarted',
-        field: 'gamesPlayed',
+        columnName: 'Games Started',
+        field: 'gamesStarted',
         inputType: 'number',
     },
     {

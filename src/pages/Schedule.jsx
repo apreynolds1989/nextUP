@@ -2,7 +2,7 @@ import React from 'react';
 import { bannerScheduleBackground, tableContainer } from '../assets/theme';
 import { Box } from '@mui/material';
 import { Container } from '@mui/system';
-import { Banner } from '../components/Banner';
+import { Banner } from '../components/zzzRedundantBanner';
 import { ScheduleToggler } from '../components/ScheduleToggler';
 
 export const Schedule = () => {

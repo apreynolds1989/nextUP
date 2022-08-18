@@ -1,28 +1,37 @@
 import React from 'react';
-import { Box, Button, Typography } from '@mui/material';
+import { Button, Typography } from '@mui/material';
+import { palette } from '../assets/theme';
 
-export const BannerToggleButton = ({ background, title }) => {
+export const BannerToggleButton = ({
+    displayedTable,
+    setDisplayedTable,
+    background,
+    title,
+}) => {
     return (
-        <Button>
-            <Box
+        <Button
+            onClick={() => setDisplayedTable(title)}
+            sx={{
+                boxShadow: 1,
+                ...background,
+                backgroundColor:
+                    displayedTable === title
+                        ? `${palette.gtBlue}75`
+                        : `${palette.gtBlue}15`,
+            }}
+        >
+            <Typography
+                variant='h6'
                 sx={{
-                    boxShadow: 1,
-                    ...background,
+                    paddingX: 5,
+                    paddingY: 1,
+                    textAlign: 'center',
+                    fontWeight: 'bold',
+                    textDecoration: 'none',
                 }}
             >
-                <Typography
-                    variant='h4'
-                    sx={{
-                        paddingX: 7,
-                        paddingY: 3,
-                        textAlign: 'center',
-                        fontWeight: 'bold',
-                        textDecoration: 'none',
-                    }}
-                >
-                    {title}
-                </Typography>
-            </Box>
+                {title}
+            </Typography>
         </Button>
     );
 };

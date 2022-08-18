@@ -41,6 +41,9 @@ export const gtTheme = createTheme({
             textDecoration: 'underline',
             fontStyle: 'italic',
         },
+        h6: {
+            fontStyle: 'italic',
+        },
     },
 });
 
@@ -85,14 +88,15 @@ export const bannerSX = {
 export const bannerSkaterBackground = {
     backgroundImage: `url(${skaterBackground})`,
     backgroundRepeat: 'no-repeat',
-    backgroundSize: '125px',
+    backgroundPosition: '-5px 5px',
+    backgroundSize: '75px',
 };
 
 export const bannerGoalieBackground = {
     backgroundImage: `url(${goalieBackground})`,
     backgroundRepeat: 'no-repeat',
-    backgroundPosition: '140px 0px',
-    backgroundSize: '125px',
+    backgroundPosition: '115px 5px',
+    backgroundSize: '75px',
 };
 
 export const bannerScheduleBackground = {
