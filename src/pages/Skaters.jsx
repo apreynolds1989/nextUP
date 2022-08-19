@@ -62,7 +62,6 @@ export const Skaters = ({ isMobileSize }) => {
                             dataBgColorTwo={'white'}
                             dataTextColor={palette.gtBlue}
                             leftAlignedFields={['name']}
-                            dataTextAlign={'left'}
                         />
                     )}
                     {displayedTable === 'GOALIES' && (
@@ -84,7 +83,6 @@ export const Skaters = ({ isMobileSize }) => {
                             dataBgColorTwo={'white'}
                             dataTextColor={palette.gtBlue}
                             leftAlignedFields={['name']}
-                            dataTextAlign={'left'}
                         />
                     )}
                 </Container>

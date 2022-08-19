@@ -11,10 +11,11 @@ export const RowData = ({
     numberOfRows,
     leftAlignedFields,
     rightAlignedFields,
+    rowsWithEndBorders,
     renderedProps,
 }) => {
     const colDisplay = colsToHide.includes(colNum) ? 'none' : 'table-cell';
-    let textAlignment = 'center';
+    let textAlignment = renderedProps.dataTextAlign;
     if (leftAlignedFields && leftAlignedFields.includes(cellKey))
         textAlignment = 'left';
     if (rightAlignedFields && rightAlignedFields.includes(cellKey))
@@ -27,6 +28,9 @@ export const RowData = ({
         colNum === rowLength - 1
             ? '0px'
             : renderedProps.rowEndBorder || renderedProps.tableBorder;
+    const thisRowEndBorder = rowsWithEndBorders.includes(cellKey)
+        ? endBorder
+        : '0px';
     const bottomBorder =
         rowNum + 1 === numberOfRows
             ? '0px'
@@ -36,7 +40,7 @@ export const RowData = ({
             sx={{
                 display: colDisplay,
                 backgroundColor: backgroundColor,
-                borderRight: endBorder,
+                borderRight: thisRowEndBorder,
                 borderBottom: bottomBorder,
                 paddingX: renderedProps.dataPaddingX,
                 paddingY: renderedProps.dataPaddingY,

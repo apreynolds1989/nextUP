@@ -113,8 +113,8 @@ export const ColumnHeaderText = ({
     return (
         <Box
             sx={{
-                display: colDisplay,
                 textAlign: 'center',
+                display: colDisplay,
                 borderRight: endBorder,
                 borderBottom: renderedProps.headerBottomBorder,
             }}
@@ -176,8 +176,8 @@ export const ColumnHeaderText = ({
             {!isSortable && (
                 <Typography
                     sx={{
-                        paddingY: 2,
-                        paddingX: 4,
+                        paddingX: renderedProps.dataPaddingX,
+                        paddingY: renderedProps.dataPaddingY,
                         textAlign: renderedProps.headerTextAlign,
                         color: renderedProps.headerTextColor,
                         fontWeight: 'bold',

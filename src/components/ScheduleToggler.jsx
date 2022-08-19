@@ -46,11 +46,15 @@ export const ScheduleToggler = ({ isMobileSize }) => {
                     headerBgColor={'transparent'}
                     headerTextColor={palette.gtRed}
                     headerArrowColor={palette.gtBlue}
+                    rowsWithEndBorders={['team']}
+                    rowEndBorder={'2px solid #c6c6c6'}
                     dataBgColorOne={'transparent'}
                     dataBgColorTwo={'white'}
                     dataTextColor={palette.gtBlue}
                     leftAlignedFields={['team']}
                     dataTextAlign={'left'}
+                    dataPaddingX={3}
+                    dataPaddingY={3}
                 />
             )}
         </>

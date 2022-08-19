@@ -7,6 +7,7 @@ export const DoubleSortTableRows = ({
     colsToHide,
     leftAlignedFields,
     rightAlignedFields,
+    rowsWithEndBorders,
     renderedProps,
 }) => {
     return rowOrder.map((row, rowIndex) => {
@@ -31,6 +32,7 @@ export const DoubleSortTableRows = ({
                         cellKey={cellKey}
                         leftAlignedFields={leftAlignedFields}
                         rightAlignedFields={rightAlignedFields}
+                        rowsWithEndBorders={rowsWithEndBorders}
                         renderedProps={renderedProps}
                     />
                 ))}

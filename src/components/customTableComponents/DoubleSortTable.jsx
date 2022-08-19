@@ -11,8 +11,10 @@ export const DoubleSortTable = ({
     isSortable = false,
     initialPrimaryField,
     colsToHide = [],
-    leftAlignedFields,
-    rightAlignedFields,
+    leftAlignedFields = [],
+    rightAlignedFields = [],
+    rowsWithEndBorders = [],
+    rowsWithBottomBorders = [],
     ...stylingProps
 }) => {
     const defaultProps = {
@@ -90,6 +92,7 @@ export const DoubleSortTable = ({
                     colsToHide={colsToHide}
                     leftAlignedFields={leftAlignedFields}
                     rightAlignedFields={rightAlignedFields}
+                    rowsWithEndBorders={rowsWithEndBorders}
                     renderedProps={renderedProps}
                 />
             </Box>
