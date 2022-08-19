@@ -6,6 +6,7 @@ import { ColumnHeaderText } from './ColumnHeaderText';
 export const DoubleSortTableHeader = ({
     columnConfig,
     rowConfig,
+    isSortable,
     initialPrimaryField,
     clickedColumn,
     setClickedColumn,
@@ -76,6 +77,7 @@ export const DoubleSortTableHeader = ({
                     {...column}
                     columnConfig={columnConfig}
                     rowConfig={rowConfig}
+                    isSortable={isSortable}
                     initialPrimaryField={initialPrimaryField}
                     clickedColumn={clickedColumn}
                     setClickedColumn={setClickedColumn}

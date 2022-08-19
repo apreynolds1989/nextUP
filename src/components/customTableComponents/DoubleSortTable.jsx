@@ -8,6 +8,7 @@ import { DoubleSortTableHeader } from './DoubleSortTableHeader';
 export const DoubleSortTable = ({
     columnConfig,
     rowConfig,
+    isSortable = false,
     initialPrimaryField,
     colsToHide = [],
     leftAlignedFields,
@@ -73,6 +74,7 @@ export const DoubleSortTable = ({
                 <DoubleSortTableHeader
                     columnConfig={columnConfig}
                     rowConfig={rowConfig}
+                    isSortable={isSortable}
                     initialPrimaryField={initialPrimaryField}
                     clickedColumn={clickedColumn}
                     setClickedColumn={setClickedColumn}

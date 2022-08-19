@@ -15,6 +15,7 @@ export const ColumnHeaderText = ({
     colNum,
     columnConfig,
     rowConfig,
+    isSortable,
     initialPrimaryField,
     clickedColumn,
     setClickedColumn,
@@ -118,53 +119,66 @@ export const ColumnHeaderText = ({
                 borderBottom: renderedProps.headerBottomBorder,
             }}
         >
-            <Button
-                className='headerBtn'
-                data-field={field}
-                onClick={toggleSort}
-                sx={{ padding: 2 }}
-            >
+            {isSortable && (
+                <Button
+                    className='headerBtn'
+                    data-field={field}
+                    onClick={toggleSort}
+                    sx={{ padding: 2 }}
+                >
+                    <Typography
+                        sx={{
+                            paddingRight: 2,
+                            textAlign: renderedProps.headerTextAlign,
+                            color: renderedProps.headerTextColor,
+                        }}
+                    >
+                        {columnName}
+                    </Typography>
+                    <Box
+                        sx={{
+                            display: 'flex',
+                            flexDirection: 'column',
+                        }}
+                    >
+                        {sortStatus === 'asc' ? (
+                            <FontAwesomeIcon
+                                icon={iconUp}
+                                color={renderedProps.headerArrowColor}
+                            />
+                        ) : (
+                            <FontAwesomeIcon
+                                icon={iconUp}
+                                color={renderedProps.headerArrowColor}
+                                style={{ opacity: 0.25 }}
+                            />
+                        )}
+                        {sortStatus === 'desc' ? (
+                            <FontAwesomeIcon
+                                icon={iconDown}
+                                color={renderedProps.headerArrowColor}
+                            />
+                        ) : (
+                            <FontAwesomeIcon
+                                icon={iconDown}
+                                color={renderedProps.headerArrowColor}
+                                style={{ opacity: 0.25 }}
+                            />
+                        )}
+                    </Box>
+                </Button>
+            )}
+            {!isSortable && (
                 <Typography
                     sx={{
-                        paddingRight: 2,
+                        padding: 2,
                         textAlign: renderedProps.headerTextAlign,
                         color: renderedProps.headerTextColor,
                     }}
                 >
                     {columnName}
                 </Typography>
-                <Box
-                    sx={{
-                        display: 'flex',
-                        flexDirection: 'column',
-                    }}
-                >
-                    {sortStatus === 'asc' ? (
-                        <FontAwesomeIcon
-                            icon={iconUp}
-                            color={renderedProps.headerArrowColor}
-                        />
-                    ) : (
-                        <FontAwesomeIcon
-                            icon={iconUp}
-                            color={renderedProps.headerArrowColor}
-                            style={{ opacity: 0.25 }}
-                        />
-                    )}
-                    {sortStatus === 'desc' ? (
-                        <FontAwesomeIcon
-                            icon={iconDown}
-                            color={renderedProps.headerArrowColor}
-                        />
-                    ) : (
-                        <FontAwesomeIcon
-                            icon={iconDown}
-                            color={renderedProps.headerArrowColor}
-                            style={{ opacity: 0.25 }}
-                        />
-                    )}
-                </Box>
-            </Button>
+            )}
         </Box>
     );
 };

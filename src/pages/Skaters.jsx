@@ -47,6 +47,7 @@ export const Skaters = ({ isMobileSize }) => {
                         <DoubleSortTable
                             columnConfig={skaterHeaders}
                             rowConfig={skaterData}
+                            isSortable={true}
                             initialPrimaryField={{
                                 field: 'points',
                                 sortStatus: 'desc',
@@ -68,6 +69,7 @@ export const Skaters = ({ isMobileSize }) => {
                         <DoubleSortTable
                             columnConfig={goalieHeaders}
                             rowConfig={goalieData}
+                            isSortable={true}
                             initialPrimaryField={{
                                 field: 'wins',
                                 sortStatus: 'desc',
