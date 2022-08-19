@@ -45,8 +45,8 @@ export const RowData = ({
             <Typography
                 sx={{
                     textAlign: textAlignment,
-                    // textAlign: renderedProps.dataTextAlign,
                     color: renderedProps.dataTextColor,
+                    fontSize: renderedProps.dataTextSize,
                 }}
             >
                 {cellData}

@@ -124,13 +124,18 @@ export const ColumnHeaderText = ({
                     className='headerBtn'
                     data-field={field}
                     onClick={toggleSort}
-                    sx={{ padding: 2 }}
+                    sx={{
+                        padding: 2,
+                        textTransform: 'none',
+                    }}
                 >
                     <Typography
                         sx={{
                             paddingRight: 2,
                             textAlign: renderedProps.headerTextAlign,
                             color: renderedProps.headerTextColor,
+                            fontWeight: 'bold',
+                            fontSize: renderedProps.headerTextSize,
                         }}
                     >
                         {columnName}
@@ -171,9 +176,12 @@ export const ColumnHeaderText = ({
             {!isSortable && (
                 <Typography
                     sx={{
-                        padding: 2,
+                        paddingY: 2,
+                        paddingX: 4,
                         textAlign: renderedProps.headerTextAlign,
                         color: renderedProps.headerTextColor,
+                        fontWeight: 'bold',
+                        fontSize: renderedProps.headerTextSize,
                     }}
                 >
                     {columnName}
