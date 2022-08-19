@@ -15,7 +15,7 @@ import {
     skaterData,
 } from '../assets/data/staticStats';
 
-export const Skaters = ({ isMobileSize }) => {
+export const Players = ({ isMobileSize }) => {
     const [displayedTable, setDisplayedTable] = useState('SKATERS');
 
     return (

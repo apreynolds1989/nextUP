@@ -2,7 +2,7 @@ import React from 'react';
 import { HeaderAppBar } from './components/HeaderAppBar';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { TakeYourShot } from './pages/TakeYourShot';
-import { Skaters } from './pages/Skaters';
+import { Players } from './pages/Players';
 import { Footer } from './components/Footer';
 import { Schedule } from './pages/Schedule';
 import { About } from './pages/About';
@@ -14,7 +14,7 @@ export const Routing = ({ isMobileSize }) => {
             <Routes>
                 <Route
                     path='/nextUP/'
-                    element={<Skaters isMobileSize={isMobileSize} />}
+                    element={<Players isMobileSize={isMobileSize} />}
                 />
                 <Route
                     path='nextUP/schedule'
