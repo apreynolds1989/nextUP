@@ -9,6 +9,7 @@ export const DoubleSortTable = ({
     columnConfig,
     rowConfig,
     isSortable = false,
+    isFilterable = false,
     initialPrimaryField,
     colsToHide = [],
     leftAlignedFields = [],
@@ -55,11 +56,13 @@ export const DoubleSortTable = ({
                 flexDirection: 'column',
             }}
         >
-            <TableFilterButtons
-                isFiltersOpen={isFiltersOpen}
-                toggleIsFiltersOpen={toggleIsFiltersOpen}
-                renderedProps={renderedProps}
-            />
+            {isFilterable && (
+                <TableFilterButtons
+                    isFiltersOpen={isFiltersOpen}
+                    toggleIsFiltersOpen={toggleIsFiltersOpen}
+                    renderedProps={renderedProps}
+                />
+            )}
             <Box
                 sx={{
                     display: 'table',
@@ -68,7 +71,7 @@ export const DoubleSortTable = ({
                     overflow: 'hidden',
                 }}
             >
-                {isFiltersOpen && (
+                {isFilterable && isFiltersOpen && (
                     <FilterColumnHeaders
                         columnConfig={columnConfig}
                         colsToHide={colsToHide}

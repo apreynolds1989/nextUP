@@ -48,6 +48,7 @@ export const Skaters = ({ isMobileSize }) => {
                             columnConfig={skaterHeaders}
                             rowConfig={skaterData}
                             isSortable={true}
+                            isFilterable={true}
                             initialPrimaryField={{
                                 field: 'points',
                                 sortStatus: 'desc',
@@ -69,6 +70,7 @@ export const Skaters = ({ isMobileSize }) => {
                             columnConfig={goalieHeaders}
                             rowConfig={goalieData}
                             isSortable={true}
+                            isFilterable={true}
                             initialPrimaryField={{
                                 field: 'wins',
                                 sortStatus: 'desc',
