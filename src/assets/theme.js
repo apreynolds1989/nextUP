@@ -124,3 +124,13 @@ export const scheduleTableCellsSx = {
     minWidth: '125px',
     color: palette.gtBlue,
 };
+
+export const outerCardSx = {
+    borderRadius: 3,
+    padding: 1,
+    backgroundColor: palette.gtBlue,
+};
+
+export const innerCardSx = {
+    borderRadius: 5,
+};

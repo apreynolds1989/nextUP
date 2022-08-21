@@ -9,7 +9,7 @@ import {
 } from '@mui/material';
 import React from 'react';
 import { weeklyGames } from '../assets/data/games';
-import { palette } from '../assets/theme';
+import { outerCardSx, innerCardSx } from '../assets/theme';
 
 export const GameDayBox = ({ day }) => {
     const gamesArr = weeklyGames[day];
@@ -17,15 +17,13 @@ export const GameDayBox = ({ day }) => {
     return (
         <Card
             sx={{
-                borderRadius: 3,
-                padding: 1,
-                backgroundColor: palette.gtBlue,
+                ...outerCardSx,
             }}
         >
             <Card
                 sx={{
-                    borderRadius: 5,
                     maxWidth: '500px',
+                    ...innerCardSx,
                 }}
             >
                 <CardContent>
