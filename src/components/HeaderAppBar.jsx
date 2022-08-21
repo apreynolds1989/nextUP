@@ -55,12 +55,13 @@ export const HeaderAppBar = ({ isMobileSize }) => {
                                     variant='contained'
                                     key={page.title}
                                     sx={{
-                                        fontSize: {
-                                            xs: '14px',
-                                            sm: '18px',
-                                        },
+                                        fontSize: isMobileSize
+                                            ? '12px'
+                                            : '18px',
                                         marginX: 1,
-                                        minWidth: '125px',
+                                        minWidth: isMobileSize
+                                            ? '75px'
+                                            : '125px',
                                     }}
                                 >
                                     <NavLink
