@@ -70,18 +70,19 @@ export const landingTheme = createTheme({
 });
 
 export const tableContainer = {
-    borderRadius: 5,
     margin: 0,
-    minWidth: '100vw',
-    minHeight: '85vh',
+    width: '100vw',
+    // height: '85vh',
+    marginX: 'auto',
+    paddingBottom: 10,
     backgroundColor: `${palette.gtBlue}15`,
 };
 
 export const bannerSX = {
-    minWidth: '100vw',
+    width: '100vw',
     marginTop: 16,
     marginBottom: 0,
-    marginX: 0,
+    marginX: 'auto',
     paddingBottom: 3,
 };
 
@@ -102,8 +103,8 @@ export const bannerGoalieBackground = {
 export const bannerScheduleBackground = {
     backgroundImage: `url(${scheduleBackground})`,
     backgroundRepeat: 'no-repeat',
-    backgroundPosition: '0px -20px',
-    backgroundSize: '250px',
+    backgroundPosition: '-20vw -10vh',
+    backgroundSize: 'contain',
 };
 
 export const scheduleTableHeaderSx = {

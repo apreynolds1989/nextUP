@@ -4,6 +4,7 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import { NextUpLogo } from './NextUpLogo';
 import { palette } from '../assets/theme';
+import { Typography } from '@mui/material';
 
 const pages = [
     {
@@ -20,7 +21,7 @@ const pages = [
     },
 ];
 
-export const Footer = () => {
+export const Footer = ({ isMobileSize }) => {
     const location = useLocation();
 
     if (location.pathname === '/nextUP/takeYourShot') return null;
@@ -47,10 +48,13 @@ export const Footer = () => {
                                 xs: 'column-reverse',
                                 md: 'row',
                             },
+                            marginBottom: {
+                                xs: 3,
+                                md: 5,
+                            },
                         }}
                         justifyContent='space-around'
                         alignItems='center'
-                        mb={5}
                     >
                         <Box
                             display='flex'
@@ -73,7 +77,16 @@ export const Footer = () => {
                                         color: 'white',
                                     }}
                                 >
-                                    <small>Take your shot.</small>
+                                    <Typography
+                                        sx={{
+                                            fontSize: isMobileSize
+                                                ? '12px'
+                                                : '14px',
+                                            color: palette.gtWhite,
+                                        }}
+                                    >
+                                        Take your shot.
+                                    </Typography>
                                 </Link>
                             </Box>
                         </Box>
@@ -92,7 +105,7 @@ export const Footer = () => {
                                     md: 0,
                                 },
                                 marginBottom: {
-                                    xs: 5,
+                                    xs: 2,
                                     md: 0,
                                 },
                             }}
@@ -108,7 +121,9 @@ export const Footer = () => {
                                         sx={{
                                             my: 2,
                                             display: 'block',
-                                            fontSize: '14px',
+                                            fontSize: isMobileSize
+                                                ? '12px'
+                                                : '14px',
                                             borderRight: borderSize,
                                             borderColor: palette.gtWhite,
                                             borderRadius: 0,
@@ -131,7 +146,14 @@ export const Footer = () => {
                         alignItems='center'
                         mb={5}
                     >
-                        <small>Copyright &copy; 2022 - nextUP</small>
+                        <Typography
+                            sx={{
+                                fontSize: isMobileSize ? '10px' : '12px',
+                                color: palette.gtWhite,
+                            }}
+                        >
+                            Copyright &copy; 2022 - nextUP
+                        </Typography>
                     </Box>
                 </Box>
             </Box>

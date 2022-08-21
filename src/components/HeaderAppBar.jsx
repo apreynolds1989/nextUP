@@ -29,6 +29,9 @@ export const HeaderAppBar = ({ isMobileSize }) => {
             <AppBar
                 position='fixed'
                 style={{ backgroundColor: palette.gtBlue }}
+                sx={{
+                    width: '100vw',
+                }}
             >
                 <Container maxWidth='xl'>
                     <Toolbar disableGutters>

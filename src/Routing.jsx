@@ -23,7 +23,7 @@ export const Routing = ({ isMobileSize }) => {
                 <Route path='nextUP/about' element={<About />} />
                 <Route path='nextUP/takeYourShot' element={<TakeYourShot />} />
             </Routes>
-            <Footer />
+            <Footer isMobileSize={isMobileSize} />
         </BrowserRouter>
     );
 };

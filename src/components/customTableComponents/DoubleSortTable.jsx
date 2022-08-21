@@ -54,6 +54,8 @@ export const DoubleSortTable = ({
             sx={{
                 display: 'flex',
                 flexDirection: 'column',
+                width: '100%',
+                overflow: 'scroll',
             }}
         >
             {isFilterable && (

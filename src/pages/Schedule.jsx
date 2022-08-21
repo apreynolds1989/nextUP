@@ -7,6 +7,7 @@ import { BannerWithToggle } from '../components/BannerWithToggle';
 import { WeeklyGamesList } from '../components/WeeklyGamesList';
 import { DoubleSortTable } from '../components/customTableComponents/DoubleSortTable';
 import { teamScheduleHeaders, teamScheduleData } from '../assets/data/games';
+// import { bannerScheduleBackground } from '../assets/theme';
 
 export const Schedule = ({ isMobileSize }) => {
     const [displayedTable, setDisplayedTable] = useState('Weekly Schedule');
@@ -21,10 +22,11 @@ export const Schedule = ({ isMobileSize }) => {
             />
             <Container
                 disableGutters
+                maxWidth={false}
                 sx={{
-                    marginX: 0,
                     display: 'flex',
                     flexDirection: 'row',
+                    // ...bannerScheduleBackground,
                     ...tableContainer,
                 }}
             >

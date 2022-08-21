@@ -30,8 +30,8 @@ export const Players = ({ isMobileSize }) => {
             />
             <Container
                 disableGutters
+                maxWidth={false}
                 sx={{
-                    marginX: 0,
                     display: 'flex',
                     flexDirection: 'row',
                     ...tableContainer,
@@ -39,7 +39,7 @@ export const Players = ({ isMobileSize }) => {
             >
                 <Container
                     sx={{
-                        minWidth: '1000px',
+                        width: '100vw',
                         // border: '2px solid red',
                     }}
                 >
