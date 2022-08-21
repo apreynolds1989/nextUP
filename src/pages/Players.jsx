@@ -3,7 +3,9 @@ import {
     palette,
     tableContainer,
     bannerSkaterBackground,
+    bannerSkaterBackgroundMobile,
     bannerGoalieBackground,
+    bannerGoalieBackgroundMobile,
 } from '../assets/theme';
 import { Container } from '@mui/system';
 import { BannerWithToggle } from '../components/BannerWithToggle';
@@ -21,11 +23,20 @@ export const Players = ({ isMobileSize }) => {
     return (
         <>
             <BannerWithToggle
+                isMobileSize={isMobileSize}
                 displayedTable={displayedTable}
                 setDisplayedTable={setDisplayedTable}
-                buttonBackgroundOne={bannerSkaterBackground}
+                buttonBackgroundOne={
+                    isMobileSize
+                        ? bannerSkaterBackgroundMobile
+                        : bannerSkaterBackground
+                }
                 titleOne='SKATERS'
-                buttonBackgroundTwo={bannerGoalieBackground}
+                buttonBackgroundTwo={
+                    isMobileSize
+                        ? bannerGoalieBackgroundMobile
+                        : bannerGoalieBackground
+                }
                 titleTwo='GOALIES'
             />
             <Container

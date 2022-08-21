@@ -15,6 +15,7 @@ export const Schedule = ({ isMobileSize }) => {
     return (
         <>
             <BannerWithToggle
+                isMobileSize={isMobileSize}
                 displayedTable={displayedTable}
                 setDisplayedTable={setDisplayedTable}
                 titleOne='Weekly Schedule'

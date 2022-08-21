@@ -86,6 +86,14 @@ export const bannerSX = {
     paddingBottom: 3,
 };
 
+export const bannerSxMobile = {
+    width: '100vw',
+    marginTop: 10,
+    marginBottom: 0,
+    marginX: 'auto',
+    paddingBottom: 3,
+};
+
 export const bannerSkaterBackground = {
     backgroundImage: `url(${skaterBackground})`,
     backgroundRepeat: 'no-repeat',
@@ -93,11 +101,25 @@ export const bannerSkaterBackground = {
     backgroundSize: '75px',
 };
 
+export const bannerSkaterBackgroundMobile = {
+    backgroundImage: `url(${skaterBackground})`,
+    backgroundRepeat: 'no-repeat',
+    backgroundPosition: '0px 5px',
+    backgroundSize: '60px',
+};
+
 export const bannerGoalieBackground = {
     backgroundImage: `url(${goalieBackground})`,
     backgroundRepeat: 'no-repeat',
     backgroundPosition: '115px 5px',
     backgroundSize: '75px',
+};
+
+export const bannerGoalieBackgroundMobile = {
+    backgroundImage: `url(${goalieBackground})`,
+    backgroundRepeat: 'no-repeat',
+    backgroundPosition: '90px 5px',
+    backgroundSize: '60px',
 };
 
 export const bannerScheduleBackground = {

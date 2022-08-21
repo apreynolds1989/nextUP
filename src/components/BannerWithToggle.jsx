@@ -1,11 +1,12 @@
 import { Box, Typography } from '@mui/material';
 import { Container } from '@mui/system';
 import React from 'react';
-import { bannerSX } from '../assets/theme';
+import { bannerSX, bannerSxMobile } from '../assets/theme';
 import { BannerToggleButton } from './BannerToggleButton';
 import { ShootingPuck } from './ShootingPuck';
 
 export const BannerWithToggle = ({
+    isMobileSize,
     bannerBackground,
     displayedTable,
     setDisplayedTable,
@@ -14,8 +15,9 @@ export const BannerWithToggle = ({
     buttonBackgroundTwo,
     titleTwo,
 }) => {
+    const bannerProps = isMobileSize ? bannerSxMobile : bannerSX;
     return (
-        <Container sx={{ ...bannerBackground, ...bannerSX }}>
+        <Container sx={{ ...bannerBackground, ...bannerProps }}>
             <Box
                 sx={{
                     display: 'flex',
@@ -31,6 +33,7 @@ export const BannerWithToggle = ({
                 >
                     <Box sx={{ paddingRight: 1 }}>
                         <BannerToggleButton
+                            isMobileSize={isMobileSize}
                             displayedTable={displayedTable}
                             setDisplayedTable={setDisplayedTable}
                             buttonBackground={buttonBackgroundOne}
@@ -39,6 +42,7 @@ export const BannerWithToggle = ({
                     </Box>
                     <Box>
                         <BannerToggleButton
+                            isMobileSize={isMobileSize}
                             displayedTable={displayedTable}
                             setDisplayedTable={setDisplayedTable}
                             buttonBackground={buttonBackgroundTwo}
@@ -58,6 +62,7 @@ export const BannerWithToggle = ({
                         variant='body1'
                         sx={{
                             fontWeight: 'bold',
+                            fontSize: isMobileSize ? '12px' : '16px',
                             paddingLeft: 1,
                             alignSelf: 'center',
                         }}

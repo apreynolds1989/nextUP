@@ -3,6 +3,7 @@ import { Button, Typography } from '@mui/material';
 import { palette } from '../assets/theme';
 
 export const BannerToggleButton = ({
+    isMobileSize,
     displayedTable,
     setDisplayedTable,
     buttonBackground,
@@ -27,6 +28,7 @@ export const BannerToggleButton = ({
                     paddingY: 1,
                     textAlign: 'center',
                     fontWeight: 'bold',
+                    fontSize: isMobileSize ? '12px' : '20px',
                     textDecoration: 'none',
                 }}
             >
