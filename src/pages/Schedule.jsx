@@ -1,14 +1,24 @@
 import React from 'react';
-import { bannerScheduleBackground, tableContainer } from '../assets/theme';
+import { palette, tableContainer } from '../assets/theme';
 import { Box } from '@mui/material';
 import { Container } from '@mui/system';
-import { Banner } from '../components/zzzRedundantBanner';
-import { ScheduleToggler } from '../components/ScheduleToggler';
+import { useState } from 'react';
+import { BannerWithToggle } from '../components/BannerWithToggle';
+import { WeeklyGamesList } from '../components/WeeklyGamesList';
+import { DoubleSortTable } from '../components/customTableComponents/DoubleSortTable';
+import { teamScheduleHeaders, teamScheduleData } from '../assets/data/games';
 
 export const Schedule = ({ isMobileSize }) => {
+    const [displayedTable, setDisplayedTable] = useState('Weekly Schedule');
+
     return (
         <>
-            <Banner background={bannerScheduleBackground} title='SCHEDULE' />
+            <BannerWithToggle
+                displayedTable={displayedTable}
+                setDisplayedTable={setDisplayedTable}
+                titleOne='Weekly Schedule'
+                titleTwo='Team Schedules'
+            />
             <Container
                 disableGutters
                 sx={{
@@ -26,7 +36,30 @@ export const Schedule = ({ isMobileSize }) => {
                         paddingBottom: 2,
                     }}
                 >
-                    <ScheduleToggler isMobileSize={isMobileSize} />
+                    {displayedTable === 'Weekly Schedule' && (
+                        <WeeklyGamesList />
+                    )}
+                    {displayedTable === 'Team Schedules' && (
+                        <DoubleSortTable
+                            columnConfig={teamScheduleHeaders}
+                            rowConfig={teamScheduleData}
+                            colsToHide={isMobileSize ? [1] : []}
+                            tableBorder={`2px solid ${palette.gtBlue}`}
+                            outerRadius={3}
+                            headerBgColor={'transparent'}
+                            headerTextColor={palette.gtRed}
+                            headerArrowColor={palette.gtBlue}
+                            rowsWithEndBorders={['team']}
+                            rowEndBorder={'2px solid #c6c6c6'}
+                            dataBgColorOne={'transparent'}
+                            dataBgColorTwo={'white'}
+                            dataTextColor={palette.gtBlue}
+                            leftAlignedFields={['team']}
+                            dataTextAlign={'left'}
+                            dataPaddingX={3}
+                            dataPaddingY={3}
+                        />
+                    )}
                 </Box>
             </Container>
         </>

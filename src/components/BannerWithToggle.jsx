@@ -5,16 +5,17 @@ import { bannerSX } from '../assets/theme';
 import { BannerToggleButton } from './BannerToggleButton';
 import { ShootingPuck } from './ShootingPuck';
 
-export const BannerPlayersToggle = ({
+export const BannerWithToggle = ({
+    bannerBackground,
     displayedTable,
     setDisplayedTable,
-    backgroundOne,
+    buttonBackgroundOne,
     titleOne,
-    backgroundTwo,
+    buttonBackgroundTwo,
     titleTwo,
 }) => {
     return (
-        <Container sx={{ ...bannerSX }}>
+        <Container sx={{ ...bannerBackground, ...bannerSX }}>
             <Box
                 sx={{
                     display: 'flex',
@@ -32,7 +33,7 @@ export const BannerPlayersToggle = ({
                         <BannerToggleButton
                             displayedTable={displayedTable}
                             setDisplayedTable={setDisplayedTable}
-                            background={backgroundOne}
+                            buttonBackground={buttonBackgroundOne}
                             title={titleOne}
                         />
                     </Box>
@@ -40,7 +41,7 @@ export const BannerPlayersToggle = ({
                         <BannerToggleButton
                             displayedTable={displayedTable}
                             setDisplayedTable={setDisplayedTable}
-                            background={backgroundTwo}
+                            buttonBackground={buttonBackgroundTwo}
                             title={titleTwo}
                         />
                     </Box>

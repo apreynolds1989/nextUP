@@ -5,7 +5,7 @@ import { palette } from '../assets/theme';
 export const BannerToggleButton = ({
     displayedTable,
     setDisplayedTable,
-    background,
+    buttonBackground,
     title,
 }) => {
     return (
@@ -13,7 +13,7 @@ export const BannerToggleButton = ({
             onClick={() => setDisplayedTable(title)}
             sx={{
                 boxShadow: 1,
-                ...background,
+                ...buttonBackground,
                 backgroundColor:
                     displayedTable === title
                         ? `${palette.gtBlue}75`

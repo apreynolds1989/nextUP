@@ -6,7 +6,7 @@ import {
     bannerGoalieBackground,
 } from '../assets/theme';
 import { Container } from '@mui/system';
-import { BannerPlayersToggle } from '../components/BannerPlayersToggle';
+import { BannerWithToggle } from '../components/BannerWithToggle';
 import { DoubleSortTable } from '../components/customTableComponents/DoubleSortTable';
 import {
     goalieHeaders,
@@ -20,12 +20,12 @@ export const Players = ({ isMobileSize }) => {
 
     return (
         <>
-            <BannerPlayersToggle
+            <BannerWithToggle
                 displayedTable={displayedTable}
                 setDisplayedTable={setDisplayedTable}
-                backgroundOne={bannerSkaterBackground}
+                buttonBackgroundOne={bannerSkaterBackground}
                 titleOne='SKATERS'
-                backgroundTwo={bannerGoalieBackground}
+                buttonBackgroundTwo={bannerGoalieBackground}
                 titleTwo='GOALIES'
             />
             <Container

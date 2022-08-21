@@ -102,8 +102,8 @@ export const bannerGoalieBackground = {
 export const bannerScheduleBackground = {
     backgroundImage: `url(${scheduleBackground})`,
     backgroundRepeat: 'no-repeat',
-    backgroundPosition: '-80px -35px',
-    backgroundSize: '480px',
+    backgroundPosition: '0px -20px',
+    backgroundSize: '250px',
 };
 
 export const scheduleTableHeaderSx = {
