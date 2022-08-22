@@ -5,22 +5,39 @@ import { palette, podiumCardSx } from '../assets/theme';
 export const About = ({ isMobileSize }) => {
     const dynamicProps = isMobileSize ? null : podiumCardSx;
     return (
-        <Card sx={{ ...dynamicProps }}>
-            <CardContent>
+        <>
+            {isMobileSize && (
                 <Box
                     sx={{
                         display: 'flex',
-                        justifyContent: 'center',
-                        maxWidth: isMobileSize ? '100vw' : '80vw',
-                        marginX: isMobileSize ? 0 : 'auto',
-                        marginTop: isMobileSize ? 7 : 18,
-                        marginBottom: isMobileSize ? 0 : 50,
+                        minHeight: '60vh',
+                        margin: 0,
+                        marginTop: 7,
+                        backgroundColor: palette.gtWhite,
                     }}
                 >
                     <AboutUsTitleCard isMobileSize={isMobileSize} />
                 </Box>
-            </CardContent>
-        </Card>
+            )}
+            {!isMobileSize && (
+                <Card sx={{ ...podiumCardSx }}>
+                    <CardContent>
+                        <Box
+                            sx={{
+                                display: 'flex',
+                                justifyContent: 'center',
+                                maxWidth: isMobileSize ? '100vw' : '80vw',
+                                marginX: isMobileSize ? 0 : 'auto',
+                                marginTop: isMobileSize ? 7 : 18,
+                                marginBottom: isMobileSize ? 0 : 50,
+                            }}
+                        >
+                            <AboutUsTitleCard isMobileSize={isMobileSize} />
+                        </Box>
+                    </CardContent>
+                </Card>
+            )}
+        </>
     );
 };
 
@@ -29,8 +46,8 @@ const AboutUsTitleCard = ({ isMobileSize }) => {
         <Card
             sx={{
                 maxWidth: '1000px',
-                minHeight: isMobileSize ? '100vh' : null,
-                backgroundColor: palette.gtWhite,
+                // minHeight: isMobileSize ? '100vh' : null,
+                // backgroundColor: palette.gtWhite,
                 borderRadius: isMobileSize ? 0 : 5,
             }}
         >
@@ -40,21 +57,24 @@ const AboutUsTitleCard = ({ isMobileSize }) => {
                         display: 'flex',
                         flexDirection: 'column',
                         paddingTop: isMobileSize ? 3 : 1,
-                        paddingX: 3,
+                        paddingX: isMobileSize ? 1 : 2,
                     }}
                 >
-                    <Typography variant='h3'>
+                    <Typography
+                        variant={isMobileSize ? 'h4' : 'h3'}
+                        sx={{ textDecoration: 'none' }}
+                    >
                         <span style={{ color: palette.gtBlue }}>What is </span>
                         <span style={{ color: palette.gtRed }}>nextUP ?</span>
                     </Typography>
-                    <DescriptionCard />
+                    <DescriptionCard isMobileSize={isMobileSize} />
                 </Box>
             </CardContent>
         </Card>
     );
 };
 
-const DescriptionCard = () => {
+const DescriptionCard = ({ isMobileSize }) => {
     return (
         <Card
             sx={{
@@ -62,7 +82,7 @@ const DescriptionCard = () => {
                 borderRadius: 5,
                 padding: 2,
                 marginX: 'auto',
-                backgroundColor: palette.gtWhite,
+                backgroundColor: `${palette.gtBlue}15`,
             }}
         >
             <CardContent>
@@ -71,9 +91,10 @@ const DescriptionCard = () => {
                     sx={{
                         marginBottom: 1,
                         fontWeight: 'bold',
+                        fontSize: isMobileSize ? '12px' : '14px',
                     }}
                 >
-                    nextUP is a web app which tracks how many games every active
+                    nextUP is a web app that tracks how many games every active
                     NHL player will play in the given week (running from Monday
                     through Sunday), as well as their Off-Day Games (Monday,
                     Wednesday, Friday, Sunday). A wide variety of stats are
@@ -90,6 +111,7 @@ const DescriptionCard = () => {
                     sx={{
                         marginBottom: 1,
                         fontWeight: 'bold',
+                        fontSize: isMobileSize ? '12px' : '14px',
                     }}
                 >
                     Player "streaming" is a well established strategy in fantasy
