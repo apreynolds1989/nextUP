@@ -12,6 +12,7 @@ export const DoubleSortTableHeader = ({
     setClickedColumn,
     rowOrder,
     setRowOrder,
+    stickyCol,
     colsToHide,
     renderedProps,
 }) => {
@@ -90,6 +91,7 @@ export const DoubleSortTableHeader = ({
                     setSecondarySortIsAsc={setSecondarySortIsAsc}
                     rowOrder={rowOrder}
                     setRowOrder={setRowOrder}
+                    stickyCol={stickyCol}
                     colsToHide={colsToHide}
                     colNum={index}
                     key={`column${index}`}

@@ -9,6 +9,7 @@ export const palette = {
     gtWhite: '#ddddde',
     gtRed: '#c92323',
     gtBlue: '#252565',
+    gtGrey: '#ededf2',
 };
 
 export const gtTheme = createTheme({

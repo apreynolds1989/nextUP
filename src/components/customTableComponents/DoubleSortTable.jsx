@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Box } from '@mui/material';
+import { Box, useMediaQuery } from '@mui/material';
 import { TableFilterButtons } from './TableFilterButtons';
 import { FilterColumnHeaders } from './FilterColumnHeaders';
 import { DoubleSortTableRows } from './DoubleSortTableRows';
@@ -11,6 +11,7 @@ export const DoubleSortTable = ({
     isSortable = false,
     isFilterable = false,
     initialPrimaryField,
+    stickyCol = '',
     colsToHide = [],
     leftAlignedFields = [],
     rightAlignedFields = [],
@@ -18,6 +19,8 @@ export const DoubleSortTable = ({
     rowsWithBottomBorders = [],
     ...stylingProps
 }) => {
+    const isMobileSize = useMediaQuery('(max-width:600px)');
+
     const defaultProps = {
         tableBorder: `2px solid black`,
         outerRadius: 0,
@@ -27,16 +30,16 @@ export const DoubleSortTable = ({
         rowBottomBorder: `0px`,
         headerBgColor: '#ECF0F1',
         headerTextColor: 'black',
-        headerTextSize: '16px',
+        headerTextSize: isMobileSize ? '12px' : '16px',
         headerTextAlign: 'center',
         headerArrowColor: 'black',
         dataBgColorOne: 'white',
         dataBgColorTwo: '#ECF0F1',
         dataTextColor: 'black',
-        dataTextSize: '14px',
+        dataTextSize: isMobileSize ? '10px' : '14px',
         dataTextAlign: 'center',
         dataPaddingX: 2,
-        dataPaddingY: 2,
+        dataPaddingY: isMobileSize ? 1 : 2,
     };
 
     // overide defaults with anything passed to stylingProps
@@ -71,6 +74,7 @@ export const DoubleSortTable = ({
                     border: renderedProps.tableBorder,
                     borderRadius: renderedProps.outerRadius,
                     overflow: 'hidden',
+                    zIndex: 3,
                 }}
             >
                 {isFilterable && isFiltersOpen && (
@@ -89,11 +93,13 @@ export const DoubleSortTable = ({
                     setClickedColumn={setClickedColumn}
                     rowOrder={rowOrder}
                     setRowOrder={setRowOrder}
+                    stickyCol={stickyCol}
                     colsToHide={colsToHide}
                     renderedProps={renderedProps}
                 />
                 <DoubleSortTableRows
                     rowOrder={rowOrder}
+                    stickyCol={stickyCol}
                     colsToHide={colsToHide}
                     leftAlignedFields={leftAlignedFields}
                     rightAlignedFields={rightAlignedFields}

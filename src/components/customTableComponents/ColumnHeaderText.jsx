@@ -28,6 +28,7 @@ export const ColumnHeaderText = ({
     setSecondarySortIsAsc,
     rowOrder,
     setRowOrder,
+    stickyCol,
     colsToHide,
     renderedProps,
 }) => {
@@ -117,6 +118,11 @@ export const ColumnHeaderText = ({
                 display: colDisplay,
                 borderRight: endBorder,
                 borderBottom: renderedProps.headerBottomBorder,
+                // whiteSpace: 'nowrap',
+                // position: field === stickyCol ? 'absolute' : 'relative',
+                // left: field === stickyCol ? 'auto' : '125px',
+                // width: field === stickyCol ? '125px' : 'auto',
+                // zIndex: field === stickyCol ? 2 : 1,
             }}
         >
             {isSortable && (

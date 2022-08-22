@@ -44,6 +44,11 @@ export const RowData = ({
                 borderBottom: bottomBorder,
                 paddingX: renderedProps.dataPaddingX,
                 paddingY: renderedProps.dataPaddingY,
+                // whiteSpace: 'nowrap',
+                // position: cellKey === 'name' ? 'absolute' : 'static',
+                // left: cellKey === 'name' ? 'auto' : '150px',
+                // width: cellKey === 'name' ? '125px' : 'auto',
+                // zIndex: cellKey === 'name' ? 2 : 1,
             }}
         >
             <Typography

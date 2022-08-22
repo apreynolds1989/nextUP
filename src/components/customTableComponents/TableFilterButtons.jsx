@@ -13,7 +13,7 @@ export const TableFilterButtons = ({
                 display: 'flex',
                 justifyContent: 'flex-end',
                 backgroundColor: renderedProps.headerBgColor,
-                paddingRight: 5,
+                paddingRight: 1,
                 paddingBottom: 1,
             }}
         >

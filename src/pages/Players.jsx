@@ -70,13 +70,14 @@ export const Players = ({ isMobileSize }) => {
                                 field: 'points',
                                 sortStatus: 'desc',
                             }}
-                            colsToHide={isMobileSize ? [1] : []}
+                            stickyCol={'name'}
+                            // colsToHide={isMobileSize ? [1] : []}
                             tableBorder={`2px solid ${palette.gtBlue}`}
                             outerRadius={3}
-                            headerBgColor={'transparent'}
+                            headerBgColor={palette.gtGrey}
                             headerTextColor={palette.gtRed}
                             headerArrowColor={palette.gtBlue}
-                            dataBgColorOne={'transparent'}
+                            dataBgColorOne={palette.gtGrey}
                             dataBgColorTwo={'white'}
                             dataTextColor={palette.gtBlue}
                             leftAlignedFields={['name']}
@@ -92,13 +93,14 @@ export const Players = ({ isMobileSize }) => {
                                 field: 'wins',
                                 sortStatus: 'desc',
                             }}
-                            colsToHide={isMobileSize ? [1] : []}
+                            stickyCol={'name'}
+                            // colsToHide={isMobileSize ? [1] : []}
                             tableBorder={`2px solid ${palette.gtBlue}`}
                             outerRadius={3}
-                            headerBgColor={'transparent'}
+                            headerBgColor={palette.gtGrey}
                             headerTextColor={palette.gtRed}
                             headerArrowColor={palette.gtBlue}
-                            dataBgColorOne={'transparent'}
+                            dataBgColorOne={palette.gtGrey}
                             dataBgColorTwo={'white'}
                             dataTextColor={palette.gtBlue}
                             leftAlignedFields={['name']}
