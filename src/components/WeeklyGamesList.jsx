@@ -1,112 +1,32 @@
 import React from 'react';
 import { GameDayBox } from './GameDayBox';
 // import { palette } from '../assets/theme.js';
-import { Box, Grid } from '@mui/material';
+import { Box, Card, CardContent } from '@mui/material';
 
-export const WeeklyGamesList = () => {
+export const WeeklyGamesList = ({ isMobileSize }) => {
     return (
-        <Box
+        <Card
             sx={{
-                width: '35vw',
-                margin: 'auto',
+                padding: 2,
+                backgroundColor: 'white',
             }}
         >
-            <Grid container spacing={4} sx={{ justifyContent: 'center' }}>
-                <Grid item xs={12}>
-                    <Box
-                        sx={{
-                            display: 'flex',
-                        }}
-                    >
-                        <GameDayBox day='Monday' />
-                    </Box>
-                </Grid>
-                <Grid item xs={12}>
-                    <Box
-                        sx={{
-                            display: 'flex',
-                            justifyContent: 'flex-end',
-                        }}
-                    >
-                        <GameDayBox day='Tuesday' />
-                    </Box>
-                </Grid>
-                <Grid item xs={12}>
-                    <Box
-                        sx={{
-                            display: 'flex',
-                        }}
-                    >
-                        <GameDayBox day='Wednesday' />
-                    </Box>
-                </Grid>
-                <Grid item xs={12}>
-                    <Box
-                        sx={{
-                            display: 'flex',
-                            justifyContent: 'flex-end',
-                        }}
-                    >
-                        <GameDayBox day='Thursday' />
-                    </Box>
-                </Grid>
-                <Grid item xs={12}>
-                    <Box
-                        sx={{
-                            display: 'flex',
-                        }}
-                    >
-                        <GameDayBox day='Friday' />
-                    </Box>
-                </Grid>
-                <Grid item xs={12}>
-                    <Box
-                        sx={{
-                            display: 'flex',
-                            justifyContent: 'flex-end',
-                        }}
-                    >
-                        <GameDayBox day='Saturday' />
-                    </Box>
-                </Grid>
-                <Grid item xs={12}>
-                    <Box
-                        sx={{
-                            display: 'flex',
-                        }}
-                    >
-                        <GameDayBox day='Sunday' />
-                    </Box>
-                </Grid>
-            </Grid>
-        </Box>
-        // <Container
-        //     sx={{
-        //         display: 'flex',
-        //         flexDirection: 'row',
-        //     }}
-        // >
-        //     <Box
-        //         sx={{
-        //             flexDirection: 'column',
-        //             marginX: 1,
-        //         }}
-        //     >
-        //         <GameDayBox day='Monday' />
-        //         <GameDayBox day='Wednesday' />
-        //         <GameDayBox day='Friday' />
-        //         <GameDayBox day='Sunday' />
-        //     </Box>
-        //     <Box
-        //         sx={{
-        //             flexDirection: 'column',
-        //             marginX: 1,
-        //         }}
-        //     >
-        //         <GameDayBox day='Tuesday' />
-        //         <GameDayBox day='Thursday' />
-        //         <GameDayBox day='Saturday' />
-        //     </Box>
-        // </Container>
+            <CardContent>
+                <Box
+                    sx={{
+                        flexDirection: 'column',
+                        maxWidth: '900px',
+                    }}
+                >
+                    <GameDayBox day='Monday' />
+                    <GameDayBox day='Tuesday' />
+                    <GameDayBox day='Wednesday' />
+                    <GameDayBox day='Thursday' />
+                    <GameDayBox day='Friday' />
+                    <GameDayBox day='Saturday' />
+                    <GameDayBox day='Sunday' />
+                </Box>
+            </CardContent>
+        </Card>
     );
 };

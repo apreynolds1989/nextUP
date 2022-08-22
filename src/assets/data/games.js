@@ -35,7 +35,7 @@ export const weeklyGames = {
         '07:00PM ET - Minnesota Wild @ Seattle Kraken',
         '07:00PM ET - Dallas Stars @ Chicago Blackhawks',
     ],
-    Sunday: [],
+    Sunday: ['No Scheduled Games'],
 };
 
 export const teamScheduleHeaders = [{

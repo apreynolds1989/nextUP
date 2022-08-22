@@ -155,5 +155,5 @@ export const outerCardSx = {
 };
 
 export const innerCardSx = {
-    borderRadius: 5,
+    boxShadow: 0,
 };

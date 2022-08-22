@@ -33,14 +33,20 @@ export const Schedule = ({ isMobileSize }) => {
             >
                 <Box
                     sx={{
-                        margin: 'auto',
-                        minWidth: '750px',
+                        marginX: {
+                            xs: 0,
+                            md: 'auto',
+                        },
+                        minWidth: {
+                            xs: '100vw',
+                            md: '900px',
+                        },
                         marginY: 5,
                         paddingBottom: 2,
                     }}
                 >
                     {displayedTable === 'Weekly Schedule' && (
-                        <WeeklyGamesList />
+                        <WeeklyGamesList isMobileSize={isMobileSize} />
                     )}
                     {displayedTable === 'Team Schedules' && (
                         <DoubleSortTable

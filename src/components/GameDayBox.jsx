@@ -6,78 +6,78 @@ import {
     ListItemText,
     Card,
     CardContent,
+    useMediaQuery,
 } from '@mui/material';
 import React from 'react';
 import { weeklyGames } from '../assets/data/games';
-import { outerCardSx, innerCardSx } from '../assets/theme';
+import { palette, innerCardSx } from '../assets/theme';
 
 export const GameDayBox = ({ day }) => {
+    const is400pxOrSmaller = useMediaQuery('(max-width:400px)');
     const gamesArr = weeklyGames[day];
 
     return (
         <Card
             sx={{
-                ...outerCardSx,
+                margin: 2,
+                ...innerCardSx,
             }}
         >
-            <Card
-                sx={{
-                    maxWidth: '500px',
-                    ...innerCardSx,
-                }}
-            >
-                <CardContent>
+            <CardContent>
+                <Box
+                    sx={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                    }}
+                >
                     <Box
                         sx={{
-                            display: 'flex',
-                            flexDirection: 'column',
-                            maxWidth: '500px',
-                            alignItems: 'center',
-                            margin: 'auto',
+                            backgroundColor: `${palette.gtBlue}15`,
                         }}
                     >
-                        <Box>
-                            <Typography
-                                variant='h5'
-                                sx={{
-                                    textAlign: 'center',
-                                    fontWeight: 'bold',
-                                    paddingTop: 1,
-                                }}
-                            >
-                                {day}
-                            </Typography>
-                        </Box>
-                        <Box
+                        <Typography
+                            variant='h5'
                             sx={{
-                                minWidth: '400px',
-                                alignSelf: 'center',
+                                textAlign: 'left',
+                                fontWeight: 'bold',
+                                paddingTop: 1,
+                                paddingLeft: 2,
                             }}
                         >
-                            <List>
-                                {gamesArr.map((game, index) => (
-                                    <ListItem
-                                        key={`${day} Game ${index + 1}`}
-                                        sx={{
-                                            textAlign: 'center',
-                                            paddingY: 0,
-                                            fontSize: '12px',
-                                        }}
-                                    >
-                                        <ListItemText
-                                            primary={game}
-                                            primaryTypographyProps={{
-                                                fontSize: '14px',
-                                                textAlign: 'left',
-                                            }}
-                                        />
-                                    </ListItem>
-                                ))}
-                            </List>
-                        </Box>
+                            {day}
+                        </Typography>
                     </Box>
-                </CardContent>
-            </Card>
+                    <Box
+                        sx={
+                            {
+                                // width: is400pxOrSmaller ? '100vw' : '400px',
+                            }
+                        }
+                    >
+                        <List>
+                            {gamesArr.map((game, index) => (
+                                <ListItem
+                                    key={`${day} Game ${index + 1}`}
+                                    sx={{
+                                        textAlign: 'left',
+                                        paddingY: 0,
+                                    }}
+                                >
+                                    <ListItemText
+                                        primary={game}
+                                        primaryTypographyProps={{
+                                            fontSize: is400pxOrSmaller
+                                                ? '12px'
+                                                : '14px',
+                                            textAlign: 'left',
+                                        }}
+                                    />
+                                </ListItem>
+                            ))}
+                        </List>
+                    </Box>
+                </Box>
+            </CardContent>
         </Card>
     );
 };
