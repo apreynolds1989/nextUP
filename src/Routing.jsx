@@ -20,7 +20,10 @@ export const Routing = ({ isMobileSize }) => {
                     path='nextUP/schedule'
                     element={<Schedule isMobileSize={isMobileSize} />}
                 />
-                <Route path='nextUP/about' element={<About />} />
+                <Route
+                    path='nextUP/about'
+                    element={<About isMobileSize={isMobileSize} />}
+                />
                 <Route path='nextUP/takeYourShot' element={<TakeYourShot />} />
             </Routes>
             <Footer isMobileSize={isMobileSize} />

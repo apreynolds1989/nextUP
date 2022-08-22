@@ -3,6 +3,7 @@ import '@fontsource/lato';
 import skaterBackground from '../assets/img/skaterBackground.png';
 import goalieBackground from '../assets/img/goalieBackground.png';
 import scheduleBackground from '../assets/img/calendar.png';
+import podium from '../assets/img/podium.jpg';
 
 export const palette = {
     gtWhite: '#ddddde',
@@ -72,7 +73,6 @@ export const landingTheme = createTheme({
 export const tableContainer = {
     margin: 0,
     width: '100vw',
-    // height: '85vh',
     marginX: 'auto',
     paddingBottom: 10,
     backgroundColor: `${palette.gtBlue}15`,
@@ -148,10 +148,19 @@ export const scheduleTableCellsSx = {
     color: palette.gtBlue,
 };
 
-export const outerCardSx = {
-    borderRadius: 3,
-    padding: 1,
-    backgroundColor: palette.gtBlue,
+export const podiumCardSx = {
+    // width: '80vw',
+    // height: '80vh',
+    margin: 0,
+    width: '100vw',
+    marginX: 'auto',
+    paddingBottom: 10,
+    backgroundColor: `${palette.gtBlue}15`,
+    backgroundImage: `url(${podium})`,
+    backgroundRepeat: 'no-repeat',
+    backgroundPosition: 'center center',
+    backgroundSize: 'cover',
+    // borderRadius: 3,
 };
 
 export const innerCardSx = {
