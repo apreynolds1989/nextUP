@@ -16,6 +16,7 @@ import {
     skaterHeaders,
     skaterData,
 } from '../assets/data/staticStats';
+import { BannerText } from '../components/BannerText';
 
 export const Players = ({ isMobileSize }) => {
     const [displayedTable, setDisplayedTable] = useState('SKATERS');
@@ -38,6 +39,12 @@ export const Players = ({ isMobileSize }) => {
                         : bannerGoalieBackground
                 }
                 titleTwo='GOALIES'
+                bannerText={
+                    <BannerText
+                        isMobileSize={isMobileSize}
+                        text={'Player streaming made easy.'}
+                    />
+                }
             />
             <Container
                 disableGutters
@@ -51,7 +58,6 @@ export const Players = ({ isMobileSize }) => {
                 <Container
                     sx={{
                         width: '100vw',
-                        // border: '2px solid red',
                     }}
                 >
                     {displayedTable === 'SKATERS' && (

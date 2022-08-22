@@ -7,6 +7,7 @@ import { BannerWithToggle } from '../components/BannerWithToggle';
 import { WeeklyGamesList } from '../components/WeeklyGamesList';
 import { DoubleSortTable } from '../components/customTableComponents/DoubleSortTable';
 import { teamScheduleHeaders, teamScheduleData } from '../assets/data/games';
+import { BannerText } from '../components/BannerText';
 // import { bannerScheduleBackground } from '../assets/theme';
 
 export const Schedule = ({ isMobileSize }) => {
@@ -20,6 +21,12 @@ export const Schedule = ({ isMobileSize }) => {
                 setDisplayedTable={setDisplayedTable}
                 titleOne='Weekly Schedule'
                 titleTwo='Team Schedules'
+                bannerText={
+                    <BannerText
+                        isMobileSize={isMobileSize}
+                        text={'Player streaming made easy.'}
+                    />
+                }
             />
             <Container
                 disableGutters

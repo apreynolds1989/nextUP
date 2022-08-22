@@ -1,9 +1,8 @@
-import { Box, Typography } from '@mui/material';
+import { Box } from '@mui/material';
 import { Container } from '@mui/system';
 import React from 'react';
 import { bannerSX, bannerSxMobile } from '../assets/theme';
 import { BannerToggleButton } from './BannerToggleButton';
-import { ShootingPuck } from './ShootingPuck';
 
 export const BannerWithToggle = ({
     isMobileSize,
@@ -14,6 +13,7 @@ export const BannerWithToggle = ({
     titleOne,
     buttonBackgroundTwo,
     titleTwo,
+    bannerText,
 }) => {
     const bannerProps = isMobileSize ? bannerSxMobile : bannerSX;
     return (
@@ -50,27 +50,7 @@ export const BannerWithToggle = ({
                         />
                     </Box>
                 </Box>
-                <Box
-                    sx={{
-                        display: 'flex',
-                        flexDirection: 'row',
-                        justifyContent: 'center',
-                    }}
-                >
-                    <ShootingPuck width={50} height={50} />
-                    <Typography
-                        variant='body1'
-                        sx={{
-                            fontWeight: 'bold',
-                            fontSize: isMobileSize ? '12px' : '16px',
-                            paddingLeft: 1,
-                            alignSelf: 'center',
-                        }}
-                    >
-                        Some text here briefly describing what this table is
-                        for? Or maybe just a catchy line
-                    </Typography>
-                </Box>
+                {bannerText}
             </Box>
         </Container>
     );

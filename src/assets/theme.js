@@ -80,10 +80,10 @@ export const tableContainer = {
 
 export const bannerSX = {
     width: '100vw',
-    marginTop: 16,
+    marginTop: 17,
     marginBottom: 0,
     marginX: 'auto',
-    paddingBottom: 3,
+    paddingBottom: 2,
 };
 
 export const bannerSxMobile = {
@@ -91,7 +91,7 @@ export const bannerSxMobile = {
     marginTop: 10,
     marginBottom: 0,
     marginX: 'auto',
-    paddingBottom: 3,
+    paddingBottom: 1,
 };
 
 export const bannerSkaterBackground = {
@@ -127,25 +127,6 @@ export const bannerScheduleBackground = {
     backgroundRepeat: 'no-repeat',
     backgroundPosition: '-20vw -10vh',
     backgroundSize: 'contain',
-};
-
-export const scheduleTableHeaderSx = {
-    backgroundColor: palette.gtWhite,
-    borderRight: '1px solid black',
-    borderBottom: '1px solid black',
-    textAlign: 'center',
-    minWidth: '125px',
-    color: palette.gtRed,
-    fontWeight: 'bold',
-    fontSize: 16,
-};
-
-export const scheduleTableCellsSx = {
-    borderRight: '1px solid black',
-    // borderBottom: '1px solid black',
-    textAlign: 'center',
-    minWidth: '125px',
-    color: palette.gtBlue,
 };
 
 export const podiumCardSx = {
