@@ -24,7 +24,7 @@ const pages = [
 export const Footer = ({ isMobileSize }) => {
     const location = useLocation();
 
-    if (location.pathname === '/nextUP/takeYourShot') return null;
+    if (location.pathname === 'nextUP/takeYourShot') return null;
 
     return (
         <>
