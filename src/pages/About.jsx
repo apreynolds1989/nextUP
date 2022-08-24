@@ -9,25 +9,33 @@ export const About = ({ isMobileSize }) => {
                 <Box
                     sx={{
                         display: 'flex',
+                        alignItems: 'center',
                         minHeight: '60vh',
                         margin: 0,
                         marginTop: 7,
-                        backgroundColor: palette.gtWhite,
+                        backgroundColor: 'white',
                     }}
                 >
                     <AboutUsTitleCard isMobileSize={isMobileSize} />
                 </Box>
             )}
             {!isMobileSize && (
-                <Card sx={{ ...podiumCardSx }}>
-                    <CardContent>
+                <Card
+                    sx={{ ...podiumCardSx, overflow: 'visible', boxShadow: 0 }}
+                >
+                    <CardContent
+                        sx={{
+                            paddingTop: 0,
+                            paddingX: 0,
+                        }}
+                    >
                         <Box
                             sx={{
                                 display: 'flex',
                                 justifyContent: 'center',
-                                maxWidth: isMobileSize ? '100vw' : '80vw',
+                                maxWidth: isMobileSize ? '100vw' : '100vw',
                                 marginX: isMobileSize ? 0 : 'auto',
-                                marginTop: isMobileSize ? 7 : 18,
+                                marginTop: isMobileSize ? 7 : 0,
                                 marginBottom: isMobileSize ? 0 : 50,
                             }}
                         >
@@ -44,24 +52,35 @@ const AboutUsTitleCard = ({ isMobileSize }) => {
     return (
         <Card
             sx={{
-                maxWidth: '1000px',
+                width: '100vw',
                 // minHeight: isMobileSize ? '100vh' : null,
                 // backgroundColor: palette.gtWhite,
-                borderRadius: isMobileSize ? 0 : 5,
+                borderRadius: 0,
+                boxShadow: 0,
             }}
         >
-            <CardContent>
+            <CardContent
+                sx={{
+                    paddingX: 0,
+                }}
+            >
                 <Box
                     sx={{
                         display: 'flex',
                         flexDirection: 'column',
                         paddingTop: isMobileSize ? 3 : 1,
-                        paddingX: isMobileSize ? 1 : 2,
+                        paddingX: isMobileSize ? 1 : 0,
                     }}
                 >
                     <Typography
                         variant={isMobileSize ? 'h4' : 'h3'}
-                        sx={{ textDecoration: 'none' }}
+                        sx={{
+                            textDecoration: 'none',
+                            fontSize: {
+                                sm: '36px',
+                                md: '40px',
+                            },
+                        }}
                     >
                         <span style={{ color: palette.gtBlue }}>What is </span>
                         <span style={{ color: palette.gtRed }}>nextUP ?</span>
@@ -77,11 +96,14 @@ const DescriptionCard = ({ isMobileSize }) => {
     return (
         <Card
             sx={{
-                maxWidth: '900px',
-                borderRadius: 5,
-                padding: 2,
+                width: '100%',
+                borderTopLeftRadius: 15,
+                borderTopRightRadius: 15,
+                borderBottomLeftRadius: isMobileSize ? 15 : 0,
+                borderBottomRightRadius: isMobileSize ? 15 : 0,
                 marginX: 'auto',
                 backgroundColor: `${palette.gtBlue}15`,
+                boxShadow: 0,
             }}
         >
             <CardContent>
@@ -108,7 +130,7 @@ const DescriptionCard = ({ isMobileSize }) => {
                 <Typography
                     variant='body1'
                     sx={{
-                        marginBottom: 1,
+                        marginBottom: 0,
                         fontWeight: 'bold',
                         fontSize: isMobileSize ? '12px' : '14px',
                     }}

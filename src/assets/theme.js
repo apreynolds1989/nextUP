@@ -130,17 +130,23 @@ export const bannerScheduleBackground = {
 };
 
 export const podiumCardSx = {
-    // width: '80vw',
-    // height: '80vh',
-    margin: 0,
-    width: '100vw',
+    height: '80vh',
+    width: {
+        sm: '90vw',
+        md: '85vw',
+        lg: '75vw',
+        xl: '70vw',
+    },
+    borderRadius: 5,
+    marginTop: 15,
+    marginBottom: 2,
     marginX: 'auto',
     paddingBottom: 10,
-    backgroundColor: `${palette.gtBlue}15`,
+    backgroundColor: `#0b0b0b`,
     backgroundImage: `url(${podium})`,
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center center',
-    backgroundSize: 'cover',
+    backgroundSize: 'contain',
     // borderRadius: 3,
 };
 
