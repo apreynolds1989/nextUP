@@ -22,7 +22,7 @@ const pages = [
 export const HeaderAppBar = ({ isMobileSize }) => {
     const location = useLocation();
 
-    if (location.pathname === 'nextUP/takeYourShot') return null;
+    if (location.pathname === '/nextUp/takeYourShot') return null;
 
     return (
         <>

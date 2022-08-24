@@ -24,7 +24,7 @@ const pages = [
 export const Footer = ({ isMobileSize }) => {
     const location = useLocation();
 
-    if (location.pathname === 'nextUP/takeYourShot') return null;
+    if (location.pathname === '/nextUp/takeYourShot') return null;
 
     return (
         <>
@@ -70,13 +70,27 @@ export const Footer = ({ isMobileSize }) => {
                                 borderColor={palette.gtWhite}
                                 sx={{ paddingX: 5 }}
                             >
-                                <Link
-                                    to='/nextUp/takeYourShot'
-                                    style={{
-                                        textDecoration: 'none',
-                                        color: 'white',
-                                    }}
-                                >
+                                {!isMobileSize && (
+                                    <Link
+                                        to='/nextUp/takeYourShot'
+                                        style={{
+                                            textDecoration: 'none',
+                                            color: 'white',
+                                        }}
+                                    >
+                                        <Typography
+                                            sx={{
+                                                fontSize: isMobileSize
+                                                    ? '12px'
+                                                    : '14px',
+                                                color: palette.gtWhite,
+                                            }}
+                                        >
+                                            Take your shot.
+                                        </Typography>
+                                    </Link>
+                                )}
+                                {isMobileSize && (
                                     <Typography
                                         sx={{
                                             fontSize: isMobileSize
@@ -87,7 +101,7 @@ export const Footer = ({ isMobileSize }) => {
                                     >
                                         Take your shot.
                                     </Typography>
-                                </Link>
+                                )}
                             </Box>
                         </Box>
                         <Box
