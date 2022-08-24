@@ -85,6 +85,7 @@ export const DoubleSortTable = ({
                         />
                     )}
                     <DoubleSortTableHeader
+                        isMobileSize={isMobileSize}
                         columnConfig={columnConfig}
                         rowConfig={rowConfig}
                         isSortable={isSortable}

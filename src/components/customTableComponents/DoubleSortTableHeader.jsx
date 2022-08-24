@@ -4,6 +4,7 @@ import { sortPrimary } from '../../utilities/helperFunctions';
 import { ColumnHeaderText } from './ColumnHeaderText';
 
 export const DoubleSortTableHeader = ({
+    isMobileSize,
     columnConfig,
     rowConfig,
     isSortable,
@@ -77,6 +78,7 @@ export const DoubleSortTableHeader = ({
             {columnConfig.map((column, index) => (
                 <ColumnHeaderText
                     {...column}
+                    isMobileSize={isMobileSize}
                     columnConfig={columnConfig}
                     rowConfig={rowConfig}
                     isSortable={isSortable}

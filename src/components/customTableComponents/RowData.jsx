@@ -59,7 +59,6 @@ export const RowData = ({
                 paddingX: renderedProps.dataPaddingX,
                 paddingY: renderedProps.dataPaddingY,
                 whiteSpace: 'nowrap',
-
                 ...fixedColumn,
                 // whiteSpace: 'nowrap',
                 // position: cellKey === 'name' ? 'absolute' : 'static',

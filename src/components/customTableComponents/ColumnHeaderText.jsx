@@ -10,7 +10,9 @@ import { Box, Button, Typography } from '@mui/material';
 import { sortCol, sortPrimary } from '../../utilities/helperFunctions';
 
 export const ColumnHeaderText = ({
+    isMobileSize,
     columnName,
+    mobileColumnName,
     field,
     colNum,
     columnConfig,
@@ -130,10 +132,6 @@ export const ColumnHeaderText = ({
                 borderRight: endBorder,
                 borderBottom: renderedProps.headerBottomBorder,
                 ...fixedColumn,
-                // position: field === stickyCol ? 'absolute' : 'relative',
-                // left: field === stickyCol ? 'auto' : '125px',
-                // width: field === stickyCol ? '125px' : 'auto',
-                // zIndex: field === stickyCol ? 2 : 1,
             }}
         >
             {isSortable && (
@@ -155,7 +153,9 @@ export const ColumnHeaderText = ({
                             fontSize: renderedProps.headerTextSize,
                         }}
                     >
-                        {columnName}
+                        {isMobileSize
+                            ? mobileColumnName || columnName
+                            : columnName}
                     </Typography>
                     <Box
                         sx={{

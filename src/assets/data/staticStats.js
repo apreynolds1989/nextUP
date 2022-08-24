@@ -5,26 +5,31 @@ export const skaterHeaders = [{
     },
     {
         columnName: 'Goals',
+        mobileColumnName: 'G',
         field: 'goals',
         inputType: 'number',
     },
     {
         columnName: 'Assists',
+        mobileColumnName: 'A',
         field: 'assists',
         inputType: 'number',
     },
     {
         columnName: 'Points',
+        mobileColumnName: 'P',
         field: 'points',
         inputType: 'number',
     },
     {
         columnName: 'Weekly Games',
+        mobileColumnName: 'W/G',
         field: 'weeklyGames',
         inputType: 'number',
     },
     {
         columnName: 'Off-Day Games',
+        mobileColumnName: 'OD/G',
         field: 'offDayGames',
         inputType: 'number',
     },
@@ -95,26 +100,31 @@ export const goalieHeaders = [{
     },
     {
         columnName: 'Games Started',
+        mobileColumnName: 'G/St',
         field: 'gamesStarted',
         inputType: 'number',
     },
     {
         columnName: 'Wins',
+        mobileColumnName: 'W',
         field: 'wins',
         inputType: 'number',
     },
     {
         columnName: 'Loses',
+        mobileColumnName: 'L',
         field: 'loses',
         inputType: 'number',
     },
     {
         columnName: 'Weekly Games',
+        mobileColumnName: 'W/G',
         field: 'weeklyGames',
         inputType: 'number',
     },
     {
         columnName: 'Off-Day Games',
+        mobileColumnName: 'OD/G',
         field: 'offDayGames',
         inputType: 'number',
     },

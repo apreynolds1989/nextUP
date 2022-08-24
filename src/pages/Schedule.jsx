@@ -66,15 +66,16 @@ export const Schedule = ({ isMobileSize }) => {
                         <DoubleSortTable
                             columnConfig={teamScheduleHeaders}
                             rowConfig={teamScheduleData}
-                            colsToHide={isMobileSize ? [1] : []}
+                            stickyCol={'team'}
+                            // colsToHide={isMobileSize ? [1] : []}
                             tableBorder={`2px solid ${palette.gtBlue}`}
                             outerRadius={3}
-                            headerBgColor={'transparent'}
+                            headerBgColor={palette.gtGrey}
                             headerTextColor={palette.gtRed}
                             headerArrowColor={palette.gtBlue}
                             rowsWithEndBorders={['team']}
-                            rowEndBorder={'2px solid #c6c6c6'}
-                            dataBgColorOne={'transparent'}
+                            rowEndBorder={'1px solid #c6c6c6'}
+                            dataBgColorOne={palette.gtGrey}
                             dataBgColorTwo={'white'}
                             dataTextColor={palette.gtBlue}
                             leftAlignedFields={['team']}
