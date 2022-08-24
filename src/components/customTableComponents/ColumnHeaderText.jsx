@@ -120,6 +120,10 @@ export const ColumnHeaderText = ({
                   left: '0px',
                   zIndex: 5,
                   background: renderedProps.headerBgColor,
+                  borderRight:
+                      renderedProps.headerInnerBorder === '0px'
+                          ? renderedProps.rowEndBorder
+                          : renderedProps.headerInnerBorder,
               }
             : {};
 
