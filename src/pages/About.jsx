@@ -3,7 +3,6 @@ import { Box, Card, CardContent, Link, Typography } from '@mui/material';
 import { palette, podiumCardSx } from '../assets/theme';
 
 export const About = ({ isMobileSize }) => {
-    const dynamicProps = isMobileSize ? null : podiumCardSx;
     return (
         <>
             {isMobileSize && (
