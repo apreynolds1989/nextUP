@@ -74,7 +74,6 @@ export const DoubleSortTable = ({
                     border: renderedProps.tableBorder,
                     borderRadius: renderedProps.outerRadius,
                     overflow: 'hidden',
-                    zIndex: 3,
                 }}
             >
                 {isFilterable && isFiltersOpen && (

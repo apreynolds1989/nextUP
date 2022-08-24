@@ -12,18 +12,22 @@ import React from 'react';
 import { weeklyGames } from '../assets/data/games';
 import { palette, innerCardSx } from '../assets/theme';
 
-export const GameDayBox = ({ day }) => {
+export const GameDayBox = ({ isMobileSize, day }) => {
     const is400pxOrSmaller = useMediaQuery('(max-width:400px)');
     const gamesArr = weeklyGames[day];
 
     return (
         <Card
             sx={{
-                margin: 2,
+                margin: isMobileSize ? 0 : 2,
                 ...innerCardSx,
             }}
         >
-            <CardContent>
+            <CardContent
+                sx={{
+                    padding: isMobileSize ? 0 : null,
+                }}
+            >
                 <Box
                     sx={{
                         display: 'flex',

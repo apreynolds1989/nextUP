@@ -42,7 +42,7 @@ export const Players = ({ isMobileSize }) => {
                 bannerText={
                     <BannerText
                         isMobileSize={isMobileSize}
-                        text={'Player streaming made easy.'}
+                        text={'Fantasy Streaming - Fast. Efficient. Effective.'}
                     />
                 }
             />

@@ -74,8 +74,7 @@ export const landingTheme = createTheme({
 export const tableContainer = {
     margin: 0,
     width: '100vw',
-    marginX: 'auto',
-    paddingBottom: 10,
+    paddingBottom: 6,
     backgroundColor: `${palette.gtBlue}15`,
 };
 

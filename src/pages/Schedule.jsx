@@ -24,7 +24,9 @@ export const Schedule = ({ isMobileSize }) => {
                 bannerText={
                     <BannerText
                         isMobileSize={isMobileSize}
-                        text={'Player streaming made easy.'}
+                        text={
+                            'Fantasy Streaming -- Fast. Efficient. Effective.'
+                        }
                     />
                 }
             />
@@ -36,20 +38,27 @@ export const Schedule = ({ isMobileSize }) => {
                     flexDirection: 'row',
                     // ...bannerScheduleBackground,
                     ...tableContainer,
+                    paddingBottom: isMobileSize ? 5 : 0,
                 }}
             >
                 <Box
                     sx={{
                         marginX: {
-                            xs: 0,
+                            xs:
+                                displayedTable === 'Team Schedules'
+                                    ? 'auto'
+                                    : 0,
+                            md: 'auto',
+                        },
+                        paddingX: {
+                            xs: displayedTable === 'Team Schedules' ? 2 : 0,
                             md: 'auto',
                         },
                         minWidth: {
                             xs: '100vw',
                             md: '900px',
                         },
-                        marginY: 5,
-                        paddingBottom: 2,
+                        marginY: isMobileSize ? 0 : 5,
                     }}
                 >
                     {displayedTable === 'Weekly Schedule' && (

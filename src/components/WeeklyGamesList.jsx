@@ -7,24 +7,29 @@ export const WeeklyGamesList = ({ isMobileSize }) => {
     return (
         <Card
             sx={{
-                padding: 2,
+                padding: isMobileSize ? 0 : 2,
                 backgroundColor: 'white',
+                paddingBottom: 0,
             }}
         >
-            <CardContent>
+            <CardContent
+                sx={{
+                    padding: isMobileSize ? 0 : null,
+                }}
+            >
                 <Box
                     sx={{
                         flexDirection: 'column',
                         maxWidth: '900px',
                     }}
                 >
-                    <GameDayBox day='Monday' />
-                    <GameDayBox day='Tuesday' />
-                    <GameDayBox day='Wednesday' />
-                    <GameDayBox day='Thursday' />
-                    <GameDayBox day='Friday' />
-                    <GameDayBox day='Saturday' />
-                    <GameDayBox day='Sunday' />
+                    <GameDayBox isMobileSize={isMobileSize} day='Monday' />
+                    <GameDayBox isMobileSize={isMobileSize} day='Tuesday' />
+                    <GameDayBox isMobileSize={isMobileSize} day='Wednesday' />
+                    <GameDayBox isMobileSize={isMobileSize} day='Thursday' />
+                    <GameDayBox isMobileSize={isMobileSize} day='Friday' />
+                    <GameDayBox isMobileSize={isMobileSize} day='Saturday' />
+                    <GameDayBox isMobileSize={isMobileSize} day='Sunday' />
                 </Box>
             </CardContent>
         </Card>
