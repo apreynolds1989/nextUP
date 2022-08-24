@@ -40,7 +40,6 @@ export const DoubleSortTable = ({
         dataTextAlign: 'center',
         dataPaddingX: 2,
         dataPaddingY: isMobileSize ? 1 : 2,
-        whiteSpace: 'nowrap',
     };
 
     // overide defaults with anything passed to stylingProps
@@ -54,16 +53,7 @@ export const DoubleSortTable = ({
     };
 
     return (
-        <Box
-            sx={{
-                display: 'flex',
-                flexDirection: 'column',
-                width: '100%',
-                border: renderedProps.tableBorder,
-                borderRadius: renderedProps.outerRadius,
-                overflow: 'auto',
-            }}
-        >
+        <>
             {isFilterable && (
                 <TableFilterButtons
                     isFiltersOpen={isFiltersOpen}
@@ -73,40 +63,51 @@ export const DoubleSortTable = ({
             )}
             <Box
                 sx={{
-                    display: 'table',
-                    position: 'relative',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    width: '100%',
+                    border: renderedProps.tableBorder,
+                    borderRadius: renderedProps.outerRadius,
+                    overflow: 'auto',
                 }}
             >
-                {isFilterable && isFiltersOpen && (
-                    <FilterColumnHeaders
+                <Box
+                    sx={{
+                        display: 'table',
+                        position: 'relative',
+                    }}
+                >
+                    {isFilterable && isFiltersOpen && (
+                        <FilterColumnHeaders
+                            columnConfig={columnConfig}
+                            colsToHide={colsToHide}
+                            renderedProps={renderedProps}
+                        />
+                    )}
+                    <DoubleSortTableHeader
                         columnConfig={columnConfig}
+                        rowConfig={rowConfig}
+                        isSortable={isSortable}
+                        initialPrimaryField={initialPrimaryField}
+                        clickedColumn={clickedColumn}
+                        setClickedColumn={setClickedColumn}
+                        rowOrder={rowOrder}
+                        setRowOrder={setRowOrder}
+                        stickyCol={stickyCol}
                         colsToHide={colsToHide}
                         renderedProps={renderedProps}
                     />
-                )}
-                <DoubleSortTableHeader
-                    columnConfig={columnConfig}
-                    rowConfig={rowConfig}
-                    isSortable={isSortable}
-                    initialPrimaryField={initialPrimaryField}
-                    clickedColumn={clickedColumn}
-                    setClickedColumn={setClickedColumn}
-                    rowOrder={rowOrder}
-                    setRowOrder={setRowOrder}
-                    stickyCol={stickyCol}
-                    colsToHide={colsToHide}
-                    renderedProps={renderedProps}
-                />
-                <DoubleSortTableRows
-                    rowOrder={rowOrder}
-                    stickyCol={stickyCol}
-                    colsToHide={colsToHide}
-                    leftAlignedFields={leftAlignedFields}
-                    rightAlignedFields={rightAlignedFields}
-                    rowsWithEndBorders={rowsWithEndBorders}
-                    renderedProps={renderedProps}
-                />
+                    <DoubleSortTableRows
+                        rowOrder={rowOrder}
+                        stickyCol={stickyCol}
+                        colsToHide={colsToHide}
+                        leftAlignedFields={leftAlignedFields}
+                        rightAlignedFields={rightAlignedFields}
+                        rowsWithEndBorders={rowsWithEndBorders}
+                        renderedProps={renderedProps}
+                    />
+                </Box>
             </Box>
-        </Box>
+        </>
     );
 };
