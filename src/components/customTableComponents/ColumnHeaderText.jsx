@@ -111,14 +111,25 @@ export const ColumnHeaderText = ({
             ? '0px'
             : renderedProps.headerInnerBorder || renderedProps.tableBorder;
 
+    const fixedColumn =
+        stickyCol === field
+            ? {
+                  position: 'sticky',
+                  left: '0px',
+                  zIndex: 5,
+                  background: renderedProps.headerBgColor,
+              }
+            : {};
+
     return (
         <Box
             sx={{
                 textAlign: 'center',
                 display: colDisplay,
+                position: 'relative',
                 borderRight: endBorder,
                 borderBottom: renderedProps.headerBottomBorder,
-                // whiteSpace: 'nowrap',
+                ...fixedColumn,
                 // position: field === stickyCol ? 'absolute' : 'relative',
                 // left: field === stickyCol ? 'auto' : '125px',
                 // width: field === stickyCol ? '125px' : 'auto',

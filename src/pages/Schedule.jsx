@@ -24,9 +24,7 @@ export const Schedule = ({ isMobileSize }) => {
                 bannerText={
                     <BannerText
                         isMobileSize={isMobileSize}
-                        text={
-                            'Fantasy Streaming -- Fast. Efficient. Effective.'
-                        }
+                        text={'Fantasy Streaming - Fast. Efficient. Effective.'}
                     />
                 }
             />

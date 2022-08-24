@@ -40,6 +40,7 @@ export const DoubleSortTable = ({
         dataTextAlign: 'center',
         dataPaddingX: 2,
         dataPaddingY: isMobileSize ? 1 : 2,
+        whiteSpace: 'nowrap',
     };
 
     // overide defaults with anything passed to stylingProps
@@ -58,7 +59,9 @@ export const DoubleSortTable = ({
                 display: 'flex',
                 flexDirection: 'column',
                 width: '100%',
-                overflow: 'scroll',
+                border: renderedProps.tableBorder,
+                borderRadius: renderedProps.outerRadius,
+                overflow: 'auto',
             }}
         >
             {isFilterable && (
@@ -71,9 +74,7 @@ export const DoubleSortTable = ({
             <Box
                 sx={{
                     display: 'table',
-                    border: renderedProps.tableBorder,
-                    borderRadius: renderedProps.outerRadius,
-                    overflow: 'hidden',
+                    position: 'relative',
                 }}
             >
                 {isFilterable && isFiltersOpen && (

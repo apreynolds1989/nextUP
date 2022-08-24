@@ -80,6 +80,7 @@ export const Players = ({ isMobileSize }) => {
                             dataBgColorOne={palette.gtGrey}
                             dataBgColorTwo={'white'}
                             dataTextColor={palette.gtBlue}
+                            rowEndBorder={'1px solid #c6c6c6'}
                             leftAlignedFields={['name']}
                         />
                     )}

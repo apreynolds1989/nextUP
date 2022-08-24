@@ -4,6 +4,7 @@ import React from 'react';
 export const RowData = ({
     cellData,
     rowLength,
+    stickyCol,
     colsToHide,
     colNum,
     rowNum,
@@ -35,15 +36,31 @@ export const RowData = ({
         rowNum + 1 === numberOfRows
             ? '0px'
             : renderedProps.rowBottomBorder || renderedProps.tableBorder;
+
+    const fixedColumn =
+        stickyCol === cellKey
+            ? {
+                  position: 'sticky',
+                  left: '0px',
+                  zIndex: 5,
+                  background: renderedProps.dataBgColor,
+                  borderRight: renderedProps.rowEndBorder,
+              }
+            : {};
+
     return (
         <Box
             sx={{
                 display: colDisplay,
+                position: 'relative',
                 backgroundColor: backgroundColor,
                 borderRight: thisRowEndBorder,
                 borderBottom: bottomBorder,
                 paddingX: renderedProps.dataPaddingX,
                 paddingY: renderedProps.dataPaddingY,
+                whiteSpace: 'nowrap',
+
+                ...fixedColumn,
                 // whiteSpace: 'nowrap',
                 // position: cellKey === 'name' ? 'absolute' : 'static',
                 // left: cellKey === 'name' ? 'auto' : '150px',

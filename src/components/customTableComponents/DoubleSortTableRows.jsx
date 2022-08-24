@@ -4,6 +4,7 @@ import { RowData } from './RowData';
 
 export const DoubleSortTableRows = ({
     rowOrder,
+    stickyCol,
     colsToHide,
     leftAlignedFields,
     rightAlignedFields,
@@ -17,6 +18,7 @@ export const DoubleSortTableRows = ({
                 sx={{
                     display: 'table-row',
                     flexDirection: 'row',
+                    position: 'relative',
                 }}
                 key={`row${rowIndex}`}
             >
@@ -25,6 +27,7 @@ export const DoubleSortTableRows = ({
                         cellData={row[cellKey]}
                         rowLength={rowKeys.length}
                         numberOfRows={rowOrder.length}
+                        stickyCol={stickyCol}
                         colsToHide={colsToHide}
                         colNum={index}
                         rowNum={rowIndex}

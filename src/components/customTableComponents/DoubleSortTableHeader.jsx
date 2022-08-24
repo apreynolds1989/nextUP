@@ -70,6 +70,7 @@ export const DoubleSortTableHeader = ({
         <Box
             sx={{
                 display: 'table-row',
+                position: 'relative',
                 backgroundColor: renderedProps.headerBgColor,
             }}
         >
