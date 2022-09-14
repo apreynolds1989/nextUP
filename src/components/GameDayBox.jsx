@@ -9,12 +9,10 @@ import {
     useMediaQuery,
 } from '@mui/material';
 import React from 'react';
-import { weeklyGames } from '../assets/data/games';
 import { palette, innerCardSx } from '../assets/theme';
 
-export const GameDayBox = ({ isMobileSize, day }) => {
+export const GameDayBox = ({ isMobileSize, day, gamesArr }) => {
     const is400pxOrSmaller = useMediaQuery('(max-width:400px)');
-    const gamesArr = weeklyGames[day];
 
     return (
         <Card
@@ -51,13 +49,7 @@ export const GameDayBox = ({ isMobileSize, day }) => {
                             {day}
                         </Typography>
                     </Box>
-                    <Box
-                        sx={
-                            {
-                                // width: is400pxOrSmaller ? '100vw' : '400px',
-                            }
-                        }
-                    >
+                    <Box>
                         <List>
                             {gamesArr.map((game, index) => (
                                 <ListItem
@@ -68,7 +60,7 @@ export const GameDayBox = ({ isMobileSize, day }) => {
                                     }}
                                 >
                                     <ListItemText
-                                        primary={game}
+                                        primary={`${game.time} - ${game.away} @ ${game.home}`}
                                         primaryTypographyProps={{
                                             fontSize: is400pxOrSmaller
                                                 ? '12px'

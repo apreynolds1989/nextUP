@@ -1,42 +1,95 @@
-export const weeklyGames = {
-    Monday: [
-        '07:00PM ET - Arizona Coyotes @ Anaheim Ducks',
-        '07:00PM ET - Toronto Maple Leafs @ Boston Bruins',
-    ],
-    Tuesday: [
-        '07:00PM ET - Arizona Coyotes @ Los Angelas Kings',
-        '07:00PM ET - Boston Bruins @ Toronto Maple Leafs',
-        '07:00PM ET - Ottawa Senators @ Buffalo Sabres',
-        '07:00PM ET - Colorado Avalanche @ New York Rangers',
-        '07:00PM ET - Vegas Golden Knights @ Carolina Hurricanes',
-    ],
-    Wednesday: [
-        '07:00PM ET - San Jose Sharks @ Anaheim Ducks',
-        '07:00PM ET - Detroit Red Wings @ Buffalo Sabres',
-        '07:00PM ET - Montreal Canadiens @ New York Islanders',
-    ],
-    Thursday: [
-        '07:00PM ET - Boston Bruins @ Montreal Canadiens',
-        '07:00PM ET - Minnesota Wild @ Nashville Predators',
-        '07:00PM ET - Florida Panthers @ Tampa Bay Lightning',
-        '07:00PM ET - St. Louis Blues @ Calgary Flames',
-        '07:00PM ET - Vancouver Canucks @ Winnipeg Jets',
-        '07:00PM ET - Seattle Kraken @ Vegas Golden Knights',
-    ],
-    Friday: ['07:00PM ET - Detroit Red Wings @ Colorado Avalanche'],
-    Saturday: [
-        '07:00PM ET - Anaheim Ducks @ Boston Bruins',
-        '07:00PM ET - Arizona Coyotes @ Pittsburgh Penguins',
-        '07:00PM ET - Buffalo Sabres @ Detroit Red Wings',
-        '07:00PM ET - New Jersey Devils @ Philidelphia Flyers',
-        '07:00PM ET - San Jose Sharks @ Los Angelas Kings',
-        '07:00PM ET - Montreal Canadiens @ Toronto Maple Leafs',
-        '07:00PM ET - Ottawa Senators @ Calgary Flames',
-        '07:00PM ET - Minnesota Wild @ Seattle Kraken',
-        '07:00PM ET - Dallas Stars @ Chicago Blackhawks',
-    ],
-    Sunday: ['No Scheduled Games'],
-};
+export const weeklyGames = [
+    {
+        day: 'Monday - January 6th, 2022',
+        games: [
+            {
+                time: '07:00PM ET',
+                away: 'Arizona Coyotes',
+                home: 'Anaheim Ducks'
+            },
+            {
+                time: '09:30PM ET',
+                away: 'Dallas Stars',
+                home: 'Chicago Blackhawks'
+            }
+        ]
+    },
+    {
+        day: 'Tuesday - January 7th, 2022',
+        games: [
+            {
+                time: '07:00PM ET',
+                away: 'Arizona Coyotes',
+                home: 'Anaheim Ducks'
+            }
+        ]
+    },
+    {
+        day: 'Wednesday - January 8th, 2022',
+        games: [
+            {
+                time: '07:00PM ET',
+                away: 'Arizona Coyotes',
+                home: 'Anaheim Ducks'
+            },
+            {
+                time: '09:30PM ET',
+                away: 'Dallas Stars',
+                home: 'Chicago Blackhawks'
+            }
+        ]
+    },
+    {
+        day: 'Thursday - January 9th, 2022',
+        games: [
+            {
+                time: '07:00PM ET',
+                away: 'Arizona Coyotes',
+                home: 'Anaheim Ducks'
+            }
+        ]
+    },
+    {
+        day: 'Friday - January 10th, 2022',
+        games: [
+            {
+                time: '07:00PM ET',
+                away: 'Arizona Coyotes',
+                home: 'Anaheim Ducks'
+            },
+            {
+                time: '09:30PM ET',
+                away: 'Dallas Stars',
+                home: 'Chicago Blackhawks'
+            }
+        ]
+    },
+    {
+        day: 'Saturday - January 11th, 2022',
+        games: [
+            {
+                time: '07:00PM ET',
+                away: 'Arizona Coyotes',
+                home: 'Anaheim Ducks'
+            }
+        ]
+    },
+    {
+        day: 'Sunday - January 12th, 2022',
+        games: [
+            {
+                time: '07:00PM ET',
+                away: 'Arizona Coyotes',
+                home: 'Anaheim Ducks'
+            },
+            {
+                time: '09:30PM ET',
+                away: 'Dallas Stars',
+                home: 'Chicago Blackhawks'
+            }
+        ]
+    },
+]
 
 export const teamScheduleHeaders = [{
         columnName: 'Team',

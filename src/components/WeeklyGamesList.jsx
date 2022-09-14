@@ -2,6 +2,7 @@ import React from 'react';
 import { GameDayBox } from './GameDayBox';
 // import { palette } from '../assets/theme.js';
 import { Box, Card, CardContent } from '@mui/material';
+import { weeklyGames } from '../assets/data/games';
 
 export const WeeklyGamesList = ({ isMobileSize }) => {
     return (
@@ -23,13 +24,14 @@ export const WeeklyGamesList = ({ isMobileSize }) => {
                         maxWidth: '900px',
                     }}
                 >
-                    <GameDayBox isMobileSize={isMobileSize} day='Monday' />
-                    <GameDayBox isMobileSize={isMobileSize} day='Tuesday' />
-                    <GameDayBox isMobileSize={isMobileSize} day='Wednesday' />
-                    <GameDayBox isMobileSize={isMobileSize} day='Thursday' />
-                    <GameDayBox isMobileSize={isMobileSize} day='Friday' />
-                    <GameDayBox isMobileSize={isMobileSize} day='Saturday' />
-                    <GameDayBox isMobileSize={isMobileSize} day='Sunday' />
+                    {weeklyGames.map((day) => (
+                        <GameDayBox
+                            key={`games on ${day.day}`}
+                            isMobileSize={isMobileSize}
+                            day={day.day}
+                            gamesArr={day.games}
+                        />
+                    ))}
                 </Box>
             </CardContent>
         </Card>
