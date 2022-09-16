@@ -26,9 +26,9 @@ export const WeeklyGamesList = ({ isMobileSize }) => {
                 >
                     {weeklyGames.map((day) => (
                         <GameDayBox
-                            key={`games on ${day.day}`}
+                            key={`games on ${day.date}`}
                             isMobileSize={isMobileSize}
-                            day={day.day}
+                            day={day.date}
                             gamesArr={day.games}
                         />
                     ))}

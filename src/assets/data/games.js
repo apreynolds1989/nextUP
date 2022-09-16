@@ -1,6 +1,6 @@
 export const weeklyGames = [
     {
-        day: 'Monday - January 6th, 2022',
+        date: 'Monday - January 6th, 2022',
         games: [
             {
                 time: '07:00PM ET',
@@ -15,7 +15,7 @@ export const weeklyGames = [
         ]
     },
     {
-        day: 'Tuesday - January 7th, 2022',
+        date: 'Tuesday - January 7th, 2022',
         games: [
             {
                 time: '07:00PM ET',
@@ -25,32 +25,7 @@ export const weeklyGames = [
         ]
     },
     {
-        day: 'Wednesday - January 8th, 2022',
-        games: [
-            {
-                time: '07:00PM ET',
-                away: 'Arizona Coyotes',
-                home: 'Anaheim Ducks'
-            },
-            {
-                time: '09:30PM ET',
-                away: 'Dallas Stars',
-                home: 'Chicago Blackhawks'
-            }
-        ]
-    },
-    {
-        day: 'Thursday - January 9th, 2022',
-        games: [
-            {
-                time: '07:00PM ET',
-                away: 'Arizona Coyotes',
-                home: 'Anaheim Ducks'
-            }
-        ]
-    },
-    {
-        day: 'Friday - January 10th, 2022',
+        date: 'Wednesday - January 8th, 2022',
         games: [
             {
                 time: '07:00PM ET',
@@ -65,7 +40,7 @@ export const weeklyGames = [
         ]
     },
     {
-        day: 'Saturday - January 11th, 2022',
+        date: 'Thursday - January 9th, 2022',
         games: [
             {
                 time: '07:00PM ET',
@@ -75,7 +50,32 @@ export const weeklyGames = [
         ]
     },
     {
-        day: 'Sunday - January 12th, 2022',
+        date: 'Friday - January 10th, 2022',
+        games: [
+            {
+                time: '07:00PM ET',
+                away: 'Arizona Coyotes',
+                home: 'Anaheim Ducks'
+            },
+            {
+                time: '09:30PM ET',
+                away: 'Dallas Stars',
+                home: 'Chicago Blackhawks'
+            }
+        ]
+    },
+    {
+        date: 'Saturday - January 11th, 2022',
+        games: [
+            {
+                time: '07:00PM ET',
+                away: 'Arizona Coyotes',
+                home: 'Anaheim Ducks'
+            }
+        ]
+    },
+    {
+        date: 'Sunday - January 12th, 2022',
         games: [
             {
                 time: '07:00PM ET',
