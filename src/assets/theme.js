@@ -153,3 +153,4 @@ export const podiumCardSx = {
 export const innerCardSx = {
     boxShadow: 0,
 };
+
