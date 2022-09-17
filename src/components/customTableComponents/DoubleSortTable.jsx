@@ -62,7 +62,12 @@ export const DoubleSortTable = ({
                     renderedProps={renderedProps}
                 />
             )} */}
-            {isFilterable && <TableFilterModal renderedProps={renderedProps} />}
+            {isFilterable && (
+                <TableFilterModal
+                    renderedProps={renderedProps}
+                    columnConfig={columnConfig}
+                />
+            )}
             <Box
                 sx={{
                     display: 'flex',
