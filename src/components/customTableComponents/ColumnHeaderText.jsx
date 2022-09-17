@@ -7,7 +7,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Box, Button, Typography } from '@mui/material';
-import { sortCol, sortPrimary } from '../../utilities/helperFunctions';
+import { sortCol, sortPrimary } from './utilities/sortFunctions';
 
 export const ColumnHeaderText = ({
     isMobileSize,

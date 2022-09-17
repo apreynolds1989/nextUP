@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Box } from '@mui/material';
-import { sortPrimary } from '../../utilities/helperFunctions';
+import { sortPrimary } from './utilities/sortFunctions';
 import { ColumnHeaderText } from './ColumnHeaderText';
 
 export const DoubleSortTableHeader = ({

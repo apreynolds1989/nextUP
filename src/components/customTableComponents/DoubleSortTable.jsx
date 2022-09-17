@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Box, useMediaQuery } from '@mui/material';
-import { TableFilterButtons } from './TableFilterButtons';
-import { FilterColumnHeaders } from './FilterColumnHeaders';
+// import { TableFilterButtons } from './TableFilterButtons';
+// import { FilterColumnHeaders } from './FilterColumnHeaders';
 import { DoubleSortTableRows } from './DoubleSortTableRows';
 import { DoubleSortTableHeader } from './DoubleSortTableHeader';
 import { TableFilterModal } from './TableFilterModal';
