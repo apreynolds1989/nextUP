@@ -13,6 +13,7 @@ import {
 } from '@mui/material';
 import { filterColumnGreaterThan } from './utilities/filterFunctions';
 import { useRef } from 'react';
+import { onFilterFormSubmit } from './utilities/onFilterFormSubmit';
 
 export const TableFilterModal = ({
     renderedProps,
@@ -40,8 +41,10 @@ export const TableFilterModal = ({
 
     // react-hook-form
     const { register, handleSubmit } = useForm();
-    // const { control, handleSubmit } = useForm();
-    const onSubmit = (data) => console.log(data);
+    const onSubmit = (data) => {
+        console.log(data);
+        onFilterFormSubmit(rowOrder, setRowOrder, columnConfig, data);
+    };
 
     return (
         <div>
