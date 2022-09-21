@@ -9,10 +9,17 @@ import {
     Typography,
     InputLabel,
     Grid,
-    OutlinedInput,
+    TextField,
 } from '@mui/material';
+import { filterColumnGreaterThan } from './utilities/filterFunctions';
+import { useRef } from 'react';
 
-export const TableFilterModal = ({ renderedProps, columnConfig }) => {
+export const TableFilterModal = ({
+    renderedProps,
+    columnConfig,
+    rowOrder,
+    setRowOrder,
+}) => {
     const style = {
         position: 'absolute',
         top: '50%',
@@ -26,12 +33,14 @@ export const TableFilterModal = ({ renderedProps, columnConfig }) => {
         p: 1,
     };
 
+    const form = useRef();
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
 
     // react-hook-form
     const { register, handleSubmit } = useForm();
+    // const { control, handleSubmit } = useForm();
     const onSubmit = (data) => console.log(data);
 
     return (
@@ -86,70 +95,59 @@ export const TableFilterModal = ({ renderedProps, columnConfig }) => {
                             </Typography>
                             <Box
                                 id='transition-modal-description'
-                                component='form'
-                                onSubmit={handleSubmit(onSubmit)}
-                                noValidate
-                                autoComplete='off'
                                 sx={{
                                     display: 'flex',
                                     flexDirection: 'column',
                                     alignContent: 'center',
                                 }}
                             >
-                                {columnConfig.map((column) => (
-                                    <Grid container sx={{ paddingBottom: 1 }}>
-                                        <Grid
-                                            item
-                                            xs={5}
-                                            sx={{ margin: 'auto' }}
-                                        >
-                                            <InputLabel>
-                                                {column.columnName}
-                                            </InputLabel>
-                                        </Grid>
-                                        <Grid
-                                            item
-                                            xs={2}
-                                            sx={{ margin: 'auto' }}
-                                        >
-                                            <SelectField
-                                                register={register}
-                                                variable={column.columnName}
-                                            />
-                                        </Grid>
-                                        <Grid item xs={5}>
-                                            <OutlinedInput
-                                                size='small'
-                                                {...register(
-                                                    `${column.field}`,
-                                                    {
-                                                        maxLength: 20,
-                                                    },
-                                                )}
-                                            />
-                                        </Grid>
-                                    </Grid>
-                                ))}
-
-                                {/* <input
-                                        {...register('lastName', {
-                                            pattern: /^[A-Za-z]+$/i,
-                                        })}
-                                    />
-                                    <input
-                                        type='number'
-                                        {...register('age', {
-                                            min: 18,
-                                            max: 99,
-                                        })}
-                                    /> */}
-                                <Button
-                                    variant='contained'
-                                    component='label'
-                                    sx={{ marginTop: 2 }}
+                                <form
+                                    ref={form}
+                                    onSubmit={handleSubmit(onSubmit)}
                                 >
-                                    Set Filters
-                                    <input type='submit' hidden />
+                                    {columnConfig.map((column) =>
+                                        column.inputType === 'string' ? (
+                                            <FilterStringField
+                                                key={`${column.field}FilterField`}
+                                                register={register}
+                                                label={column.columnName}
+                                                field={column.field}
+                                            />
+                                        ) : (
+                                            <FilterNumberField
+                                                key={`${column.field}FilterField`}
+                                                register={register}
+                                                label={column.columnName}
+                                                field={column.field}
+                                            />
+                                        ),
+                                    )}
+                                    <Button
+                                        variant='contained'
+                                        component='label'
+                                        sx={{
+                                            display: 'flex',
+                                            maxWidth: '200px',
+                                            marginTop: 2,
+                                            marginX: 'auto',
+                                        }}
+                                    >
+                                        Set Filters
+                                        <input type='submit' hidden />
+                                    </Button>
+                                </form>
+                                <Button
+                                    onClick={() =>
+                                        setRowOrder(
+                                            filterColumnGreaterThan(
+                                                rowOrder,
+                                                'goals',
+                                                50,
+                                            ),
+                                        )
+                                    }
+                                >
+                                    Filter Goals Greater Than 50
                                 </Button>
                             </Box>
                         </Box>
@@ -160,15 +158,56 @@ export const TableFilterModal = ({ renderedProps, columnConfig }) => {
     );
 };
 
-const SelectField = ({ register, variable }) => {
+const FilterStringField = ({ register, label, field }) => {
     return (
-        <select {...register(`${variable}FilterBy`)}>
-            <option value=''></option>
-            <option value='equal'>&#61;</option>
-            <option value='lessThan'>&#60;</option>
-            <option value='lessThanOrEqual'>&le;</option>
-            <option value='greaterThan'>&#62;</option>
-            <option value='greaterThanOrEqual'>&ge;</option>
-        </select>
+        <Grid container sx={{ paddingBottom: 1 }}>
+            <Grid item xs={5} sx={{ margin: 'auto' }}>
+                <InputLabel>{label}</InputLabel>
+            </Grid>
+            <Grid item xs={7}>
+                <TextField
+                    id={field}
+                    name={field}
+                    variant='outlined'
+                    color='secondary'
+                    size='small'
+                    fullWidth
+                    {...register(`${field}`)}
+                    // error={errors.firstName ? true : false}
+                />
+            </Grid>
+        </Grid>
+    );
+};
+
+const FilterNumberField = ({ register, label, field }) => {
+    return (
+        <Grid container sx={{ paddingBottom: 1 }}>
+            <Grid item xs={5} sx={{ margin: 'auto' }}>
+                <InputLabel>{label}</InputLabel>
+            </Grid>
+            <Grid item xs={2} sx={{ margin: 'auto' }}>
+                <select {...register(`${field}FilterBy`)}>
+                    <option value=''></option>
+                    <option value='equal'>&#61;</option>
+                    <option value='lessThan'>&#60;</option>
+                    <option value='lessThanOrEqual'>&le;</option>
+                    <option value='greaterThan'>&#62;</option>
+                    <option value='greaterThanOrEqual'>&ge;</option>
+                </select>
+            </Grid>
+            <Grid item xs={5}>
+                <TextField
+                    id={field}
+                    name={field}
+                    variant='outlined'
+                    color='secondary'
+                    size='small'
+                    fullWidth
+                    {...register(`${field}`)}
+                    // error={errors.firstName ? true : false}
+                />
+            </Grid>
+        </Grid>
     );
 };

@@ -1,7 +1,7 @@
 export const skaterHeaders = [{
         columnName: 'Name',
         field: 'name',
-        inputType: 'text',
+        inputType: 'string',
     },
     {
         columnName: 'Goals',
