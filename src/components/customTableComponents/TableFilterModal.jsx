@@ -11,7 +11,6 @@ import {
     Grid,
     TextField,
 } from '@mui/material';
-import { filterColumnGreaterThan } from './utilities/filterFunctions';
 import { useRef } from 'react';
 import { onFilterFormSubmit } from './utilities/onFilterFormSubmit';
 
@@ -139,19 +138,6 @@ export const TableFilterModal = ({
                                         <input type='submit' hidden />
                                     </Button>
                                 </form>
-                                <Button
-                                    onClick={() =>
-                                        setRowOrder(
-                                            filterColumnGreaterThan(
-                                                rowOrder,
-                                                'goals',
-                                                50,
-                                            ),
-                                        )
-                                    }
-                                >
-                                    Filter Goals Greater Than 50
-                                </Button>
                             </Box>
                         </Box>
                     </Box>
