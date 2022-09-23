@@ -75,7 +75,7 @@ export const tableContainer = {
     margin: 0,
     width: '100vw',
     paddingBottom: 6,
-    backgroundColor: `${palette.gtBlue}15`,
+    backgroundColor: `${palette.gtBlue}35`,
 };
 
 export const bannerSX = {

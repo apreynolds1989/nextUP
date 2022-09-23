@@ -2,7 +2,8 @@ import React from 'react';
 import { NavLink, Link, Outlet, useLocation } from 'react-router-dom';
 import { AppBar, Container, Toolbar, Box, Button } from '@mui/material';
 import { palette } from '../assets/theme';
-import { NextUpLogo } from './NextUpLogo';
+import nextupLogo from '../assets/img/nextupLogo.png';
+// import { NextUpLogo } from './NextUpLogo';
 
 const pages = [
     {
@@ -28,7 +29,7 @@ export const HeaderAppBar = ({ isMobileSize }) => {
         <>
             <AppBar
                 position='fixed'
-                style={{ backgroundColor: palette.gtBlue }}
+                style={{ backgroundColor: palette.gtWhite }}
                 sx={{
                     width: '100vw',
                 }}
@@ -37,7 +38,12 @@ export const HeaderAppBar = ({ isMobileSize }) => {
                     <Toolbar disableGutters>
                         {!isMobileSize && (
                             <Link to='/nextUP/'>
-                                <NextUpLogo width={150} height={100} />
+                                <img
+                                    src={nextupLogo}
+                                    alt='nextUP logo'
+                                    width={150}
+                                />
+                                {/* <NextUpLogo width={150} height={100} /> */}
                             </Link>
                         )}
                         <Box

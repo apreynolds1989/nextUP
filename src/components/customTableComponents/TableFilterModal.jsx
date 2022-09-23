@@ -51,10 +51,12 @@ export const TableFilterModal = ({
                 sx={{
                     display: 'flex',
                     justifyContent: 'flex-end',
-                    backgroundColor: renderedProps.headerBgColor,
+                    backgroundColor: 'transparent',
                 }}
             >
-                <Button onClick={handleOpen}>Open Filters</Button>
+                <Button onClick={handleOpen} sx={{ fontWeight: 'bold' }}>
+                    Open Filters
+                </Button>
             </Box>
             <Modal
                 aria-labelledby='transition-modal-title'

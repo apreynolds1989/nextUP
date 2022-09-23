@@ -1,6 +1,7 @@
 import React from 'react';
 import { Box, Card, CardContent, Link, Typography } from '@mui/material';
 import { palette, podiumCardSx } from '../assets/theme';
+import nextupLogo from '../assets/img/nextupLogo.png';
 
 export const About = ({ isMobileSize }) => {
     return (
@@ -83,7 +84,7 @@ const AboutUsTitleCard = ({ isMobileSize }) => {
                         }}
                     >
                         <span style={{ color: palette.gtBlue }}>What is </span>
-                        <span style={{ color: palette.gtRed }}>nextUP ?</span>
+                        <img src={nextupLogo} alt='nextUP logo' height={35} />
                     </Typography>
                     <DescriptionCard isMobileSize={isMobileSize} />
                 </Box>

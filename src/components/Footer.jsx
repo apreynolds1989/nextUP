@@ -2,7 +2,8 @@ import React from 'react';
 import { Link, Outlet, useLocation } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
-import { NextUpLogo } from './NextUpLogo';
+// import { NextUpLogo } from './NextUpLogo';
+import nextupLogoWhite from '../assets/img/nextupLogoWhite.png';
 import { palette } from '../assets/theme';
 import { Typography } from '@mui/material';
 
@@ -63,7 +64,12 @@ export const Footer = ({ isMobileSize }) => {
                             alignItems='center'
                         >
                             <Link to='/nextUP/'>
-                                <NextUpLogo width={150} height={100} />
+                                <img
+                                    src={nextupLogoWhite}
+                                    alt='white nextUP logo'
+                                    width={150}
+                                />
+                                {/* <NextUpLogo width={150} height={100} /> */}
                             </Link>
                             <Box
                                 borderTop={1}
