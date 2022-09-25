@@ -69,8 +69,10 @@ export const Players = ({ isMobileSize }) => {
                 }}
             >
                 <Container
+                    disableGutters
+                    maxWidth={false}
                     sx={{
-                        width: '100vw',
+                        width: '95vw',
                     }}
                 >
                     {displayedTable === 'SKATERS' && skatersStatsData && (
