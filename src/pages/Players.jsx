@@ -14,6 +14,7 @@ import {
     goalieHeaders,
     goalieData,
     skaterHeaders,
+    skaterData,
 } from '../assets/data/staticStats';
 import { BannerText } from '../components/BannerText';
 import { fetchData } from '../assets/data/fetchData';
@@ -23,7 +24,9 @@ export const Players = ({ isMobileSize }) => {
     const [skatersStatsData, setSkatersStatsData] = useState();
     const createSkaterStatsArr = async () => {
         const skatersStats = await fetchData('http://localhost:3000/Skaters');
-        setSkatersStatsData(skatersStats);
+        skatersStats
+            ? setSkatersStatsData(skatersStats)
+            : setSkatersStatsData(skaterData);
     };
 
     useEffect(() => {
