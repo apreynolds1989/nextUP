@@ -38,8 +38,6 @@ export const DoubleSortTableHeader = ({
         console.log(
             `Primary = ${primarySort} and Secondary = ${secondarySort}`,
         );
-        console.log(`primary sort is ascending: ${primarySortIsAsc}`);
-        console.log(`secondary sort is ascending: ${secondarySortIsAsc}`);
     }, [
         secondarySort,
         primarySort,

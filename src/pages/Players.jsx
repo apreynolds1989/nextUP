@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
     palette,
     tableContainer,
@@ -14,12 +14,22 @@ import {
     goalieHeaders,
     goalieData,
     skaterHeaders,
-    skaterData,
 } from '../assets/data/staticStats';
 import { BannerText } from '../components/BannerText';
+import { fetchData } from '../assets/data/fetchData';
 
 export const Players = ({ isMobileSize }) => {
     const [displayedTable, setDisplayedTable] = useState('SKATERS');
+    const [skatersStatsData, setSkatersStatsData] = useState();
+    const createSkaterStatsArr = async () => {
+        const skatersStats = await fetchData('http://localhost:3000/Skaters');
+        setSkatersStatsData(skatersStats);
+    };
+
+    useEffect(() => {
+        createSkaterStatsArr();
+        // setSkatersData(skatersStats);
+    }, []);
 
     return (
         <>
@@ -60,10 +70,10 @@ export const Players = ({ isMobileSize }) => {
                         width: '100vw',
                     }}
                 >
-                    {displayedTable === 'SKATERS' && (
+                    {displayedTable === 'SKATERS' && skatersStatsData && (
                         <DoubleSortTable
                             columnConfig={skaterHeaders}
-                            rowConfig={skaterData}
+                            rowConfig={skatersStatsData}
                             isSortable={true}
                             isFilterable={true}
                             initialPrimaryField={{

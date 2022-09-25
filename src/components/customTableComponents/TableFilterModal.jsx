@@ -25,7 +25,7 @@ export const TableFilterModal = ({
         top: '50%',
         left: '50%',
         transform: 'translate(-50%, -50%)',
-        width: 400,
+        width: 600,
         bgcolor: renderedProps.headerBgColor,
         border: renderedProps.tableBorder,
         borderRadius: renderedProps.outerRadius,
@@ -109,22 +109,57 @@ export const TableFilterModal = ({
                                     ref={form}
                                     onSubmit={handleSubmit(onSubmit)}
                                 >
-                                    {columnConfig.map((column) =>
-                                        column.inputType === 'string' ? (
-                                            <FilterStringField
-                                                key={`${column.field}FilterField`}
-                                                register={register}
-                                                label={column.columnName}
-                                                field={column.field}
-                                            />
-                                        ) : (
-                                            <FilterNumberField
-                                                key={`${column.field}FilterField`}
-                                                register={register}
-                                                label={column.columnName}
-                                                field={column.field}
-                                            />
-                                        ),
+                                    {columnConfig.length > 10 ? (
+                                        <Grid container spacing={1}>
+                                            {columnConfig.map((column) => (
+                                                <Grid
+                                                    item
+                                                    xs={6}
+                                                    key={column.field}
+                                                >
+                                                    {column.inputType ===
+                                                    'string' ? (
+                                                        <FilterStringField
+                                                            key={`${column.field}FilterField`}
+                                                            register={register}
+                                                            label={
+                                                                column.mobileColumnName ??
+                                                                column.columnName
+                                                            }
+                                                            field={column.field}
+                                                        />
+                                                    ) : (
+                                                        <FilterNumberField
+                                                            key={`${column.field}FilterField`}
+                                                            register={register}
+                                                            label={
+                                                                column.mobileColumnName ??
+                                                                column.columnName
+                                                            }
+                                                            field={column.field}
+                                                        />
+                                                    )}
+                                                </Grid>
+                                            ))}
+                                        </Grid>
+                                    ) : (
+                                        columnConfig.map((column) =>
+                                            column.inputType === 'string' ? (
+                                                <FilterStringField
+                                                    key={`${column.field}FilterField`}
+                                                    register={register}
+                                                    label={column.columnName}
+                                                    field={column.field}
+                                                />
+                                            ) : (
+                                                <FilterNumberField
+                                                    key={`${column.field}FilterField`}
+                                                    register={register}
+                                                    label={column.columnName}
+                                                    field={column.field}
+                                                />
+                                            ),
+                                        )
                                     )}
                                     <Button
                                         variant='contained'

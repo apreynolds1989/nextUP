@@ -4,6 +4,29 @@ export const skaterHeaders = [{
         inputType: 'string',
     },
     {
+        columnName: 'Team',
+        field: 'team',
+        inputType: 'string',
+    },
+    {
+        columnName: 'Games Played',
+        mobileColumnName: 'G/P',
+        field: 'gamesPlayed',
+        inputType: 'number',
+    },
+    {
+        columnName: 'Weekly Games',
+        mobileColumnName: 'W/G',
+        field: 'weeklyGames',
+        inputType: 'number',
+    },
+    {
+        columnName: 'Off-Day Games',
+        mobileColumnName: 'OD/G',
+        field: 'weeklyOffDayGames',
+        inputType: 'number',
+    },
+    {
         columnName: 'Goals',
         mobileColumnName: 'G',
         field: 'goals',
@@ -22,15 +45,73 @@ export const skaterHeaders = [{
         inputType: 'number',
     },
     {
-        columnName: 'Weekly Games',
-        mobileColumnName: 'W/G',
-        field: 'weeklyGames',
+        columnName: 'GWG',
+        field: 'gameWinningGoals',
         inputType: 'number',
     },
     {
-        columnName: 'Off-Day Games',
-        mobileColumnName: 'OD/G',
-        field: 'offDayGames',
+        columnName: 'Pts/G',
+        field: 'pointsPerGame',
+        inputType: 'number',
+    },
+    {
+        columnName: 'TOI/G',
+        field: 'timeOnIcePerGame',
+        inputType: 'number',
+    },
+    {
+        columnName: 'PPG',
+        field: 'powerPlayGoals',
+        inputType: 'number',
+    },
+    {
+        columnName: 'PPP',
+        field: 'powerPlayPoints',
+        inputType: 'number',
+    },
+    {
+        columnName: 'PP-TOI/G',
+        field: 'powerPlayTimeOnIcePerGame',
+        inputType: 'number',
+    },
+    {
+        columnName: 'SHG',
+        field: 'shortHandedGoals',
+        inputType: 'number',
+    },
+    {
+        columnName: 'SHP',
+        field: 'shortHandedPoints',
+        inputType: 'number',
+    },
+    {
+        columnName: 'SH-TOI/G',
+        field: 'shortHandedTimeOnIcePerGame',
+        inputType: 'number',
+    },
+    {
+        columnName: 'Hits',
+        field: 'hits',
+        inputType: 'number',
+    },
+    {
+        columnName: 'Blocks',
+        field: 'blocks',
+        inputType: 'number',
+    },
+    {
+        columnName: 'Shots',
+        field: 'shots',
+        inputType: 'number',
+    },
+    {
+        columnName: 'FO%',
+        field: 'faceoffPercentage',
+        inputType: 'number',
+    },
+    {
+        columnName: 'PIM',
+        field: 'penaltyMinutes',
         inputType: 'number',
     },
 ];

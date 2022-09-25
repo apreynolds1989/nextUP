@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 import { Box, useMediaQuery } from '@mui/material';
-// import { TableFilterButtons } from './TableFilterButtons';
-// import { FilterColumnHeaders } from './FilterColumnHeaders';
 import { DoubleSortTableRows } from './DoubleSortTableRows';
 import { DoubleSortTableHeader } from './DoubleSortTableHeader';
 import { TableFilterModal } from './TableFilterModal';
@@ -47,21 +45,9 @@ export const DoubleSortTable = ({
     const renderedProps = { ...defaultProps, ...stylingProps };
     const [rowOrder, setRowOrder] = useState(rowConfig);
     const [clickedColumn, setClickedColumn] = useState('');
-    // const [isFiltersOpen, setIsFiltersOpen] = useState(false);
-
-    // const toggleIsFiltersOpen = () => {
-    //     setIsFiltersOpen(!isFiltersOpen);
-    // };
 
     return (
         <>
-            {/* {isFilterable && (
-                <TableFilterButtons
-                    isFiltersOpen={isFiltersOpen}
-                    toggleIsFiltersOpen={toggleIsFiltersOpen}
-                    renderedProps={renderedProps}
-                />
-            )} */}
             {isFilterable && (
                 <TableFilterModal
                     renderedProps={renderedProps}
@@ -86,13 +72,6 @@ export const DoubleSortTable = ({
                         position: 'relative',
                     }}
                 >
-                    {/* {isFilterable && isFiltersOpen && (
-                        <FilterColumnHeaders
-                            columnConfig={columnConfig}
-                            colsToHide={colsToHide}
-                            renderedProps={renderedProps}
-                        />
-                    )} */}
                     <DoubleSortTableHeader
                         isMobileSize={isMobileSize}
                         columnConfig={columnConfig}
