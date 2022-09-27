@@ -23,7 +23,9 @@ export const Players = ({ isMobileSize }) => {
     const [displayedTable, setDisplayedTable] = useState('SKATERS');
     const [skatersStatsData, setSkatersStatsData] = useState();
     const createSkaterStatsArr = async () => {
-        const skatersStats = await fetchData('http://localhost:3000/Skaters');
+        const skatersStats = await fetchData(
+            'https://nextup-backend-production.up.railway.app/skaters',
+        );
         skatersStats
             ? setSkatersStatsData(skatersStats)
             : setSkatersStatsData(skaterData);
