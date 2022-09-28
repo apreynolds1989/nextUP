@@ -18,10 +18,11 @@ import {
 } from '../assets/data/staticStats';
 import { BannerText } from '../components/BannerText';
 import { fetchData } from '../assets/data/fetchData';
+import { Box, LinearProgress } from '@mui/material';
 
 export const Players = ({ isMobileSize }) => {
     const [displayedTable, setDisplayedTable] = useState('SKATERS');
-    const [skatersStatsData, setSkatersStatsData] = useState();
+    const [skatersStatsData, setSkatersStatsData] = useState(null);
     const createSkaterStatsArr = async () => {
         const skatersStats = await fetchData(
             'https://nextup-backend-production.up.railway.app/skaters',
@@ -77,6 +78,39 @@ export const Players = ({ isMobileSize }) => {
                         width: '95vw',
                     }}
                 >
+                    {displayedTable === 'SKATERS' && !skatersStatsData && (
+                        <>
+                            <DoubleSortTable
+                                columnConfig={skaterHeaders}
+                                rowConfig={[]}
+                                isSortable={true}
+                                isFilterable={true}
+                                stickyCol={'name'}
+                                // colsToHide={isMobileSize ? [1] : []}
+                                tableBorder={`2px solid ${palette.gtBlue}`}
+                                outerRadius={3}
+                                headerBgColor={palette.gtGrey}
+                                headerTextColor={palette.gtRed}
+                                headerArrowColor={palette.gtBlue}
+                                dataBgColorOne={palette.gtGrey}
+                                dataBgColorTwo={'white'}
+                                dataTextColor={palette.gtBlue}
+                                rowEndBorder={'1px solid #c6c6c6'}
+                                leftAlignedFields={['name']}
+                            />
+                            <Box
+                                sx={{
+                                    marginX: 'auto',
+                                    maxWidth: '70vw',
+                                }}
+                            >
+                                <LinearProgress
+                                    color='secondary'
+                                    sx={{ marginY: 5 }}
+                                />
+                            </Box>
+                        </>
+                    )}
                     {displayedTable === 'SKATERS' && skatersStatsData && (
                         <DoubleSortTable
                             columnConfig={skaterHeaders}
