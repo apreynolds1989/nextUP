@@ -3,6 +3,7 @@ import { Box, useMediaQuery } from '@mui/material';
 import { DoubleSortTableRows } from './DoubleSortTableRows';
 import { DoubleSortTableHeader } from './DoubleSortTableHeader';
 import { TableFilterModal } from './TableFilterModal';
+import { sortPrimary } from './utilities/sortFunctions';
 
 export const DoubleSortTable = ({
     columnConfig,
@@ -45,6 +46,20 @@ export const DoubleSortTable = ({
     const renderedProps = { ...defaultProps, ...stylingProps };
     const [rowOrder, setRowOrder] = useState(rowConfig);
     const [clickedColumn, setClickedColumn] = useState('');
+    const [isInitialPrimarySort, setIsInitialPrimarySort] = useState(
+        initialPrimaryField ? true : false,
+    );
+
+    if (isInitialPrimarySort) {
+        setRowOrder(
+            sortPrimary(
+                rowOrder,
+                initialPrimaryField.field,
+                initialPrimaryField.sortStatus === 'asc' ? true : false,
+            ),
+        );
+        setIsInitialPrimarySort(false);
+    }
 
     return (
         <>

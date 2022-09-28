@@ -23,30 +23,19 @@ export const DoubleSortTableHeader = ({
     const [primarySortIsAsc, setPrimarySortIsAsc] = useState();
     const [secondarySortIsAsc, setSecondarySortIsAsc] = useState();
     const [secondarySort, setSecondarySort] = useState('');
-    const [isInitialPrimarySort, setIsInitialPrimarySort] = useState(
-        initialPrimaryField ? true : false,
-    );
+
     useEffect(() => {
         // reset these states if either sort becomes empty
         // keeps their state logic accurate
         if (primarySort === '') setPrimarySortIsAsc(undefined);
+
+        console.log(`Primary = ${primarySort}`);
+    }, [primarySort, primarySortIsAsc]);
+
+    useEffect(() => {
         if (secondarySort === '') setSecondarySortIsAsc(undefined);
-        if (isInitialPrimarySort) {
-            setRowOrder(sortPrimary(rowOrder, primarySort, primarySortIsAsc));
-            setIsInitialPrimarySort(false);
-        }
-        console.log(
-            `Primary = ${primarySort} and Secondary = ${secondarySort}`,
-        );
-    }, [
-        secondarySort,
-        primarySort,
-        primarySortIsAsc,
-        secondarySortIsAsc,
-        isInitialPrimarySort,
-        rowOrder,
-        setRowOrder,
-    ]);
+        console.log(`Secondary = ${secondarySort}`);
+    }, [secondarySort, setSecondarySortIsAsc]);
 
     const setPrimaryOrSetSecondary = (field, sortStatus) => {
         if (primarySort === '') {
