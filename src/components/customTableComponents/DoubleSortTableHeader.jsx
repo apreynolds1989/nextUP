@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { Box } from '@mui/material';
-import { sortPrimary } from './utilities/sortFunctions';
 import { ColumnHeaderText } from './ColumnHeaderText';
 
 export const DoubleSortTableHeader = ({
@@ -28,14 +27,12 @@ export const DoubleSortTableHeader = ({
         // reset these states if either sort becomes empty
         // keeps their state logic accurate
         if (primarySort === '') setPrimarySortIsAsc(undefined);
-
-        console.log(`Primary = ${primarySort}`);
-    }, [primarySort, primarySortIsAsc]);
-
-    useEffect(() => {
         if (secondarySort === '') setSecondarySortIsAsc(undefined);
-        console.log(`Secondary = ${secondarySort}`);
-    }, [secondarySort, setSecondarySortIsAsc]);
+
+        console.log(
+            `Primary = ${primarySort} and Secondary = ${secondarySort}`,
+        );
+    }, [secondarySort, primarySort, primarySortIsAsc, secondarySortIsAsc]);
 
     const setPrimaryOrSetSecondary = (field, sortStatus) => {
         if (primarySort === '') {

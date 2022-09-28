@@ -80,7 +80,7 @@ export const tableContainer = {
 
 export const bannerSX = {
     width: '100vw',
-    marginTop: 17,
+    marginTop: 12,
     marginBottom: 0,
     marginX: 'auto',
     paddingBottom: 2,

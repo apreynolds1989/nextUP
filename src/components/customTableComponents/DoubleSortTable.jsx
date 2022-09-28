@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { Box, useMediaQuery } from '@mui/material';
+import { Box, Button, useMediaQuery } from '@mui/material';
 import { DoubleSortTableRows } from './DoubleSortTableRows';
 import { DoubleSortTableHeader } from './DoubleSortTableHeader';
 import { TableFilterModal } from './TableFilterModal';
 import { sortPrimary } from './utilities/sortFunctions';
+import { useEffect } from 'react';
 
 export const DoubleSortTable = ({
     columnConfig,
@@ -61,6 +62,49 @@ export const DoubleSortTable = ({
         setIsInitialPrimarySort(false);
     }
 
+    const [firstItemOnPage, setFirstItemOnPage] = useState(0);
+    const [lastItemOnPage, setLastItemOnPage] = useState(25);
+    const [paginatedRows, setPaginatedRows] = useState([]);
+    useEffect(() => {
+        if (rowOrder.length > 25) {
+            setPaginatedRows(rowOrder.slice(firstItemOnPage, lastItemOnPage));
+        }
+    }, [rowOrder, firstItemOnPage, lastItemOnPage]);
+
+    const paginationNextHandler = () => {
+        setFirstItemOnPage(firstItemOnPage + 25);
+        setLastItemOnPage(
+            lastItemOnPage + 25 > rowOrder.length
+                ? rowOrder.length
+                : lastItemOnPage + 25,
+        );
+        setPaginatedRows(rowOrder.slice(firstItemOnPage, lastItemOnPage));
+    };
+
+    const paginationPrevHandler = () => {
+        const lastItemOfArr = rowOrder.length - 1;
+        setFirstItemOnPage(firstItemOnPage - 25 < 0 ? 0 : firstItemOnPage - 25);
+        setLastItemOnPage(
+            lastItemOnPage === rowOrder.length
+                ? lastItemOfArr - (rowOrder.length % 25)
+                : lastItemOnPage - 25,
+        );
+        setPaginatedRows(rowOrder.slice(firstItemOnPage, lastItemOnPage));
+    };
+
+    const paginationFirstPageHandler = () => {
+        setFirstItemOnPage(0);
+        setLastItemOnPage(25);
+        setPaginatedRows(rowOrder.slice(firstItemOnPage, lastItemOnPage));
+    };
+
+    const paginationLastPageHandler = () => {
+        const lastItemOfArr = rowOrder.length - 1;
+        setFirstItemOnPage(lastItemOfArr - (rowOrder.length % 25));
+        setLastItemOnPage(lastItemOfArr + 1);
+        setPaginatedRows(rowOrder.slice(firstItemOnPage, lastItemOnPage));
+    };
+
     return (
         <>
             {isFilterable && (
@@ -102,7 +146,9 @@ export const DoubleSortTable = ({
                         renderedProps={renderedProps}
                     />
                     <DoubleSortTableRows
-                        rowOrder={rowOrder}
+                        rowOrder={
+                            rowOrder.length > 24 ? paginatedRows : rowOrder
+                        }
                         stickyCol={stickyCol}
                         colsToHide={colsToHide}
                         leftAlignedFields={leftAlignedFields}
@@ -112,6 +158,69 @@ export const DoubleSortTable = ({
                     />
                 </Box>
             </Box>
+            {paginatedRows.length > 0 && (
+                <Box
+                    sx={{
+                        display: 'flex',
+                        justifyContent: 'flex-end',
+                        marginTop: 2,
+                    }}
+                >
+                    <Button
+                        onClick={
+                            firstItemOnPage !== 0
+                                ? paginationFirstPageHandler
+                                : null
+                        }
+                        sx={{
+                            fontWeight: 'bold',
+                            borderRight: 2,
+                            borderColor: renderedProps.dataTextColor,
+                            borderRadius: 0,
+                        }}
+                    >
+                        First Page
+                    </Button>
+                    <Button
+                        onClick={
+                            firstItemOnPage !== 0 ? paginationPrevHandler : null
+                        }
+                        sx={{
+                            fontWeight: 'bold',
+                            borderRight: 2,
+                            borderColor: renderedProps.dataTextColor,
+                            borderRadius: 0,
+                        }}
+                    >
+                        Prev 25
+                    </Button>
+                    <Button
+                        onClick={
+                            lastItemOnPage !== rowOrder.length
+                                ? paginationNextHandler
+                                : null
+                        }
+                        sx={{
+                            fontWeight: 'bold',
+                            borderRight: 2,
+                            borderColor: renderedProps.dataTextColor,
+                            borderRadius: 0,
+                        }}
+                    >
+                        Next 25
+                    </Button>
+                    <Button
+                        onClick={
+                            lastItemOnPage !== rowOrder.length
+                                ? paginationLastPageHandler
+                                : null
+                        }
+                        sx={{ fontWeight: 'bold' }}
+                    >
+                        Last Page
+                    </Button>
+                </Box>
+            )}
         </>
     );
 };

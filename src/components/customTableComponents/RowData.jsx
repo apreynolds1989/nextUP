@@ -60,11 +60,6 @@ export const RowData = ({
                 paddingY: renderedProps.dataPaddingY,
                 whiteSpace: 'nowrap',
                 ...fixedColumn,
-                // whiteSpace: 'nowrap',
-                // position: cellKey === 'name' ? 'absolute' : 'static',
-                // left: cellKey === 'name' ? 'auto' : '150px',
-                // width: cellKey === 'name' ? '125px' : 'auto',
-                // zIndex: cellKey === 'name' ? 2 : 1,
             }}
         >
             <Typography

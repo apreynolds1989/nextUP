@@ -6,7 +6,6 @@ import { BannerToggleButton } from './BannerToggleButton';
 
 export const BannerWithToggle = ({
     isMobileSize,
-    bannerBackground,
     displayedTable,
     setDisplayedTable,
     buttonBackgroundOne,
@@ -17,7 +16,7 @@ export const BannerWithToggle = ({
 }) => {
     const bannerProps = isMobileSize ? bannerSxMobile : bannerSX;
     return (
-        <Container sx={{ ...bannerBackground, ...bannerProps }}>
+        <Container sx={{ ...bannerProps }}>
             <Box
                 sx={{
                     display: 'flex',
