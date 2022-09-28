@@ -15,7 +15,7 @@ import {
     goalieData,
     skaterHeaders,
     skaterData,
-} from '../assets/data/staticStats';
+} from '../assets/data/columnHeaders';
 import { BannerText } from '../components/BannerText';
 import { fetchData } from '../assets/data/fetchData';
 import { Box, LinearProgress } from '@mui/material';
@@ -23,17 +23,24 @@ import { Box, LinearProgress } from '@mui/material';
 export const Players = ({ isMobileSize }) => {
     const [displayedTable, setDisplayedTable] = useState('SKATERS');
     const [skatersStatsData, setSkatersStatsData] = useState(null);
-    const createSkaterStatsArr = async () => {
+    const [goaliesStatsData, setGoaliesStatsData] = useState(null);
+    const createPlayerStatsArr = async () => {
         const skatersStats = await fetchData(
             'https://nextup-backend-production.up.railway.app/skaters',
+        );
+        const goaliesStats = await fetchData(
+            'https://nextup-backend-production.up.railway.app/goalies',
         );
         skatersStats
             ? setSkatersStatsData(skatersStats)
             : setSkatersStatsData(skaterData);
+        goaliesStats
+            ? setGoaliesStatsData(goaliesStats)
+            : setGoaliesStatsData(goalieData);
     };
 
     useEffect(() => {
-        createSkaterStatsArr();
+        createPlayerStatsArr();
         // setSkatersData(skatersStats);
     }, []);
 
@@ -135,10 +142,43 @@ export const Players = ({ isMobileSize }) => {
                             leftAlignedFields={['name']}
                         />
                     )}
+                    {displayedTable === 'GOALIES' && !goaliesStatsData && (
+                        <>
+                            <DoubleSortTable
+                                columnConfig={goalieHeaders}
+                                rowConfig={[]}
+                                isSortable={true}
+                                isFilterable={true}
+                                stickyCol={'name'}
+                                // colsToHide={isMobileSize ? [1] : []}
+                                tableBorder={`2px solid ${palette.gtBlue}`}
+                                outerRadius={3}
+                                headerBgColor={palette.gtGrey}
+                                headerTextColor={palette.gtRed}
+                                headerArrowColor={palette.gtBlue}
+                                dataBgColorOne={palette.gtGrey}
+                                dataBgColorTwo={'white'}
+                                dataTextColor={palette.gtBlue}
+                                rowEndBorder={'1px solid #c6c6c6'}
+                                leftAlignedFields={['name']}
+                            />
+                            <Box
+                                sx={{
+                                    marginX: 'auto',
+                                    maxWidth: '70vw',
+                                }}
+                            >
+                                <LinearProgress
+                                    color='secondary'
+                                    sx={{ marginY: 5 }}
+                                />
+                            </Box>
+                        </>
+                    )}
                     {displayedTable === 'GOALIES' && (
                         <DoubleSortTable
                             columnConfig={goalieHeaders}
-                            rowConfig={goalieData}
+                            rowConfig={goaliesStatsData}
                             isSortable={true}
                             isFilterable={true}
                             initialPrimaryField={{
