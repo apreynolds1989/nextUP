@@ -4,7 +4,6 @@ import { RowData } from './RowData';
 
 export const DoubleSortTableRows = ({
     rowOrder,
-    numberedColumn,
     stickyCol,
     colsToHide,
     leftAlignedFields,
@@ -28,7 +27,6 @@ export const DoubleSortTableRows = ({
                         cellData={row[cellKey]}
                         rowLength={rowKeys.length}
                         numberOfRows={rowOrder.length}
-                        numberedColumn={numberedColumn}
                         stickyCol={stickyCol}
                         colsToHide={colsToHide}
                         colNum={index}

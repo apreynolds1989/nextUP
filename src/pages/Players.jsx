@@ -92,7 +92,6 @@ export const Players = ({ isMobileSize }) => {
                                 rowConfig={[]}
                                 isSortable={true}
                                 isFilterable={true}
-                                numberedColumn={'name'}
                                 stickyCol={'name'}
                                 // colsToHide={isMobileSize ? [1] : []}
                                 tableBorder={`2px solid ${palette.gtBlue}`}
@@ -129,7 +128,6 @@ export const Players = ({ isMobileSize }) => {
                                 field: 'points',
                                 sortStatus: 'desc',
                             }}
-                            numberedColumn={'name'}
                             stickyCol={'name'}
                             // colsToHide={isMobileSize ? [1] : []}
                             tableBorder={`2px solid ${palette.gtBlue}`}
@@ -151,7 +149,6 @@ export const Players = ({ isMobileSize }) => {
                                 rowConfig={[]}
                                 isSortable={true}
                                 isFilterable={true}
-                                numberedColumn={'name'}
                                 stickyCol={'name'}
                                 // colsToHide={isMobileSize ? [1] : []}
                                 tableBorder={`2px solid ${palette.gtBlue}`}
@@ -188,7 +185,6 @@ export const Players = ({ isMobileSize }) => {
                                 field: 'wins',
                                 sortStatus: 'desc',
                             }}
-                            numberedColumn={'name'}
                             stickyCol={'name'}
                             // colsToHide={isMobileSize ? [1] : []}
                             tableBorder={`2px solid ${palette.gtBlue}`}

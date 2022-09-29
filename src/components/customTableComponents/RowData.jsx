@@ -4,7 +4,6 @@ import React from 'react';
 export const RowData = ({
     cellData,
     rowLength,
-    numberedColumn,
     stickyCol,
     colsToHide,
     colNum,
@@ -70,19 +69,6 @@ export const RowData = ({
                     fontSize: renderedProps.dataTextSize,
                 }}
             >
-                {numberedColumn === cellKey && (
-                    <Typography
-                        sx={{
-                            display: 'inline-block',
-                            textAlign: textAlignment,
-                            color: renderedProps.dataTextColor,
-                            fontSize: renderedProps.dataTextSize,
-                            paddingRight: 1,
-                        }}
-                    >
-                        {rowNum + 1}.
-                    </Typography>
-                )}
                 {cellData}
             </Typography>
         </Box>
