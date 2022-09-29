@@ -13,6 +13,7 @@ export const DoubleSortTable = ({
     isFilterable = false,
     initialPrimaryField,
     stickyCol = '',
+    numberedColumn,
     colsToHide = [],
     leftAlignedFields = [],
     rightAlignedFields = [],
@@ -115,6 +116,7 @@ export const DoubleSortTable = ({
                         rowOrder={
                             rowOrder.length > 24 ? paginatedRows : rowOrder
                         }
+                        numberedColumn={numberedColumn}
                         stickyCol={stickyCol}
                         colsToHide={colsToHide}
                         leftAlignedFields={leftAlignedFields}
