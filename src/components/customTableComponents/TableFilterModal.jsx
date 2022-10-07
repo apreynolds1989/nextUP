@@ -1,24 +1,15 @@
 import React from 'react';
-import { useForm } from 'react-hook-form';
-import {
-    Backdrop,
-    Box,
-    Modal,
-    Fade,
-    Button,
-    Typography,
-    InputLabel,
-    Grid,
-    TextField,
-} from '@mui/material';
-import { useRef } from 'react';
-import { onFilterFormSubmit } from './utilities/onFilterFormSubmit';
+import { Backdrop, Box, Modal, Fade, Button, Typography } from '@mui/material';
+import { TableFilterModalForm } from './TabelFilterModalForm';
+import { useState } from 'react';
 
 export const TableFilterModal = ({
     renderedProps,
     columnConfig,
     rowOrder,
     setRowOrder,
+    filteringArr,
+    setFilteringArr,
 }) => {
     const style = {
         position: 'absolute',
@@ -33,17 +24,9 @@ export const TableFilterModal = ({
         p: 1,
     };
 
-    const form = useRef();
-    const [open, setOpen] = React.useState(false);
+    const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
-
-    // react-hook-form
-    const { register, handleSubmit } = useForm();
-    const onSubmit = (data) => {
-        console.log(data);
-        onFilterFormSubmit(rowOrder, setRowOrder, columnConfig, data);
-    };
 
     return (
         <div>
@@ -105,135 +88,19 @@ export const TableFilterModal = ({
                                     alignContent: 'center',
                                 }}
                             >
-                                <form
-                                    ref={form}
-                                    onSubmit={handleSubmit(onSubmit)}
-                                >
-                                    {columnConfig.length > 10 ? (
-                                        <Grid container spacing={1}>
-                                            {columnConfig.map((column) => (
-                                                <Grid
-                                                    item
-                                                    xs={6}
-                                                    key={column.field}
-                                                >
-                                                    {column.inputType ===
-                                                    'string' ? (
-                                                        <FilterStringField
-                                                            key={`${column.field}FilterField`}
-                                                            register={register}
-                                                            label={
-                                                                column.mobileColumnName ??
-                                                                column.columnName
-                                                            }
-                                                            field={column.field}
-                                                        />
-                                                    ) : (
-                                                        <FilterNumberField
-                                                            key={`${column.field}FilterField`}
-                                                            register={register}
-                                                            label={
-                                                                column.mobileColumnName ??
-                                                                column.columnName
-                                                            }
-                                                            field={column.field}
-                                                        />
-                                                    )}
-                                                </Grid>
-                                            ))}
-                                        </Grid>
-                                    ) : (
-                                        columnConfig.map((column) =>
-                                            column.inputType === 'string' ? (
-                                                <FilterStringField
-                                                    key={`${column.field}FilterField`}
-                                                    register={register}
-                                                    label={column.columnName}
-                                                    field={column.field}
-                                                />
-                                            ) : (
-                                                <FilterNumberField
-                                                    key={`${column.field}FilterField`}
-                                                    register={register}
-                                                    label={column.columnName}
-                                                    field={column.field}
-                                                />
-                                            ),
-                                        )
-                                    )}
-                                    <Button
-                                        variant='contained'
-                                        component='label'
-                                        sx={{
-                                            display: 'flex',
-                                            maxWidth: '200px',
-                                            marginTop: 2,
-                                            marginX: 'auto',
-                                        }}
-                                    >
-                                        Set Filters
-                                        <input type='submit' hidden />
-                                    </Button>
-                                </form>
+                                <TableFilterModalForm
+                                    rowOrder={rowOrder}
+                                    setRowOrder={setRowOrder}
+                                    columnConfig={columnConfig}
+                                    filteringArr={filteringArr}
+                                    setFilteringArr={setFilteringArr}
+                                    renderedProps={renderedProps}
+                                />
                             </Box>
                         </Box>
                     </Box>
                 </Fade>
             </Modal>
         </div>
-    );
-};
-
-const FilterStringField = ({ register, label, field }) => {
-    return (
-        <Grid container sx={{ paddingBottom: 1 }}>
-            <Grid item xs={5} sx={{ margin: 'auto' }}>
-                <InputLabel>{label}</InputLabel>
-            </Grid>
-            <Grid item xs={7}>
-                <TextField
-                    id={field}
-                    name={field}
-                    variant='outlined'
-                    color='secondary'
-                    size='small'
-                    fullWidth
-                    {...register(`${field}`)}
-                    // error={errors.firstName ? true : false}
-                />
-            </Grid>
-        </Grid>
-    );
-};
-
-const FilterNumberField = ({ register, label, field }) => {
-    return (
-        <Grid container sx={{ paddingBottom: 1 }}>
-            <Grid item xs={5} sx={{ margin: 'auto' }}>
-                <InputLabel>{label}</InputLabel>
-            </Grid>
-            <Grid item xs={2} sx={{ margin: 'auto' }}>
-                <select {...register(`${field}FilterBy`)}>
-                    <option value=''></option>
-                    <option value='equal'>&#61;</option>
-                    <option value='lessThan'>&#60;</option>
-                    <option value='lessThanOrEqual'>&le;</option>
-                    <option value='greaterThan'>&#62;</option>
-                    <option value='greaterThanOrEqual'>&ge;</option>
-                </select>
-            </Grid>
-            <Grid item xs={5}>
-                <TextField
-                    id={field}
-                    name={field}
-                    variant='outlined'
-                    color='secondary'
-                    size='small'
-                    fullWidth
-                    {...register(`${field}`)}
-                    // error={errors.firstName ? true : false}
-                />
-            </Grid>
-        </Grid>
     );
 };

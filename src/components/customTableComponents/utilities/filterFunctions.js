@@ -5,19 +5,19 @@ export const searchFilter = () => {
 export const filterColumn = (rowsArr, colField, filterType, filterInput) => {
     let filteredArr;
     switch (filterType) {
-        case 'equal':
+        case '=':
             filteredArr = rowsArr.filter((row) => row[colField] = filterInput)
             break;
-        case 'lessThan':
+        case '<':
             filteredArr = rowsArr.filter((row) => row[colField] < filterInput)
             break;
-        case 'lessThanOrEqual':
+        case '<=':
             filteredArr = rowsArr.filter((row) => row[colField] <= filterInput)
             break;
-        case 'greaterThan':
+        case '>':
             filteredArr = rowsArr.filter((row) => row[colField] > filterInput)
             break;
-        case 'greaterThanOrEqual':
+        case '>=':
             filteredArr = rowsArr.filter((row) => row[colField] >= filterInput)
             break;
         default:

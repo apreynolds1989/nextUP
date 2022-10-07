@@ -1,18 +1,9 @@
-import { filterColumn, searchFilter } from "./filterFunctions";
+import { filterColumn } from "./filterFunctions";
 
-export const onFilterFormSubmit = async (rowOrder, setRowOrder, columnConfig, data) => {
+export const onFilterFormSubmit = async (rowOrder, setRowOrder, filteringArr) => {
     let filteredRowOrder = rowOrder;
-    await columnConfig.forEach((column) => {
-        const filterCheck = `${column.field}FilterBy`;
-        const filterInput = column.field;
-        if (filterInput === '') return null;
-        else {
-            if (!data[filterCheck]) {
-                searchFilter();
-            } else {
-                filteredRowOrder = filterColumn(filteredRowOrder, column.field, data[filterCheck], data[filterInput])
-            }
-        }
+    await filteringArr.forEach(elementArr => {
+        filteredRowOrder = filterColumn(filteredRowOrder, elementArr[0], elementArr[1], elementArr[2])
     });
     setRowOrder(filteredRowOrder);
 }

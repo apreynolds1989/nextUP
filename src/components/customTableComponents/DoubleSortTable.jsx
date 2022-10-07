@@ -47,6 +47,7 @@ export const DoubleSortTable = ({
     const renderedProps = { ...defaultProps, ...stylingProps };
     const [rowOrder, setRowOrder] = useState(rowConfig);
     const [clickedColumn, setClickedColumn] = useState('');
+    const [filteringArr, setFilteringArr] = useState([]);
     const [isInitialPrimarySort, setIsInitialPrimarySort] = useState(
         initialPrimaryField ? true : false,
     );
@@ -79,6 +80,8 @@ export const DoubleSortTable = ({
                     columnConfig={columnConfig}
                     rowOrder={rowOrder}
                     setRowOrder={setRowOrder}
+                    filteringArr={filteringArr}
+                    setFilteringArr={setFilteringArr}
                 />
             )}
             <Box
