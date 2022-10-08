@@ -5,10 +5,12 @@ import { DoubleSortTableHeader } from './DoubleSortTableHeader';
 import { TableFilterModal } from './TableFilterModal';
 import { sortPrimary } from './utilities/sortFunctions';
 import { Pagination } from './Pagination';
+import { TableSearchBox } from './TableSearchBox';
 
 export const DoubleSortTable = ({
     columnConfig,
     rowConfig,
+    isSearchable = false,
     isSortable = false,
     isFilterable = false,
     initialPrimaryField,
@@ -74,17 +76,33 @@ export const DoubleSortTable = ({
 
     return (
         <>
-            {isFilterable && (
-                <TableFilterModal
-                    renderedProps={renderedProps}
-                    columnConfig={columnConfig}
-                    rowConfig={rowConfig}
-                    rowOrder={rowOrder}
-                    setRowOrder={setRowOrder}
-                    filteringArr={filteringArr}
-                    setFilteringArr={setFilteringArr}
-                />
-            )}
+            <Box
+                sx={{
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    padding: 1,
+                    width: '100%',
+                }}
+            >
+                {isSearchable && (
+                    <TableSearchBox
+                        rowConfig={rowConfig}
+                        rowOrder={rowOrder}
+                        setRowOrder={setRowOrder}
+                    />
+                )}
+                {isFilterable && (
+                    <TableFilterModal
+                        renderedProps={renderedProps}
+                        columnConfig={columnConfig}
+                        rowConfig={rowConfig}
+                        rowOrder={rowOrder}
+                        setRowOrder={setRowOrder}
+                        filteringArr={filteringArr}
+                        setFilteringArr={setFilteringArr}
+                    />
+                )}
+            </Box>
             <Box
                 sx={{
                     display: 'flex',

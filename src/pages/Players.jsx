@@ -90,6 +90,7 @@ export const Players = ({ isMobileSize }) => {
                             <DoubleSortTable
                                 columnConfig={skaterHeaders}
                                 rowConfig={[]}
+                                isSearchable={true}
                                 isSortable={true}
                                 isFilterable={true}
                                 stickyCol={'name'}
@@ -122,6 +123,7 @@ export const Players = ({ isMobileSize }) => {
                         <DoubleSortTable
                             columnConfig={skaterHeaders}
                             rowConfig={skatersStatsData}
+                            isSearchable={true}
                             isSortable={true}
                             isFilterable={true}
                             initialPrimaryField={{
