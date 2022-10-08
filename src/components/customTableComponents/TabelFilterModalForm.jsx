@@ -23,10 +23,36 @@ export const TableFilterModalForm = ({
     const [filterField, setFilterField] = useState('');
     const [filterBy, setFilterBy] = useState('');
     const [filterInput, setFilterInput] = useState('');
+    const [forceRerender, setForceRerender] = useState(false);
+
+    const createCurrentFields = (arr) => {
+        const currentFields = [];
+        arr.forEach((elementArr) => {
+            currentFields.push(elementArr[0]);
+        });
+        return currentFields;
+    };
+
+    const replaceExistingField = (arr) => {
+        arr.forEach((elementArr, index) => {
+            if (elementArr[0] === filterField)
+                arr[index] = [filterField, filterBy, filterInput];
+        });
+        setForceRerender(!forceRerender);
+        return arr;
+    };
+
     const handleFilterMounting = () => {
-        // when called, add current values of filterField, filterBy and filterInput to filteringArr
+        // when called, check if the filterField already exists, if it does replace it,
+        // if it doesn't add to end of filteringArr
         const arr = filteringArr;
-        setFilteringArr([...arr, [filterField, filterBy, filterInput]]);
+        const currentFields = createCurrentFields(arr);
+        currentFields.includes(filterField)
+            ? setFilteringArr(replaceExistingField(arr))
+            : setFilteringArr([...arr, [filterField, filterBy, filterInput]]);
+
+        //? In above code, the first setFilteringArr does not trigger re-render without forceRerender state
+        //? but the second one does?
     };
 
     return (

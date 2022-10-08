@@ -9,7 +9,7 @@ export const MountedFilterLabels = ({
     setFilteringArr,
     renderedProps,
 }) => {
-    // ? NOT TRIGGERING A RE-RENDER
+    // ? why no re-render with just setFilteringArr(newArr), but does re-render with setForceRerenderer
 
     const [forceRerender, setForceRerender] = useState(false);
 
