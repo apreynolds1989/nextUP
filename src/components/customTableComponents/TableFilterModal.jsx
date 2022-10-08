@@ -6,6 +6,7 @@ import { useState } from 'react';
 export const TableFilterModal = ({
     renderedProps,
     columnConfig,
+    rowConfig,
     rowOrder,
     setRowOrder,
     filteringArr,
@@ -89,11 +90,13 @@ export const TableFilterModal = ({
                                 }}
                             >
                                 <TableFilterModalForm
+                                    rowConfig={rowConfig}
                                     rowOrder={rowOrder}
                                     setRowOrder={setRowOrder}
                                     columnConfig={columnConfig}
                                     filteringArr={filteringArr}
                                     setFilteringArr={setFilteringArr}
+                                    handleClose={handleClose}
                                     renderedProps={renderedProps}
                                 />
                             </Box>

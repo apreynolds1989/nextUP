@@ -6,19 +6,23 @@ import { onFilterFormSubmit } from './utilities/onFilterFormSubmit';
 import { MountedFilterLabels } from './MountedFilterLabels';
 
 export const TableFilterModalForm = ({
+    rowConfig,
     rowOrder,
     setRowOrder,
     columnConfig,
     filteringArr,
     setFilteringArr,
+    handleClose,
     renderedProps,
 }) => {
     const form = useRef();
     // react-hook-form
     const { register, handleSubmit } = useForm();
     const onSubmit = () => {
-        console.log(filteringArr);
-        onFilterFormSubmit(rowOrder, setRowOrder, filteringArr);
+        handleClose();
+        filteringArr.length === 0
+            ? setRowOrder(rowConfig)
+            : onFilterFormSubmit(rowOrder, setRowOrder, filteringArr);
     };
     const [filterField, setFilterField] = useState('');
     const [filterBy, setFilterBy] = useState('');

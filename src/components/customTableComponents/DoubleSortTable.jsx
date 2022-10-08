@@ -78,6 +78,7 @@ export const DoubleSortTable = ({
                 <TableFilterModal
                     renderedProps={renderedProps}
                     columnConfig={columnConfig}
+                    rowConfig={rowConfig}
                     rowOrder={rowOrder}
                     setRowOrder={setRowOrder}
                     filteringArr={filteringArr}
