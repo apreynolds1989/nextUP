@@ -79,8 +79,9 @@ export const TableFilterModalForm = ({
             </Box>
             {/* Mount all values of filteringArr to be displayed */}
             <MountedFilterLabels
-                arr={filteringArr}
+                filteringArr={filteringArr}
                 renderedProps={renderedProps}
+                setFilteringArr={setFilteringArr}
             />
             <Button
                 variant='contained'

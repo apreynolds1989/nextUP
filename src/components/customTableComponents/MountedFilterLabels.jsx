@@ -1,8 +1,28 @@
 import React from 'react';
 import { Box, IconButton, Typography } from '@mui/material';
 import ClearOutlinedIcon from '@mui/icons-material/ClearOutlined';
+import { useEffect } from 'react';
+import { useState } from 'react';
 
-export const MountedFilterLabels = ({ arr, renderedProps }) => {
+export const MountedFilterLabels = ({
+    filteringArr,
+    setFilteringArr,
+    renderedProps,
+}) => {
+    // ? NOT TRIGGERING A RE-RENDER
+
+    const [forceRerender, setForceRerender] = useState(false);
+
+    const handleFilterUnmount = (filteringArr, index) => {
+        let newArr = filteringArr;
+        console.log(newArr);
+        newArr.splice(index, 1);
+        setFilteringArr(newArr);
+        setForceRerender(!forceRerender);
+    };
+
+    useEffect(() => {});
+
     return (
         <Box
             sx={{
@@ -10,7 +30,7 @@ export const MountedFilterLabels = ({ arr, renderedProps }) => {
                 flexWrap: 'wrap',
             }}
         >
-            {arr.map((elementArr, index) => (
+            {filteringArr.map((elementArr, index) => (
                 <Box
                     key={`${elementArr[0]}${index}`}
                     sx={{
@@ -28,7 +48,11 @@ export const MountedFilterLabels = ({ arr, renderedProps }) => {
                     >
                         {elementArr[0]} {elementArr[1]} {elementArr[2]}
                     </Typography>
-                    <IconButton aria-label='delete' size='small'>
+                    <IconButton
+                        aria-label='delete'
+                        size='small'
+                        onClick={() => handleFilterUnmount(filteringArr, index)}
+                    >
                         <ClearOutlinedIcon />
                     </IconButton>
                 </Box>
