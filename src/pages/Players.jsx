@@ -149,6 +149,7 @@ export const Players = ({ isMobileSize }) => {
                             <DoubleSortTable
                                 columnConfig={goalieHeaders}
                                 rowConfig={[]}
+                                isSearchable={true}
                                 isSortable={true}
                                 isFilterable={true}
                                 stickyCol={'name'}
@@ -181,6 +182,7 @@ export const Players = ({ isMobileSize }) => {
                         <DoubleSortTable
                             columnConfig={goalieHeaders}
                             rowConfig={goaliesStatsData}
+                            isSearchable={true}
                             isSortable={true}
                             isFilterable={true}
                             initialPrimaryField={{
