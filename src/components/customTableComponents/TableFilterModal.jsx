@@ -11,6 +11,7 @@ export const TableFilterModal = ({
     setRowOrder,
     filteringArr,
     setFilteringArr,
+    setSearchArr,
 }) => {
     const style = {
         position: 'absolute',
@@ -96,6 +97,7 @@ export const TableFilterModal = ({
                                     columnConfig={columnConfig}
                                     filteringArr={filteringArr}
                                     setFilteringArr={setFilteringArr}
+                                    setSearchArr={setSearchArr}
                                     handleClose={handleClose}
                                     renderedProps={renderedProps}
                                 />

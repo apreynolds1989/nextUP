@@ -12,6 +12,7 @@ export const TableFilterModalForm = ({
     columnConfig,
     filteringArr,
     setFilteringArr,
+    setSearchArr,
     handleClose,
     renderedProps,
 }) => {
@@ -20,9 +21,17 @@ export const TableFilterModalForm = ({
     const { register, handleSubmit } = useForm();
     const onSubmit = () => {
         handleClose();
-        filteringArr.length === 0
-            ? setRowOrder(rowConfig)
-            : onFilterFormSubmit(rowOrder, setRowOrder, filteringArr);
+        if (filteringArr.length === 0) {
+            setRowOrder(rowConfig);
+            setSearchArr([]);
+        } else {
+            onFilterFormSubmit(
+                rowOrder,
+                setRowOrder,
+                filteringArr,
+                setSearchArr,
+            );
+        }
     };
     const [filterField, setFilterField] = useState('');
     const [filterBy, setFilterBy] = useState('');

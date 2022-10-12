@@ -50,6 +50,7 @@ export const DoubleSortTable = ({
     const [rowOrder, setRowOrder] = useState(rowConfig);
     const [clickedColumn, setClickedColumn] = useState('');
     const [filteringArr, setFilteringArr] = useState([]);
+    const [searchArr, setSearchArr] = useState([]);
     const [isInitialPrimarySort, setIsInitialPrimarySort] = useState(
         initialPrimaryField ? true : false,
     );
@@ -88,7 +89,9 @@ export const DoubleSortTable = ({
                     <TableSearchBox
                         rowConfig={rowConfig}
                         rowOrder={rowOrder}
+                        filteringArr={filteringArr}
                         setRowOrder={setRowOrder}
+                        searchArr={searchArr}
                     />
                 )}
                 {isFilterable && (
@@ -100,6 +103,7 @@ export const DoubleSortTable = ({
                         setRowOrder={setRowOrder}
                         filteringArr={filteringArr}
                         setFilteringArr={setFilteringArr}
+                        setSearchArr={setSearchArr}
                     />
                 )}
             </Box>
