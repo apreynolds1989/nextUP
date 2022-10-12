@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { Box, Button, TextField } from '@mui/material';
+import { Box, Button, MenuItem, TextField } from '@mui/material';
 import { useRef } from 'react';
 import { onFilterFormSubmit } from './utilities/onFilterFormSubmit';
 import { MountedFilterLabels } from './MountedFilterLabels';
@@ -18,7 +18,7 @@ export const TableFilterModalForm = ({
 }) => {
     const form = useRef();
     // react-hook-form
-    const { register, handleSubmit } = useForm();
+    const { handleSubmit } = useForm();
     const onSubmit = () => {
         handleClose();
         if (filteringArr.length === 0) {
@@ -33,6 +33,7 @@ export const TableFilterModalForm = ({
             );
         }
     };
+
     const [filterField, setFilterField] = useState('');
     const [filterBy, setFilterBy] = useState('');
     const [filterInput, setFilterInput] = useState('');
@@ -73,45 +74,64 @@ export const TableFilterModalForm = ({
             <Box
                 sx={{
                     display: 'flex',
+                    justifyContent: 'center',
                 }}
             >
-                <select
-                    {...register(`filterField`)}
+                <TextField
+                    id='filterField'
+                    name='filterField'
+                    select
+                    size='small'
+                    value={filterField}
                     onChange={(choice) => setFilterField(choice.target.value)}
+                    sx={{
+                        width: '40%',
+                        paddingRight: 1,
+                    }}
                 >
-                    <option value=''></option>
+                    <MenuItem value=''></MenuItem>
                     {/* Only show columns with number type data */}
                     {columnConfig.map((column) =>
                         column.inputType === 'number' ? (
-                            <option
+                            <MenuItem
                                 value={column.field}
                                 key={`${column.field}FilterOption`}
                             >
                                 {column.columnName}
-                            </option>
+                            </MenuItem>
                         ) : null,
                     )}
-                </select>
-                <select
-                    {...register(`filterBy`)}
+                </TextField>
+                <TextField
+                    id='filterBy'
+                    name='filterBy'
+                    select
+                    size='small'
+                    value={filterBy}
                     onChange={(choice) => setFilterBy(choice.target.value)}
+                    sx={{
+                        width: '20%',
+                        paddingRight: 1,
+                    }}
                 >
-                    <option value=''></option>
-                    <option value='='>&#61;</option>
-                    <option value='<'>&#60;</option>
-                    <option value='<='>&le;</option>
-                    <option value='>'>&#62;</option>
-                    <option value='>='>&ge;</option>
-                </select>
+                    <MenuItem value=''></MenuItem>
+                    <MenuItem value='='>&#61;</MenuItem>
+                    <MenuItem value='<'>&#60;</MenuItem>
+                    <MenuItem value='<='>&le;</MenuItem>
+                    <MenuItem value='>'>&#62;</MenuItem>
+                    <MenuItem value='>='>&ge;</MenuItem>
+                </TextField>
                 <TextField
                     id='filterInput'
                     name='filterInput'
                     variant='outlined'
                     color='secondary'
                     size='small'
-                    fullWidth
-                    {...register(`filterInput`)}
+                    value={filterInput}
                     onChange={(choice) => setFilterInput(choice.target.value)}
+                    sx={{
+                        width: '30%',
+                    }}
                     // error={errors.firstName ? true : false}
                 />
                 <Button onClick={handleFilterMounting}>+</Button>

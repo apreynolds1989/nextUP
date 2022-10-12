@@ -1,7 +1,6 @@
 import React from 'react';
 import { Box, IconButton, Typography } from '@mui/material';
 import ClearOutlinedIcon from '@mui/icons-material/ClearOutlined';
-import { useEffect } from 'react';
 import { useState } from 'react';
 
 export const MountedFilterLabels = ({
@@ -20,8 +19,6 @@ export const MountedFilterLabels = ({
         setFilteringArr(newArr);
         setForceRerender(!forceRerender);
     };
-
-    useEffect(() => {});
 
     return (
         <Box
@@ -44,16 +41,22 @@ export const MountedFilterLabels = ({
                     <Typography
                         sx={{
                             paddingX: 1,
+                            fontSize: {
+                                xs: 12,
+                                sm: 16,
+                            },
                         }}
                     >
                         {elementArr[0]} {elementArr[1]} {elementArr[2]}
                     </Typography>
                     <IconButton
                         aria-label='delete'
-                        size='small'
+                        // size='small'
                         onClick={() => handleFilterUnmount(filteringArr, index)}
                     >
-                        <ClearOutlinedIcon />
+                        <ClearOutlinedIcon
+                            sx={{ fontSize: { xs: 14, sm: 18 } }}
+                        />
                     </IconButton>
                 </Box>
             ))}

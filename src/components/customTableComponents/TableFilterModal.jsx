@@ -18,7 +18,10 @@ export const TableFilterModal = ({
         top: '50%',
         left: '50%',
         transform: 'translate(-50%, -50%)',
-        width: 600,
+        width: {
+            xs: '95vw',
+            sm: '600px',
+        },
         bgcolor: renderedProps.headerBgColor,
         border: renderedProps.tableBorder,
         borderRadius: renderedProps.outerRadius,
@@ -66,7 +69,10 @@ export const TableFilterModal = ({
                         </Box>
                         <Box
                             sx={{
-                                paddingX: 6,
+                                paddingX: {
+                                    xs: 1,
+                                    sm: 6,
+                                },
                                 paddingBottom: 5,
                             }}
                         >
