@@ -12,6 +12,7 @@ export const TableSearchBox = ({
     searchArr,
 }) => {
     const [searchInput, setSearchInput] = useState('');
+    const [pageJustLoaded, setPageJustLoaded] = useState(true);
 
     // const handleSearch = () => {
     //     filteringArr.length === 0
@@ -21,9 +22,13 @@ export const TableSearchBox = ({
 
     // useEffect fires when typing in Search bar
     useEffect(() => {
-        filteringArr.length === 0
-            ? setRowOrder(searchFilter(rowConfig, searchInput))
-            : setRowOrder(searchFilter(searchArr, searchInput));
+        // This needs to sort by primary and/or secondary sort
+        if (!pageJustLoaded) {
+            filteringArr.length === 0
+                ? setRowOrder(searchFilter(rowConfig, searchInput))
+                : setRowOrder(searchFilter(searchArr, searchInput));
+        }
+        setPageJustLoaded(false);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [searchInput, searchArr]);
 

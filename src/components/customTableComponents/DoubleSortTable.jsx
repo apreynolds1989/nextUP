@@ -66,6 +66,7 @@ export const DoubleSortTable = ({
         setIsInitialPrimarySort(false);
     }
 
+    // Pagination
     const [firstItemOnPage, setFirstItemOnPage] = useState(0);
     const [lastItemOnPage, setLastItemOnPage] = useState(25);
     const [paginatedRows, setPaginatedRows] = useState([]);
