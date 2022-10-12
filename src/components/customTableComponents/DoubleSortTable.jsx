@@ -99,7 +99,6 @@ export const DoubleSortTable = ({
                         renderedProps={renderedProps}
                         columnConfig={columnConfig}
                         rowConfig={rowConfig}
-                        rowOrder={rowOrder}
                         setRowOrder={setRowOrder}
                         filteringArr={filteringArr}
                         setFilteringArr={setFilteringArr}

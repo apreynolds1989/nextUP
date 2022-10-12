@@ -7,7 +7,6 @@ export const TableFilterModal = ({
     renderedProps,
     columnConfig,
     rowConfig,
-    rowOrder,
     setRowOrder,
     filteringArr,
     setFilteringArr,
@@ -98,7 +97,6 @@ export const TableFilterModal = ({
                             >
                                 <TableFilterModalForm
                                     rowConfig={rowConfig}
-                                    rowOrder={rowOrder}
                                     setRowOrder={setRowOrder}
                                     columnConfig={columnConfig}
                                     filteringArr={filteringArr}

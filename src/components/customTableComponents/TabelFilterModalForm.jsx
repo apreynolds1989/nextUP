@@ -7,7 +7,6 @@ import { MountedFilterLabels } from './MountedFilterLabels';
 
 export const TableFilterModalForm = ({
     rowConfig,
-    rowOrder,
     setRowOrder,
     columnConfig,
     filteringArr,
@@ -26,7 +25,7 @@ export const TableFilterModalForm = ({
             setSearchArr([]);
         } else {
             onFilterFormSubmit(
-                rowOrder,
+                rowConfig,
                 setRowOrder,
                 filteringArr,
                 setSearchArr,

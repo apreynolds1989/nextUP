@@ -2,7 +2,6 @@ export const searchFilter = (rowsArr, searchInput) => {
     // create regex to scan for searchInput, ignoring casing
     const regexp = new RegExp(searchInput, 'i');
     let filteredArr;
-    // console.log(rowsArr);
     filteredArr = rowsArr.filter((row) => regexp.test(Object.values(row)));
     return filteredArr;
 }

@@ -14,7 +14,6 @@ export const MountedFilterLabels = ({
 
     const handleFilterUnmount = (filteringArr, index) => {
         let newArr = filteringArr;
-        console.log(newArr);
         newArr.splice(index, 1);
         setFilteringArr(newArr);
         setForceRerender(!forceRerender);
@@ -51,7 +50,6 @@ export const MountedFilterLabels = ({
                     </Typography>
                     <IconButton
                         aria-label='delete'
-                        // size='small'
                         onClick={() => handleFilterUnmount(filteringArr, index)}
                     >
                         <ClearOutlinedIcon
