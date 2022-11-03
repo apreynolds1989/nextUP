@@ -103,6 +103,7 @@ export const Players = ({ isMobileSize }) => {
                                 dataBgColorOne={palette.gtGrey}
                                 dataBgColorTwo={'white'}
                                 dataTextColor={palette.gtBlue}
+                                interactableTextColor={palette.gtBlue}
                                 rowEndBorder={'1px solid #c6c6c6'}
                                 leftAlignedFields={['name']}
                             />
@@ -140,6 +141,7 @@ export const Players = ({ isMobileSize }) => {
                             dataBgColorOne={palette.gtGrey}
                             dataBgColorTwo={'white'}
                             dataTextColor={palette.gtBlue}
+                            interactableTextColor={palette.gtBlue}
                             rowEndBorder={'1px solid #c6c6c6'}
                             leftAlignedFields={['name']}
                         />
@@ -162,6 +164,7 @@ export const Players = ({ isMobileSize }) => {
                                 dataBgColorOne={palette.gtGrey}
                                 dataBgColorTwo={'white'}
                                 dataTextColor={palette.gtBlue}
+                                interactableTextColor={palette.gtBlue}
                                 rowEndBorder={'1px solid #c6c6c6'}
                                 leftAlignedFields={['name']}
                             />
@@ -199,6 +202,7 @@ export const Players = ({ isMobileSize }) => {
                             dataBgColorOne={palette.gtGrey}
                             dataBgColorTwo={'white'}
                             dataTextColor={palette.gtBlue}
+                            interactableTextColor={palette.gtBlue}
                             rowEndBorder={'1px solid #c6c6c6'}
                             leftAlignedFields={['name']}
                         />

@@ -41,7 +41,13 @@ export const TableFilterModal = ({
                     backgroundColor: 'transparent',
                 }}
             >
-                <Button onClick={handleOpen} sx={{ fontWeight: 'bold' }}>
+                <Button
+                    onClick={handleOpen}
+                    sx={{
+                        color: renderedProps.interactableTextColor,
+                        fontWeight: 'bold',
+                    }}
+                >
                     Open Filters
                 </Button>
             </Box>
@@ -80,6 +86,7 @@ export const TableFilterModal = ({
                                 variant='h6'
                                 component='h2'
                                 sx={{
+                                    color: renderedProps.interactableTextColor,
                                     paddingBottom: 2,
                                     textDecoration: 'underline',
                                     fontWeight: 'bold',

@@ -43,6 +43,7 @@ export const DoubleSortTable = ({
         dataTextAlign: 'center',
         dataPaddingX: 2,
         dataPaddingY: isMobileSize ? 1 : 2,
+        interactableTextColor: 'black',
     };
 
     // overide defaults with anything passed to stylingProps

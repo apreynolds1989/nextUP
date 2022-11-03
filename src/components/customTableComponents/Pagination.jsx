@@ -61,6 +61,7 @@ export const Pagination = ({
                     borderRight: 2,
                     borderColor: renderedProps.dataTextColor,
                     borderRadius: 0,
+                    color: renderedProps.interactableTextColor,
                 }}
             >
                 First Page
@@ -72,6 +73,7 @@ export const Pagination = ({
                     borderRight: 2,
                     borderColor: renderedProps.dataTextColor,
                     borderRadius: 0,
+                    color: renderedProps.interactableTextColor,
                 }}
             >
                 Prev 25
@@ -87,6 +89,7 @@ export const Pagination = ({
                     borderRight: 2,
                     borderColor: renderedProps.dataTextColor,
                     borderRadius: 0,
+                    color: renderedProps.interactableTextColor,
                 }}
             >
                 Next 25
@@ -97,7 +100,10 @@ export const Pagination = ({
                         ? paginationLastPageHandler
                         : null
                 }
-                sx={{ fontWeight: 'bold' }}
+                sx={{
+                    fontWeight: 'bold',
+                    color: renderedProps.interactableTextColor,
+                }}
             >
                 Last Page
             </Button>

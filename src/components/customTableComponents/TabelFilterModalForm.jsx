@@ -145,6 +145,7 @@ export const TableFilterModalForm = ({
                 variant='contained'
                 component='label'
                 sx={{
+                    backgroundColor: renderedProps.interactableTextColor,
                     display: 'flex',
                     maxWidth: '200px',
                     marginTop: 2,
